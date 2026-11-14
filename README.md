@@ -49,6 +49,13 @@ Ne lancez **pas** `sante.load` ni les `v2/data/build_*.py` pour démarrer : ils 
 [reconstruire les données](#reconstruire-les-données) à partir des fichiers bruts (≈ 3,6 Go, non
 commités).
 
+**Vidéo de présentation** (57 s, voix off IA) : [`v2/video/out/pitch.mp4`](v2/video/out/pitch.mp4), commitée.
+Pour la refaire (Remotion, voir `v2/video/README.md`) :
+
+```bash
+cd v2/video && npm install && npm run render    # -> v2/video/out/pitch.mp4
+```
+
 ## Le problème
 
 Former un professionnel de santé prend de 3 à 10 ans. Une décision prise aujourd'hui (quotas,

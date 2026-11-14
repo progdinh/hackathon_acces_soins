@@ -3278,3 +3278,28 @@ après des erreurs de lancement chez des coéquipiers (fichiers de `data/raw/` a
 fichiers suivis, sans aucune donnée brute** : serveur prêt en 10 s, `/api/carte`, `/api/scenario` (densité),
 `/api/interpret`, page et contours répondent ; `manifest.py --check` OK.
 **Remplace** « La v1 (`sante/`, `app/`, `docs/lab/`) est figée et se consulte en lecture seule ».
+
+## 2026-11-14 — Vidéo de présentation : Remotion + video-shotcraft, 3 fonctions, voix off IA
+
+**Décision.**
+- Vidéo motion de 57 s pour le jury, en 16:9, dans `v2/video/` (projet Remotion, rendu local).
+- Elle montre trois fonctions de la carte :
+  1. explorer un territoire (France → Auvergne-Rhône-Alpes → Puy-de-Dôme, fiche kinés : 1 071 en 2026, 1 731 en 2050, fourchette de 1 244 à 2 219) ;
+  2. simuler une politique (préréglage « Former 20 % de plus » : +19 110 kinés en France en 2050 par rapport à la tendance) ;
+  3. décrire une politique en une phrase (« Ce que j'ai compris », puis confirmation).
+- Le backtest et le mode expert ne sont pas montrés.
+- Images : de vraies captures de la carte en 2x (`v2/video/capture/capture.mjs`, Puppeteer) animées par une caméra 2D, plus des scènes de typographie et une carte des départements tracée (contours IGN/Etalab simplifiés).
+- Habillage : les tokens de la carte (IBM Plex Sans/Mono, fond `#F4F5F2`, encre `#16181A`, sélection `#1B3A8C`, couleurs des professions).
+- Voix off IA française : ElevenLabs, voix « Perle », modèle eleven_v4, via le connecteur. Le minutage des scènes et les sous-titres viennent de la transcription mot à mot (Scribe, `src/voix-words.json`).
+- Musique : une piste Mixkit (licence libre, sans attribution), en sourdine. Une version sans musique est aussi rendue.
+- Skills installés : `remotion-dev/skills` (commités) et `video-shotcraft`, en mode autonome. Shotcraft pèse 54 Mo : il est ignoré par git et se réinstalle avec `npx skills add Vincentwei1021/video-shotcraft`.
+
+**Pourquoi.** L'utilisateur·rice a choisi : jury, 60 à 75 s au plus, voix off IA, Remotion + shotcraft, visuels mixtes, et ces trois fonctions.
+- La voix dit « plus dix-neuf mille » (arrondi), l'écran affiche +19 110.
+- La styleframe HTML de shotcraft n'a pas été faite : la carte a déjà un système visuel figé (direction A, « sémiologie graphique »), repris tel quel.
+
+**Non fait.**
+- Pas de bruitages Freesound.
+- Pas de vraie capture vidéo du vol de caméra MapLibre : il est simulé par des fondus et des zooms entre captures.
+
+**Ce qui le renverserait.** Des chiffres de la carte qui changent (recapturer et mettre à jour les encarts), ou une durée imposée différente.
