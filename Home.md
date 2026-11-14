@@ -52,6 +52,7 @@ Switch views with the menu at the top left of the table: All records · Analyses
 ## Analyses log (newest first)
 | Date | Analysis | Headline | Author |
 |---|---|---|---|
+| 2026-11-14 | [Vidéo de présentation](v2/video/README.md) | 57 s, voix off IA : explorer un territoire (Puy-de-Dôme, kinés 1 071 → 1 731), simuler une politique (+19 110 kinés en 2050 avec 20 % de places en plus), phrase → scénario confirmé | équipe |
 | 2026-11-14 | [Projection communale, axe 2](v2/docs/lab/reports/2026-11-14-axe2-communes.md) | K (cohortes commune ⊂ EPCI ⊂ dép ⊂ région) et K2 (part tenue + bande empirique) rejetés au banc N4 ; K2 calibré pour les IDE de 1 à 50 (81–83 %) ; l'erreur du total départemental domine les grandes communes | équipe |
 | 2026-11-14 | [Projection communale : données, axe 4](v2/docs/lab/reports/2026-11-14-axe4-projection-communale.md) | pharmaciens par commune 2012–2026 (erreur médiane 16 % commune, 10,7 % EPCI : test échoué de peu) ; SF : historique communal non disponible ; passage COG 2026 ; petits effectifs pour N4 | axe 4 |
 | 2026-11-14 | [Flux communaux, axe 4](v2/docs/lab/reports/2026-11-14-axe4-flux-communaux.md) | installations nettes par commune 2012–2025 (test année blanche MK échoué : 0,90) ; officines 2004–2025, 20 083 en 2025 (Ordre +0,4 %) ; attributs 35 011 géocodes × 14 ans ; SF « libéral » 2026 : 12 059 – 13 331 | axe 4 |

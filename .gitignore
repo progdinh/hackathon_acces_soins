@@ -29,3 +29,5 @@ v2/sensibilite/out/*.npz
 v2/methodes/out/*_erreurs.parquet
 v2/methodes/out/erreurs_*.parquet
 v2/validation/out/*.parquet
+# skill vidéo tiers volumineux (54 Mo), réinstallable : npx skills add Vincentwei1021/video-shotcraft
+.claude/skills/video-shotcraft/
