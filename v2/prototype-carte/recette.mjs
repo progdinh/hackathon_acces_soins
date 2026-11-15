@@ -206,10 +206,8 @@ await check("R24", "scénarios épinglés (3 au plus) et export JSON", async () 
   const n = await ev(`return PIN.length`); await ev(`document.querySelector("#xjson").click();return 1`);
   const j = JSON.parse(await ev(`return await window.__blob.text()`)); if (!(n === 2 && j.epingles.length === 2 && j.version_code)) throw new Error(`${n} épinglés`);
 });
-await check("R25", "A+ : texte agrandi, mémorisé dans le lien", async () => {
-  await ev(`document.querySelector("#txt").click();return 1`); const r = await ev(`return document.documentElement.classList.contains("xl")&&location.hash.includes("z=1")`);
-  await ev(`document.querySelector("#txt").click();return 1`); return r;
-});
+// R25 (bouton « A+ », texte agrandi) retiré le 2026-11-15 : le bouton n'existe plus, décision de l'utilisateur·rice
+// (constat P2-14 de la recette) ; l'agrandissement passe par le zoom du navigateur.
 await check("R26", "lien du scénario : copie et message", async () => { await ev(`document.querySelector("#save").click();return 1`); await until(`document.querySelector("#toast").textContent.includes("Lien")`, 3000); });
 await check("R27", "lien restauré : profession, leviers, indicateur, territoire, comparaison", async () => {
   await open("p=dentistes&l=quotas:1.3&v=ecart&t=D13&c=D13,R84");

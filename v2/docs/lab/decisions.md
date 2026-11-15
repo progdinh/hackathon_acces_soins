@@ -5525,3 +5525,12 @@ Demande de la session v2 (accord de l'utilisateur·rice relayé, « oui »). Mes
   projet ; l'Administration garde le détail en un clic.
 - **Ce qui le renverserait :** un test de lecture qui montre qu'un libellé en clair est mal compris, ou une demande de
   l'Administration d'avoir les codes visibles par défaut.
+
+## 2026-11-15 — Pas de bouton « A+ » : le test R25 est retiré de la recette de la carte
+- **Décision** (utilisateur·rice, constat P2-14 de la recette : « Retirer R25 ») :
+  - le bouton « A+ » (texte agrandi), disparu de la carte, n'est pas rétabli ;
+  - le test R25 de `v2/prototype-carte/recette.mjs` est retiré, avec un commentaire qui renvoie à cette décision ;
+  - l'agrandissement passe par le zoom du navigateur.
+- **Pourquoi :** choix d'interface de l'utilisateur·rice. Le test échouait sur une fonction qui n'existe plus.
+- **Ce qui le renverserait :** un retour d'accessibilité (RGAA) qui demande un réglage de taille de texte dans la page.
+
