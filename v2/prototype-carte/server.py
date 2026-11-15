@@ -13,6 +13,7 @@ import gzip
 import importlib.util
 import json
 import os
+import re
 import sys
 import time
 from functools import lru_cache
@@ -413,8 +414,10 @@ class Handler(V1.Handler):
         if u.path == "/api/couverture":
             q = {k: v[0] for k, v in parse_qs(u.query).items()}
             prof = q.get("prof", "pharmaciens")
-            if prof in SANS_COUVERTURE or prof not in SURVIVANTS:
+            if prof in SANS_COUVERTURE:
                 return self.send_json({"error": f"pas d'indice de couverture pour {prof!r} (sources de transferts seulement)"}, 400)
+            if prof not in SURVIVANTS:      # profession inconnue : ne pas la confondre avec une source O2
+                return self.send_json({"error": f"profession inconnue : {prof!r} (attendu : {', '.join(SURVIVANTS)})"}, 400)
             lv, err = V1.parse_levers(q)
             ov, err2 = _l23_params(q)
             trh, err3 = _tr_params(q, prof)
@@ -437,7 +440,7 @@ class Handler(V1.Handler):
             code, j = _chatbot("GET", "/api/etat")
             if code != 200:
                 return self.send_json({"disponible": False, "message": "Assistant non lancé (chatbot/, port 8768) : "
-                                       "la carte reste utilisable. Voir le README, « Chatbot »."})
+                                       "la carte reste utilisable. Voir le README, « Chatbot ».", "modele": MODELE})
             mode = "IA (" + j.get("modele", "?") + ")" if j.get("mode") == "llm" else "sans IA (glossaire de l'équipe)"
             return self.send_json({"disponible": True, "mode": j.get("mode"), "message": f"Assistant prêt, mode {mode}.",
                                    "modele": MODELE})
@@ -514,7 +517,8 @@ def _objectif(appels: list) -> dict | None:
     for a in reversed(appels):
         e = a.get("entree") or {}
         if a.get("outil") in ("planifier", "atteindre") and not a.get("erreur") and e.get("profession") in V1.PROFS:
-            return {"prof": e["profession"], "terr": a.get("code_territoire") or "FR", "annee": e.get("annee"),
+            t = a.get("code_territoire") or e.get("territoire")
+            return {"prof": e["profession"], "terr": t if isinstance(t, str) and re.fullmatch(r"FR|R\d\d|D[0-9AB]{2,3}", t) else "FR", "annee": e.get("annee"),
                     "grandeur": e.get("grandeur", "effectif"), "hausse_pct": e.get("hausse_pct"),
                     "valeur_cible": e.get("valeur_cible"), "reference": e.get("reference", "tendanciel"),
                     "exclus": e.get("leviers_exclus") or []}

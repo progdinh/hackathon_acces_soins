@@ -304,7 +304,7 @@ non_modelises:
     libelle: Vaccination en officine et autres transferts de tâches
     termes: [vacciner, vaccination, vaccinent, transfert de taches, transferts de taches, delegation de taches,
              nouvelles missions, prescription par le pharmacien, protocoles de cooperation]
-    raison: "Effectif inchangé dans le modèle : un transfert de tâches ne change pas le nombre de professionnels projeté. La vaccination en officine (L23) est calculée par le module de besoin, sur l'indice de couverture des pharmaciens (voir transferts_besoin) ; les autres transferts ne le sont pas."
+    raison: "Effectif inchangé dans le modèle : un transfert de tâches ne change pas le nombre de professionnels projeté. La vaccination en officine est calculée sur la couverture de la demande adressée aux pharmaciens ; les autres transferts ne le sont pas."
     source: "v2/docs/lab/fiches/param-besoin-l23-vaccination.md"
   ipa:
     libelle: Infirmiers en pratique avancée (IPA)
@@ -335,7 +335,7 @@ non_modelises:
   medecins_specialistes:
     libelle: Médecins spécialistes
     termes: [specialistes, medecins specialistes, cardiologues, dermatologues, ophtalmologues]
-    raison: "Prévus en phase 2 ; aucun levier du prototype ne les couvre."
+    raison: "Non projetés : amélioration possible, hors plan. Admis seulement comme source d'un transfert de tâches, jamais comme profession projetée ni pour un indice de couverture (règle O2)."
     source: null
 
 # Transferts de tâches calculés par le module de besoin (v2/besoin/transferts.py), 2026-11-15.

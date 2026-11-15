@@ -5488,3 +5488,40 @@ Demande de la session v2 (accord de l'utilisateur·rice relayé, « oui »). Mes
 - **Article du besoin (`v2/papers/besoin/`)** : la phrase sur L23 est remplacée par les nouveaux chiffres.
 - **Hors champ :** `besoin-axe1-fiches` ne cite pas l'effet de L23, seulement s∞ et τ, qui restent valables.
 
+## 2026-11-15 — Corrections de la recette : méthode repliée, temps de médecin dit à part, O2 dans le texte de périmètre
+- **Décision** (session uat-corrections, tâche de la session besoin-derivation ; [rapport](reports/2026-11-15-uat-corrections.md)) :
+  - **Jargon (reste de P1-6) :** dans la fiche, la légende, le panneau « Transférer des tâches » et l'assistant, le texte
+    visible par défaut ne cite plus de code (M1, M2a, M4, DCIR, P-B4, C1, L23, s_inf, tau…). Les codes, la norme déclarée
+    de l'estimateur, les sources des paramètres et le nom technique du modèle passent dans un détail replié
+    (« Méthode (détail) », « Sources et références », détail du « Calcul »). Les clés de l'API ne changent pas.
+  - **Paramètres de la vaccination en officine** nommés en clair (« Part du temps des médecins généralistes consacrée à ce
+    vaccin », « Temps du pharmacien pour un vaccin, rapporté à celui du médecin »…), nombres au format français ; le code
+    reste entre parenthèses dans l'export.
+  - **Temps de médecin libéré (P2-5) :** **remplace** « environ N vaccinations en moins, soit le temps de travail d'environ
+    M médecins à temps plein » (entrées « Carte : le transfert L23 dit en langue courante » et « Assistant : L23 dit en
+    langue courante » du même jour). Les deux nombres sont indépendants (N = s × actes, M = s × a × demande MG) : la fiche,
+    l'export et l'assistant disent « N vaccinations en moins (France entière), au-delà de la part déjà faite en pharmacie en
+    2026 », puis, à part, « temps de travail libéré : environ M médecins à temps plein, un ordre de grandeur qui dépend
+    d'une part de temps supposée, pas du nombre de vaccinations ».
+  - **Vaccination en officine dans les textes « pas dans le modèle » (P1-2) :** elle n'y figure plus ; la page dit qu'elle
+    change la couverture de la demande des pharmaciens, pas le nombre de professionnels. Le compilateur la garde dans
+    `non_modelise` (décision « L23 compilé en transfert », jeux à l'aveugle) ; c'est l'affichage qui la retire quand le
+    transfert est compris, comme l'assistant le faisait déjà.
+  - **Fourchette entre estimateurs (P2-1) :** affichée seulement si `fourchette_visible` (seuil de 5 %), dans l'infobulle,
+    la fiche et la légende, comme l'assistant.
+  - **Légende de la vue Couverture (P2-7) :** graduée en indice (unité « indice »), plus en %.
+  - **Comparaison en vue Couverture (P1-1) :** colonne « Couverture · écart tend. », lue dans `/api/couverture` pour chaque
+    territoire comparé (département, région, France), « — » si absente.
+  - **Texte de périmètre (P2-8) :** MG et spécialistes « non projetés ; admis seulement comme source d'un transfert de
+    tâches, jamais comme profession projetée ni pour un indice de couverture (règle O2) ». **Remplace** « spécialités
+    prévues en phase 2 » dans la passerelle, `correspondances.yaml` et le glossaire.
+  - **Badge de levier (P2-11) :** troisième état « effet non mesurable », comme l'export.
+  - La vaccination en officine compte comme levier modifié dans le résumé du panneau ; « Revenir à la tendance » la
+    désactive (P2-6).
+  - `/api/couverture` avec une profession inconnue : 400 « profession inconnue », distinct du refus O2 (P2-12).
+  - L'export reprend le libellé du modèle servi (`/api/agent/etat`, servi aussi quand le chatbot est absent), le même que
+    l'assistant (P2-9).
+- **Pourquoi :** recette du 2026-11-15 (P1-1 à P1-3, P1-6 en P2) ; le texte visible doit se lire sans connaître le
+  projet ; l'Administration garde le détail en un clic.
+- **Ce qui le renverserait :** un test de lecture qui montre qu'un libellé en clair est mal compris, ou une demande de
+  l'Administration d'avoir les codes visibles par défaut.

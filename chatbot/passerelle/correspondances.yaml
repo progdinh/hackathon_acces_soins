@@ -54,4 +54,4 @@ quatrieme_annee_mg:
   limite: "médecine générale hors périmètre du projet"
 medecins_specialistes:
   traduction: aucune
-  limite: "spécialistes prévus en phase 2, non construits"
+  limite: "spécialistes non projetés (amélioration possible, hors plan) ; admis seulement comme source d'un transfert de tâches"

@@ -103,7 +103,9 @@ des requêtes en lecture seule : tu ne peux ni voir, ni modifier, ni exécuter l
    le modèle ; couverture des pharmaciens … » avec l'indice et l'écart au tendanciel, et la fourchette entre estimateurs si
    le résultat en donne une (jamais un seul chiffre dans ce cas). Nomme le levier « les pharmaciens vaccinent davantage
    contre la grippe » ; son effet sur la médecine générale se dit « les médecins généralistes ont moins de vaccins à
-   faire : environ N vaccinations en moins, soit le temps de travail d'environ M médecins à temps plein (France entière) »,
+   faire : environ N vaccinations en moins (France entière) » ; le temps de travail libéré (environ M médecins à temps plein)
+   se dit à part, comme un ordre de grandeur qui dépend d'une part de temps supposée, pas du nombre de vaccinations ;
+   pas de codes de méthode (L23, M1, s_inf…) dans la réponse,
    jamais « actes libérés » ni « ETP libérés ». Qualifie l'écart avec le champ « qualificatifs » du
    résultat. Jamais « % du besoin couvert », jamais de besoin en valeur absolue. **Jamais de couverture, de besoin ni d'indice
    pour la médecine générale ou les spécialistes** (règle O2) : ils ne sont que la source d'un transfert (temps libéré).
@@ -401,40 +403,43 @@ class Conversation:
         if tr:
             args["l23_t0"] = tr["t0"]
         err, est_err, res = self._appel("couverture", args, appels, graphiques)
-        tete = f"**{tr['libelle']}, à partir de {tr['t0']} : effectif inchangé dans le modèle.**" if tr else "**Indice de couverture.**"
+        nom = re.sub(r"\s*\(L\d+\)", "", tr["libelle"]) if tr else ""      # libellé du glossaire sans son code
+        tete = f"**{nom}, à partir de {tr['t0']} : effectif inchangé dans le modèle.**" if tr else "**Indice de couverture.**"
         if est_err:
             return [tete, f"{LIMITE} indice de couverture non disponible ({err})."]
         a = res["annees"][-1]
         f = lambda x: f"{x:.2f}".replace(".", ",")
-        e = f"{a['ecart_tendanciel_pct']:+.1f}".replace(".", ",")
+        ep = a["ecart_tendanciel_pct"]
+        e = f"{ep:+.{2 if 0 < abs(ep) < 0.1 else 1}f}".replace(".", ",").replace("-", "−")
         scn = "si les pharmaciens vaccinent davantage contre la grippe" if tr else "au scénario"
         lig = [tete + f" Couverture des {res['profession'].lower()} en {a['annee']} ({res['territoire']}, indice base "
                f"{res['reference']} = 1) : {f(a['indice_scenario'])} {scn}, {f(a['indice_tendanciel'])} au "
                f"tendanciel, soit {a['qualificatifs']['ecart']} ({e} %)."]
         if a.get("fourchette_estimateurs"):
             lo, hi = a["fourchette_estimateurs"]
-            lig.append(f"Selon l'estimateur de la demande de soins de ville ({', '.join(res['estimateurs'] or [])}), l'indice {scn} va "
-                       f"de {f(lo)} à {f(hi)} : le choix du modèle pèse, aucun chiffre unique n'est retenu.")
+            lig.append(f"Selon la méthode d'estimation de la demande de soins de ville, l'indice {scn} va "
+                       f"de {f(lo)} à {f(hi)} : le choix de la méthode pèse, aucun chiffre unique n'est retenu.")
         for x in res["transferts"]:
             if x.get("actes_mg_liberes_france") is not None:
                 n = f"{x['actes_mg_liberes_france']:,}".replace(",", " ")
                 etp = x.get("etp_liberes_source_france")
                 lig.append(f"Si les pharmaciens vaccinent davantage contre la grippe, les médecins généralistes ont moins de "
-                           f"vaccins à faire : en {x['annee']}, environ {n} vaccinations en moins pour eux"
-                           + (f", soit le temps de travail d'environ {etp} médecins à temps plein" if etp else "")
-                           + " (France entière). Les pharmaciens reprennent ce travail. Ordre de grandeur : la part de temps "
-                           "que la vaccination prend aux médecins n'est pas mesurée, elle est supposée.")
+                           f"vaccins à faire : en {x['annee']}, environ {n} vaccinations en moins pour eux (France entière), "
+                           "au-delà de la part déjà faite en pharmacie en 2026. Les pharmaciens reprennent ce travail."
+                           + (f" Temps de travail libéré : environ {etp} médecins à temps plein, un ordre de grandeur qui dépend "
+                              "d'une part de temps supposée, pas du nombre de vaccinations." if etp else ""))
         if res.get("avertissement"):
             lig.append(f"{LIMITE} {res['avertissement']}.")
         if not a.get("fourchette_estimateurs") and len(res.get("estimateurs") or []) == 1:
-            lig.append(f"Un seul estimateur de la demande de soins de ville est servi pour les {res['profession'].lower()} "
-                       f"({res['estimateurs'][0]}, choix du modèle distinguable de l'effet des leviers) : pas de fourchette entre "
-                       "estimateurs ; la fourchette de l'effectif ci-dessus reste celle de l'offre.")
-        st = ", ".join(f"{p['nom']} {p['statut']}" for p in res["parametres_l23"])
+            lig.append(f"Une seule méthode d'estimation de la demande est servie pour les {res['profession'].lower()} : "
+                       "pas de fourchette entre méthodes ; la fourchette de l'effectif ci-dessus reste celle de l'offre.")
+        st = ", ".join(f"{self.NOMS_L23.get(p['nom'], p['nom'])} ({p['statut']})" for p in res["parametres_l23"])
         lig.append(f"{LIMITE} l'indice rapporte l'offre à la demande de soins de ville, par rapport à 2026 ; ce n'est pas une part de la demande satisfaite"
-                   + (f" ; paramètres de L23 : {st}." if st else "."))
+                   + (f" ; hypothèses du transfert : {st}." if st else "."))
         return lig
 
+    NOMS_L23 = {"a": "part de temps consacrée au vaccin", "k": "temps du pharmacien par vaccin, en relatif",   # O2 : la MG n'est nommée que dans la phrase du transfert
+                "s_inf": "part faite en pharmacie à terme", "tau": "montée en charge", "mu": "vaccinations ajoutées"}
     TR_ARGS = {"tr_src": "source", "tr_cible": "cible", "tr_a": "a", "tr_sinf": "s_inf", "tr_k": "k", "tr_tau": "tau", "tr_t0": "t0"}
     NOMS_TR = {"a": "a, part de la demande de la source concernée par l'acte", "sinf": "s∞, part de l'acte transférée à terme",
                "k": "k, temps de la cible par unité de temps de la source", "tau": "τ, montée en charge (années)",

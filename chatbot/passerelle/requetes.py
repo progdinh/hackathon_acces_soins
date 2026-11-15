@@ -137,7 +137,7 @@ def _fmt_levier(k: str, v) -> str:
     if l["type"] == "select":
         return f"{l['label']} : {l['options'][v]}"
     f = l.get("fmt")
-    s = {"pct": f"{(v - 1) * 100:+.0f} %", "pct0": f"{v * 100:.0f} %", "x": f"× {v:g}", "ans": f"+{v:g} an(s)"}.get(f, f"{v:g}")
+    s = {"pct": f"{(v - 1) * 100:+.0f} %", "pct0": f"{v * 100:.0f} %", "x": f"× {v:g}", "ans": f"+{v:g} an" + ("s" if v >= 2 else "")}.get(f, f"{v:g}")
     s = s.replace(".", ",")                    # décimales à la française
     return f"{l['label']} : {s}"
 
@@ -539,7 +539,8 @@ def couverture(profession_: str, territoire_: str = "FR", leviers_: dict | None 
         i = ys.index(y)
         e = 100 * z["ecart"][i]
         row = {"annee": y, "indice_tendanciel": round(z["cb"][i], 3), "indice_scenario": round(z["cs"][i], 3),
-               "ecart_tendanciel_pct": round(e, 1), "qualificatifs": {"ecart": q_ecart_couverture(e)}}
+               "ecart_tendanciel_pct": round(e, 2 if abs(e) < 0.1 else 1),   # très petit écart : pas « −0,0 % »
+               "qualificatifs": {"ecart": q_ecart_couverture(e)}}
         if j.get("fourchette_visible"):                            # règle des 5 % de la carte (décision axe 5)
             row["fourchette_estimateurs"] = [round(z["min"][i], 3), round(z["max"][i], 3)]
         rows.append(row)
@@ -595,7 +596,7 @@ def couverture(profession_: str, territoire_: str = "FR", leviers_: dict | None 
 # Le glossaire du modèle (non_modelises) complète cette liste pour les politiques publiques.
 HORS_PERIMETRE = [
     {"id": "medecins", "sujet": "Médecins généralistes et médecins spécialistes",
-     "raison": "Médecine générale hors périmètre ; spécialités (cardiologie, dermatologie, ophtalmologie) prévues en phase 2, non construites."},
+     "raison": "La médecine générale et les médecins spécialistes ne sont pas projetés : la médecine générale est hors du sujet, les spécialistes sont une amélioration possible, hors plan. Ils entrent seulement comme source d'un transfert de tâches (temps libéré), jamais comme profession projetée ni pour un indice de couverture (règle O2)."},
     {"id": "autres_professions", "sujet": "Autres professions (orthophonistes, aides-soignants, psychologues…)",
      "raison": "Le modèle couvre cinq professions seulement."},
     {"id": "secteur_public", "sujet": "Effectifs salariés du public (hôpital public, PMI, centres de santé municipaux…)",
@@ -905,6 +906,8 @@ def atteindre(profession_: str, territoire_: str, hausse_pct: float, annee: int 
     for k, extra, grille in _GRILLES:
         if extra.get("quotas_region") and t == "FR":
             continue
+        if extra.get("quotas_region") and t.startswith("R"):
+            continue                       # région affichée : la hausse limitée à la région donne la même valeur que la hausse partout
         suf = " (région seulement)" if extra else ""
         lab = S().UI[k]["label"] + suf
         haut = valeur({k: grille[-1], **extra})
@@ -926,7 +929,7 @@ def atteindre(profession_: str, territoire_: str, hausse_pct: float, annee: int 
     tout = valeur(dict(_MAX))
     meta = {m["k"]: m for m in S().lever_meta()}
     return {
-        "profession": S().PROFS[p], "territoire": nom_territoire(t), "annee": y,
+        "profession": S().PROFS[p], "territoire": nom_territoire(t), "code_territoire": t, "annee": y,
         "objectif": f"+{hausse_pct:g} % de {'densité pour 100 000 habitants' if grandeur == 'densite' else 'effectif'} "
                     f"par rapport {'au tendanciel ' + str(y) if reference == 'tendanciel' else 'à ' + str(base['origin'])}",
         "reference": ref, "cible": round(cible, 1),
