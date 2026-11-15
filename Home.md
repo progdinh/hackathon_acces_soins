@@ -53,6 +53,7 @@ Switch views with the menu at the top left of the table: All records · Analyses
 ## Analyses log (newest first)
 | Date | Analysis | Headline | Author |
 |---|---|---|---|
+| 2026-11-15 | [Rapport technique : chapitre « Module de besoin »](v2/papers/rapport-technique/main.pdf) | 103 p. : chapitre 8 (4 p.) résume l'article [besoin](v2/papers/besoin/main.pdf) — M1 retenu (M3 pour les IDE), 7 protocoles, IDE 2050 : 1,14 (M0) contre 0,83 (M1), L23 +0,03 % après erratum ; `note-besoin` remplacé | équipe |
 | 2026-11-15 | [Rapport technique pour la reprise](v2/papers/rapport-technique/main.pdf) | 99 p., relu par 3 relecteurs adverses (≈ 105 corrections) : C1 7,76 % (persistance 9,94 %) au département h=5 ; 3,11 pts de bruit incompressible ; intervalles, GBM, MLP rejetés ; aucun chiffre 2050 citable ; 6/12 gels non prouvables par git ; ~150 incohérences entre fichiers tranchées en annexe | équipe |
 | 2026-11-15 | [Effectivité O3 dans l'assistant](v2/docs/lab/decisions.md) | Option `effectivite` de l'outil couverture, pas de second outil ; Puy-de-Dôme 2035 : « effectif », généralistes +0,04 pt, pharmaciens −0,01 à −0,03 pt ; E1–E4 verts | session principale |
 | 2026-11-15 | [Corrections de la recette de l'application](v2/docs/lab/reports/2026-11-15-uat-corrections.md) | P1-1, P1-2, P1-3 corrigés, jargon de P1-6 replié ; 14 P2 corrigés, 3 laissés (P2-5 sur le fond, P2-10, P2-14) ; comparaison Couverture « 0,99 · −0,03 % » au lieu de « −NaN % » ; K1–K7 verts, besoin.tests 15/15 | session uat-corrections |

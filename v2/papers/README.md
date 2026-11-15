@@ -10,3 +10,10 @@ Chaque axe de recherche produit un prétirage : `v2/papers/axeN-<sujet>/main.tex
 - Seules les références lues et vérifiées entrent dans `refs.bib`. Aucune citation inventée.
 - Compilation : `tectonic main.tex` ou `latexmk -pdf main.tex` (aucun moteur TeX n'est installé sur cette machine
   au 2026-11-14 : `brew install tectonic`, à valider).
+
+## Documents d'entrée (2026-11-15)
+- **Rapport technique** `rapport-technique/` : document d'entrée unique pour la reprise ; il résume chaque axe et,
+  depuis le 2026-11-15, le module de besoin (`ch-besoin.tex`).
+- **Article sur le besoin** `besoin/` : version complète et à jour (erratum P1-4 compris), PDF commité.
+- **`note-besoin/`** : remplacé par `besoin/` le 2026-11-15 (version antérieure, sans l'erratum P1-4). Conservé, non
+  mis à jour.

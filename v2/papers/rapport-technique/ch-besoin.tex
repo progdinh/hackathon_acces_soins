@@ -1,0 +1,181 @@
+% Chapitre : module de besoin (demande de soins de ville), indice de couverture et transferts de tâches.
+% Sources principales : v2/papers/besoin/main.tex (article complet, à jour de l'erratum P1-4 du 2026-11-15),
+% v2/docs/lab/reports/2026-11-15-besoin-*.md, v2/docs/lab/derivations/2026-11-15-besoin-derivation.md,
+% v2/besoin/ (code), v2/docs/lab/decisions.md (entrées « besoin » et « L23 » du 2026-11-15).
+% Ce chapitre résume l'article ; les tableaux détaillés des protocoles sont dans son annexe.
+\begingroup\sloppy\setlength{\emergencystretch}{3em}% coupures des chemins longs, local à ce fichier
+
+\section{Module de besoin : demande de soins de ville et indice de couverture}\label{sec:besoin-ref}\label{bes:sec}
+
+Le jumeau dit \emph{combien} de professionnels il y aura. Pour dire si ce sera \emph{assez}, il faut un dénominateur.
+Ce chapitre résume le module qui le fournit ; l'article complet est \texttt{v2/papers/besoin/main.pdf}, ses tableaux
+détaillés sont en annexe de l'article. Le code est dans \texttt{v2/besoin/}. La dérivation est
+\texttt{v2/docs/lab/derivations/2026-11-15-besoin-derivation.md}, et les rapports de passage sont
+\texttt{v2/docs/lab/reports/2026-11-15-besoin-*.md}. Le module ne modifie pas la projection des effectifs : il
+ajoute un indice à côté.
+
+\subsection{Le problème : on observe le recours, pas le besoin}\label{bes:probleme}
+Pour une cellule $i$ (territoire, âge, sexe) et une profession $p$, le recours observé s'écrit
+\[
+R_{ip} = B_{ip}\,\varphi_p(A_{ip}) + D_p(A_{ip}) + \varepsilon_{ip},\qquad 0<\varphi\le 1,\quad D\ge 0,
+\]
+où $B$ est le besoin selon une norme déclarée, $A$ l'accessibilité de l'offre, $\varphi$ la part du besoin satisfaite
+et $D$ la demande induite par l'offre~\citep{evans1974,delattre2003,leonard2009}. Avec $D=0$, le couple
+$(B\,h,\ \varphi/h)$ produit le même $R$ pour toute fonction $h>0$\derive{} : le besoin n'est pas identifiable sans
+restriction (indépendance conditionnelle, saturation, ou variable d'exclusion), ou sans norme externe à l'offre.
+
+\paragraph{Ce que l'indexation sauve.} L'indice servi est
+\[
+C(p,T,t)=\frac{\text{offre}(p,T,t)\,/\,B(p,T,t)}{\text{offre}(p,T,2026)\,/\,B(p,T,2026)} ,
+\]
+qui vaut 1 en 2026. Tout biais multiplicatif constant par territoire s'y annule\derive{} : comparer 2035 à 2026 dans
+un territoire est défendable avec un estimateur simple ; comparer deux territoires en niveau ne l'est pas.
+
+\paragraph{Ce que l'indice mesure.} Le recours ouvert est celui des soins de ville remboursés, hôpital public exclu.
+L'indice mesure donc la couverture de la \emph{demande de soins de ville adressée au secteur privé}, pas le besoin de
+toute la population. La carte et l'assistant l'appellent \enquote{Couverture de la demande de ville} ; l'API porte
+l'attribut \texttt{grandeur}.
+
+\subsection{Six estimateurs concurrents}\label{bes:estimateurs}
+Tous passent par l'interface \texttt{v2/besoin/interface.py} (\texttt{fit}, \texttt{predict}, \texttt{assumptions},
+\texttt{norme}, \texttt{grandeur}), conformément à la règle du projet : on compare des estimateurs, on ne présente
+pas un chiffre unique.
+
+\begin{center}\small
+\begin{tabularx}{\linewidth}{@{}l X X@{}}
+\toprule
+& \textbf{Forme} & \textbf{Restriction qui l'identifie} \\
+\midrule
+M0 & $B_0=\bar r_p\,\mathrm{pop}(T,t)$ & besoin par habitant uniforme ; c'est la densité de la carte \\
+M1 & $B_1=\sum_{a,s}\mathrm{pop}(T,t,a,s)\,r(p,a,s)$ & besoin par âge et sexe = recours national par âge et sexe \\
+M2a & recours régressé sur besoin et offre, évalué à l'offre moyenne nationale & neutralisation de l'offre~\citep{carrhill1994,gravelle2003} \\
+M2b & $R_{\mathrm{std}}=\rho_{\max}A/(A+K)$, besoin au plateau & saturation (extension testée ici) \\
+M3 & $\sum_g \mathrm{pop}\cdot\mathrm{prev}(g)\cdot n(p,g)$ & norme : prévalence $\times$ soins par patient~\citep{birch2007,mackenzie2019} \\
+M4 & 2SFCA à paliers & aucune : indice d'accès qui prend le besoin de M1 à M3 en entrée~\citep{luowang2003,luo2009} \\
+\bottomrule
+\end{tabularx}
+\end{center}
+
+\begin{itemize}
+  \item \textbf{M1} prend la forme du profil d'âge dans les poids publiés avec l'APL de la DREES (consommation DCIR
+        2020--2022, 19 tranches) et le niveau dans Open DAMIR 2025. Pour les infirmiers, les 90~ans et plus pèsent
+        15,5 fois la moyenne.
+  \item \textbf{M3} combine la cartographie des pathologies de la CNAM (61 groupes, 2015--2024) et les dépenses par
+        pathologie converties en actes ; cette combinaison est la nôtre.
+  \item \textbf{M4} reprend les paliers de l'APL 2024~\citep{vergier2017} avec des temps routiers OSRM sur
+        OpenStreetMap, et fige les poids d'âge à une année de base pour rester projetable. Il n'est jamais appelé
+        \enquote{APL} : c'est un indice d'accessibilité maison.
+\end{itemize}
+
+\subsection{Sept protocoles gelés et horodatés}\label{bes:validation}
+Chaque protocole est écrit et gelé avant tout calcul. L'empreinte SHA-256 du manifeste est horodatée par deux
+autorités RFC~3161 (FreeTSA, DigiCert) et soumise à OpenTimestamps, parce que l'historique git ne prouve pas
+l'antériorité d'un gel (chapitre~\ref{sec:validation-ref}). Aucun seuil n'a été changé après un résultat ; tout écart
+au protocole est écrit au registre avant le calcul.
+
+\begin{center}\small
+\begin{tabularx}{\linewidth}{@{}l X X@{}}
+\toprule
+\textbf{Test} & \textbf{Question} & \textbf{Verdict} \\
+\midrule
+P-B1 & L'âge (M1) déplace-t-il l'indice 2050 par rapport à M0 ? & M1 retenu pour les cinq professions ; IDE et MK
+$S_1=0$\,\%\mesure{} ; dentistes de justesse ($S_1=87{,}1$\,\%\mesure{} pour un seuil de 90\,\%) \\
+P-B2 & Le recours plafonne-t-il quand l'accès augmente ? & M2b rejeté pour IDE, MK, CD, SF : le besoin non
+satisfait n'est pas identifié en données ouvertes \\
+P-B3 & La morbidité (M3) apporte-t-elle au-delà de l'âge ? & Retenue pour l'indice des seuls IDE
+($S_3=83$\,\%\mesure{}) ; pouvoir explicatif hors échantillon rejeté ($\Delta R^2$ de $-0{,}03$ à
+$+0{,}01$\mesure{}) \\
+P-B4 & M4 reproduit-il l'APL 2024 ? & Échec : Spearman 0,71 à 0,76\mesure{} pour un seuil de 0,90, mais gain de
+$+0{,}15$ à $+0{,}35$\mesure{} sur la meilleure densité ; accord départemental $\rho=0{,}98$\mesure{} (MK) \\
+P-B4-PH & M4 reproduit-il l'APL V0 2013 des pharmacies ? & Échec : $\rho=0{,}72$\mesure{}, erreur médiane
+33\,\%\mesure{} ; niveau moyen reproduit \\
+P-B5 & Backtest 2016\,$\to$\,2025 : l'âge bat-il la persistance ? & Oui pour 3 professions sur 4 (IDE
+$-8{,}07$, MK $-3{,}32$, CD $-0{,}99$ points de MAPE\mesure{}) ; non pour les SF ($+1{,}57$\mesure{}) \\
+P-B6 & La vaccination en officine a-t-elle ajouté des vaccinations ? & ATT $+0{,}73$\,\%
+[$-0{,}12$\,;\,$+1{,}58$]\mesure{}, placebo en échec : non attribuable, l'expansion $m$ reste supposée à 0 \\
+\bottomrule
+\end{tabularx}
+\end{center}
+
+Le GBM concurrent de P-B5 bat M1 au backtest, mais son gain suit la croissance de l'offre (corrélation 0,54 à 0,71,
+diagnostic a posteriori) : il n'est servi que comme prédicteur du recours, jamais comme besoin.
+
+\subsection{Sensibilité : la politique se distingue-t-elle du choix de l'estimateur ?}\label{bes:sensibilite}
+Protocole gelé. En 2050, on compare l'effet d'une hausse de 20\,\% des quotas de formation à l'étendue de $C$ entre
+estimateurs. Le rapport vaut 1,91\mesure{} (SF), 40\mesure{} (CD) et 1,14\mesure{} (PH) : la politique se
+distingue. Il vaut 0,77\mesure{} (MK) et 0,34\mesure{} (IDE) : elle ne se distingue pas. L'étendue vient presque
+toute de M0, réfuté par P-B1 ; sans lui, elle reste sous 0,004 en log\mesure{}. M0 est donc retiré de la fourchette
+affichée, et le verdict gelé reste publié.
+
+\begin{figure}[h]\centering
+\includegraphics[width=0.85\linewidth]{../besoin/figures/c2050_estimateurs.pdf}
+\caption{Indice de couverture national en 2050 (2026 = 1), par estimateur et par profession (grille de l'axe~5,
+trajectoire centrale du jumeau, Omphale central)\mesure{}. M2a n'est pas défini pour les pharmaciens.}
+\label{bes:fig:c2050}
+\end{figure}
+
+\paragraph{Le vieillissement change le signe.} Pour les infirmiers, l'indice national 2050 vaut 1,14 si la demande
+suit la population (M0), mais 0,83 avec M1\mesure{} (figure~\ref{bes:fig:c2050}). L'offre projetée croît plus vite que
+la population, mais moins vite que la demande d'une population qui vieillit. Au département, la médiane de
+$C_1/C_0-1$ vaut $-28{,}4$\,\% pour les infirmiers et $-14{,}1$\,\% pour les kinés\mesure{}.
+
+\subsection{Transferts de tâches}\label{bes:transferts}
+Un acte passe de la profession A à la profession B à partir de la date d'autorisation $t_0$ :
+\[
+B'_A=B_A(1-s(t)\,a),\qquad B'_B=B_B+s(t)\,a\,k\,B_A+m(t),\qquad s(t)=s_\infty\bigl(1-e^{-(t-t_0)/\tau}\bigr),
+\]
+où $a$ est la part du temps de A consacrée à l'acte, $k$ le rapport des durées chez B et chez A, et $m$ l'expansion
+du recours. Les effectifs ne changent pas. La médecine générale et les spécialistes sont admis comme
+\emph{source} seulement : on rapporte le temps libéré, jamais un indice de couverture pour eux (règle O2).
+L'identité de conservation tient à $5{,}7\times10^{-10}$ ETP\mesure{} sur \num{13947} ETP déplacés.
+
+\paragraph{Ce qui est mesurable.} Sur 25 paramètres de transfert et de besoin, 8 sont sourcés, 2 en partie, 1
+supposé et 14 non mesurables en données ouvertes\mesure{}. Seule la vaccination antigrippale en officine (L23) a $a$
+et $s(t)$ mesurés : $s_\infty=0{,}74\pm0{,}07$\derive{}, $\tau=2{,}4\pm0{,}5$\derive{} ans
+(figure~\ref{bes:fig:st}) ; $k$ reste supposé dans $[0{,}25\,;\,1]$\suppose{}.
+
+\begin{figure}[h]\centering
+\includegraphics[width=0.55\linewidth]{../besoin/figures/s_t_vaccination.pdf}
+\caption{Part des vaccinations antigrippales faites en officine (actes IQVIA rapportés aux doses J07BB
+d'Open Medic)\mesure{} et ajustement de $s(t)$ sur 2021--2024\derive{}.}
+\label{bes:fig:st}
+\end{figure}
+
+\paragraph{Effet servi, après l'erratum P1-4.} La part officinale atteignait déjà 0,687 en 2025--26\mesure{}. Seule
+la part au-delà de celle atteinte en 2026 agit : L23 déplace l'indice national 2050 des pharmaciens de
+0,03\,\%\mesure{} (1,0126 contre 1,0123) et enlève environ \num{104000} vaccinations aux généralistes en
+2050\mesure{}. La première version rejouait la montée en charge depuis 2019 et surestimait l'effet d'un facteur 19
+(erratum au registre du 2026-11-15).
+
+\subsection{Ce qui est servi dans l'outil}\label{bes:servi}
+\begin{itemize}
+  \item \textbf{Indice :} M1 pour les cinq professions, M3 pour les infirmiers ; l'effet du vieillissement est
+        montré à part. La fourchette affichée est celle de l'offre ; une fourchette entre estimateurs n'est
+        montrée que là où elle existe.
+  \item \textbf{Carte :} vue \enquote{Couverture de la demande de ville} au département ; le détail de la méthode est
+        replié pour l'administration (chapitre~\ref{sec:produit-ref}).
+  \item \textbf{Leviers :} la vaccination en officine est un levier branché de bout en bout, qui change la
+        couverture des pharmaciens et non leur nombre. Les autres transferts restent hypothétiques (paramètres
+        supposés, signalés comme tels).
+  \item \textbf{Assistant :} il appelle l'outil \texttt{couverture} de la passerelle, y compris pour l'effectivité
+        d'un transfert (O3).
+\end{itemize}
+
+\subsection{Limites}\label{bes:limites}
+\begin{itemize}
+  \item On mesure la demande de ville privée, pas le besoin de la population ; la part servie par l'hôpital public
+        n'est pas mesurée.
+  \item L'offre privée du jumeau inclut des salariés (64,5\,\% pour les IDE en 2023\mesure{}) dont les soins en clinique
+        ne figurent pas dans le recours de ville : sans effet sur $C$ si cette part est constante, pas sur les
+        niveaux.
+  \item Le recours n'existe qu'à la région (DAMIR) ou en file active au département : rien ne valide l'indice sous le
+        département.
+  \item Dentistes retenus de justesse par P-B1 ; sages-femmes perdantes au backtest ; seuils des protocoles non
+        étalonnés ; 14 paramètres de transfert sur 25 non mesurables.
+\end{itemize}
+
+\paragraph{Reproduire.} \texttt{PYTHONPATH=v2 uv run python -m besoin.tests} (15/15\mesure{}) ; données
+\texttt{v2/besoin/donnees/} et leur manifeste ; protocoles gelés et jetons dans \texttt{v2/validation/preregistered/}
+et \texttt{horodatage/} ; passages \texttt{v2/besoin/validation/pb*.py}, graine 20261115.
+
+\endgroup

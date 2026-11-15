@@ -5669,3 +5669,18 @@ Demande de la session v2 (accord de l'utilisateur·rice relayé, « oui »). Mes
   en 2045. **À ne pas citer tel quel** : il tient à `a = 0,01` (part du temps de MG, placeholder supposé de la fiche L23),
   qui rend la perte des pharmaciens inférieure à 1 point partout. Le verdict ne vaudra que lorsque `a` sera sourcé
   (fiches de l'axe 1, branche `claude/besoin-axe1-fiches-*`).
+
+## 2026-11-15 — Rapport technique : un chapitre « Module de besoin » plutôt qu'une fusion de tous les articles
+- **Décision** (question de l'utilisateur·rice : « fusionner tous les rapports techniques ? » ; recommandation acceptée) :
+  pas de fusion physique des articles. Le rapport technique reste le document d'entrée unique (entrée « Reprise » du
+  2026-11-15) et reçoit un chapitre `v2/papers/rapport-technique/ch-besoin.tex`, placé après la sensibilité. Il résume
+  l'article `v2/papers/besoin/` : problème d'identification, six estimateurs, sept protocoles, sensibilité,
+  transferts et L23 après l'erratum P1-4, ce qui est servi dans l'outil, limites. Bibliographie de l'article ajoutée
+  (`../besoin/refs`, aucune clé en commun).
+- **Pourquoi :** le besoin n'apparaissait que dans les questions ouvertes, et l'introduction le disait « non
+  construit ». Coller les articles donnerait plus de 12 000 lignes avec introductions, données et bibliographies en
+  double, et ferait perdre les articles autonomes citables (règle de `v2/papers/README.md`).
+- **`v2/papers/note-besoin/` remplacé par `v2/papers/besoin/`** (version antérieure sans l'erratum P1-4) : conservé,
+  marqué remplacé dans son source et dans `v2/papers/README.md`.
+- **Aussi corrigé :** ligne « Module de besoin » du tableau d'état de l'introduction, guide de lecture, renvoi depuis
+  le statut du §\,« Module de besoin » des questions ouvertes (liste antérieure gardée telle quelle).
