@@ -16,7 +16,8 @@ valeur de ce chapitre n'est \enquote{la} projection.
 
 \paragraph{Abréviations des sources.} Les rapports cités sont dans \texttt{v2/docs/lab/reports/} :
 \texttt{2026-11-14-axe2-methodes.md} (banc des variantes stock-flux), \texttt{2026-11-14-axe2-apc-sorties.md}
-(APC), \texttt{2026-11-14-axe2-cohortes-bayesiennes.md} (C1, C2), \texttt{2026-11-14-axe2-communes.md}
+(APC), \texttt{2026-11-14-axe2-cohortes-bayesiennes.md} (C1, estimateur de cohortes ; à ne pas confondre avec
+le critère d'acceptation C1 du jumeau ; C2), \texttt{2026-11-14-axe2-communes.md}
 (K, K2), \texttt{2026-11-15-budget-erreur-c1-a2.md} (budget d'erreur), \texttt{2026-11-15-c1-intervalles.md}
 (intervalles) et \texttt{2026-11-15-c1-gbm-global.md} (GBM, MLP). Les sorties machine sont dans
 \texttt{v2/methodes/out/}. Les décisions sont dans \texttt{v2/docs/lab/decisions.md}, les questions
@@ -24,7 +25,8 @@ ouvertes dans \texttt{v2/docs/lab/open.md}.
 
 \subsection{Notation et identité comptable}
 \label{met:notation}
-Une cellule $c$ est un triplet (profession, département $d$, sexe) ; $a$ indexe la tranche d'âge
+Une strate $c$ est un triplet (profession, département $d$, sexe) ; dans ce rapport, \emph{cellule} désigne
+un couple profession $\times$ origine du banc, et \emph{couple} un département $\times$ cellule ; $a$ indexe la tranche d'âge
 quinquennale ($<25$, 25--29, \dots, 65+) ; $t$ l'année. Le RPPS (DREES, publication du 2026-07-02) ne
 donne que des stocks $N_{c,a}(t)$, jamais les entrées ni les sorties
 (\texttt{v2/papers/axe2-methodes/main.tex}, section Données). Toutes les méthodes stock-flux partagent
@@ -35,11 +37,13 @@ l'identité
 \end{equation}
 où $A$ est l'opérateur de vieillissement, $s$ la rétention nette et $I$ le flux net d'entrées. Avec des
 âges uniformes dans la tranche, $A$ fait passer $1/5$ de chaque tranche à la suivante :
-$A(N)_a = 0{,}8\,N_a + 0{,}2\,N_{a-1}$ (vérifié à $1{,}6\times10^{-14}$\mesure{} près,
+$A(N)_a = 0{,}8\,N_a + 0{,}2\,N_{a-1}$ pour les tranches intérieures, $A(N)_{<25} = 0{,}8\,N_{<25}$ et
+$A(N)_{65+} = N_{65+} + 0{,}2\,N_{60\text{--}64}$ aux bornes (\texttt{v2/sante/model.py}, fonction
+\texttt{\_inflow} ; vérifié à $1{,}6\times10^{-14}$\mesure{} près,
 \texttt{v2/papers/axe2-methodes/main.tex}, annexe). Le ratio de cohorte observé est
 $r_{c,a}(\tau) = N_{c,a}(\tau)/A(N_c(\tau-1))_a$ : il mêle cessations, reprises, changements de secteur et
-déménagements. La sortie nette reconstruite $A(N)-N$ est négative dans 27 à 47\,\%\mesure{} des cellules
-de 35 ans et plus (\texttt{2026-11-14-axe2-apc-sorties.md}) ; c'est pourquoi aucune méthode retenue ne
+déménagements. La sortie nette reconstruite $A(N_c(\tau-1)) - N_c(\tau)$ est négative dans 27 à 47\,\%\mesure{} des
+strates $\times$ tranches de 35 ans et plus (\texttt{2026-11-14-axe2-apc-sorties.md}) ; c'est pourquoi aucune méthode retenue ne
 modélise des cessations brutes.
 
 \subsection{Famille stock-flux déterministe}
@@ -50,12 +54,16 @@ d'information entre territoires ou la dépendance de $s$ au temps. Elles ont ét
 SHA-256 \texttt{1c324f5795b0} (\texttt{v2/papers/axe2-methodes/main.tex}, § Prédictions).
 
 \paragraph{A0, stock-flux à taux locaux (référence).} Estimateur \texttt{jumeau\_taux\_locaux}, jumeau
-\texttt{twin\_of(StockFlowLocal)}. $s_{c,a} = \min(1, r_{c,a})$, avec $r$ ajusté par moindres carrés sur la
-fenêtre et rétréci vers le national,
+\texttt{twin\_of(StockFlowLocal)}. $s_{c,a} = \min(1, r_{c,a})$, où $r$ est un ratio de sommes sur la
+fenêtre, rétréci vers le national (\texttt{v2/sante/model.py}, fonction \texttt{fit\_rates}) :
 \begin{equation}
-  r_{c,a} = \frac{\text{num}_{c,a} + k\, r_{\text{nat},a}}{\text{den}_{c,a} + k}, \qquad k = 200\suppose,
+  r_{c,a} = \frac{\text{num}_{c,a} + k\, r_{\text{nat},a}}{\text{den}_{c,a} + k}, \qquad
+  \text{num}_{c,a} = \textstyle\sum_\tau N_{c,a}(\tau), \quad
+  \text{den}_{c,a} = \textstyle\sum_\tau A\big(N_c(\tau-1)\big)_a, \qquad k = 200\suppose,
   \label{met:eq:shrink}
 \end{equation}
+avec $r_{\text{nat},a}$ le même ratio sur la France (par profession $\times$ sexe) ; $k$ s'exprime en
+personnes exposées (poids de l'a priori national dans le dénominateur),
 et $I_{c,a}$ le flux net moyen de la fenêtre dans les tranches où le ratio brut dépasse~1. C'est la seule
 variante confirmatoire du protocole N1 (\texttt{decisions.md}, entrée \enquote{Axe 3, N1 : grille,
 métrique, seuil et variante par défaut}). Elle est servie par le jumeau si \texttt{JUMEAU\_MODELE=A0}.
@@ -155,7 +163,7 @@ $\log\theta$, $\log\theta \sim \mathcal N(\log\hat\theta, H^{-1})$ avec $H$ la h
 effets gaussiens exacts sachant chaque $\theta_k$ tiré. Coût double\mesure{} de C1.
 
 \paragraph{Écartés a priori dans cette famille.} Un Poisson sur sorties reconstruites $D = A(N) - N$ exige
-$D \ge 0$, faux dans 27 à 47\,\%\mesure{} des cellules $\ge 35$ ans
+$D \ge 0$, faux dans 27 à 47\,\%\mesure{} des strates $\times$ tranches $\ge 35$ ans
 (\texttt{v2/docs/lab/derivations/2026-11-14-axe2-apc-sorties.md}). Un APC d'ordre 2, qui prolongerait la
 pente, est écarté parce que A3 a échoué. Le MCMC complet (PyMC, NumPyro) a été tué pour l'étape 2 puis
 rouvert après l'échec de la calibration par simulation de $L_T$ ; il n'est pas fait (\texttt{open.md}).
@@ -205,7 +213,7 @@ dans \texttt{decisions.md}) et \texttt{2026-11-15-budget-erreur-c1-a2.md}.
     transition annuelle $P$ par tranche $\times$ sexe $\times$ département ; seules les transitions nettes
     sont identifiables. Promue, non construite (\texttt{open.md}).
   \item[Modèle gravitaire de mobilité.] Rejeté par le budget d'erreur (\S\ref{met:budget}) : persistance
-    de l'écart local $r < 0{,}3$ et aucun flux origine--destination ouvert.
+    de l'écart local $r$ = 0,22--0,24, non établie au seuil de 0,3, et aucun flux origine--destination ouvert.
 \end{description}
 
 \subsection{Apprentissage automatique global : GBM et MLP}
@@ -213,7 +221,7 @@ dans \texttt{decisions.md}) et \texttt{2026-11-15-budget-erreur-c1-a2.md}.
 Code \texttt{v2/methodes/gbm.py} ; dérivation inscrite avant le banc
 (\texttt{v2/docs/lab/derivations/2026-11-15-c1-gbm-global.md}, SHA-256 \texttt{8e35043aecb2}). Un seul
 modèle pour toutes les professions, départements et tranches, à un pas et itéré jusqu'à la cible. Unité :
-cellule profession $\times$ département $\times$ sexe $\times$ tranche. Base sans apprentissage
+strate $\times$ tranche (profession $\times$ département $\times$ sexe $\times$ tranche). Base sans apprentissage
 $b = 0{,}8\,n(a) + 0{,}2\,n(a-1)$ (65+ : $n + 0{,}2\,n(a-1)$). Cible
 $y = \big(n(a,t+1) - b(t)\big)/N(d,t)$, la contribution de la cellule à la croissance relative du
 département. Vingt variables : retards de $y$ et du ratio brut, croissances départementales à 1, 2 et 3 ans,
@@ -227,6 +235,9 @@ densité, et profession, sexe, tranche, région en catégories (\texttt{FEATURES
 \end{description}
 Le panel est coupé à l'origine ; un contrôle de fuite (perturbation des années postérieures à 2019) donne
 un écart maximal de prédiction de 0,0\mesure{} pour les deux modèles (\texttt{v2/methodes/out/c1\_gbm.log}).
+Ce contrôle n'est joué qu'à l'origine 2019 (dentistes ; \texttt{v2/methodes/c1\_gbm.py}, fonction
+\texttt{leak\_check}) : il ne vaut que pour les origines $\le 2019$. Pour les origines 2020 et 2021, seules
+les assertions du code (\texttt{gbm.py} : aucune donnée postérieure à l'origine) s'appliquent.
 Un modèle direct à $h = 5$ est infaisable sans fuite aux origines 2016--2017\derive.
 
 \subsection{Intervalles de prédiction de C1 : conforme et MinT}
@@ -251,12 +262,17 @@ dans \texttt{2026-11-15-c1-intervalles.md} et n'ont pas été lues en texte int�
 
 \subsection{Ce que la carte affiche}
 \label{met:servi}
-La carte sert la moyenne a posteriori de C1. Pour la fourchette, deux textes du dépôt divergent : l'entrée
-\enquote{C1 servi} de \texttt{decisions.md} fixe $\pm$ pente $\times h \times 1{,}6$ avec la pente de C1
-mesurée au banc N1 (\texttt{v2/methodes/out/c1\_pente.json} : CD 0,0172\mesure, IDE 0,0132\mesure,
-MK 0,0079\mesure, PH 0,0037\mesure, SF 0,0172\mesure) ; l'entrée du 2026-11-15 sur les intervalles et
-\texttt{2026-11-15-c1-intervalles.md} disent que \enquote{la bande affichée reste celle des tirages de
-C1}. Le code servi n'a pas été relu pour trancher (annexe, tableau~\ref{met:tab:inc}).
+La carte sert la moyenne a posteriori de C1. La fourchette affichée n'est pas tirée de C1 : pour une valeur
+servie $v$ à l'horizon $h$, c'est $v\,(1 \pm k_p\,h)$, linéaire jusqu'en 2050
+(\texttt{v2/prototype/index.html} l.~225 ; \texttt{v2/prototype/server.py} l.~158--180). La pente $k_p$ est
+celle de l'erreur relative absolue du total \emph{national} de C1 au banc du 2026-11-14, ajustée par moindres
+carrés sans constante sur $h$, et inclut déjà le facteur 1,6 (\texttt{v2/methodes/c1\_jumeau.py}, fonction
+\texttt{calcule\_pente}, l.~111) : \texttt{v2/methodes/out/c1\_pente.json} donne CD 0,0172\mesure,
+IDE 0,0132\mesure, MK 0,0079\mesure, PH 0,0037\mesure, SF 0,0172\mesure. La même pente nationale est
+appliquée telle quelle à chaque territoire. Cette fourchette n'est donc calibrée ni au département ni au-delà
+de $h = 10$. La phrase de \texttt{decisions.md} et de \texttt{2026-11-15-c1-intervalles.md} selon laquelle
+\enquote{la bande affichée reste celle des tirages de C1} ne décrit pas le code (annexe,
+tableau~\ref{met:tab:inc}).
 
 \subsection{Protocole du banc N1}
 \label{met:protocole}
@@ -282,16 +298,19 @@ Le protocole est gelé sous l'empreinte \texttt{eb527ecb06a0} (\texttt{decisions
     naïve)}$ doit être $< 0$. Naïves : persistance $\hat N(o+h) = N(o)$ et tendance linéaire ; la meilleure est
     choisie après coup, ce qui défavorise le candidat.
   \item \textbf{Bootstrap.} Rééchantillonnage des départements, 2\,000 tirages, graine 20261114
-    (\texttt{SEED}, \texttt{BOOT}) ; mêmes tirages pour toutes les colonnes d'un banc.
+    (\texttt{SEED}, \texttt{BOOT}) ; mêmes tirages pour toutes les colonnes d'un banc. Le même tirage de
+    départements sert pour toutes les cellules (\texttt{forecast.py} l.~58--65), ce qui conserve la
+    corrélation entre origines d'un même département.
   \item \textbf{Périmètre confirmatoire.} Privé (variante centrale de l'axe 4) ; pour les IDE, libéraux du
     RPPS, l'âge des salariés privés manquant. Périmètre secondaire \enquote{ancien} : modes libéral et mixte.
-  \item \textbf{Limite $h \to 0$.} À $h = 1$, un candidat ne doit pas s'écarter de plus d'un point de la
-    persistance.
+  \item \textbf{Limite $h \to 0$.} Garde-fou unilatéral : à $h = 1$, la MAPE du candidat ne doit pas
+    dépasser celle de la persistance de plus d'un point (\texttt{limite\_h1\_ok}, \texttt{forecast.py}).
 \end{itemize}
 Le protocole probabiliste N6 (SHA-256 \texttt{d1cc665cb864}) juge le CRPS sur $\log N$~\cite{b-gneiting2007jasa}
 contre une naïve probabiliste (prédiction $\times\,e^{\varepsilon}$, $\varepsilon$ tiré parmi au moins 20
 erreurs log passées dont la cible précède l'origine) ; seule l'origine 2021 (SF, CD, PH ; 279 couples\mesure)
-est jugeable. La calibration par simulation suit~\cite{b-talts2018sbc}.
+est jugeable. Ce protocole juge A0 ; C1 y a été passé ensuite (\S\ref{met:resultats}). La calibration par
+simulation suit~\cite{b-talts2018sbc}.
 
 \subsection{Résultats du banc N1}
 \label{met:resultats}
@@ -376,19 +395,25 @@ persistance & 9,92 & --- & --- & --- & naïve \\
 \caption{Banc N1, périmètre privé, $h = 5$, table privée du 2026-11-14 ; toutes les valeurs sont
 mesurées\mesure. Sources : \texttt{verdicts\_prive.json} (A0 à B4), \texttt{apc\_verdicts.json} (APC),
 \texttt{coh\_verdicts.json} (C1, C2 ; le $\Delta$ de C1 contre la tendance n'est écrit que dans ce
-fichier). Le $\Delta$ vs A0 est exploratoire : le critère N1 se juge contre la meilleure naïve.}
+fichier). Le $\Delta$ vs A0 est exploratoire : le critère N1 se juge contre la meilleure naïve. Les six
+comparaisons contre A0 de \texttt{verdicts\_prive.json} ne sont pas corrigées pour la multiplicité ; avec
+Bonferroni (IC à $1 - 0{,}05/6$), A2 (\enquote{bat A0}) et A1a (\enquote{échoue de peu}), ainsi que B4
+(non candidat), passeraient à égalité\derive{} (approximation normale des IC à 95\,\%).}
 \label{met:tab:ref14}
 \end{table}
 
-Toutes les victoires contre la naïve tiennent à l'IC 99\,\% (Bonferroni, cinq variantes)\mesure ; à $h = 1$,
+Toutes les victoires des variantes stock-flux contre la naïve tiennent à l'IC 99\,\% (Bonferroni, cinq
+variantes ; \texttt{ci99\_bonferroni} de \texttt{verdicts\_prive.json})\mesure ; cet IC n'existe pas pour
+l'APC, C1 et C2 ; à $h = 1$,
 aucune variante n'est à plus d'un point de la persistance\mesure ; le banc des variantes stock-flux prend
 18,7\mesure{}~s machine (\texttt{2026-11-14-axe2-methodes.md}). C1 bat A0 dans 17 cellules sur
 22\mesure ; sans les deux cellules vues par le pilote, 7,52 contre 8,52\,\%\mesure
 (\texttt{2026-11-14-axe2-cohortes-bayesiennes.md}). Par profession, C1 bat A0 pour les CD
 ($-0{,}92$ $[-1{,}45\,;\,-0{,}44]$\mesure), les IDE ($-0{,}96$ $[-1{,}48\,;\,-0{,}43]$\mesure) et les SF
 ($-1{,}99$ $[-3{,}83\,;\,-0{,}45]$\mesure), et fait jeu égal pour les MK (une origine) et les PH. Le gain de
-C1 sur A0 décroît avec l'origine pour les CD et les PH ($+0{,}43$ et $+1{,}24$\mesure{} point à l'origine
-2021). Sur le périmètre ancien (libéral + mixte), A0 mesure 8,21\,\%\mesure{} et A2 reste le seul gain
+C1 sur A0 décroît avec l'origine pour les CD et les PH, jusqu'à se renverser : à l'origine 2021, C1 fait
+moins bien qu'A0 pour les CD ($+0{,}43$\mesure{} point) et les PH ($+1{,}24$\mesure{} point)
+(\texttt{2026-11-14-axe2-cohortes-bayesiennes.md} l.~55--58). Sur le périmètre ancien (libéral + mixte), A0 mesure 8,21\,\%\mesure{} et A2 reste le seul gain
 ($-0{,}10$ $[-0{,}21\,;\,-0{,}002]$\mesure) ; B4 s'y renverse ($+0{,}53$ $[+0{,}15\,;\,+0{,}88]$\mesure)
 (\texttt{verdicts\_ancien.json}).
 
@@ -398,15 +423,21 @@ des 60+ à $h = 5$ vaut 7,0\mesure{} (max. 18,9) pour le vieillissement uniforme
 \texttt{2026-11-14-axe2-methodes.md}). A1b est donc retenu pour la structure par âge, sans gain sur le
 total.
 
-\paragraph{Prévision probabiliste (N6).} À l'origine 2021 (279 couples), le CRPS sur $\log N$ de C1 vaut
-0,0654\mesure{} contre 0,0623\mesure{} pour la persistance probabiliste : $+0{,}003$
-$[-0{,}001\,;\,+0{,}007]$\mesure, égalité. Sa bande à 80\,\% couvre 73,5\,\%\mesure{} (cible
+\paragraph{Prévision probabiliste (N6).} À l'origine 2021 (279 couples), le CRPS sur $\log N$ de C1 vaut,
+sur la table du 14, 0,0654\mesure{} contre 0,0623\mesure{} pour la persistance probabiliste, $+0{,}003$
+$[-0{,}001\,;\,+0{,}006]$\mesure{} (\texttt{coh\_verdicts.json}) ; sur la table du 15, 0,0656\mesure{}
+contre 0,0625\mesure, $+0{,}003$ $[-0{,}001\,;\,+0{,}007]$\mesure{} (\texttt{c1i\_verdicts.json}) :
+égalité dans les deux cas. \textbf{Ce n'est pas un résultat hors échantillon} : deux des trois cellules
+jugées (CD et SF, origine 2021) ont été vues par le pilote avant la correction de la forme des variances
+(\S\ref{met:bayes}) ; la couverture et le CRPS de C1 en N6 en héritent. Sa bande à 80\,\% couvre 73,5\,\%\mesure{} (cible
 $[75\,;\,85]$), celle à 50\,\% 45,9\,\%\mesure{} (cible $[44\,;\,56]$) ; sur toutes les origines, hors
 protocole, 77,6 et 50,0\,\%\mesure. L'APC seul couvre 50\,\%\mesure{} à 80\,\% nominal (PIT en U), parce
 que ses entrées sont fixes (\texttt{coh\_verdicts.json}, \texttt{apc\_verdicts.json}). La calibration par
 simulation de l'étape 2 (5 professions $\times$ 2 sexes $\times$ 200 jeux) échoue sur le niveau national
-des entrées $L_T$ dans 10 cellules sur 10\mesure{} (\texttt{v2/methodes/out/coh\_sbc.json}) : seule la bande
-départementale de C1 est publiable, la bande nationale ne l'est pas (\texttt{decisions.md}).
+des entrées $L_T$ dans 10 cellules sur 10\mesure{} (\texttt{v2/methodes/out/coh\_sbc.json}). Aucune bande de C1 n'est calibrée : la bande nationale échoue à
+la SBC, et la bande départementale échoue au critère de couverture de N6 (73,5\,\% $< 75$\,\%,
+\texttt{calibre80} = \texttt{false}\mesure). La phrase de \texttt{decisions.md} selon laquelle \enquote{seule
+la bande départementale de C1 est publiable} est donc inexacte.
 
 \paragraph{Profil par horizon.} Le tableau~\ref{met:tab:horizon} donne la MAPE poolée par horizon du banc
 du 15 (\texttt{c1\_gbm\_verdicts.json}, clé \texttt{mape\_par\_h}). C1 n'y figure pas : le budget d'erreur
@@ -525,33 +556,42 @@ les CD, l'essentiel est $Y$ local (4,04\mesure).
 \begin{enumerate}
   \item L'hypothèse \enquote{le bruit imprévisible domine} est rejetée sous sa forme forte (plancher 40\,\%
     $<$ seuil de 50\,\%\suppose) et tenue sous sa forme faible : le reste est local et peu persistant
-    ($r \le 0{,}24$\mesure).
-  \item Le niveau national explique la plus grande partie de l'écart C1 $-$ A2 : $1{,}08 - 0{,}49 = 0{,}59$
-    des $0{,}84$ point\derive.
+    ($r \le 0{,}24$\mesure). Ce rejet ne vaut que si les flux bruts égalent les soldes nets : le plancher
+    croît comme $\sqrt F$, et le verdict cesse dès que les flux bruts dépassent environ
+    $(0{,}5 \times 7{,}76/3{,}11)^2 \approx 1{,}6$\derive{} fois les soldes.
+  \item Le niveau national explique la plus grande partie de l'écart C1 $-$ A2. Les gains d'oracle ne sont
+    pas additifs, mais avec le total national exact pour les deux modèles, l'écart C1 $-$ A2 passe de
+    $0{,}84$ à $(8{,}60 - 1{,}08) - (7{,}76 - 0{,}49) = 0{,}25$\derive{} point.
   \item Pour la mobilité inter-départementale, le critère (a) \enquote{gain réaliste $\ge 0{,}4$ point} est
-    tenu (0,6 à 0,7\mesure) ; le critère (b) \enquote{persistance $r \ge 0{,}3$} ne l'est pas
-    (0,22--0,24\mesure). Conclusion de \texttt{decisions.md} : pas de modèle gravitaire, pas d'agents, pas
-    de réseau profond. Les deux critères ont été posés après un premier passage : la conclusion est
-    exploratoire.
+    tenu (0,6 à 0,7\mesure) ; le critère (b) \enquote{persistance $r \ge 0{,}3$} n'est pas établi :
+    $r$ = 0,22--0,24\mesure, IC 95\,\% $\approx [0{,}10\,;\,0{,}35]$\derive{} (transformation de Fisher,
+    273 couples), qui contient 0,3 ; la persistance du signal n'est ni démontrée ni exclue. Conclusion de \texttt{decisions.md} : pas de modèle gravitaire, pas d'agents, pas
+    de réseau profond. Les deux critères ont été posés après un premier passage, et git ne prouve
+    pas leur antériorité (le code et les sorties entrent dans af0b816 à 01:50:25\mesure, le rapport et la
+    décision dans 60d7a27 une seconde plus tard\mesure) : la conclusion est exploratoire.
 \end{enumerate}
 
 \subsection{Résultats négatifs et pistes écartées}
 \label{met:negatifs}
 \begin{description}
-  \item[Intervalles conformes et MinT.] Test principal (origine 2021, 279 couples ; test d'abandon écrit
-    avant : CRPS inférieur à celui de C1). Aucun des six candidats ne passe : $\Delta$ CRPS contre C1 de
-    $+0{,}0012$ (C1-conf, $[-0{,}0014\,;\,+0{,}0040]$) à $+0{,}0098$ (C1-conf-h5,
-    $[+0{,}0043\,;\,+0{,}0154]$)\mesure. Aucun ne bat la persistance probabiliste ; C1-conf-h5, C1-MinT et
-    les deux C1-MinT-conf perdent contre elle\mesure. Le conforme abaisse la couverture à 80\,\% de
-    73,5\,\% à 63--67\,\%\mesure ; MinT dégrade le CRPS de C1 de $+0{,}0019$
-    $[+0{,}0010\,;\,+0{,}0030]$\mesure, seul écart significatif. Sur toutes les origines (1\,581 couples,
+  \item[Intervalles conformes et MinT.] Test principal (origine 2021, 279 couples ; test d'abandon : CRPS inférieur à
+    celui de C1). Le rapport dit ce test écrit avant le calcul, mais git ne le prouve pas : dérivation, code et
+    résultats entrent dans le même commit 04eed25 (01:49:44\mesure). Les deux cellules CD et SF 2021 ont
+    été vues par le pilote de C1 : le test n'est pas hors échantillon. Aucun des sept candidats (C1-conf,
+    C1-conf-h5, C1-conf-hg, C1-MinT, C1-MinT-conf, C1-MinT-conf-hg, C1-MinT-conf-h5) ne passe : $\Delta$
+    CRPS contre C1 de $+0{,}0012$ (C1-conf, $[-0{,}0014\,;\,+0{,}0040]$) à $+0{,}0098$ (C1-conf-h5,
+    $[+0{,}0043\,;\,+0{,}0154]$)\mesure{} (\texttt{c1i\_verdicts.json}). Aucun ne bat la persistance
+    probabiliste ; C1-conf-h5, C1-MinT et les trois C1-MinT-conf perdent contre elle\mesure. Le conforme
+    abaisse la couverture à 80\,\% de 73,5\,\% à 62--67\,\%\mesure. Trois écarts contre C1 sont
+    significatifs : MinT, $+0{,}0019$ $[+0{,}0010\,;\,+0{,}0030]$\mesure ; C1-conf-h5, $+0{,}0098$
+    $[+0{,}0043\,;\,+0{,}0154]$\mesure ; C1-MinT-conf-h5, $+0{,}0092$ $[+0{,}0039\,;\,+0{,}0146]$\mesure. Sur toutes les origines (1\,581 couples,
     hors protocole), tous font jeu égal avec la persistance passée au même conforme\mesure. Cause
     mesurée : l'erreur de C1 n'est pas stationnaire. L'écart-type de $z$ croît de 0,80 à $h' = 1$ à 1,12
     à $h' = 5$\mesure ; la moyenne de $z$ à $h = 5$ passe de $-0{,}30$ (origine 2016) à $+0{,}59$ (2021)\mesure.
     Aucun recalage qui n'utilise que des cibles antérieures à l'origine ne voit ce changement. La
     couverture à 80\,\% de C1 en 2021 dépend de la taille : 91,4 / 74,2 / 54,8\,\%\mesure{} (petits,
-    moyens, grands ; \texttt{c1i\_verdicts.json}). Décision : la bande affichée reste celle des tirages de
-    C1 ; le prochain effort porte sur le centre (choc commun national), pas sur la largeur
+    moyens, grands ; \texttt{c1i\_verdicts.json}). Décision (\texttt{decisions.md}) : la bande affichée ne change pas
+    (c'est en fait $\pm k_p h$, \S\ref{met:servi}, et non celle des tirages de C1) ; le prochain effort porte sur le centre (choc commun national), pas sur la largeur
     (\texttt{decisions.md}).
   \item[GBM et MLP globaux.] Rejetés contre A2 (tableau~\ref{met:tab:ref15}) et contre C1 (même millésime :
     $+2{,}39$ et $+12{,}76$\derive{} point). Le GBM se dégrade avec l'horizon (28,87\,\%\mesure{} à
@@ -559,10 +599,11 @@ les CD, l'essentiel est $Y$ local (4,04\mesure).
     $+8{,}52$\,\%\mesure. Taille d'échantillon : 32\,240 à 80\,620\mesure{} lignes, mais 4 à 9\mesure{}
     transitions annuelles et environ 100 départements $\times$ 5 professions de séries indépendantes\derive.
     Aucun réglage n'a été fait, et le référent inscrit était A2, pas C1 (\texttt{2026-11-15-c1-gbm-global.md},
-    encadré de correction). Ils restent au registre comme diagnostics.
+    encadré de correction). L'antériorité du test d'abandon est prouvée par git : la dérivation entre dans
+    70f8bc9 à 01:38:59\mesure, avant les résultats (d2819c6, 01:50:31\mesure). Ils restent au registre comme diagnostics.
   \item[Gravitaire et multi-agents.] Écartés par le budget d'erreur : la part locale de $M$ (borne haute de
     la mobilité) vaut 2,00 à 2,36\mesure{} point en oracle, mais l'écart local persiste peu
-    ($r$ = 0,22--0,24\mesure{} $< 0{,}3$) et aucun flux origine--destination ouvert n'existe. Les agents à
+    ($r$ = 0,22--0,24\mesure{}, IC $\approx [0{,}10\,;\,0{,}35]$\derive, qui contient le seuil de 0,3) et aucun flux origine--destination ouvert n'existe. Les agents à
     règles calées étaient déjà tués a priori (non identifiables sans panel individuel).
   \item[Persistance meilleure qu'A2 à $h \ge 8$.] À $h = 8$ et $h = 10$, la persistance
     (13,56 et 16,06\,\%\mesure) fait mieux qu'A2 (14,33 et 17,59\,\%\mesure), et la tendance (14,42 et
@@ -594,13 +635,18 @@ les CD, l'essentiel est $Y$ local (4,04\mesure).
     forme des variances a été corrigée. Sans ces deux cellules, C1 reste devant A0 (7,52 contre
     8,52\,\%\mesure), mais le seul test propre est le score des dépôts 2027 (temps du monde : RPPS 2027,
     vers juillet 2027\suppose).
-  \item \textbf{IC trop étroits.} Le bootstrap des départements ignore la corrélation entre origines qui se
-    recouvrent\suppose ; la borne haute d'A2 contre A0 est à $-0{,}02$ (privé) et $-0{,}002$
+  \item \textbf{IC trop étroits.} Le même tirage de départements sert pour toutes les cellules, ce qui
+    conserve la corrélation entre origines d'un même département. Mais les origines (6 au plus) ne sont pas
+    rééchantillonnées, le choc commun à tous les départements d'une même origine est ignoré, et la
+    corrélation entre départements aussi\suppose. Remède : rééchantillonner aussi les origines, ou un
+    bootstrap à deux grappes (départements et origines). La borne haute d'A2 contre A0 est à $-0{,}02$ (privé) et $-0{,}002$
     (ancien)\mesure. Les 2\,056 couples du CRPS ne sont pas indépendants.
-  \item \textbf{Une seule origine jugeable en N6} (2021 ; SF, CD, PH ; 279 couples). MK et IDE ne sont pas
-    jugeables en probabiliste ; un seul choc commun est observé.
+  \item \textbf{Une seule origine jugeable en N6} (2021 ; SF, CD, PH ; 279 couples), dont deux cellules sur
+    trois (CD et SF) vues par le pilote de C1. MK et IDE ne sont pas jugeables en probabiliste ; un seul choc
+    commun est observé.
   \item \textbf{Biais non stationnaire de C1} : $z$ moyen de $-0{,}30$ à $+0{,}59$ entre les origines 2016 et
-    2021\mesure ; gain sur A0 décroissant pour CD et PH.
+    2021\mesure ; gain sur A0 décroissant pour CD et PH, et renversé à l'origine 2021 (CD $+0{,}43$, PH
+    $+1{,}24$\mesure{} point contre A0).
   \item \textbf{Millésimes mêlés.} La table privée SF a changé entre les bancs du 14 et du 15 ; toute
     comparaison entre les tableaux~\ref{met:tab:ref14} et~\ref{met:tab:ref15} mélange deux données. Relancer
     \texttt{methodes.banc} et \texttt{methodes.banc\_cohortes} sur la table actuelle coûte environ
@@ -615,7 +661,8 @@ les CD, l'essentiel est $Y$ local (4,04\mesure).
     uniformes ; à la commune, $<40$ = 25--39 ans\suppose.
   \item \textbf{Calibration par simulation partielle.} Pour l'APC à l'étape 1, un seul plan et 40 jeux avec
     $\theta$ ré-estimé ; à l'étape 2, plan réel seulement ; $L_T$ échoue (10/10\mesure), l'écart régional
-    $\delta$ dans 3 cellules sur 10\mesure.
+    $\delta$ dans 3 cellules sur 10\mesure{} et l'écart départemental $\zeta$ dans 1 sur 10 (kinés,
+    hommes)\mesure{} (\texttt{coh\_sbc.json}, seuil de Bonferroni).
   \item \textbf{Plafond $s = \min(1, e^{\eta})$} : biais de moyenne de $-0{,}55\,\%$\mesure{} au national
     (CD, origine 2021).
   \item \textbf{Budget d'erreur.} Le plancher est une borne basse (soldes nets, pas flux bruts) : avec des flux

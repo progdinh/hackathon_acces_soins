@@ -38,7 +38,8 @@ VARIANTES = ("M3", "M1-P2")                                     # rapportées, h
 # L23 central (gel) et plages des tirages : s∞, τ (P-B6 ± 1 é.-t., dérivé), k, μ, a (supposés)
 L23_CENTRAL = dict(s_inf=0.74, tau=2.4, k=0.625, mu=0.0, a=0.01)
 L23_PLAGES = dict(s_inf=(0.67, 0.81), tau=(1.9, 2.9), k=(0.25, 1.0), mu=(0.0, 0.05), a=(0.005, 0.02))
-L23_T0 = 2019
+L23_T0 = 2019            # début de la courbe mesurée (P-B6)
+L23_REF = 2026           # année de base : seule la part au-delà de s(2026) agit (décision P1-4, 2026-11-15)
 BASE = dict(quotas=1, quotas_region=False, etrangers=1, retraite=0, cumul=1, precoces=1, regul=False, part_zones=0,
             dest="voisine")
 
@@ -145,11 +146,11 @@ def run(prof: str, k: int = K, j: int = J) -> dict:
                 if pn.startswith("L23"):
                     if "medecine-generale" not in set(B0.professions):
                         continue                                  # variante sans besoin source : L23 non défini
-                    Bc, _ = appliquer(B0, [l23(L23_T0, **L23_CENTRAL)])
+                    Bc, _ = appliquer(B0, [l23(L23_REF, **L23_CENTRAL)])
                     Yref[ip, ie, w] = logC(S[pn], S0, Bc, B0, prof, rho0, S0.territories)[0]
                     if ie < len(noms_e):
                         for jj, par in enumerate(jd):
-                            Bj, _ = appliquer(B0, [l23(L23_T0, **par)])
+                            Bj, _ = appliquer(B0, [l23(L23_REF, **par)])
                             Y[ip, ie, w, :, jj] = logC(S[pn], S0, Bj, B0, prof, rho, S0.territories)
                     continue
                 Yref[ip, ie, w] = logC(S[pn], S0, B0, B0, prof, rho0, S0.territories)[0]

@@ -2447,7 +2447,30 @@ l'interface est un choix d'ergonomie.
 **Ce qui le renverserait.** Une source qui fixe une autre plage plausible
 pour les quotas, par exemple les arrêtés d'objectifs 2026–2030.
 
+## 2026-11-15 — Carte : les trois indicateurs passent à la ligne au lieu d'être rognés ; crédits repliés au chargement
+- **Décision :** `#var` passe en `flex-wrap: wrap` pour toutes les largeurs. Les trois indicateurs restent sur une ligne quand la place le permet (vérifié à 1600 × 900, panneau Scénario ouvert), ce qui précise la demande du 2026-11-14 sans la remplacer. Les crédits de la carte (« Contours : IGN / Etalab · Données : jumeau v2 ») sont repliés sur ⓘ une fois les contours chargés.
+- **Pourquoi :** retour de l'utilisateur·rice. Avec le panneau Scénario ouvert et une fenêtre de 1280 px, la colonne de carte est plus étroite que la ligne d'indicateurs : « Variation de l'effectif 2026 → 2050 » était rogné, car la règle de passage à la ligne ne dépendait que de la largeur de la fenêtre (≤ 1180 px). MapLibre redéplie les crédits à l'arrivée des contours, et la légende les masquait.
+
+## 2026-11-15 — Un seul port : la carte (8767) lance elle-même la passerelle et le chatbot
+- **Décision :** `uv run python v2/prototype-carte/server.py` démarre la passerelle (8770) et le chatbot de `chatbot/` (8768) comme processus enfants, sur 127.0.0.1. Le chatbot ne démarre qu'une fois la passerelle prête. L'utilisateur·rice n'a qu'une adresse, http://localhost:8767 : l'assistant passe déjà par `/api/agent`.
+  - Les enfants s'arrêtent avec la carte, sur SIGTERM, à la sortie, ou quand `uv run` meurt sans relayer le signal.
+  - Un chatbot qui répond déjà sur `CHATBOT_URL` est réutilisé. `CARTE_SANS_ASSISTANT=1` lance la carte seule.
+  - La clé lue dans `.env` n'est passée qu'au chatbot.
+  - `.claude/launch.json` ne garde que `decision-carte`, avec `autoPort: false` : un repli sur 8768 aurait pris le port interne du chatbot. Les entrées 8766, 8768, 8769 et 8770 sont retirées.
+- **Pourquoi :** demande de l'utilisateur·rice (« pas 12 000 localhost, tout en 8767 »). La séparation des processus (garantie 1 de `chatbot/README.md` : le chatbot n'importe pas le modèle) est gardée ; seul le lancement est regroupé. Vérifié : réponse en mode IA par `/api/agent` sur le seul port de la carte, et aucun processus orphelin après l'arrêt.
+
+## 2026-11-15 — O3 intégré à l'outil couverture de l'assistant, pas en outil séparé
+- **Décision** (choix de l'utilisateur·rice, « intégrer O3 ») : la branche `claude/besoin-transfert-o3` est fusionnée, mais son outil « transfert » ne devient pas un second outil de transfert de l'assistant.
+  - L'effectivité O3 devient une option de l'outil `couverture` : `effectivite` (avec `l23` et les pharmaciens) et `offre_mg` (défaut : constante, RPPS 2026, supposé).
+  - Le bloc `effectivite` donne la couverture de la source et de la cible avec et sans transfert, la plage de k et le verdict selon le critère par défaut (supposé, 1 point).
+  - Les transferts hypothétiques restent sur `couverture` (paramètre `transfert`).
+  - La règle O2 reste celle de la carte et de `besoin_api`. Seule exception dans l'assistant : la couverture de la demande des généralistes, dans le bloc `effectivite` (règle 8 ter du prompt).
+- **Mesure** : Puy-de-Dôme, 2035, après le correctif P1-4 : verdict « effectif » ; source +0,04 point, cible de −0,01 à −0,03 point selon k ; 0,2 ETP de généraliste libéré (mesuré). Contrôles E1–E4 de `besoin.tests.effectivite` verts.
+- **Pourquoi :** main avait entre-temps adopté les transferts hypothétiques sur `couverture`. Deux outils de transfert concurrents auraient laissé le modèle de langage choisir entre deux réponses. Le choix O3 de l'utilisateur·rice n'était inscrit que sur la branche.
+
 ## Open / not yet decided
+- **Copie commitée du dépôt dans `chatbot/vendor/hackathon_acces_soins/`** (relevé le 2026-11-15, relecture du rapport technique) : 687 fichiers suivis, dont 34 tables traitées (`commune_stock.parquet` compris), hors du manifeste et du contrôle de l'audit ; commitée sans `.gitmodules`, alors que `chatbot/DECISIONS.md` la décrit comme un sous-module. Options : la retirer et lire le dépôt courant (`JUMEAU_REPO=..`, déjà utilisé au lancement), ou l'inclure dans le manifeste et dans le futur seuil de diffusion. Prix ≈ 20 min. Le seuil de diffusion et l'archivage de l'Annuaire (données individuelles, 752 993 personnes, peut atteindre 2 critères AIPD) sont détaillés dans le rapport technique, chap. Conformité.
+- ~~**Le jumeau lit à l'exécution un fichier des organisateurs sous accord de confidentialité**~~ **Tranchée le 2026-11-15 : remplacé par SISE (données ouvertes)**, voir l'entrée « Vivier CD/PH : SISE remplace le fichier 990 ». (relevé le 2026-11-15 par la relecture du rapport technique). `jumeau.check` (critères C1, C5, C9, C11, variantes avec `pipeline=True`) et le facteur « filière » des deux parties de l’axe 5 lisent `data/raw/990_drees_mmop2_*.xlsx` via `formation.pool_drees` → `sante.pipeline.enrolments` (`v2/jumeau/modules/formation.py` l. 149-153), alors que `manifest.py --check` ne contrôle que les scripts de construction. Le fichier n'est pas commité, mais un clone neuf ne peut pas passer les 18 critères, et l'affirmation « uniquement des données ouvertes » n'est vraie que pour les tables traitées. Options : remplacer ces inscrits par le jeu DREES 491 (ouvert) dans le module de formation et la variante filière (prix à mesurer, ≈ 1 h Claude + revalidation C5, C9, C16) ; ou garder et documenter l'exception (fait dans le rapport technique). À trancher par l'équipe.
 
 - ~~**M0 reste-t-il une borne de la fourchette de C ?**~~ **Tranché le 2026-11-15** : M0 retiré, voir l'entrée datée « axe 5 : M0 retiré de la fourchette affichée ». (ouvert le 2026-11-15, session besoin-axe5-sensibilite,
   [rapport](reports/2026-11-15-besoin-axe5-sensibilite.md))
@@ -4490,6 +4513,7 @@ le même test d'abandon.
   - Le conforme fait passer la couverture à 80 % de 73,5 % à 63–67 % ; MinT dégrade le CRPS de C1 (+0,0019
     [+0,0010 ; +0,0030]).
 - **La bande affichée reste celle des tirages de C1**, sous sa couverture mesurée (règle N6), sans recalibrage.
+  - **Correction du 2026-11-15 (relecture du rapport technique)** : la phrase ne décrit pas le code. La carte affiche $v(1 \pm k_p h)$, où $k_p$ (`v2/methodes/out/c1_pente.json`, facteur 1,6 inclus) est la pente de l'erreur relative du total **national** de C1 au banc du 14, appliquée à chaque territoire, linéaire jusqu'en 2050 (`v2/prototype/server.py` l. 158-180, `v2/prototype-carte/index.html` l. 225). Cette fourchette n'est calibrée ni au département ni au-delà de h = 10.
 - Le prochain effort probabiliste porte sur le **centre**, avec un choc commun national dans C1, et non sur la
   largeur.
 
@@ -4548,6 +4572,48 @@ le modèle à agents a priori ; cette mesure le confirme et y ajoute le modèle 
   l'utilisateur·rice) ; conflits d'ajout dans Home, `decisions.md` et `open.md` résolus en gardant les deux côtés ;
   `jumeau.check` 18/18 et `manifest.py --check` OK après fusion.
 
+## 2026-11-15 — Vivier CD/PH : SISE (données ouvertes) remplace le fichier 990 sous accord de confidentialité
+- **Décision** (demande de l'utilisateur·rice : « Oui, passer au 491 ») : plus aucun code exécuté par le jumeau, la
+  carte, l'assistant ou l'analyse de sensibilité ne lit `990_drees_mmop2`.
+- **Pourquoi pas le jeu 491 :** il ne couvre que IDE, MK et SF ; le fichier 990 servait aux dentistes et aux
+  pharmaciens (et à la DES de médecine pour la série « spécialistes » de test). La source ouverte équivalente est
+  **SISE** (MESR, `fr-esr-sise-effectifs-d-etudiants-inscrits-esr-public`, Licence Ouverte v2.0), odontologie et
+  pharmacie, diplôme « Autres formations de santé », année d'études = BAC + k, rentrées 2017–2024.
+  Constructeur `v2/data/build_sise.py` → `v2/data/processed/sise_sante.parquet` (au manifeste).
+- **Mesuré, SISE contre 990 (rentrées 2020–2024, années d'études 2 à 5) :** écart maximal 0 pour les dentistes ;
+  pharmaciens : identique sauf une valeur en 2e année (écart 163). La convention d'année est la rentrée (le champ
+  `annee` de SISE est l'année de fin).
+- **Dérivé :** « BAC + 6 et plus » mêle 6e année, internat et thèses ; l'année 6 est prise égale à l'année 5 de la
+  rentrée précédente (rapport observé dans le fichier 990 : 0,86 à 1,07, médiane ≈ 1,0).
+- **Perdu :** la rentrée 2025 (publiée par SISE plus tard). La 2e année de dentaire y passait de 1 546 à 2 083 ; la
+  variante « filière » prolonge le dernier rapport connu, si bien que l'indice CD de 2030 passe de 1,33 à 1,09.
+  Effet mesuré (critère C11, dentistes, variante filière, non active par défaut) : 2050 = 85 252 au lieu de
+  102 987 (−17 %), quotas × 1,1 : +6,08 % au lieu de +6,53 %. Ce résultat montre surtout que la variante filière
+  dépend d'un seul point de données ; à lire comme une sensibilité, pas comme une prévision.
+- **Série « spécialistes » de test :** plus d'indice de cohorte (aucune série ouverte par année de DES) ; phase 2.
+- **Revalidation :** `jumeau.check` 18/18 (C5 : vivier 5 064 diplômés au lieu de 4 725 ; C9 : 4 473 au lieu de
+  4 253 ; C1 inchangé à 0,0). `manifest.py --check` étend désormais son contrôle au code exécuté
+  (`v2/jumeau`, `v2/sante`, `v2/prototype*`, `v2/sensibilite`, `v2/agent`, `v2/langage`, `chatbot/passerelle`,
+  `chatbot/chat`) : toute lecture d'un fichier des organisateurs y fait échouer le contrôle.
+- **Reste :** `v2/methodes/c5.py` (exploratoire de l'axe 2 : région de formation → région d'installation) lit
+  encore le fichier 990 ; il n'est appelé par aucun autre code. SISE porte la région de l'établissement : portage
+  possible, ≈ 30 min. L'analyse de sensibilité de l'axe 5 (facteur « filière ») est relancée pour CD et PH.
+- **Axe 5 relancé pour CD et PH avec SISE** (n = 2 048, r = 30, même graine ; `v2/sensibilite/out/*_sise.csv`, 526 s).
+  Le facteur « filière » s'effondre : S_T à 2050, famille « incertitude », dentistes 0,547 → 0,029 [0,027 ; 0,031],
+  pharmaciens 0,320 → 0,068 ; famille « tout », dentistes 0,444 → 0,020, pharmaciens 0,226 → 0,045. Son poids venait
+  presque entièrement de la seule rentrée 2025, prolongée jusqu'en 2050. Pour les dentistes, part privée (0,377) et
+  quotas (0,325) redeviennent premiers ; fourchette 2050 p05–p95 (famille « tout ») 59 932 – 90 964 au lieu de
+  62 552 – 108 797. Les résultats du 14 (`sobol.csv`, article de l'axe 5, « S_T filière 0,55 CD ») sont mesurés avec
+  l'ancien fichier : ils restent visibles, mais ne décrivent plus le code. À retenir : la variante filière est
+  fragile, pas l'une ou l'autre valeur.
+- **C5 porté sur SISE** (demande de l'utilisateur·rice, même jour) : `v2/methodes/c5.py` lit
+  `v2/data/processed/sise_sante_region.parquet` (région de l'établissement ; somme régionale = national, écart 0,
+  vérifié par `build_sise.py`). Résultat quasi inchangé : part des étudiants contre part des entrées, r = 0,642
+  (dentistes) et 0,945 (pharmaciens), contre 0,636 et 0,937 avec l'ancien fichier (`v2/methodes/out/c5_990.csv`) ;
+  la part du stock reste le meilleur prédicteur (r = 0,996). Le garde-fou de `manifest.py --check` couvre
+  maintenant aussi `v2/methodes`, `v2/validation` et `v2/data`. Aucun code du dépôt, hors la copie
+  `chatbot/vendor/` (question ouverte, figée sur un ancien commit, non exécutée au lancement avec `JUMEAU_REPO=..`),
+  ne lit plus le fichier des organisateurs.
 ## 2026-11-15 — Module de besoin : dérivation des ansätze M0–M4 et plan par axes (non construit, accord attendu)
 - **Décision** (proposée ; rien n'est construit avant l'accord de l'utilisateur·rice) : le besoin est représenté par
   plusieurs estimateurs derrière une interface `NeedEstimator`. Aucun n'est présenté comme « le » besoin.
@@ -4632,6 +4698,7 @@ le modèle à agents a priori ; cette mesure le confirme et y ajoute le modèle 
   - une projection de l'APL déjà publiée.
 
 ## 2026-11-15 — Module de besoin : médecine générale comme source seulement (O2) ; plan accepté, vague 1 lancée
+> **Remplacé en partie le 2026-11-15 par O3** (entrée « Transferts de tâches : couverture de la médecine générale lue en entrée (O3) »). O2 reste la règle de la carte et de `besoin_api` ; O3 ne s'applique qu'à l'outil d'effectivité des transferts.
 - **Décision** (choix de l'utilisateur·rice : « okay go O2 », après la recommandation de la session) :
   - **O2 retenu** : la médecine générale entre dans le module de besoin **comme profession source des transferts
     seulement**. `B_MG` est calculé par M1.
@@ -5132,7 +5199,6 @@ Demande de la session v2 (accord de l'utilisateur·rice relayé, « oui »). Mes
      l'indice C s'intitule « couverture de la demande de ville par l'offre privée ». C'est à appliquer au branchement
      dans la carte (plan de la session licences-et-carte).
 - **Pourquoi :** demande de la session v2. La circularité recours/offre de la dérivation (§2) en est le cas général.
-
 ## 2026-11-15 — Module de besoin, axe 5 : C des kinés et des infirmiers affiché en fourchette entre estimateurs
 
 ## ~~2026-11-15 — Module de besoin, axe 5 : C des kinés et des infirmiers affiché en fourchette entre estimateurs~~
@@ -5255,6 +5321,15 @@ Demande de la session v2 (accord de l'utilisateur·rice relayé, « oui »). Mes
   la réponse de l'assistant). Capture : `figures/2026-11-15-besoin-carte-assistant-l23.jpg`.
 - **Ce qui le renverserait :** une date de transfert choisie par l'utilisateur·rice (brancher `l23_t0`).
 
+## 2026-11-15 — Assistant : la vaccination en pharmacie dite en langue courante (suite de la carte)
+- **Décision** (demande de l'utilisateur·rice) : la réponse du chatbot (`chatbot/chat/agent.py`) et le libellé du
+  glossaire (`v2/langage/glossaire.yaml`) n'emploient plus « actes de MG libérés », « ETP-équivalents », « L23 »,
+  « estimateur » ni les noms de paramètres. Libellé : « Les pharmaciens vaccinent davantage contre la grippe » ; ligne :
+  « les médecins généralistes ont moins de vaccins à faire … soit le temps de travail d'environ N médecins à temps
+  plein ». Le test `chatbot/tests/test_couverture.py` vérifie l'absence de ces termes. Clés d'API inchangées.
+- **Pourquoi :** un·e utilisateur·rice sans formation doit tout comprendre ; même formulation que la fiche de la carte.
+- **Ce qui le renverserait :** un test de lecture qui montre une phrase encore mal comprise.
+
 ## 2026-11-15 — Assistant : L23 dit en langue courante, comme la carte
 - **Décision** (demande de l'utilisateur·rice relayée par la session besoin-derivation ; carte `3c52883`) : libellé du
   levier dans le compilateur et l'assistant : « Les pharmaciens vaccinent davantage contre la grippe ». Effet sur la MG :
@@ -5272,6 +5347,31 @@ Demande de la session v2 (accord de l'utilisateur·rice relayé, « oui »). Mes
   3. transfert (L23) → couverture : « Si les pharmaciens vaccinent, quelle couverture dans le Puy-de-Dôme en 2035 ? ».
   Les trois sont compris de bout en bout en mode sans IA (mesuré, `v2/langage/mesures/2026-11-15-assistant-trois-exemples.txt`) ;
   mode IA non vérifié (pas de clé). L'assistant dit « demande de soins de ville », plus « besoin ».
+
+## 2026-11-15 — Fusion besoin-assistant (trois exemples) dans la branche de la carte
+- **Décision** : la version de l'assistant de la session besoin-assistant est gardée (« demande de soins de ville »,
+  trois exemples) ; deux lignes encore techniques sont réécrites ici (« un seul estimateur … paramètres de L23 » →
+  « une seule façon d'estimer la demande de soins de ville … » ; limite sans noms de paramètres) et « (L23) » est retiré
+  du libellé du glossaire. Le test vérifie l'absence de « libérés », « ETP », « L23 », « estimateur ».
+- **Pourquoi :** l'utilisateur·rice voyait encore six exemples ; même langage pour un·e utilisateur·rice sans formation.
+
+## 2026-11-15 — Assistant : chaque exemple porte son cas d'usage
+- **Décision** (accord de l'utilisateur·rice) : au-dessus de chacun des trois exemples, un libellé en petites capitales :
+  « Une politique → quel effet ? », « Un objectif → quelles politiques ? », « Un transfert de tâches → quelle couverture ? ».
+  Seule la question est envoyée au clic (`data-q`). Capture : `figures/2026-11-15-assistant-exemples-libelles.jpg`.
+- **Rejeté :** « issue » (laisse croire à un résultat certain ; la carte dit « effet »), « que faire ? » (prescriptif,
+  contraire au lexique neutre), « transfert de compétences » (le registre et le panneau disent « transfert de tâches » ;
+  la compétence de vacciner existe déjà, c'est la tâche qui se déplace).
+- **Ce qui le renverserait :** un test de lecture où un libellé est mal compris.
+
+## 2026-11-15 — Carte : le levier de vaccination n'apparaît que pour les pharmaciens
+- **Décision** (remarque de l'utilisateur·rice : « rubrique kiné mais transfert de tâches pharma ? ») : pour une autre
+  profession, la famille « Transférer des tâches ? » cache la case et dit « Aucun transfert de tâches n'est encore
+  calculé pour les <profession>. Seul exemple disponible : les pharmaciens vaccinent davantage contre la grippe », avec
+  un lien « Afficher les pharmaciens ». Remplace la note « agit sur … (cible) … (source) ; sans effet sur la profession
+  affichée ». Le réglage de la case est conservé d'une profession à l'autre.
+- **Pourquoi :** un levier sans effet sur la profession affichée prêtait à confusion.
+- **Ce qui le renverserait :** un transfert de tâches calculé pour une autre profession (il prendra place ici).
 
 ## 2026-11-15 — Carte : libellés du module de besoin alignés sur « demande de soins de ville »
 - **Décision** (fusion de `besoin-assistant`, qui contient `besoin-carte-api`, avec l'accord de l'utilisateur·rice) :
@@ -5474,6 +5574,20 @@ Demande de la session v2 (accord de l'utilisateur·rice relayé, « oui »). Mes
 - **Ce qui le renverserait :** une année de base de la demande antérieure à 2019 (la soustraction serait alors de
   trop) ; un nouvel ajustement de P-B6 avec un s∞ nettement plus haut.
 
+## 2026-11-15 — Erratum P1-4 propagé : grille de l'axe 5 relancée, rapports annotés
+- **Fait** (rappel de l'utilisateur·rice, relayé par la session transfert-hypothetique : « corrige l'erreur L23
+  partout où elle reste ») :
+  - `v2/sensibilite/besoin/grille.py` appelle `l23(2026, …)` (constante `L23_REF`) au lieu de `l23(2019, …)` ;
+  - la grille des pharmaciens est relancée ; les sorties des quatre autres professions sont gardées, puisqu'elles ne
+    dépendent pas de L23 et que leurs grilles brutes ne sont pas versionnées ;
+  - résultat : L23 en 2050, E 0,0002 et R 0,002, au lieu de 0,004 et 0,05 ; verdict inchangé, non distinguable.
+- **Encadrés « Erratum 2026-11-15 (P1-4) »** en tête des rapports, anciens chiffres conservés et annotés :
+  - `besoin-carte`, `besoin-assistant`, `uat-application`, `besoin-axe5-sensibilite` ;
+  - trois fichiers de mesure de `v2/langage/mesures/` ;
+  - trois lignes du journal de Home.
+- **Article du besoin (`v2/papers/besoin/`)** : la phrase sur L23 est remplacée par les nouveaux chiffres.
+- **Hors champ :** `besoin-axe1-fiches` ne cite pas l'effet de L23, seulement s∞ et τ, qui restent valables.
+
 ## 2026-11-15 — Corrections de la recette : méthode repliée, temps de médecin dit à part, O2 dans le texte de périmètre
 - **Décision** (session uat-corrections, tâche de la session besoin-derivation ; [rapport](reports/2026-11-15-uat-corrections.md)) :
   - **Jargon (reste de P1-6) :** dans la fiche, la légende, le panneau « Transférer des tâches » et l'assistant, le texte
@@ -5511,3 +5625,47 @@ Demande de la session v2 (accord de l'utilisateur·rice relayé, « oui »). Mes
   projet ; l'Administration garde le détail en un clic.
 - **Ce qui le renverserait :** un test de lecture qui montre qu'un libellé en clair est mal compris, ou une demande de
   l'Administration d'avoir les codes visibles par défaut.
+## 2026-11-15 — Carte : la rubrique « Transférer des tâches ? » renvoie aussi aux transferts hypothétiques
+- **Décision** (accord de l'utilisateur·rice ; branche des transferts hypothétiques fusionnée dans celle de la carte) :
+  hors pharmaciens, la rubrique dit « Aucun transfert de tâches sourcé pour les <profession>. Seul transfert mesuré :
+  les pharmaciens vaccinent davantage contre la grippe (Afficher les pharmaciens). Pour étudier un transfert
+  hypothétique, demandez à l'assistant (Ouvrir l'assistant). » Remplace « Aucun transfert … n'est encore calculé ».
+  Le troisième exemple de l'assistant reste la vaccination (seul transfert sourcé).
+- **Pourquoi :** l'assistant calcule désormais des transferts hypothétiques ; la carte doit le dire sans les présenter
+  comme des leviers.
+## 2026-11-15 — Transferts de tâches : couverture de la médecine générale lue en entrée (O3) ; critère d'effectivité par défaut
+- **Décision** (choix de l'utilisateur·rice : « Remplacer O2 par O3 » et « Critère par défaut ») :
+  - **O3** : pour juger un transfert, la couverture de la **source** (médecine générale) est calculée avec une offre MG
+    **lue en entrée**, jamais projetée par le jumeau (`v2/besoin/offre_mg.py`). Raison donnée par l'utilisateur·rice : la
+    médecine générale est déjà modélisée par la DGOS (programme Junior) et la DREES (Hippocrate) ; le projet prolonge ce
+    travail aux cinq autres professions et les relie par les transferts de compétences. Projet porté par le Ministère.
+  - Fournisseurs de l'offre MG : `constante` (RPPS 2026, 66 503 généralistes libéraux et mixtes, tenue constante,
+    **supposé**, défaut) ; `nationale` (trajectoire nationale publiée, répartition figée à 2026, fichier à déposer) ;
+    `externe` (table du porteur via `BESOIN_MG_OFFRE`, **hors dépôt**, peut être sous accord).
+  - **Critère d'effectivité, supposé, fixé avant tout calcul** : effectif en (T, t) si la couverture de la source
+    progresse et si celle de la cible reste ≥ son niveau de 2026, pour toute la plage de k ([0,25 ; 1], supposé) ;
+    « dépend de k » sinon ; « non effectif (cible déjà sous son niveau de 2026 sans transfert) » quand la baisse de la
+    cible précède le transfert.
+  - L23 : s_∞ = 0,74 et τ = 2,4 ans (mesurés au national par P-B6) ; a et k restent les placeholders supposés de la fiche.
+- **Portée** : O2 reste la règle de la carte et de `besoin_api` (aucun indice MG affiché sur la carte). O3 ne sert que
+  l'outil `besoin.effectivite` et l'outil « transfert » de l'assistant (passerelle). Les spécialistes restent sans
+  couverture.
+- **Premier résultat, à lire avec ces réserves** (tendanciel, M1, offre MG constante) : en 2035, L23 est « effectif »
+  dans 32 départements, « dépend de k » dans 2, et « non effectif » dans 67, tous parce que la couverture des
+  pharmaciens y est déjà sous son niveau de 2026 sans transfert. Puy-de-Dôme : couverture MG +0,68 point, pharmaciens
+  −0,17 à −0,67 point selon k, 4,8 ETP de MG libérés.
+- **Limite du critère** : il mélange l'effet du transfert et la tendance de la cible ; 67 « non effectif » sur 101 sont
+  dus à la tendance. Un critère sur l'écart dû au transfert seul est l'alternative à trancher.
+- Contrôles : `PYTHONPATH=v2 uv run python -m besoin.tests.effectivite` (E1 s ≡ 0, E2 source = 1/(1 − s·a) à 3e-16,
+  E3 k sans effet sur la source, E4 offre MG RPPS) : 4/4.
+## 2026-11-15 — Effectivité des transferts : critère sur l'effet du transfert seul (remplace le critère par défaut)
+- **Décision** (choix de l'utilisateur·rice : « le 1 alors », après recommandation) : un transfert est **effectif** en
+  (T, t) si la couverture de la source progresse et si la cible ne perd pas plus de **1 point d'indice** (seuil
+  **supposé**) par rapport à la même année **sans transfert**, sur toute la plage de k. La position de la cible par
+  rapport à 2026 est rendue à part (`contexte_cible`), jamais dans le verdict.
+- **Remplace** le « critère par défaut » de l'entrée O3 ci-dessus, qui jugeait la cible contre son niveau de 2026 et
+  classait 67 départements sur 101 « non effectif » à cause de la tendance des pharmaciens, pas du transfert.
+- **Résultat recalculé** (tendanciel, M1, offre MG constante) : L23 « effectif » dans les 101 départements en 2035 et
+  en 2045. **À ne pas citer tel quel** : il tient à `a = 0,01` (part du temps de MG, placeholder supposé de la fiche L23),
+  qui rend la perte des pharmaciens inférieure à 1 point partout. Le verdict ne vaudra que lorsque `a` sera sourcé
+  (fiches de l'axe 1, branche `claude/besoin-axe1-fiches-*`).

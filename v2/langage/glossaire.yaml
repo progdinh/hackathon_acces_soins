@@ -343,7 +343,7 @@ non_modelises:
 # de la cible (règle O2 : la source MG n'a jamais d'indice). L23 seul : L25, L27 et tension/diabète sont non mesurables.
 transferts_besoin:
   L23:
-    libelle: Les pharmaciens vaccinent davantage contre la grippe (L23)
+    libelle: Les pharmaciens vaccinent davantage contre la grippe
     termes: [vacciner, vaccination, vaccinations, vaccinent, vaccinant, vaccine]
     source_tache: medecine-generale
     cible: pharmaciens

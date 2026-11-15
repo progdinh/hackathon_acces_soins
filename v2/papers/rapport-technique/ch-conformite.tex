@@ -6,14 +6,16 @@ Ce chapitre résume le pré-audit \texttt{v2/\allowbreak{}docs/\allowbreak{}lab/
 \paragraph{Ce n'est pas un avis juridique.}
 Le pré-audit a été fait par une IA, pas par un juriste ni par un délégué à la protection des données (DPO).
 Il sert à préparer leur relecture, pas à la remplacer.
-Les textes ont été cités de mémoire, sans relecture intégrale pendant l'audit : les numéros d'articles sont donnés pour sûrs, le libellé exact du guide MDCG 2019-11 (révision en vigueur) n'a pas été relu.
+Les textes ont été cités de mémoire : ni les numéros d'articles ni le libellé du guide MDCG 2019-11 (révision en vigueur) n'ont été relus sur le texte officiel, ni pendant l'audit ni pour le présent rapport.
 Les qualifications retenues ci-dessous (base légale, dérogation à l'information, statut hors dispositif médical) sont des lectures plausibles ; un DPO peut conclure autrement, surtout sur le critère \enquote{grande échelle}.
 
 \paragraph{En bref.}
-L'outil n'est pas un dispositif médical\derive{}.
-Une analyse d'impact (AIPD) n'est probablement pas obligatoire\derive{}, à condition d'appliquer un seuil de diffusion.
+L'outil n'est pas un dispositif médical (lecture non juridique).
+Une analyse d'impact (AIPD) n'est probablement pas obligatoire pour les tables agrégées et l'assistant, à condition d'appliquer un seuil de diffusion (lecture non juridique).
+L'archive locale de l'Annuaire Santé, au niveau individuel, n'a pas été évaluée par l'audit : elle remplit 2 critères et demande une évaluation propre avant tout archivage répété (§\ref{conf:aipd}).
 Il reste un point RGPD réel et mesuré : des cellules à 1 personne, au grain commune $\times$ tranche d'âge, sont publiées sur un dépôt GitHub public.
-S'y ajoutent deux points hors RGPD : l'habillage DSFR, dont la structure porteuse reste à nommer, et l'absence de licence du code.
+Il ne reste qu'un point hors RGPD : l'absence de licence du code.
+L'habillage DSFR n'en est plus un : le projet est porté par le Ministère chargé de la santé (registre, 2026-11-15) ; il reste à nommer la structure dans le dépôt (§\ref{conf:licences}).
 Le jury simulé notait la faisabilité réglementaire 5,5\suppose{}/10, faute de tout document (\texttt{v2/\allowbreak{}docs/\allowbreak{}lab/\allowbreak{}reports/\allowbreak{}2026-\allowbreak{}11-\allowbreak{}15-\allowbreak{}jury-\allowbreak{}grille.md}).
 
 % ---------------------------------------------------------------------------
@@ -25,7 +27,8 @@ Le jury simulé notait la faisabilité réglementaire 5,5\suppose{}/10, faute de
 \toprule Traitement & Données & Personnes concernées & Données personnelles ? \\ \midrule\endfirsthead
 \toprule Traitement & Données & Personnes concernées & Données personnelles ? \\ \midrule\endhead
 \bottomrule\endfoot
-Construction des tables (local) & RPPS, Annuaire Santé~\citep{e-ans2026annuaire}, CartoSanté~\citep{e-cartosante2026}, ameli, FINESS, Insee & professionnels de santé & \textbf{Oui à l'entrée.} L'Annuaire Santé est nominatif ; il reste dans \texttt{data/\allowbreak{}raw/\allowbreak{}}, ignoré par git. Aucun nom ni identifiant RPPS dans les 34\mesure{} fichiers traités (colonnes vérifiées une à une). \\
+Construction des tables (local) & RPPS, Annuaire Santé~\citep{e-ans2026annuaire}, CartoSanté~\citep{e-cartosante2026}, ameli, FINESS, Insee & professionnels de santé & \textbf{Oui à l'entrée.} L'Annuaire Santé est nominatif ; il reste dans \texttt{v2/\allowbreak{}data/\allowbreak{}raw/\allowbreak{}annuaire/\allowbreak{}}, ignoré par git (\texttt{v2/\allowbreak{}data/\allowbreak{}.gitignore}). Aucun nom ni identifiant RPPS dans les 34\mesure{} fichiers traités (colonnes vérifiées une à une). \\
+Archive de l'Annuaire Santé (local, \texttt{v2/\allowbreak{}data/\allowbreak{}archive\_\allowbreak{}annuaire.py}) & instantané daté, sans nom ni prénom : identifiant RPPS, profession, civilité, mode, commune, secteur, FINESS juridique, genre d'activité ; 1\mesure{} instantané (\texttt{v2/\allowbreak{}data/\allowbreak{}raw/\allowbreak{}annuaire/\allowbreak{}archive/\allowbreak{}2026-\allowbreak{}11-\allowbreak{}13.parquet}, 813\,557\mesure{} lignes) & 752\,993\mesure{} professionnels (identifiants distincts) & \textbf{Oui, au niveau individuel} : l'identifiant RPPS est direct. Ignoré par git, non commité. Le script n'en sort que des flux agrégés, mais l'appariement de deux instantanés suit chaque personne. Non évalué par l'audit. \\
 Tables traitées commitées, dépôt public & effectifs agrégés & professionnels & \textbf{Oui pour une partie} : petits effectifs (§\ref{conf:petits}). \\
 Projection (jumeau, API, carte) & agrégats département, région, France & --- & Non : l'affichage s'arrête au département. \\
 Assistant (\texttt{chatbot/\allowbreak{}}, \texttt{v2/\allowbreak{}agent/\allowbreak{}}) & texte libre de l'utilisateur, envoyé à l'API Anthropic (États-Unis) & l'utilisateur et toute personne qu'il nommerait & \textbf{Possible}, si l'utilisateur tape une donnée personnelle. \\
@@ -37,6 +40,8 @@ Fichiers des organisateurs (accord de confidentialité) & inscrits par universit
 Le registre note qu'un fichier fourni à l'équipe, \texttt{990\_\allowbreak{}drees\_\allowbreak{}mmop2\_\allowbreak{}f.xlsx}, se trouvait dans \texttt{chatbot/\allowbreak{}vendor/\allowbreak{}}. Il a été déplacé vers \texttt{data/\allowbreak{}raw/\allowbreak{}} le 2026-11-15.
 Deux fichiers non lus par le code restent dans \texttt{chatbot/\allowbreak{}vendor/\allowbreak{}} sans être ignorés par git : la note SIES 2025-31 et \texttt{fiche\_\allowbreak{}kines\_\allowbreak{}D64.csv}.
 Le jury relève aussi une seconde copie des données communales dans \texttt{chatbot/\allowbreak{}vendor/\allowbreak{}} : tout seuil de diffusion devra couvrir les deux copies.
+Dans ce dépôt, \texttt{chatbot/\allowbreak{}vendor/\allowbreak{}hackathon\_\allowbreak{}acces\_\allowbreak{}soins/\allowbreak{}} n'est pas un sous-module (pas de \texttt{.gitmodules}) mais une copie commitée : \texttt{git ls-files} y compte 687\mesure{} fichiers suivis, dont 34\mesure{} tables traitées (36\mesure{} fichiers sous \texttt{data/\allowbreak{}processed/\allowbreak{}} avec les deux \texttt{MANIFEST.md}), parmi lesquelles \texttt{commune\_\allowbreak{}stock.parquet}, \texttt{stock\_\allowbreak{}commune.parquet} et \texttt{annuaire\_\allowbreak{}commune.parquet}.
+Cette copie est hors du manifeste (\texttt{v2/\allowbreak{}data/\allowbreak{}manifest.py}) et hors du contrôle de l'audit, qui n'a compté les petits effectifs que dans les tables du dépôt courant (tableau~\ref{conf:tab-petits}).
 
 % ---------------------------------------------------------------------------
 \subsection{Petits effectifs publiés sur un dépôt public}\label{conf:petits}
@@ -45,10 +50,10 @@ Le dépôt \texttt{progdinh/\allowbreak{}hackathon\_\allowbreak{}acces\_\allowbr
 L'audit a compté, pour chaque table commitée, la part des cellules non nulles qui valent 1, ou moins de 5.
 
 \begin{table}[htbp]\centering\small
-\caption{Petits effectifs dans les tables publiées. Toutes années confondues. Source : audit, §2 (script pandas en ligne).}\label{conf:tab-petits}
+\caption{Petits effectifs dans les tables publiées. Toutes années confondues. Pour \texttt{commune\_\allowbreak{}stock}, le champ est celui des cellules IDE, MK et CD $\times$ commune $\times$ âge $\times$ année, 2004--2025 ; en 2025 seule, 49,2\mesure{}\,\% des 67\,914\mesure{} cellules non nulles valent 1 (recompté le 2026-11-15). Source : audit, §2 (script pandas en ligne).}\label{conf:tab-petits}
 \begin{tabular}{@{}p{0.36\textwidth}p{0.22\textwidth}rrr@{}}
 \toprule Fichier & Grain & Cellules $>0$ & $n=1$ & $n<5$ \\ \midrule
-\texttt{v2/\allowbreak{}data/\allowbreak{}processed/\allowbreak{}commune\_\allowbreak{}stock.parquet} & profession $\times$ commune $\times$ âge $\times$ année & 1\,251\,610\mesure{} & \textbf{52,5\mesure{}\,\%} & 87,3\mesure{}\,\% \\
+\texttt{v2/\allowbreak{}data/\allowbreak{}processed/\allowbreak{}commune\_\allowbreak{}stock.parquet} & profession (IDE, MK, CD) $\times$ commune $\times$ âge $\times$ année (2004--2025) & 1\,251\,610\mesure{} & \textbf{52,5\mesure{}\,\%} & 87,3\mesure{}\,\% \\
 \texttt{data/\allowbreak{}processed/\allowbreak{}stock\_\allowbreak{}commune.parquet} (v1) & idem & 1\,240\,401\mesure{} & 52,9\mesure{}\,\% & 87,9\mesure{}\,\% \\
 \texttt{v2/\allowbreak{}data/\allowbreak{}processed/\allowbreak{}annuaire\_\allowbreak{}commune.parquet} & commune $\times$ sexe $\times$ mode $\times$ statut $\times$ lieu de diplôme & 114\,634\mesure{} & 38,1\mesure{}\,\% & 80,8\mesure{}\,\% \\
 \texttt{v2/\allowbreak{}data/\allowbreak{}processed/\allowbreak{}flux\_\allowbreak{}installations\_\allowbreak{}commune.parquet} & commune $\times$ année (moins de 40 ans) & 328\,937\mesure{} & 39,2\mesure{}\,\% & 80,7\mesure{}\,\% \\
@@ -60,14 +65,17 @@ L'audit a compté, pour chaque table commitée, la part des cellules non nulles 
 L'Annuaire Santé est public et nominatif : il donne le nom et la commune d'exercice.
 Une cellule à 1 dans \texttt{commune\_\allowbreak{}stock} révèle donc la tranche d'âge d'un professionnel qu'on peut nommer ; dans \texttt{annuaire\_\allowbreak{}commune}, son sexe et son lieu de diplôme.
 Ce sont des données personnelles indirectement identifiantes (RGPD, considérant~26~\citep{e-rgpd}). Ce ne sont pas des données de santé (art.~9) : aucune donnée de patient n'est traitée.
-Les cellules viennent de sources déjà publiées au même grain (CartoSanté, Annuaire Santé) : le projet ne révèle rien de nouveau.
+La plupart des cellules viennent de sources déjà publiées au même grain (CartoSanté, Annuaire Santé) : pour celles-là, le projet ne révèle rien de nouveau.
+Ce n'est pas vrai de \texttt{flux\_\allowbreak{}installations\_\allowbreak{}commune} : ce flux est un calcul du projet, publié nulle part ailleurs ; une cellule à 1 y signale l'installation d'une personne qu'on peut chercher dans l'Annuaire.
 Mais rendre une donnée publique ne la fait pas sortir du champ du RGPD : sa réutilisation reste un traitement, avec une finalité et une base légale.
-La part de cellules à 1 compte les cellules non nulles de toutes les années ; sur une seule année, elle peut différer de quelques points\suppose{}.
+La part de cellules à 1 compte les cellules non nulles de toutes les années (2004--2025) ; en 2025 seule, elle vaut 49,2\mesure{}\,\% (33\,390\mesure{} cellules sur 67\,914\mesure{}).
 
 \paragraph{Le grain publié dépasse le grain affiché.}
 La carte s'arrête au département (§\ref{pro:archi}), mais les tables commune $\times$ âge sont commitées : c'est le point de minimisation (art.~5.1.c).
 Le seuil de secret statistique (cellules $\geq 11$\suppose{}, ou $<5$\suppose{} regroupées) n'est appliqué ni dans l'API, ni dans les exports, ni dans les tables commitées.
 Deux options sont inscrites, aucune n'est décidée : masquer ou regrouper les cellules sous le seuil (environ 30\suppose{}~min de temps Claude), ou retirer les tables communales du dépôt public et les reconstruire en local (environ 20\suppose{}~min ; tableau~\ref{ouv:tab}).
+Aucune des deux ne suffit seule : masquer ou retirer les tables dans le commit courant ne les retire pas de l'historique d'un dépôt public, où les versions antérieures restent lisibles.
+Il faudrait réécrire l'historique (\texttt{git filter-repo}), ce qui reste sans effet sur les clones et copies déjà faits ; ce prix n'est pas chiffré.
 
 % ---------------------------------------------------------------------------
 \subsection{RGPD, article par article}\label{conf:rgpd}
@@ -79,13 +87,13 @@ Deux options sont inscrites, aucune n'est décidée : masquer ou regrouper les c
 \toprule Exigence & Constat & État \\ \midrule\endhead
 \bottomrule\endfoot
 Finalité (art.~5.1.b) & projeter des effectifs agrégés pour la décision publique et la recherche ; compatible avec la finalité de publication des sources & tenu \\
-Base légale (art.~6) & 6.1.f (intérêt légitime de recherche) pour l'équipe ; 6.1.e (mission d'intérêt public) si un ministère ou une ARS porte l'outil & non écrite \\
+Base légale (art.~6) & avec un porteur ministériel, la base plausible est 6.1.e (mission d'intérêt public). 6.1.f (intérêt légitime) n'est pas ouvert à une autorité publique dans l'exécution de ses missions (art.~6.1, dernier alinéa, à vérifier sur le texte officiel). Le DPO du ministère est à associer (art.~37.1.a, à vérifier sur le texte officiel). Lecture non juridique & non écrite \\
 Minimisation (art.~5.1.c) & noms et identifiants retirés dès la construction, mais grain commune $\times$ âge publié sans être affiché & à traiter \\
 Recherche (art.~89) & garanties possibles : agrégation, seuil de diffusion ; pas encore de seuil & à traiter \\
 Information (art.~14) & dérogation 14.5.b plausible (effort disproportionné, données publiques) ; une mention publique reste nécessaire & non écrite \\
 Sous-traitant hors UE (art.~28, chap.~V) & l'assistant envoie le texte libre à Anthropic (États-Unis), sans avertissement \enquote{ne saisissez pas de données personnelles} ni analyse de transfert & à traiter \\
 Sécurité (art.~32) & écoute locale, pas de journaux, clé d'API dans \texttt{.env} ignoré par git & tenu pour un prototype \\
-Registre (art.~30) & aucun & à créer si déploiement \\
+Registre (art.~30) & aucun & à tenir par le porteur (art.~30) \\
 \end{longtable}
 \end{small}
 
@@ -93,22 +101,23 @@ Registre (art.~30) & aucun & à créer si déploiement \\
 \subsection{Seuil de l'AIPD, traitement par traitement}\label{conf:aipd}
 
 Les lignes directrices du G29 (WP248 rév.~01~\citep{e-wp248}), reprises par la CNIL, donnent 9\mesure{} critères ; une AIPD est en principe requise à partir de 2\mesure{}.
-L'audit évalue ces critères \textbf{traitement par traitement}, et non pour le projet en bloc.
-La première version de l'audit cotait \enquote{usage innovant} à \enquote{non} sans distinguer les traitements ; elle a été corrigée le 2026-11-15 (audit, §4).
+L'audit ne distingue les traitements que pour le critère \enquote{usage innovant} : sa première version le cotait \enquote{non} sans distinction, et il a été corrigé le 2026-11-15 (audit, §4).
+Le présent rapport étend cette distinction aux autres critères, et ajoute l'archive de l'Annuaire Santé, que l'audit n'évalue pas.
 
 \begin{table}[htbp]\centering\small
-\caption{Critères G29 remplis, par traitement (dérivé). Les critères non listés (évaluation de personnes, décision automatisée, surveillance, données sensibles, personnes vulnérables, blocage d'un droit) ne sont remplis par aucun traitement. Source : audit, §4.}\label{conf:tab-aipd}
-\begin{tabular}{@{}p{0.3\textwidth}p{0.3\textwidth}p{0.3\textwidth}@{}}
-\toprule Critère & Tables des professionnels & Assistant (texte libre) \\ \midrule
-Croisement de jeux de données & \textbf{oui} (RPPS, CartoSanté, Annuaire Santé, FINESS, ameli, Insee) & non \\
-Grande échelle & \textbf{discutable} : environ 600\,000\suppose{} professionnels, en agrégats & non \\
-Usage innovant de la technologie & non : agrégation classique & \textbf{oui} : la CNIL range l'IA parmi les usages innovants \\ \midrule
-Total & 1 à 2\derive{} & 1\derive{} \\ \bottomrule
+\caption{Critères G29 remplis, par traitement (dérivé ; lecture non juridique). Les critères non listés (évaluation de personnes, décision automatisée, surveillance, données sensibles, personnes vulnérables, blocage d'un droit) ne sont remplis par aucun traitement. Source : audit, §4, étendu par le présent rapport (colonne de l'archive).}\label{conf:tab-aipd}
+\begin{tabular}{@{}p{0.2\textwidth}p{0.25\textwidth}p{0.22\textwidth}p{0.22\textwidth}@{}}
+\toprule Critère & Tables des professionnels & Archive de l'Annuaire Santé & Assistant (texte libre) \\ \midrule
+Croisement de jeux de données & \textbf{oui} (RPPS, CartoSanté, Annuaire Santé, FINESS, ameli, Insee) & \textbf{oui} : croisement d'instantanés successifs, appariés par identifiant RPPS & non \\
+Grande échelle & \textbf{discutable} : 752\,993\mesure{} personnes dans l'Annuaire avant agrégation, 228\,827\mesure{} libéraux IDE, MK et CD dans \texttt{commune\_\allowbreak{}stock} 2025 ; publiés en agrégats & \textbf{oui} : 752\,993\mesure{} personnes, au niveau individuel & non \\
+Usage innovant de la technologie & non : agrégation classique & non & \textbf{oui} : la CNIL range l'IA parmi les usages innovants \\ \midrule
+Total & 1 à 2\derive{} & 2\derive{} & 1\derive{} \\ \bottomrule
 \end{tabular}
 \end{table}
 
-\paragraph{Verdict : AIPD probablement non obligatoire\derive{}.}
-Aucun traitement n'atteint sûrement 2\mesure{} critères : les tables en remplissent 1, ou 2 si l'on retient la grande échelle ; l'assistant en remplit 1, et ne porte que sur le texte libre de l'utilisateur.
+\paragraph{Verdict : AIPD probablement non obligatoire pour les tables et l'assistant (lecture non juridique) ; évaluation propre pour l'archive.}
+Les tables en remplissent 1, ou 2 si l'on retient la grande échelle ; l'assistant en remplit 1, et ne porte que sur le texte libre de l'utilisateur.
+L'archive de l'Annuaire Santé en remplit 2 : un seul instantané existe aujourd'hui, mais l'archivage répété demande une évaluation propre avant toute tâche planifiée (\texttt{archive\_\allowbreak{}annuaire.py} n'en crée aucune, et la fréquence reste une décision de l'équipe).
 L'opération ne figure pas non plus sur la liste CNIL des traitements soumis à AIPD.
 \begin{itemize}
 \item \textbf{Recommandation} : une note de non-applicabilité d'une page, signée par le porteur, plutôt qu'une AIPD complète.
@@ -119,21 +128,22 @@ L'opération ne figure pas non plus sur la liste CNIL des traitements soumis à 
 % ---------------------------------------------------------------------------
 \subsection{Dispositifs médicaux et intelligence artificielle}\label{conf:dm-ia}
 
-\paragraph{Règlement (UE) 2017/745~\citep{e-mdr} : pas un dispositif médical\derive{}.}
+\paragraph{Règlement (UE) 2017/745~\citep{e-mdr} : pas un dispositif médical (lecture non juridique).}
 \begin{itemize}
 \item Un dispositif médical sert, chez l'humain, à une fin médicale : diagnostic, prévention, surveillance, prédiction, pronostic ou traitement d'une maladie (art.~2.1).
 \item Un logiciel à usage général n'est pas un dispositif médical, même utilisé en milieu de soins (considérant~19). Le guide MDCG 2019-11~\citep{e-mdcg} exclut de même les logiciels de gestion ou d'administration et ceux qui ne traitent pas de données d'un patient pour son bénéfice individuel.
 \item L'outil projette des effectifs de professionnels pour la planification publique. Il ne reçoit aucune donnée de patient et ne rend rien pour une personne soignée.
 \item Conséquence : ni marquage CE, ni classification selon l'annexe VIII.
-\item \textbf{Condition} : la destination déclarée doit rester sans revendication clinique. Phrase à écrire dans le \texttt{README.md} : \enquote{outil d'aide à la planification des effectifs ; ne fournit aucune information diagnostique ou thérapeutique sur un patient}. \textbf{Pas faite} au commit \texttt{13333f2}.
+\item \textbf{Condition} : la destination déclarée doit rester sans revendication clinique. Phrase proposée par l'audit, non adoptée par l'équipe, à écrire dans le \texttt{README.md} : \enquote{outil d'aide à la planification des effectifs ; ne fournit aucune information diagnostique ou thérapeutique sur un patient}. \textbf{Pas faite} au commit \texttt{13333f2}.
 \item Le module de besoin prévu (§\ref{ouv:besoin}) ne change pas ce verdict tant qu'il reste populationnel.
 \end{itemize}
 
 \paragraph{Règlement (UE) 2024/1689~\citep{e-aiact}, article 50.}
 L'assistant est un système d'IA qui interagit avec des personnes. L'article~50 demande d'informer l'utilisateur qu'il échange avec une IA.
-La carte dit \enquote{aucun chiffre écrit par l'IA} dans le détail des calculs, mais aucune mention n'apparaît à l'ouverture de l'assistant.
-L'assistant n'est pas \enquote{à haut risque}\derive{} : il ne relève d'aucun domaine de l'annexe~III, et l'accès aux services publics essentiels vise des décisions sur des personnes.
-Correction proposée, non faite : un avertissement à l'ouverture, \enquote{réponses rédigées par une IA (Anthropic) ; ne saisissez pas de données personnelles} (environ 10\suppose{}~min de temps Claude).
+Cette obligation s'applique depuis le 2 août 2026 (art.~113, à vérifier sur le texte officiel).
+La carte dit \enquote{aucun chiffre écrit par l'IA} dans le détail des calculs, mais aucune mention n'apparaît à l'ouverture de l'assistant : c'est donc un écart actuel, pas une échéance future.
+L'assistant n'est pas \enquote{à haut risque} (lecture non juridique) : il ne relève d'aucun domaine de l'annexe~III, et l'accès aux services publics essentiels vise des décisions sur des personnes.
+Correction proposée par l'audit, non faite : un avertissement à l'ouverture, \enquote{réponses rédigées par une IA (Anthropic) ; ne saisissez pas de données personnelles} (environ 10\suppose{}~min de temps Claude).
 
 % ---------------------------------------------------------------------------
 \subsection{DSFR, licence du code, licences des données}\label{conf:licences}
@@ -161,12 +171,13 @@ Les conditions de réutilisation de CartoSanté (Atlasanté) \textbf{n'ont pas �
 \subsection{Ce qui reste à faire}\label{conf:reste}
 
 Les actions sont reprises, avec leur prix, dans l'inventaire des questions ouvertes (tableau~\ref{ouv:tab}) :
-seuil de diffusion sur les deux copies des tables communales ;
+seuil de diffusion sur les deux copies des tables communales (dont la copie commitée de \texttt{chatbot/\allowbreak{}vendor/\allowbreak{}}), et décision sur l'historique git ;
+évaluation propre de l'archive de l'Annuaire Santé avant tout archivage répété ;
 page \enquote{Conformité} du \texttt{README.md} (finalité, base légale, art.~14, destination non clinique, mention IA, avertissement sur le texte libre) ;
 avertissement à l'ouverture de l'assistant ;
-nommer la structure porteuse qui justifie le DSFR ;
+écrire dans le \texttt{README.md} le nom de la structure porteuse, au sein du Ministère chargé de la santé, qui justifie le DSFR ;
 choix d'une licence de code ;
 vérification des conditions CartoSanté ;
 note de non-applicabilité de l'AIPD ;
-relecture par un DPO ou un juriste, en temps humain.
+relecture par le DPO du ministère porteur, en temps humain.
 \endgroup

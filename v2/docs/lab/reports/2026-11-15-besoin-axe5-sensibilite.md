@@ -11,6 +11,17 @@ sources: [protocole gelé 2026-11-15-besoin-axe5-sensibilite (SHA-256 10a5b285�
 tags: [besoin, axe5, sensibilite, couverture, 2050]
 ---
 
+> **Erratum 2026-11-15 (P1-4, double compte de L23).** La grille appelait `l23(2019, …)` et rejouait toute la courbe
+> de 2019. Elle appelle maintenant `l23(2026, …)` : seule la part au-delà de celle atteinte en 2026 agit (commit
+> b35a380, rapport [L23, marge](2026-11-15-l23-p1-4-marge.md)). La grille des pharmaciens a été relancée ; les quatre
+> autres professions ne dépendent pas de L23 et ne changent pas. Nouveaux chiffres, pharmaciens, France (mesurés) :
+> - L23 en 2050 : E = 0,0002 et R = 0,002, au lieu de 0,004 et 0,05 ;
+> - L23 en 2035 : E = 0,0002 et R = 0,004, au lieu de 0,004 et 0,08 ;
+> - étendue P5–P95 due aux paramètres de transfert : 0,0005 au lieu de 0,006.
+>
+> Le verdict ne change pas (non distinguable), et les autres politiques non plus (quotas × 1,2 : R = 1,14). Les
+> anciens chiffres restent ci-dessous, annotés « dépassé ».
+
 # Axe 5 du besoin — sensibilité de l'indice de couverture C(p, T, 2050)
 
 > **Headline :**
@@ -56,7 +67,7 @@ référence : estimateur servi (M1 ; M3 pour les IDE), Omphale central, offre mo
   - Départs précoces × 0,5 ou × 1,5 : de 0,03 (IDE) à 0,78 (SF) ; CD 24–28.
   - Diplômés étrangers × 2 : MK 1,73, SF 0,75, PH 0,59, IDE 0,05 ; CD 120.
   - Cumul emploi-retraite × 0,5 ou × 2 : ≤ 0,01, sauf CD (0,33–0,72).
-  - **L23** (vaccination en officine, PH) : E = 0,004, **R = 0,05** ; aucun département distinguable.
+  - **L23** (vaccination en officine, PH) : ~~E = 0,004, **R = 0,05**~~ (dépassé, erratum P1-4 : E = 0,0002, R = 0,002) ; aucun département distinguable.
   - Régulation à l'installation : E = 0 au national **et** au département (voir ⚑).
 - **En 2035** (m) : D = 0,012 (SF), 0,004 (CD), 0,056 (PH), 0,064 (MK), 0,142 (IDE). Rapporté seulement :
   `out/resultats.json`.
@@ -86,7 +97,7 @@ transfert pour les PH), niveaux équiprobables.
   |---|---|---|---|---|---|
   | Étendue Omphale | 0,11 | 0,11 | 0,13 | 0,15 | 0,22 |
   | Offre, P5–P95 des tirages C1 | 0,83 | 0,45 | 0,78 | 0,74 | 0,99 |
-  | Transfert L23, P5–P95 | — | — | 0,006 | — | — |
+  | Transfert L23, P5–P95 | — | — | ~~0,006~~ 0,0005 (erratum P1-4) | — | — |
 
   À l'aune de l'offre, aucun levier n'est distinguable : la bande P5–P95 de C1 vaut 4 à 9 fois l'effet de quotas
   × 1,2.
@@ -126,7 +137,7 @@ Déclenchée si, au national en 2050, R(quotas × 1,2) < 1 ou S_e > S_π :
 - **Régulation : E = 0 au département**, alors qu'elle redistribue entre territoires dans l'axe 5 de l'offre. Soit
   le modèle servi ne la déclenche pas dans ce chemin, soit l'effet reste sous le département (communes, secteur
   « bloques »). Non vérifié : voir le ledger.
-- **L23** repose sur `a` et `k` supposés ; même aux bornes hautes (a = 0,02, k = 1), sa P5–P95 reste à 0,006 en
+- **L23** repose sur `a` et `k` supposés ; même aux bornes hautes (a = 0,02, k = 1), sa P5–P95 reste à ~~0,006~~ 0,0005 (erratum P1-4) en
   log. Le verdict « L23 non distinguable » tient à la petitesse de `a` en temps de MG, qui reste supposée.
 - **IDE** : tirages C1 sur les libéraux (origine 2023), offre servie sur le périmètre du modèle servi.
 - **Capacité de formation et abandon IFSI** ne sont pas joués (absents du modèle servi).

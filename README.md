@@ -37,19 +37,15 @@ uv run python v2/prototype-carte/server.py
 Puis ouvrir **http://localhost:8767**. Le serveur met une dizaine de secondes à charger les
 5 professions ; il affiche `prêt : http://localhost:8767` quand c'est fait.
 
-**Chatbot « Questions » (facultatif).** Le bouton « Questions » de la carte relaie les questions vers le chatbot de
-`chatbot/` (passerelle en lecture seule + agent ; code de Juliette Konop), qui explique les résultats sans rien calculer :
-chaque nombre vient du jumeau et est vérifié. Deux processus en plus de la carte, dans deux terminaux :
+**Un seul port.** La carte démarre elle-même, en processus séparés et internes (127.0.0.1), la passerelle en lecture
+seule et le chatbot de `chatbot/` (code de Juliette Konop). Le bouton « Assistant de simulation » leur relaie les
+questions par `/api/agent` : il n'y a rien d'autre à lancer, et tout passe par http://localhost:8767. Le chatbot
+explique les résultats sans rien calculer ; chaque nombre vient du jumeau et est vérifié.
 
-```bash
-JUMEAU_REPO=.. uv run --directory chatbot python -m passerelle.server 8770     # interroge le dépôt actuel
-set -a; . ./.env; set +a; CHAT_MODEL=claude-haiku-5-5 CHAT_FALLBACKS=0 uv run --directory chatbot python -m chat.server 8768
-```
-
-`.env` (à la racine, ignoré par git) contient `ANTHROPIC_API_KEY=sk-ant-...` ; la clé reste dans le processus du chatbot,
-jamais dans le navigateur. **Sans clé**, le chatbot répond quand même, avec le glossaire de l'équipe (sans IA). Sans le
-chatbot, la carte fonctionne et le panneau l'indique. Le contrôle du lexique neutre (`v2/agent/garde_fous.py`) s'applique
-à chaque réponse. `CHAT_FALLBACKS=0` : Haiku n'a pas de repli serveur.
+`.env` (à la racine, ignoré par git) contient `ANTHROPIC_API_KEY=sk-ant-...` ; la carte ne la transmet qu'au processus
+du chatbot, jamais au navigateur. **Sans clé**, le chatbot répond quand même, avec le glossaire de l'équipe (sans IA).
+`CARTE_SANS_ASSISTANT=1` lance la carte seule ; le panneau indique alors que l'assistant n'est pas disponible. Le
+contrôle du lexique neutre (`v2/agent/garde_fous.py`) s'applique à chaque réponse.
 
 Déjà cloné ? `git pull` puis `uv sync` suffisent. Si une erreur parle de `data/raw/` ou d'un fichier
 `.parquet` absent :
@@ -104,8 +100,11 @@ l'orange (en dessous de la moyenne nationale) au vert (au-dessus), en couleurs d
 s'ouvre dans une fenêtre par trois boutons : « Aide au scénario », « Aide à la lecture » et l'icône en bas à droite de
 la carte. Les deux panneaux latéraux se replient en une barre bleue (un clic la déplie), et la carte s'ouvre centrée sur la France.
 L'assistant et le compilateur comprennent la vaccination en officine (L23) : effectif inchangé dans le modèle,
-indice de couverture des pharmaciens (base 2026) lu sur `/api/couverture` ; jamais de couverture pour la médecine
-générale ([rapport](v2/docs/lab/reports/2026-11-15-besoin-assistant.md)).
+indice de couverture des pharmaciens (base 2026) lu sur `/api/couverture` ; seule la part de vaccinations au-delà de
+celle déjà faite en officine en 2026 agit (correctif P1-4 : effet 2050 de −0,03 % au lieu de −0,7 %). Pas de
+couverture pour la médecine générale sur la carte ; dans l'assistant, l'option « effectivité » (décision O3) dit si le
+transfert soulage les généralistes sans trop peser sur les pharmaciens, avec une offre de généralistes supposée constante
+([rapport](v2/docs/lab/reports/2026-11-15-besoin-assistant.md)).
 
 - **Carte des départements et des régions**, au choix : variation de l'effectif 2026 → 2050, écart au tendanciel,
   ou **densité 2050 pour 100 000 habitants** (Insee Omphale 2022). Sous la légende, « Comment lire cet indicateur ? » déplie sa
@@ -184,7 +183,7 @@ L'ancienne carte à panneaux flottants a été remplacée le 2026-11-14. Elle re
 | 4. Données | Public / privé, registre de 30 événements datés, zonage par commune, grain communal | ✅ |
 | 5. Sensibilité | Morris puis Sobol : quels paramètres déplacent l'effectif en 2050 ? | ✅ en 2050, la décision pèse plus que l'incertitude pour IDE, MK, SF |
 | Carte | Leviers, phrase, densité, mode expert, export | ✅ démontrable |
-| Besoin → carte | Vue « Couverture » (indice C, référence 2026 = 1, fourchette M1/M2a/M3), levier L23 « vaccination en officine » de bout en bout ; M4 en attente (P-B4) | ✅ 6 critères sur 6 ; `/api/couverture` 28,8 ms au 95ᵉ centile (n = 60) |
+| Besoin → carte | Vue « Couverture » (indice C, référence 2026 = 1, fourchette M1/M2a/M3), levier L23 « vaccination en officine » de bout en bout ; M4 non servi (P-B4 échoue, OSRM compris) | ✅ 6 critères sur 6 ; `/api/couverture` 28,8 ms au 95ᵉ centile (n = 60) |
 | Transferts hypothétiques | L'assistant simule « X prennent p % de <acte> de Y » (forme de L23, `tr_*` sur `/api/couverture`), balayé sur a (mode IA et sans IA), étiqueté « hypothèse de l'utilisateur », bandeau dans la carte ; niveau MG et spécialistes mesuré (ameli 2025) ; O2 refuse la MG et les spécialistes en cible seulement | ✅ 7 critères sur 7 ([rapport](v2/docs/lab/reports/2026-11-15-transfert-hypothetique.md)) |
 | Phase 2 | Cardiologie, dermatologie, ophtalmologie | amélioration possible (plus au plan depuis le 2026-11-15) |
 
@@ -242,7 +241,7 @@ v2/
   data/                axe 4 : scripts de construction, processed/ (commité), manifest.py
   langage/             compilateur phrase -> leviers, glossaire, jeux de test à l'aveugle
   agent/               premier agent (gelé) : garde-fous (ancrage, lexique), jeu de 22 questions
-  prototype/           serveur des leviers et du jumeau (bibliothèque de la carte, port 8766)
+  prototype/           serveur des leviers et du jumeau (bibliothèque de la carte)
   prototype-carte/     carte de décision (port 8767)
   papers/              un article par axe et l'article de synthèse (LaTeX)
   docs/lab/            décisions, questions ouvertes, rapports, fiches, lexique ; archive-v1/
@@ -270,6 +269,7 @@ l'en-tête de chaque script) :
 PYTHONPATH=v2 uv run python -m sante.load          # DREES RPPS + Insee Omphale -> data/processed/
 uv run python v2/data/build_secteur.py             # séparation public / privé (≈ 30 s)
 uv run python v2/data/build_zonage.py              # zonage par commune
+uv run python v2/data/build_sise.py                # inscrits CD et PH par année d'études (SISE, ouvert)
 uv run python v2/data/manifest.py                  # réécrit les manifestes ; --check pour vérifier
 ```
 
@@ -312,15 +312,21 @@ et la question ouverte sur le seuil de diffusion.
 - **Pas de projection fiable sous le département.** Les modèles communaux testés (K3 à K5) n'ont pas
   passé la validation pré-enregistrée ; la carte affiche les projections au département.
 - **Module de besoin : indice de couverture, pas un niveau de besoin.** `v2/besoin/` rapporte l'offre du
-  jumeau à un besoin estimé, indexé à 2026. Six protocoles gelés sur sept sont passés (2026-11-15,
+  jumeau à un besoin estimé, indexé à 2026. Les sept protocoles gelés sont passés (2026-11-15,
   `v2/docs/lab/reports/2026-11-15-besoin-etape.md`) : la pondération par l'âge (M1) est retenue pour les cinq
   professions (dentistes de justesse) ; la saturation du recours (M2b) tombe, donc le besoin non satisfait n'est
   pas identifié ; la morbidité (M3) ne sert l'indice que pour les infirmiers ; le backtest 2016 → 2025 retient
   l'âge contre la persistance pour 3 professions sur 4. L'indice spatial M4 échoue à reproduire l'APL DREES en
-  repli vol d'oiseau (ρ 0,66 à 0,77 pour 0,90 exigé) : c'est un indice maison, jamais appelé « APL » ; le passage
-  OSRM est en attente. Pour les transferts de tâches, `k` et l'expansion `m` restent supposés. Aucun indice de
+  repli vol d'oiseau (ρ 0,66 à 0,77 pour 0,90 exigé), avec les temps routiers OSRM (ρ 0,71 à 0,76) et pour les
+  pharmacies contre l'APL V0 2013 (P-B4-PH, ρ 0,72) : c'est une mesure d'accessibilité maison, jamais appelée « APL ». Pour les transferts de tâches, `k` et l'expansion `m` restent supposés. Aucun indice de
   couverture n'est produit pour la médecine générale. Les passages lisent des tables data.ameli.fr (ODbL) hors
   dépôt, à reconstruire avec `uv run python v2/besoin/donnees/ameli.py`.
+- **Grandeur mesurée : la demande de ville, pas le besoin de la population.** Le recours vient d'Open DAMIR,
+  secteur privé, tous statuts d'exécutant (statut inconnu compris : 3 à 13 % des actes). C'est la demande adressée
+  au secteur privé de ville ; la part servie par l'hôpital public n'y est pas. L'offre privée du jumeau compte les
+  salariés du privé (64,5 % des infirmiers privés, dont 34 % en clinique), que ce recours ne voit pas : sans effet
+  sur l'indice tant que leur part reste constante, mais un niveau en ETP ne se compare jamais à l'effectif privé
+  total des infirmiers ou des pharmaciens (registre, « périmètre libéral de DAMIR »).
 - **Sensibilité de l'indice de couverture (axe 5 du besoin, 2026-11-15).** En 2050, l'effet de quotas × 1,2 sur
   C dépasse l'écart entre modèles de besoin pour les sages-femmes, dentistes et pharmaciens, pas pour les kinés
   (ratio 0,77) ni les infirmiers (0,34). Cet écart tient à M0 (sans effet de l'âge), réfuté par P-B1 : il est
@@ -340,8 +346,10 @@ et la question ouverte sur le seuil de diffusion.
 
 ## Feuille de route
 
-- Rejouer la recette par personas sur la carte finale.
-- Module de besoin : passage OSRM de P-B4, passage de P-B4-PH, branchement dans la carte.
+- Recette de l'application : les 6 P1 sont corrigés ; 3 P2 restent, dont le bouton « A+ » (texte agrandi) disparu, à
+  rétablir ou à retirer de la recette ([corrections](v2/docs/lab/reports/2026-11-15-uat-corrections.md)).
+- Module de besoin : mesurer `k` des transferts ; projeter la part libérale de l'offre privée ; trouver une source
+  ouverte de la demande servie par l'hôpital public.
 - Amélioration possible, hors plan : spécialités (cardiologie, dermatologie, ophtalmologie).
 - Noter les dépôts pré-enregistrés sur les effectifs 2027.
 

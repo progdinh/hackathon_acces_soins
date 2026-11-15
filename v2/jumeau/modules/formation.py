@@ -46,7 +46,7 @@ class Formation(Module):
               (0.0, 3.0), "former"),
         Param("duree", DUREE, "années, par profession", "v2/sante/levers_v1.LAG (v1)", "—", "supposé",
               "Durée des études du vivier relatif.", (1.0, 15.0)),
-        Param("vivier", "relatif", "relatif | reel", "DREES jeu 491 (IDE, MK, SF) ; DREES 990 (CD, PH)",
+        Param("vivier", "relatif", "relatif | reel", "DREES jeu 491 (IDE, MK, SF) ; MESR SISE (CD, PH)",
               "2008-2025", "mesuré",
               "reel : vivier initial = inscrits observés (jumeau.vivier.pool_ecoles, pool_drees) ; relatif : vivier "
               "stationnaire. Sans effet sur N tant que lien_formation est en mode « levier »."),
@@ -61,7 +61,7 @@ class Formation(Module):
             profs = sorted(state.cells.profession.unique())
             ab = dict(zip(profs, par_profession(ctx.param(self, "abandon"), profs)))
             parts = [pool_ecoles(state.year, profs, ab)]
-            drees = pool_drees(min(state.year, 2025))
+            drees = pool_drees(state.year)
             parts.append(drees[drees.index.get_level_values(0).isin(profs)])
             covered = set(pd.concat(parts).index.get_level_values(0))
             rest = [p for p in profs if p not in covered]
@@ -147,17 +147,22 @@ class LienFormation(Module):
 
 
 def pool_drees(year: int | None = None) -> pd.Series:
-    """Vivier observé : inscrits DREES (990_drees_mmop2, 2020–2025) aux années d'étude utilisées par
-    sante.pipeline.SPEC (CD, PH ; années 2 à 6). Les autres professions n'ont pas de série ici (axe 4)."""
+    """Vivier observé : inscrits en odontologie et en pharmacie (SISE, données ouvertes, rentrées 2017–2024 ;
+    année 6 dérivée de l'année 5 de la rentrée précédente, voir sante.pipeline) aux années d'étude de
+    sante.pipeline.SPEC (CD, PH ; années 2 à 6). Une année postérieure à la dernière rentrée complète prend la
+    dernière rentrée complète. Les autres professions n'ont pas de série ici (axe 4). Le nom est gardé pour les
+    appelants ; la source DREES 990 (accord de confidentialité) n'est plus lue depuis le 2026-11-15."""
     from sante.pipeline import SPEC, enrolments
     e = enrolments()
-    year = int(e.year.max()) if year is None else year
+    complet = e.groupby("year").k.nunique()
+    dernier = int(complet[complet == complet.max()].index.max())    # dernière rentrée avec les années 2 à 6
+    year = dernier if year is None else min(int(year), dernier)
     rows = {}
     for prof, (dip, ks, last) in SPEC.items():
         if prof == "specialistes":                        # phase 2 ; DES année 4 seule, pas un vivier complet
             continue
         x = e[(e.type_de_diplome == dip) & (e.year == year) & e.k.isin(ks)]
         rows.update({(prof, int(k)): float(n) for k, n in zip(x.k, x.n)})
-    if not rows:                                         # année hors de la série 990 (2020-2025)
+    if not rows:                                         # année antérieure à la série SISE (2017)
         return pd.Series([], index=pd.MultiIndex.from_tuples([], names=["profession", "k"]), dtype=float)
     return pd.Series(rows).rename_axis(["profession", "k"])

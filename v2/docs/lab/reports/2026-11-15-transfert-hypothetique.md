@@ -96,3 +96,20 @@ Pour a = 10 %, le temps transféré correspond à environ 630 médecins à temps
 ⚑ Mode IA : la réponse L23 garde deux écarts antérieurs (« ETP libérés », « la demande diminue »), inscrits au
 ledger. Le dessin de la carte n'a pas été vu dans le navigateur, faute de rendu dans le panneau masqué ; les états
 (bandeau, vue, écart) ont été vérifiés par script.
+
+## Recontrôle après la correction L23 (P1-4, `b35a380`)
+- **Sans IA, bout en bout par la carte.** Exemple : −0,08 / −0,17 / −0,34 %, environ 574 médecins à temps plein ;
+  les valeurs sont inchangées, le niveau MG étant déjà le niveau mesuré. « Couverture des généralistes » : refus O2.
+  Mode « demande » : 2,5 / 5 / 10 %. L23 : 101 666 vaccinations en moins en 2035, environ 23 à temps plein.
+- **Mode IA, question d'exemple posée 4 fois.**
+  - Appel juste 4/4 : `s_inf` = 0,1 et `a` balayé.
+  - Réponse finale avec les trois points 3/4, dont 2 après la correction automatique. 1/4 a été bloquée par la
+    vérification (« moyen terme », qualificatif sans source) : le garde-fou a joué, la réponse n'est pas fausse
+    mais vide.
+- **L23 en mode IA.** Nouveaux chiffres (écart ≈ 0,0 %), et la réponse explique que seule la part au-delà de 2026
+  (≈ 0,70) agit.
+- **Écart de vocabulaire restant en mode IA.** « équivalents temps plein » ou « ETP » apparaissent encore dans
+  certaines réponses (ledger).
+- **Erreur de vérification corrigée.** Un premier passage avait été servi par la passerelle et le chatbot d'une autre
+  session (ports 8796 et 8797, worktree `c1-gbm`) : il a été écarté et refait sur des ports propres.
+

@@ -1,25 +1,29 @@
 """Training pipeline -> national cohort index of yearly entries, per profession.
 
-Source: team-provided DREES enrolment files (data/raw/990_drees_mmop2_f.xlsx sheet Feuil1, 2020-2024;
-data/raw/990_drees_mmop2_2526.xlsx, 2025). Students counted by diploma x year of study x academic year.
+Source (since 2026-11-15): MESR SISE open data, enrolments in odontology and pharmacy by year of study and
+academic year (v2/data/processed/sise_sante.parquet, built by v2/data/build_sise.py, Licence Ouverte v2.0,
+rentrées 2017-2024). It replaces the team-provided DREES file 990_drees_mmop2 (non-disclosure agreement), which
+SISE reproduces exactly for years of study 2-5 (2020-2024, max gap 0 for dentists; one PH year-2 value differs
+by 163). SISE's « BAC + 6 et plus » mixes year 6 with internship and theses, so year 6 is derived as year 5 of
+the previous academic year (observed ratio in the 990 file: 0.86-1.07, median about 1.0).
 A cohort in year of study k in academic year y is expected to start working in y + (last_k + 1 - k).
-Each year-of-study series is divided by its own mean (removes attrition and DES-length level differences),
+Each year-of-study series is divided by its own mean (removes attrition differences),
 then the index for an entry year is the mean of the relative estimates available for it.
 
 Clean cohorts only:
-  specialistes : DES MEDECINE year 4 only (years 1-3 hold general practice; years 5-6 grow with the
-                 2017 DES-length reform, not with cohort size)
   dentistes    : DE DOCTEUR EN CHIRURGIE DENTAIRE years 2-6
   pharmaciens  : DE DOCTEUR EN PHARMACIE years 2-6
+  specialistes : no open series by DES year (the 990 file gave DES MEDECINE year 4): index = None (phase 2)
 Other professions have no pipeline data here: index = None.
 """
 from functools import lru_cache
 
 import pandas as pd
 
-RAW = "data/raw"
+from pathlib import Path
+
+SISE = Path(__file__).resolve().parents[1] / "data" / "processed" / "sise_sante.parquet"
 SPEC = {  # profession -> (diploma, years of study used, last year of study)
-    "specialistes": ("DES MEDECINE", [4], 5),          # year 4 only: DES lengths changed after 2017
     "dentistes": ("DE DOCTEUR EN CHIRURGIE DENTAIRE", [2, 3, 4, 5, 6], 6),
     "pharmaciens": ("DE DOCTEUR EN PHARMACIE", [2, 3, 4, 5, 6], 6),
 }
@@ -27,14 +31,14 @@ SPEC = {  # profession -> (diploma, years of study used, last year of study)
 
 @lru_cache
 def enrolments() -> pd.DataFrame:
-    a = pd.read_excel(f"{RAW}/990_drees_mmop2_f.xlsx", sheet_name="Feuil1", engine="calamine")
-    b = pd.read_excel(f"{RAW}/990_drees_mmop2_2526.xlsx", sheet_name=0, engine="calamine")
-    b = b[b.ANNEE.astype(str) != "Inscriptions"]
-    df = pd.concat([a, b])[["ANNEE", "type_de_diplome", "année_dans_le_diplôme", "Inscriptions"]]
-    df = df.assign(year=pd.to_numeric(df.ANNEE, errors="coerce"),
-                   k=pd.to_numeric(df["année_dans_le_diplôme"], errors="coerce"),
-                   n=pd.to_numeric(df.Inscriptions, errors="coerce"))      # "-" (suppressed) -> NaN
-    return df.dropna(subset=["year", "k"]).groupby(["type_de_diplome", "k", "year"]).n.sum().reset_index()
+    """type_de_diplome, k, year, n : open SISE counts, year 6 derived as year 5 of the previous academic year."""
+    s = pd.read_parquet(SISE)
+    s = s[s.k.between(2, 5)]
+    k6 = s[s.k == 5].assign(k=6, year=lambda x: x.year + 1)
+    s = pd.concat([s, k6])
+    dip = {p: d for p, (d, _, _) in SPEC.items()}
+    return (s.assign(type_de_diplome=s.profession.map(dip))[["type_de_diplome", "k", "year", "n"]]
+            .astype({"k": float, "year": float}).reset_index(drop=True))
 
 
 @lru_cache

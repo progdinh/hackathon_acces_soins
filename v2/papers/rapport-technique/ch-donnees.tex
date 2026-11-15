@@ -191,7 +191,7 @@ Centres de santé (124) & \num{0.798}\mesure & \num{3395}\mesure \\
 PMI et planification (223, 228) & \num{0.070}\mesure & \num{1435}\mesure \\
 EHPAD (500) & \num{0.558}\mesure & \num{7399}\mesure \\
 Handicap médicalisé & \num{0.866}\mesure & \num{6008}\mesure \\
-Médico-social, agrégat appliqué aux MK & \num{0.696}\mesure & \num{13407}\mesure \\
+Médico-social, agrégat appliqué au secteur « Établissement sanitaire et social » des MK, des SF et des CD & \num{0.696}\mesure & \num{13407}\mesure \\
 \bottomrule
 \end{tabular}
 \end{table}
@@ -211,7 +211,7 @@ départemental, donc un employeur public.
 les libéraux du SNDS sont privés \citep{d-dreesbts2026} : il n'y a pas d'ambiguïté. Mais le BTS ne donne ni
 âge ni sexe par secteur. La ventilation suppose $H_{\mathrm{ind}}$ : dans un département, le secteur est
 indépendant de l'âge et du sexe. Le test sur le sexe, au seuil de 3\suppose{} points fixé avant calcul, donne
-un écart médian de \num{2.1}\mesure{} points : l'hypothèse n'est pas rejetée (\donfic{infirmiers_test_hind.csv}).
+un écart signé médian de \num{2.1}\mesure{} points et un écart absolu médian de \num{2.45}\mesure{} points, sous le seuil de 3 : l'hypothèse n'est pas rejetée (\donfic{infirmiers_test_hind.csv}, 104\mesure{} départements).
 Elle n'est pas testée sur l'âge.
 
 \paragraph{Fourchettes.} Le tableau~\ref{don:tab-fourchettes} donne la version en vigueur.
@@ -334,8 +334,10 @@ SF  & 0\mesure & \num{1.5}\mesure & \num{2.5}\mesure & 78\mesure & 69,8~\%\mesur
   5 à 7~\%\mesure{} par an dans la classe 5--29, 1,5 à 3~\%\mesure{} dans la classe 100 et plus. Les flux pèsent
   5 à 10~\%\derive{} du stock par an, soit moins d'une installation par an dans la plupart des communes de 5 à
   29 professionnels\derive{} (\donfic{grain_bruit.csv}).
-  \item \textbf{Diffusion} : 52,5~\%\mesure{} des cellules commune $\times$ âge de
-  \donfic{commune_stock.parquet} valent une personne (\donfic{2026-11-15-audit-rgpd-aipd-dm.md}). Le seuil de
+  \item \textbf{Diffusion} : 52,5~\%\mesure{} des cellules non nulles IDE, MK et CD $\times$ commune $\times$ âge
+  $\times$ année (2004--2025) de \donfic{commune_stock.parquet} valent une personne
+  (\donfic{2026-11-15-audit-rgpd-aipd-dm.md}) ; en 2025 seule, 49,2~\%\mesure{} des \num{67914}\mesure{}
+  cellules non nulles. Le seuil de
   diffusion des tables communales publiées est une question ouverte.
 \end{itemize}
 
@@ -382,7 +384,7 @@ commune reste un grain d'observation et de répartition.
   \item \textbf{Officines FINESS contre Ordre} : \num{20324}\mesure{} fin 2024 contre \num{20242}\mesure{} au
   1/1/2025 ($+0{,}4$~\%\derive) \citep{d-ordre2025demo}.
   \item \textbf{Hospitaliers, SAE contre RPPS} : SF 19,8 contre 17,4~\%\mesure{} ; MK 44,3 contre
-  44,4~\%\mesure{} ; CD 2,2 contre 3,4~\%\mesure{} \citep{d-sae708}. Concordance à 2\derive{} points pour SF et
+  44,4~\%\mesure{} ; CD 2,2 contre 4,3~\%\mesure{} (24 privés sur 557 salariés hospitaliers au RPPS 2025, recompté le 15/11 ; le 3,4~\% de la fiche \texttt{param-part-privee-salaries-sae} ne se reproduit pas) \citep{d-sae708}. Concordance à 2\derive{} points pour SF et
   MK ; les PH divergent (section~\ref{don:secteur}).
   \item \textbf{Zonage dentaire} : 97\mesure{} géocodes « non prioritaires » et 4,8~\%\mesure{} de la population
   (\num{3309773} sur \num{68392618}\mesure) ; l'ARS PACA cite 5~\%\mesure{} \citep{d-arspaca2025cd}, le mémoire
@@ -398,7 +400,7 @@ commune reste un grain d'observation et de répartition.
 
 \paragraph{Dentistes : « \num{76000} contre \num{62000} ».} Deux chiffres circulaient dans l'équipe
 (\donfic{R/dentistes}). \num{76397}\mesure{} est la valeur 2050 de la projection de référence (API
-\donfic{/api/scenario}, \texttt{base[2050]}), pas le socle. Le socle privé 2026 vaut \num{47347.5}\mesure{},
+\donfic{/api/scenario}, \texttt{base[2050]}), pas le socle. Le socle privé 2026 vaut \num{47347.5}\mesure{} hors code département 999 (aucune ligne en code 20) ; la centrale de \donfic{secteur_stock.parquet}, tous codes, vaut \num{47349.5}\mesure{},
 sous les \num{48690}\mesure{} tous modes (libéral \num{36259}, mixte \num{3824}, autre salarié \num{8060},
 salarié hospitalier \num{547}\mesure). Aucun double compte : 0\mesure{} clé dupliquée sur \num{13909}\mesure{}
 lignes 2026, et une série régulière de \num{40488}\mesure{} (2012) à \num{48690}\mesure{} (2026). Aucune

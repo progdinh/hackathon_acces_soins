@@ -1,0 +1,5 @@
+profession,predicteur,r,erreur_abs_moy_pts_part,regions
+dentistes,etudiants,0.636,3.22,12
+dentistes,stock,0.996,0.39,12
+pharmaciens,etudiants,0.937,1.16,12
+pharmaciens,stock,0.996,0.27,12

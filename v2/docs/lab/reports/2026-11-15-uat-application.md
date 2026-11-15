@@ -11,6 +11,18 @@ sources: ["carte v2/prototype-carte (commit 6a49486)", "assistant chatbot/ en mo
 tags: [uat, carte, assistant, besoin, personas]
 ---
 
+> **Erratum 2026-11-15 (P1-4, double compte de L23).** Les effets de L23 cités plus bas sont **dépassés**. Ils
+> rejouaient à partir de 2026 la montée en charge mesurée depuis 2019, alors que la part officinale atteignait déjà
+> 0,687. Seule la part au-delà de celle atteinte en 2026 agit désormais (commit b35a380, décision au registre).
+> Nouveaux chiffres, mesurés sur b35a380 :
+> - pharmaciens, France 2050 : −0,03 % (C 1,0126 → 1,0123), au lieu de −0,7 % (1,0056) ;
+> - Puy-de-Dôme 2035 : 0,9892 → 0,9889 (−0,03 %) ;
+> - vaccinations en moins pour les généralistes : 104 110 en 2050 (101 666 en 2035), au lieu d'environ 1,9 M ;
+> - soit environ 24 généralistes à temps plein (23 en 2035), au lieu d'environ 495.
+>
+> Rapport de référence : [L23, marge au-delà de la part atteinte](2026-11-15-l23-p1-4-marge.md). Les anciens chiffres
+> restent ci-dessous, tels que mesurés à l'époque.
+
 # UAT de l'application : carte, assistant, module de besoin
 
 > **Headline :** aucun P0, 6 P1 et 17 P2. Scores (réussite = 1, partielle = 0,5) : ARS/DG 4/6, Administration 4,5/5,

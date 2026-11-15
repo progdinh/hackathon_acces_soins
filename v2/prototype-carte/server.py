@@ -611,9 +611,69 @@ def _lexique(texte: str) -> dict:
     return _LX.lexique(texte)
 
 
+def _lancer_assistant(port: int) -> None:
+    """Démarre la passerelle et le chatbot de chatbot/ comme processus enfants, sur des ports internes (127.0.0.1).
+
+    Un seul port pour l'utilisateur·rice (celui de la carte) : la carte relaie déjà /api/agent vers le chatbot. Les trois
+    processus restent séparés (garantie 1 de chatbot/README.md : le chatbot n'importe pas le modèle, la passerelle seule
+    le charge). La clé d'API est lue dans .env et passée au seul chatbot. CARTE_SANS_ASSISTANT=1 désactive ce lancement ;
+    un chatbot qui répond déjà sur CHATBOT_URL est réutilisé."""
+    import atexit
+    import signal
+    import subprocess
+    import threading
+    from urllib.error import URLError
+    from urllib.request import urlopen
+    if os.environ.get("CARTE_SANS_ASSISTANT") == "1" or _chatbot("GET", "/api/etat")[0] == 200:
+        return
+    racine, chat = HERE.parents[1], HERE.parents[1] / "chatbot"
+    p_pass = os.environ.get("PASSERELLE_PORT", "8770")
+    env = {**os.environ, "PYTHONDONTWRITEBYTECODE": "1"}
+    env_pass = {**env, "JUMEAU_REPO": str(racine)}
+    env_chat = {**env, "PASSERELLE_URL": f"http://127.0.0.1:{p_pass}", "CARTE_URL": f"http://127.0.0.1:{port}",
+                "CHAT_MODEL": env.get("CHAT_MODEL", "claude-haiku-5-5"), "CHAT_FALLBACKS": env.get("CHAT_FALLBACKS", "0")}
+    f = racine / ".env"
+    if f.exists():                          # KEY=VALEUR par ligne ; la clé ne passe qu'au chatbot
+        for ligne in f.read_text(encoding="utf-8").splitlines():
+            k, sep, v = ligne.strip().removeprefix("export ").partition("=")
+            if sep and k and not k.startswith("#"):
+                env_chat.setdefault(k.strip(), v.strip().strip("'\""))
+    for e in (env_pass, env_chat):
+        e.pop("VIRTUAL_ENV", None)          # uv prend l'environnement de chatbot/, pas celui de la racine
+    uv = ["uv", "run", "--directory", str(chat), "python", "-m"]
+    enfants = [subprocess.Popen(uv + ["passerelle.server", p_pass], env=env_pass)]
+
+    def chatbot_quand_passerelle_prete():   # comme scripts/lancer.sh : le chatbot interroge la passerelle au démarrage
+        for _ in range(300):
+            try:
+                with urlopen(f"http://127.0.0.1:{p_pass}/v1/sante", timeout=2):
+                    break
+            except (URLError, OSError):
+                time.sleep(1)
+        enfants.append(subprocess.Popen(uv + ["chat.server", str(urlparse(CHATBOT).port or 8768)], env=env_chat))
+    threading.Thread(target=chatbot_quand_passerelle_prete, daemon=True).start()
+
+    def arreter(*_):
+        for e in enfants:
+            e.terminate()
+    atexit.register(arreter)
+    signal.signal(signal.SIGTERM, lambda *a: (arreter(), sys.exit(0)))
+    parent = os.getppid()
+
+    def veiller_parent():                   # « uv run » tué sans relayer le signal : on s'arrête avec lui, enfants compris
+        while os.getppid() == parent:
+            time.sleep(2)
+        arreter()
+        os._exit(0)
+    threading.Thread(target=veiller_parent, daemon=True).start()
+    print(f"assistant : passerelle 127.0.0.1:{p_pass} et chatbot {CHATBOT} lancés (internes, relayés par /api/agent)",
+          flush=True)
+
+
 if __name__ == "__main__":
     port = int(sys.argv[1]) if len(sys.argv) > 1 else 8767
     os.environ.setdefault("AGENT_CARTE_URL", f"http://127.0.0.1:{port}")   # l'agent interroge ce serveur-ci
+    _lancer_assistant(port)
     t0 = time.perf_counter()
     geo_bytes()
     regions_bytes()

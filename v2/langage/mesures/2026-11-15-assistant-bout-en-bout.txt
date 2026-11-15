@@ -1,3 +1,7 @@
+# ERRATUM 2026-11-15 (P1-4) : les effets de L23 ci-dessous sont dépassés (double compte ×19). Nouveaux chiffres :
+# pharmaciens France 2050 −0,03 % ; 104 110 vaccinations en moins pour les généralistes en 2050 ; ≈ 24 ETP.
+# Voir v2/docs/lab/reports/2026-11-15-l23-p1-4-marge.md. Mesure d'origine conservée telle quelle.
+
 Q: couverture des pharmaciens à Clermont-Ferrand en 2035 si les pharmaciens vaccinent
 **Ce que j'ai compris :** aucun levier : scénario tendanciel ; Pharmaciens ; Puy-de-Dôme
 

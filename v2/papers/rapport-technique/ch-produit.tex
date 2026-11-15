@@ -45,7 +45,8 @@ HTML, CSS et JavaScript sans build ni framework, fond MapLibre, habillage DSFR~1
 La carte n'affiche que le département et la région : les modèles communaux K3 à K5 n'ont pas été confirmés (N10 à N12 ; \texttt{v2/\allowbreak{}docs/\allowbreak{}lab/\allowbreak{}decisions.md}).
 Le curseur d'année va de 2026 à 2050 par pas d'un an.
 \texttt{/\allowbreak{}api/\allowbreak{}carte} renvoie les 25\derive{} années en un appel, en 106\mesure{}~ms pour les kinés et 98\mesure{}~ms pour les infirmiers, réponse de 78\mesure{}~ko (\texttt{v2/\allowbreak{}docs/\allowbreak{}lab/\allowbreak{}reports/\allowbreak{}2026-\allowbreak{}11-\allowbreak{}14-\allowbreak{}curseur-\allowbreak{}annee.md}).
-Le jumeau recalcule un scénario départemental en 15\mesure{}~ms et 5\mesure{} professions à la commune en 1,1\mesure{}~s (\texttt{README.md}) ; le jury relève 1,31\mesure{}~s sur le critère C15 et, dans le même \texttt{check.txt}, 3,6\derive{}~s extrapolées (\texttt{2026-\allowbreak{}11-\allowbreak{}15-\allowbreak{}jury-\allowbreak{}grille.md}). L'écart est consigné en annexe~\ref{pro:inc-e}.
+Le jumeau recalcule un scénario départemental en 15 à 18\mesure{}~ms selon la source : 15 (\texttt{README.md}), 16 (run de \texttt{jumeau.check} du 2026-11-15 à 02:03, valeur retenue par le présent rapport), 18 (\texttt{v2/\allowbreak{}ROADMAP.md}).
+À la commune, une profession et deux secteurs prennent 1,1 à 1,31\mesure{}~s (\texttt{README.md} ; critère C15 relevé par le jury), et les 5 professions 2,1 à 3,6\derive{}~s extrapolées ($5\times$ la mesure à une profession, \texttt{v2/\allowbreak{}jumeau/\allowbreak{}check.py}) : 2,1 au run du 15 à 02:03, retenu ici ; 3,0 dans \texttt{open.md} ; 3,6 dans le \texttt{check.txt} relu par le jury (\texttt{2026-\allowbreak{}11-\allowbreak{}15-\allowbreak{}jury-\allowbreak{}grille.md}). L'écart est consigné en annexe~\ref{pro:inc-e}.
 La cible du profil (\texttt{docs/\allowbreak{}lab/\allowbreak{}profile.md}) est un recalcul sous 2\suppose{}~s : elle est tenue au département.
 
 % ---------------------------------------------------------------------------
@@ -64,12 +65,12 @@ Parmi les 9\mesure{} leviers de politique au sens strict, un seul est sourcé (\
 \bottomrule\endfoot
 \texttt{quotas} & multiplie les entrées après la durée des études ; décalage de 3 à 6\suppose{} ans selon la profession & loi OTSS~\citep{e-loiotss2019}, arrêtés d'objectifs ; plage DD76 $\times[0{,}8\,;1{,}2]$\suppose{}~\citep{e-dd76} & supposé & 0,7--1,5\mesure{} \\
 \texttt{quotas\_\allowbreak{}region} & même paramètre, limité à une région & idem & supposé & bascule \\
-\texttt{etrangers} & multiplie le flux de diplômés à l'étranger (CD 1\,300\suppose{}/an, MK 2\,200\suppose{}/an) & fiche \texttt{param-\allowbreak{}age-\allowbreak{}entree-\allowbreak{}exercice} & supposé & 0--2\mesure{} \\
+\texttt{etrangers} & multiplie le flux de diplômés à l'étranger (CD 1\,300\derive{}/an, MK 2\,200\derive{}/an) & fiche \texttt{param-\allowbreak{}diplomes-\allowbreak{}etrangers-\allowbreak{}flux} (Ordre CD 2022, CNOMK 2024 ; variante basse DD76, tab.~13~\citep{e-dd76}) & supposé & 0--2\mesure{} \\
 \texttt{regul} & en zone \enquote{remplacement d'un départ seulement}, entrées $\leq$ sorties ; l'excédent est déplacé, jamais créé ni perdu & avenants conventionnels SF, CD, MK, IDE ; zonage CartoSanté~\citep{e-cartosante2026} & \textbf{sourcé} (zones) ; effet non validé & bascule \\
 \texttt{part\_\allowbreak{}zones} & garde les $\mathrm{round}(\text{part}\times n)$ premières zones & \enquote{levier de scénario} & supposé & 0--1\mesure{} \\
 \texttt{dest} & destination des entrants bloqués (voisine, salariat, sortie) & IRDES QES~270~\citep{e-irdes270}, Cour des comptes~\citep{e-ccomptes2024} (qualitatif) & non mesurable (affiché \enquote{supposé}) & 3\mesure{} choix \\
 \texttt{retraite} & séjour en 65+ allongé de $\Delta$ ans, montée de 3\mesure{} mois par an & loi 2023-270, LFSS 2026 & supposé & 0--3\mesure{} ans \\
-\texttt{cumul} & sorties 65+ $\times\,(1-\text{part}\cdot(k-1))$ & parts COR~\citep{e-cor2016} ; effet supposé & supposé ; effet négligeable ($\mu^\ast\leq 0{,}25$\mesure{}\,\%, $S_T<0{,}01$\mesure{}) & 0,5--2\mesure{} \\
+\texttt{cumul} & sorties 65+ $\times\,(1-\text{part}\cdot(k-1))$ & parts COR~\citep{e-cor2016} ; effet supposé & supposé ; effet négligeable selon l'analyse de sensibilité de l'axe~5 (au plus 0,25\mesure{}\,\% de $N(2050)$, moins de 1\mesure{}\,\% de la variance) & 0,5--2\mesure{} \\
 \texttt{precoces} & taux de sortie avant 60 ans $\times\,m$ & aucune source ne chiffre l'effet & supposé & 0,5--1,5\mesure{} \\
 \texttt{pop\_\allowbreak{}scen} & population Omphale 2022, 3\mesure{} scénarios ; ne touche que la densité & Insee Omphale 2022 & \textbf{sourcé} & 3\mesure{} choix \\
 \texttt{activite} & activité par professionnel ; ne touche que la densité & aucune série ouverte vérifiée & supposé & 0,8--1,1\mesure{} \\
@@ -95,7 +96,7 @@ Les 11\mesure{} réglages sont branchés (API, carte, fiche, export) ; leur méc
 
 \paragraph{Hors modèle.}
 Les transferts de tâches (vaccination en officine L23, IPA L25, accès direct au kiné L27), les aides à l'installation, les maisons de santé et les revalorisations sont signalés \enquote{pas dans le modèle}.
-La table \texttt{chatbot/\allowbreak{}passerelle/\allowbreak{}correspondances.yaml} traduit 12\mesure{} politiques hors modèle vers des leviers de même mécanisme, au statut supposé ; 8\mesure{} autres n'ont aucune traduction.
+La table \texttt{chatbot/\allowbreak{}passerelle/\allowbreak{}correspondances.yaml} recense 12\mesure{} politiques hors modèle : 4\mesure{} sont traduites partiellement vers des leviers de même mécanisme, au statut supposé ; les 8\mesure{} autres n'ont aucune traduction.
 
 % ---------------------------------------------------------------------------
 \subsection{Compilateur déterministe de phrases}\label{pro:compilateur}
@@ -154,7 +155,7 @@ Ce moteur n'a jamais été mesuré seul : il n'existe pas de \texttt{v2/\allowbr
 \paragraph{Moteur branché (\texttt{chatbot/\allowbreak{}}, jumeau-chat).}
 Architecture en deux processus (§\ref{pro:archi}) : le chat appelle la passerelle en HTTP et n'importe jamais le jumeau.
 Le modèle servi est \texttt{claude-\allowbreak{}haiku-\allowbreak{}5-\allowbreak{}5} (choix de l'utilisateur·rice, \texttt{chatbot/\allowbreak{}DECISIONS.md}), sans repli (\texttt{CHAT\_\allowbreak{}FALLBACKS=0}). Sans clé d'API, le mode déterministe à glossaire prend le relais.
-Le sous-module \texttt{vendor/\allowbreak{}} est épinglé sur \texttt{426422c} ; la carte fait tourner la passerelle sur le dépôt courant (\texttt{JUMEAU\_\allowbreak{}REPO=..}). \texttt{scripts/\allowbreak{}lancer.sh} passe le sous-module en lecture seule ; ce verrou n'a pas été vérifié en développement.
+Dans ce dépôt, \texttt{chatbot/\allowbreak{}vendor/\allowbreak{}hackathon\_\allowbreak{}acces\_\allowbreak{}soins/\allowbreak{}} n'est pas un sous-module (pas de \texttt{.gitmodules}) : c'est une copie commitée, de 687\mesure{} fichiers suivis dont 34\mesure{} tables traitées (\texttt{git ls-files}), hors du manifeste et hors du contrôle de l'audit (§\ref{conf:inventaire}). La documentation du chatbot (\texttt{chatbot/\allowbreak{}DECISIONS.md}, \texttt{chatbot/\allowbreak{}README.md}) la décrit comme un sous-module épinglé sur \texttt{426422c}, ce qu'elle est dans le dépôt séparé du chatbot. La carte fait tourner la passerelle sur le dépôt courant (\texttt{JUMEAU\_\allowbreak{}REPO=..}). \texttt{scripts/\allowbreak{}lancer.sh} passe cette copie en lecture seule ; ce verrou n'a pas été vérifié en développement.
 
 \paragraph{Outils.}
 Les 12\mesure{} requêtes de la passerelle : \texttt{perimetre}, \texttt{projeter}, \texttt{comparer}, \texttt{balayer}, \texttt{classer}, \texttt{atteindre}, \texttt{traduire\_\allowbreak{}politique}, \texttt{planifier}, \texttt{effets\_\allowbreak{}des\_\allowbreak{}leviers}, \texttt{decrire\_\allowbreak{}leviers}, \texttt{incertitude}, \texttt{interpreter\_\allowbreak{}phrase} (\texttt{schemas.py} ; le \texttt{chatbot/\allowbreak{}README.md} en annonce 8\mesure{}).
@@ -197,7 +198,7 @@ Les deux réponses passent la vérification : aucun nombre n'est faux.
 Mais elles affirment un effet nul, alors que cet effet n'est pas estimé : le mécanisme n'est pas dans le modèle.
 \enquote{Le modèle ne le représente pas} est exact ; \enquote{cela ne change pas l'effectif} est une affirmation sur le monde, que rien dans le dépôt ne mesure.
 La vérification d'ancrage ne voit pas ce défaut, car il ne porte sur aucun nombre.
-\textbf{Défaut connu, à corriger} : le prompt et le périmètre doivent imposer la forme \enquote{effet non estimé (pas dans le modèle)}, et un contrôle doit refuser une absence d'effet qui n'est pas calculée par la passerelle. La correction n'est pas faite au commit \texttt{13333f2}.
+\textbf{Défaut connu.} Le présent rapport propose une correction, que l'équipe n'a pas décidée : le prompt et le périmètre imposeraient la forme \enquote{effet non estimé (pas dans le modèle)}, et un contrôle refuserait une absence d'effet qui n'est pas calculée par la passerelle (environ 30\suppose{}~min de temps Claude ; tableau~\ref{ouv:tab}). Rien n'est fait au commit \texttt{13333f2}.
 
 % ---------------------------------------------------------------------------
 \subsection{Question ouverte : LLM ou déterministe}\label{pro:llm-det}
@@ -211,7 +212,7 @@ Source : entrée \enquote{Interprétation conversationnelle : agent LLM ou répo
 \item[État.] \enquote{Un seul moteur} est fait (\texttt{chatbot/\allowbreak{}} branché, \texttt{v2/\allowbreak{}agent} gelé). \enquote{LLM par défaut} a été décidé \emph{sans} la mesure, par la décision \enquote{L'agent conversationnel devient l'interface principale}. \textbf{La comparaison d'utilité n'a jamais été faite} : la question est ouverte (tableau~\ref{ouv:tab}).
 \end{description}
 La grille de contrôle du chatbot en mode glossaire (\texttt{-\allowbreak{}-\allowbreak{}deterministe}) reproduit 21/30\mesure{} sur le jeu 6, soit le score du compilateur : c'est une mesure du seul mode déterministe, pas de la comparaison.
-Restent aussi ouverts le recours à Mistral (hérité de la v1, \texttt{chatbot/\allowbreak{}DECISIONS.md}) et le transfert du texte libre vers un fournisseur américain (§\ref{conf:rgpd}).
+Reste aussi ouvert le choix du fournisseur du modèle de langage pour un portage ministériel (Anthropic aux États-Unis, Mistral, hébergement dans l'UE ou qualifié SecNumCloud), lié au transfert du texte libre hors UE (§\ref{conf:rgpd} ; Mistral était évoqué dès la v1, \texttt{chatbot/\allowbreak{}DECISIONS.md}).
 
 % ---------------------------------------------------------------------------
 \subsection{Recettes utilisateur et grille du jury}\label{pro:recettes}
@@ -252,7 +253,7 @@ Pitch & 15 & 6,5\suppose{} & 5,5--7,5\suppose{} & 9,75\derive{} \\ \midrule
 \end{tabular}
 \end{table}
 
-Les défauts principaux selon le jury : l'exemple phare du sujet (vaccination en officine) ne change aucun chiffre ; la reproduction de DD76 échoue à 2050 (dentistes $-14{,}07$\mesure{}\,\%, pharmaciens $-15{,}02$\mesure{}\,\%, sages-femmes $-17{,}39$\mesure{}\,\% ; ER1319 $-25{,}2$\mesure{}\,\%)~\citep{e-dd76,e-er1319}, sans que le \texttt{README.md} le dise ; la bande à 80\,\% ne couvre que 73,5\mesure{}\,\% ; rien n'était écrit sur la réglementation et il n'y a pas de licence ; le DSFR est utilisé hors d'un site de l'État ; le deck contredit le \texttt{README.md}.
+Les défauts principaux selon le jury : l'exemple phare du sujet (vaccination en officine) ne change aucun chiffre ; la reproduction de DD76 échoue à 2050 (dentistes $-14{,}07$\mesure{}\,\%, pharmaciens $-15{,}02$\mesure{}\,\%, sages-femmes $-17{,}39$\mesure{}\,\% ; ER1319 $-25{,}2$\mesure{}\,\%)~\citep{e-dd76,e-er1319}, sans que le \texttt{README.md} le dise ; la bande à 80\,\% ne couvre que 73,5\mesure{}\,\% ; rien n'était écrit sur la réglementation et il n'y a pas de licence ; le DSFR est utilisé hors d'un site de l'État (grief levé depuis : le projet est porté par le Ministère chargé de la santé, §\ref{conf:licences}) ; le deck contredit le \texttt{README.md}.
 Les questions dures n\textsuperscript{os} 7 (leviers fiables), 8 (qui paie), 9 (qui maintient), 13 (secret statistique) et 15 (demande de soins) restent sans réponse.
 Le jury estime que ses corrections 1 à 9 rapporteraient environ $+12$\suppose{} points pour environ 3,9\suppose{}~h de temps Claude.
 

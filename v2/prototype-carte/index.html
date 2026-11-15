@@ -148,7 +148,7 @@ p{--text-spacing:0}   /* le DSFR espace chaque paragraphe : la page règle ses m
 #map{position:absolute;inset:0}
 /* légende réduite (demande du 2026-11-14) : bascule d'indicateur et gamme ; le titre reste pour les lecteurs d'écran */
 #legend{position:absolute;left:.8rem;bottom:.8rem;width:auto;min-width:min(22rem,calc(100% - 4.6rem));max-width:min(34rem,calc(100% - 4.6rem));background:var(--paper);box-shadow:0 2px 6px 0 rgba(0,0,18,.16);padding:.6rem .8rem .5rem;font-size:.87rem;z-index:2}
-#var{display:flex;gap:.3rem .4rem;margin-bottom:1.6rem;flex-wrap:wrap}   /* les trois indicateurs sur une ligne (demande du 2026-11-14) */
+#var{display:flex;gap:.3rem .4rem;margin-bottom:1.6rem;flex-wrap:wrap}   /* les trois indicateurs sur une ligne quand la place le permet (demande du 2026-11-14) ; à la ligne sinon, au lieu d'être rognés quand le panneau Scénario rétrécit la carte */
 #var .fr-tag{white-space:nowrap}
 #var .fr-tag{margin:0}
 #defbtn{margin-top:.35rem;display:inline-flex;align-items:center;gap:.3rem}
@@ -289,6 +289,7 @@ p{--text-spacing:0}   /* le DSFR espace chaque paragraphe : la page règle ses m
 #askwelcome .st{color:var(--mute);font-size:.9rem;margin:0}
 .cards{display:grid;gap:.45rem}
 .cards button{text-align:left;font:inherit;font-size:.92rem;line-height:1.35;border:0;box-shadow:inset 0 0 0 1px var(--border-default-grey),inset 0 -4px 0 var(--border-plain-blue-france);background:var(--paper);color:var(--text-title-grey);padding:.65rem .9rem .8rem;cursor:pointer}
+.cards .cas{display:block;font-size:.72rem;letter-spacing:.06em;text-transform:uppercase;color:var(--mute);margin-bottom:.2rem}
 .cards button:hover{background:var(--background-default-grey-hover)}
 .cards.mini{display:flex;flex-wrap:wrap}.cards.mini .fr-tag{margin:0}
 #asklog .u{align-self:flex-end;max-width:85%;background:var(--background-action-low-blue-france);color:var(--text-title-grey);padding:.5rem .8rem;white-space:pre-wrap}
@@ -598,6 +599,9 @@ function buildMap(){
   map.getCanvas().setAttribute("aria-label","Carte des départements, colorée selon l'indicateur choisi");   // MapLibre pose « Map » en anglais
   map.on("dragstart",()=>{userMoved=true;});map.on("zoomstart",e=>{if(e.originalEvent)userMoved=true;});
   map.on("load",()=>{
+    const fold=e=>{if(e.sourceId!=="d"||!e.isSourceLoaded)return;map.off("sourcedata",fold);   // attribution repliée sur ⓘ une fois les contours chargés (MapLibre la redéplie à leur arrivée) : dépliée, la légende la masque
+      const at=document.querySelector(".maplibregl-ctrl-attrib");if(at){at.classList.remove("maplibregl-compact-show");at.removeAttribute("open");}};
+    map.on("sourcedata",fold);
     fitFrance(0);
     map.addSource("d",{type:"geojson",data:GEO,promoteId:"code"});
     map.addLayer({id:"fill",type:"fill",source:"d",paint:{"fill-color":["coalesce",["feature-state","c"],DIM],
@@ -852,12 +856,12 @@ function buildLevFam(){
 
 // Transferts de tâches : L23 agit sur la demande de soins de ville (pas sur l'offre), donc sur l'indice de couverture des pharmaciens seulement.
 // Bornes du mode expert : celles des fiches (k : [0,25 ; 1], fiche L23) ; a : [0 ; 0,05] en temps de MG (supposé).
-function l23HTML(){return `<div class="fr-toggle"><input type="checkbox" class="fr-toggle__input" id="lv-l23"${L23.on?" checked":""}><label class="fr-toggle__label" for="lv-l23" data-fr-checked-label="Oui" data-fr-unchecked-label="Non">Les pharmaciens vaccinent davantage contre la grippe</label></div>
+function l23HTML(){return `<p class="note" id="l23-autre" hidden></p><div id="l23-box"><div class="fr-toggle"><input type="checkbox" class="fr-toggle__input" id="lv-l23"${L23.on?" checked":""}><label class="fr-toggle__label" for="lv-l23" data-fr-checked-label="Oui" data-fr-unchecked-label="Non">Les pharmaciens vaccinent davantage contre la grippe</label></div>
   <p class="note" id="l23-note"></p>
   <details class="l23x"><summary class="note">Réglages experts (paramètres supposés)</summary>
    <label class="note" for="l23-a">${L23N.a} : <b id="l23-av"></b></label><input type="range" id="l23-a" min="0" max="0.05" step="0.005">
    <label class="note" for="l23-k">${L23N.k} : <b id="l23-kv"></b></label><input type="range" id="l23-k" min="0.25" max="1" step="0.05"></details>
-  <ul class="note" id="l23-par"></ul>`;}
+  <ul class="note" id="l23-par"></ul></div>`;}
 // paramètres du transfert en langue courante ; le code (clé de l'API, fiche L23) reste dans « Sources et références »
 const L23N={a:"Part du temps des médecins généralistes consacrée à ce vaccin",k:"Temps du pharmacien pour un vaccin, rapporté à celui du médecin",
   s_inf:"Part des vaccinations faites en pharmacie, à terme",tau:"Montée en charge (années)",mu:"Vaccinations ajoutées par vaccination transférée",
@@ -876,7 +880,12 @@ function setL23(on,vue){L23.on=on;const t=$("#lv-l23");if(t)t.checked=on;
   renderL23();writeHash();}
 const STAT=s=>s=="mesuré"||s=="sourcé"?s:"supposé";
 function renderL23(){const n=$("#l23-note");if(!n)return;
-  n.textContent=S.prof!="pharmaciens"?"Agit sur la demande de soins de ville adressée aux pharmaciens (cible) et libère du temps de médecine générale (source) ; sans effet sur la profession affichée.":
+  // le levier ne concerne que les pharmaciens : pour une autre profession, il est masqué et remplacé par une phrase
+  const autre=S.prof!="pharmaciens",o=$("#l23-autre");$("#l23-box").hidden=autre;o.hidden=!autre;
+  if(autre)o.innerHTML=`Aucun transfert de tâches sourcé pour les ${esc((META.professions[S.prof]||S.prof).toLowerCase())}. Seul transfert mesuré : les pharmaciens vaccinent davantage contre la grippe (<button type="button" class="fr-link" id="l23-go">Afficher les pharmaciens</button>). Pour étudier un transfert hypothétique, demandez à l'assistant (<button type="button" class="fr-link" id="l23-ask">Ouvrir l'assistant</button>).`;
+  if(autre)$("#l23-ask").onclick=()=>$("#askscn").click();
+  if(autre)$("#l23-go").onclick=()=>{S.prof="pharmaciens";applyProf();levState();refresh();};
+  n.textContent=autre?"":
     L23.on?"Actif : à partir de 2026, une part des vaccinations contre la grippe passe des médecins généralistes aux pharmaciens, au-delà de la part qu'ils font déjà ; le nombre de professionnels ne change pas.":"Inactif : la couverture est celle du tendanciel.";
   const P=COUV?.l23?.params;$("#l23-par").innerHTML=P?P.map(p=>`<li>${esc(L23N[p.name]||p.name)} : ${nfr(p.value)} · <b>${STAT(p.status)}</b></li>`).join("")
     +`<li><details><summary>Sources et références</summary>${P.map(p=>`${esc(p.name)} (${esc(p.unit)}) : ${esc(p.source)}`).join("<br>")}</details></li>`:"";}
@@ -1342,11 +1351,13 @@ async function askSend(q){q=q.trim();if(!q||ASK.busy)return;ASK.busy=true;const 
   ASK.busy=false;log.scrollTop=log.scrollHeight;}
 // accueil selon le bouton d'ouverture (2026-11-15) : « gen » (carte), « scn » (définir un scénario, panneau Scénario),
 // « int » (interpréter le résultat, panneau Résultat) ; les suggestions citent la profession, le territoire et l'année affichés
+// chaque exemple porte son cas d'usage (2026-11-15) : le libellé est affiché au-dessus, seule la question est envoyée
+const ASKCAS=["Une politique → quel effet ?","Un objectif → quelles politiques ?","Un transfert de tâches → quelle couverture ?"];
 const ASKEX=["Former 20 % de kinés en plus et repousser de 2 ans la cessation d'activité en Auvergne-Rhône-Alpes : quel effet en 2040 ?",
   "Comment atteindre +10 % de densité de pharmaciens en Normandie d'ici 2040 ?",
   "Si les pharmaciens vaccinent, quelle couverture dans le Puy-de-Dôme en 2035 ?"];   // un exemple par cas d'usage : leviers → effet ; objectif → possibilités ; transfert (L23) → couverture
 function askIntent(i){const T=S.terr||"FR",nm=names[T]||"France",ou=T.startsWith("D")?`dans le département ${nm}`:`en ${nm}`,
-  pr=(META.professions[S.prof]||S.prof).toLowerCase(),y=S.y,cards=a=>`<div class="cards">${a.map(t=>`<button type="button">${esc(t)}</button>`).join("")}</div>`,
+  pr=(META.professions[S.prof]||S.prof).toLowerCase(),y=S.y,cards=a=>`<div class="cards">${a.map((t,j)=>`<button type="button" data-q="${esc(t)}">${a===ASKEX?`<span class="cas">${ASKCAS[j]}</span>`:""}${esc(t)}</button>`).join("")}</div>`,
   tags=a=>`<div class="cards mini">${a.map(t=>`<button type="button" class="fr-tag">${esc(t)}</button>`).join("")}</div>`,wh=t=>`<p class="wh">${t}</p>`;
   const lire=["Pourquoi ce résultat ?","Quelle confiance accorder à ce chiffre ?",`Quels flux expliquent l'écart au tendanciel ${ou} en ${y} ?`,
     `Comment se situe la densité ${ou} par rapport à la moyenne nationale en ${y} ?`,`Quels départements ont la densité la plus faible en ${y} ?`,"Comment le jumeau calcule-t-il ?"];
@@ -1393,7 +1404,7 @@ function askWire(){const q=$("#askq");
   q.onkeydown=e=>{if(e.key=="Enter"&&!e.shiftKey){e.preventDefault();$("#askf").requestSubmit();}};   // Maj+Entrée : retour à la ligne
   q.oninput=askGrow;
   // suggestions : celles de l'accueil et celles ajoutées en cours de conversation
-  $("#asklog").addEventListener("click",e=>{const b=e.target.closest("#askwelcome button,.hint button");if(b)askSend(b.textContent);});
+  $("#asklog").addEventListener("click",e=>{const b=e.target.closest("#askwelcome button,.hint button");if(b)askSend(b.dataset.q||b.textContent);});
   $("#asknew").onclick=()=>{ASK.sid=crypto.randomUUID?crypto.randomUUID():String(Math.random()).slice(2);
     $("#asklog").querySelectorAll(".u,.a,.hint,.st:not(#askst)").forEach(x=>x.remove());$("#askwelcome").hidden=false;askWelcome(ASK.intent||"gen");q.focus();};}
 

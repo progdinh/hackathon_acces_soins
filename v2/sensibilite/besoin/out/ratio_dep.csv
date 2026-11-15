@@ -2039,1026 +2039,6 @@ dentistes,973,regulation (toutes zones),0,0.029579,0
 dentistes,974,regulation (toutes zones),0,0.018785,0
 dentistes,976,regulation (toutes zones),0,0.035061,0
 dentistes,FR,regulation (toutes zones),0,0.0028185,0
-pharmaciens,01,"quotas x0,8",0.12031,0.137,0.87816
-pharmaciens,02,"quotas x0,8",0.12169,0.10232,1.1892
-pharmaciens,03,"quotas x0,8",0.12469,0.064644,1.9288
-pharmaciens,04,"quotas x0,8",0.12794,0.10824,1.182
-pharmaciens,05,"quotas x0,8",0.11743,0.15014,0.78212
-pharmaciens,06,"quotas x0,8",0.11524,0.073964,1.5581
-pharmaciens,07,"quotas x0,8",0.12055,0.11736,1.0273
-pharmaciens,08,"quotas x0,8",0.11799,0.10684,1.1044
-pharmaciens,09,"quotas x0,8",0.11682,0.11854,0.98549
-pharmaciens,10,"quotas x0,8",0.11655,0.078306,1.4884
-pharmaciens,11,"quotas x0,8",0.11936,0.10738,1.1116
-pharmaciens,12,"quotas x0,8",0.11876,0.10714,1.1084
-pharmaciens,13,"quotas x0,8",0.1189,0.069459,1.7119
-pharmaciens,14,"quotas x0,8",0.12736,0.10962,1.1619
-pharmaciens,15,"quotas x0,8",0.12212,0.097955,1.2467
-pharmaciens,16,"quotas x0,8",0.1238,0.10792,1.1472
-pharmaciens,17,"quotas x0,8",0.11933,0.12027,0.99215
-pharmaciens,18,"quotas x0,8",0.12394,0.075116,1.65
-pharmaciens,19,"quotas x0,8",0.12425,0.094179,1.3193
-pharmaciens,21,"quotas x0,8",0.12752,0.081915,1.5567
-pharmaciens,22,"quotas x0,8",0.11441,0.11605,0.98587
-pharmaciens,23,"quotas x0,8",0.12108,0.11277,1.0737
-pharmaciens,24,"quotas x0,8",0.11772,0.14327,0.82165
-pharmaciens,25,"quotas x0,8",0.12614,0.091906,1.3725
-pharmaciens,26,"quotas x0,8",0.12091,0.1004,1.2043
-pharmaciens,27,"quotas x0,8",0.12635,0.15284,0.82667
-pharmaciens,28,"quotas x0,8",0.13092,0.11531,1.1354
-pharmaciens,29,"quotas x0,8",0.11477,0.1028,1.1164
-pharmaciens,2A,"quotas x0,8",0.12351,0.13568,0.91028
-pharmaciens,2B,"quotas x0,8",0.11846,0.11498,1.0303
-pharmaciens,30,"quotas x0,8",0.11997,0.10031,1.196
-pharmaciens,31,"quotas x0,8",0.1204,0.096191,1.2517
-pharmaciens,32,"quotas x0,8",0.11768,0.11707,1.0053
-pharmaciens,33,"quotas x0,8",0.11996,0.093702,1.2803
-pharmaciens,34,"quotas x0,8",0.12216,0.077813,1.5699
-pharmaciens,35,"quotas x0,8",0.12098,0.10601,1.1413
-pharmaciens,36,"quotas x0,8",0.1201,0.071675,1.6756
-pharmaciens,37,"quotas x0,8",0.12621,0.079179,1.594
-pharmaciens,38,"quotas x0,8",0.11746,0.096637,1.2155
-pharmaciens,39,"quotas x0,8",0.12611,0.11487,1.0979
-pharmaciens,40,"quotas x0,8",0.11788,0.13089,0.90061
-pharmaciens,41,"quotas x0,8",0.11734,0.084716,1.3851
-pharmaciens,42,"quotas x0,8",0.1233,0.06117,2.0157
-pharmaciens,43,"quotas x0,8",0.11424,0.096793,1.1802
-pharmaciens,44,"quotas x0,8",0.12277,0.090379,1.3584
-pharmaciens,45,"quotas x0,8",0.12316,0.086126,1.43
-pharmaciens,46,"quotas x0,8",0.11457,0.11215,1.0216
-pharmaciens,47,"quotas x0,8",0.12259,0.12476,0.98259
-pharmaciens,48,"quotas x0,8",0.13003,0.099488,1.307
-pharmaciens,49,"quotas x0,8",0.1204,0.10265,1.1729
-pharmaciens,50,"quotas x0,8",0.12685,0.13807,0.91876
-pharmaciens,51,"quotas x0,8",0.12449,0.085572,1.4548
-pharmaciens,52,"quotas x0,8",0.12083,0.088952,1.3583
-pharmaciens,53,"quotas x0,8",0.12246,0.11101,1.1032
-pharmaciens,54,"quotas x0,8",0.12169,0.09226,1.3189
-pharmaciens,55,"quotas x0,8",0.12741,0.10872,1.1719
-pharmaciens,56,"quotas x0,8",0.11763,0.1383,0.85053
-pharmaciens,57,"quotas x0,8",0.11976,0.12417,0.96442
-pharmaciens,58,"quotas x0,8",0.12916,0.082161,1.572
-pharmaciens,59,"quotas x0,8",0.12177,0.086803,1.4028
-pharmaciens,60,"quotas x0,8",0.12254,0.10522,1.1646
-pharmaciens,61,"quotas x0,8",0.12234,0.1006,1.216
-pharmaciens,62,"quotas x0,8",0.12184,0.11215,1.0864
-pharmaciens,63,"quotas x0,8",0.12237,0.054779,2.234
-pharmaciens,64,"quotas x0,8",0.12262,0.10784,1.1371
-pharmaciens,65,"quotas x0,8",0.11868,0.088472,1.3415
-pharmaciens,66,"quotas x0,8",0.12391,0.11778,1.052
-pharmaciens,67,"quotas x0,8",0.12398,0.10177,1.2182
-pharmaciens,68,"quotas x0,8",0.12024,0.15493,0.77611
-pharmaciens,69,"quotas x0,8",0.12003,0.06424,1.8685
-pharmaciens,70,"quotas x0,8",0.12401,0.1222,1.0148
-pharmaciens,71,"quotas x0,8",0.11778,0.10126,1.1632
-pharmaciens,72,"quotas x0,8",0.1204,0.093983,1.2811
-pharmaciens,73,"quotas x0,8",0.12355,0.13055,0.9464
-pharmaciens,74,"quotas x0,8",0.11822,0.14467,0.81718
-pharmaciens,75,"quotas x0,8",0.12942,0.055506,2.3316
-pharmaciens,76,"quotas x0,8",0.12539,0.082955,1.5115
-pharmaciens,77,"quotas x0,8",0.11968,0.10364,1.1547
-pharmaciens,78,"quotas x0,8",0.11415,0.091051,1.2537
-pharmaciens,79,"quotas x0,8",0.11548,0.096602,1.1954
-pharmaciens,80,"quotas x0,8",0.12433,0.098627,1.2606
-pharmaciens,81,"quotas x0,8",0.11156,0.08673,1.2863
-pharmaciens,82,"quotas x0,8",0.12247,0.11666,1.0498
-pharmaciens,83,"quotas x0,8",0.11561,0.092855,1.2451
-pharmaciens,84,"quotas x0,8",0.1111,0.088776,1.2515
-pharmaciens,85,"quotas x0,8",0.12348,0.13966,0.88416
-pharmaciens,86,"quotas x0,8",0.12039,0.069751,1.7261
-pharmaciens,87,"quotas x0,8",0.1221,0.087021,1.4031
-pharmaciens,88,"quotas x0,8",0.11905,0.13471,0.88375
-pharmaciens,89,"quotas x0,8",0.12496,0.10116,1.2353
-pharmaciens,90,"quotas x0,8",0.12326,0.12835,0.9603
-pharmaciens,91,"quotas x0,8",0.11674,0.086995,1.3419
-pharmaciens,92,"quotas x0,8",0.12135,0.083845,1.4473
-pharmaciens,93,"quotas x0,8",0.12214,0.10038,1.2167
-pharmaciens,94,"quotas x0,8",0.12333,0.091623,1.346
-pharmaciens,95,"quotas x0,8",0.11827,0.087919,1.3452
-pharmaciens,971,"quotas x0,8",0.11917,0.27091,0.4399
-pharmaciens,972,"quotas x0,8",0.12767,0.26975,0.47329
-pharmaciens,973,"quotas x0,8",0.13065,0.13853,0.94308
-pharmaciens,974,"quotas x0,8",0.12832,0.15592,0.82298
-pharmaciens,976,"quotas x0,8",0.12761,0.10204,1.2506
-pharmaciens,FR,"quotas x0,8",0.12166,0.095538,1.2734
-pharmaciens,01,"quotas x1,2",0.10738,0.137,0.78377
-pharmaciens,02,"quotas x1,2",0.10847,0.10232,1.0601
-pharmaciens,03,"quotas x1,2",0.11085,0.064644,1.7148
-pharmaciens,04,"quotas x1,2",0.11341,0.10824,1.0478
-pharmaciens,05,"quotas x1,2",0.10508,0.15014,0.69985
-pharmaciens,06,"quotas x1,2",0.10332,0.073964,1.3969
-pharmaciens,07,"quotas x1,2",0.10757,0.11736,0.91663
-pharmaciens,08,"quotas x1,2",0.10553,0.10684,0.98773
-pharmaciens,09,"quotas x1,2",0.10459,0.11854,0.88231
-pharmaciens,10,"quotas x1,2",0.10437,0.078306,1.3329
-pharmaciens,11,"quotas x1,2",0.10662,0.10738,0.99294
-pharmaciens,12,"quotas x1,2",0.10614,0.10714,0.99065
-pharmaciens,13,"quotas x1,2",0.10626,0.069459,1.5298
-pharmaciens,14,"quotas x1,2",0.11296,0.10962,1.0305
-pharmaciens,15,"quotas x1,2",0.10882,0.097955,1.1109
-pharmaciens,16,"quotas x1,2",0.11015,0.10792,1.0207
-pharmaciens,17,"quotas x1,2",0.10659,0.12027,0.88628
-pharmaciens,18,"quotas x1,2",0.11026,0.075116,1.4679
-pharmaciens,19,"quotas x1,2",0.11051,0.094179,1.1734
-pharmaciens,21,"quotas x1,2",0.11308,0.081915,1.3805
-pharmaciens,22,"quotas x1,2",0.10265,0.11605,0.88457
-pharmaciens,23,"quotas x1,2",0.10799,0.11277,0.95759
-pharmaciens,24,"quotas x1,2",0.10531,0.14327,0.73503
-pharmaciens,25,"quotas x1,2",0.112,0.091906,1.2186
-pharmaciens,26,"quotas x1,2",0.10786,0.1004,1.0743
-pharmaciens,27,"quotas x1,2",0.11216,0.15284,0.73384
-pharmaciens,28,"quotas x1,2",0.11575,0.11531,1.0038
-pharmaciens,29,"quotas x1,2",0.10295,0.1028,1.0014
-pharmaciens,2A,"quotas x1,2",0.10992,0.13568,0.81011
-pharmaciens,2B,"quotas x1,2",0.1059,0.11498,0.92107
-pharmaciens,30,"quotas x1,2",0.10711,0.10031,1.0678
-pharmaciens,31,"quotas x1,2",0.10745,0.096191,1.1171
-pharmaciens,32,"quotas x1,2",0.10528,0.11707,0.89932
-pharmaciens,33,"quotas x1,2",0.1071,0.093702,1.143
-pharmaciens,34,"quotas x1,2",0.10885,0.077813,1.3988
-pharmaciens,35,"quotas x1,2",0.10791,0.10601,1.018
-pharmaciens,36,"quotas x1,2",0.10721,0.071675,1.4957
-pharmaciens,37,"quotas x1,2",0.11205,0.079179,1.4152
-pharmaciens,38,"quotas x1,2",0.1051,0.096637,1.0876
-pharmaciens,39,"quotas x1,2",0.11198,0.11487,0.9748
-pharmaciens,40,"quotas x1,2",0.10544,0.13089,0.80555
-pharmaciens,41,"quotas x1,2",0.105,0.084716,1.2395
-pharmaciens,42,"quotas x1,2",0.10975,0.06117,1.7942
-pharmaciens,43,"quotas x1,2",0.10252,0.096793,1.0591
-pharmaciens,44,"quotas x1,2",0.10933,0.090379,1.2097
-pharmaciens,45,"quotas x1,2",0.10964,0.086126,1.273
-pharmaciens,46,"quotas x1,2",0.10278,0.11215,0.91651
-pharmaciens,47,"quotas x1,2",0.10919,0.12476,0.87519
-pharmaciens,48,"quotas x1,2",0.11505,0.099488,1.1564
-pharmaciens,49,"quotas x1,2",0.10745,0.10265,1.0467
-pharmaciens,50,"quotas x1,2",0.11256,0.13807,0.81522
-pharmaciens,51,"quotas x1,2",0.11069,0.085572,1.2935
-pharmaciens,52,"quotas x1,2",0.10779,0.088952,1.2118
-pharmaciens,53,"quotas x1,2",0.10908,0.11101,0.98268
-pharmaciens,54,"quotas x1,2",0.10847,0.09226,1.1757
-pharmaciens,55,"quotas x1,2",0.113,0.10872,1.0393
-pharmaciens,56,"quotas x1,2",0.10524,0.1383,0.76093
-pharmaciens,57,"quotas x1,2",0.10694,0.12417,0.86118
-pharmaciens,58,"quotas x1,2",0.11437,0.082161,1.392
-pharmaciens,59,"quotas x1,2",0.10854,0.086803,1.2504
-pharmaciens,60,"quotas x1,2",0.10915,0.10522,1.0373
-pharmaciens,61,"quotas x1,2",0.10899,0.1006,1.0833
-pharmaciens,62,"quotas x1,2",0.1086,0.11215,0.96833
-pharmaciens,63,"quotas x1,2",0.10902,0.054779,1.9902
-pharmaciens,64,"quotas x1,2",0.10921,0.10784,1.0127
-pharmaciens,65,"quotas x1,2",0.10608,0.088472,1.199
-pharmaciens,66,"quotas x1,2",0.11023,0.11778,0.93591
-pharmaciens,67,"quotas x1,2",0.11029,0.10177,1.0837
-pharmaciens,68,"quotas x1,2",0.10732,0.15493,0.69273
-pharmaciens,69,"quotas x1,2",0.10716,0.06424,1.6681
-pharmaciens,70,"quotas x1,2",0.11031,0.1222,0.90271
-pharmaciens,71,"quotas x1,2",0.10536,0.10126,1.0405
-pharmaciens,72,"quotas x1,2",0.10745,0.093983,1.1433
-pharmaciens,73,"quotas x1,2",0.10995,0.13055,0.84222
-pharmaciens,74,"quotas x1,2",0.10571,0.14467,0.73071
-pharmaciens,75,"quotas x1,2",0.11457,0.055506,2.0641
-pharmaciens,76,"quotas x1,2",0.1114,0.082955,1.3429
-pharmaciens,77,"quotas x1,2",0.10688,0.10364,1.0312
-pharmaciens,78,"quotas x1,2",0.10245,0.091051,1.1252
-pharmaciens,79,"quotas x1,2",0.10351,0.096602,1.0715
-pharmaciens,80,"quotas x1,2",0.11057,0.098627,1.121
-pharmaciens,81,"quotas x1,2",0.10036,0.08673,1.1571
-pharmaciens,82,"quotas x1,2",0.1091,0.11666,0.93519
-pharmaciens,83,"quotas x1,2",0.10362,0.092855,1.1159
-pharmaciens,84,"quotas x1,2",0.099984,0.088776,1.1263
-pharmaciens,85,"quotas x1,2",0.10989,0.13966,0.78689
-pharmaciens,86,"quotas x1,2",0.10744,0.069751,1.5404
-pharmaciens,87,"quotas x1,2",0.1088,0.087021,1.2503
-pharmaciens,88,"quotas x1,2",0.10637,0.13471,0.78965
-pharmaciens,89,"quotas x1,2",0.11107,0.10116,1.0979
-pharmaciens,90,"quotas x1,2",0.10972,0.12835,0.85481
-pharmaciens,91,"quotas x1,2",0.10453,0.086995,1.2015
-pharmaciens,92,"quotas x1,2",0.1082,0.083845,1.2905
-pharmaciens,93,"quotas x1,2",0.10883,0.10038,1.0841
-pharmaciens,94,"quotas x1,2",0.10977,0.091623,1.1981
-pharmaciens,95,"quotas x1,2",0.10575,0.087919,1.2028
-pharmaciens,971,"quotas x1,2",0.10647,0.27091,0.39302
-pharmaciens,972,"quotas x1,2",0.1132,0.26975,0.41965
-pharmaciens,973,"quotas x1,2",0.11553,0.13853,0.83399
-pharmaciens,974,"quotas x1,2",0.11371,0.15592,0.72929
-pharmaciens,976,"quotas x1,2",0.11315,0.10204,1.1089
-pharmaciens,FR,"quotas x1,2",0.10845,0.095538,1.1352
-pharmaciens,01,retraite +2 ans,0.044885,0.137,0.32762
-pharmaciens,02,retraite +2 ans,0.049712,0.10232,0.48583
-pharmaciens,03,retraite +2 ans,0.060033,0.064644,0.92866
-pharmaciens,04,retraite +2 ans,0.051848,0.10824,0.47899
-pharmaciens,05,retraite +2 ans,0.04804,0.15014,0.31997
-pharmaciens,06,retraite +2 ans,0.056885,0.073964,0.76909
-pharmaciens,07,retraite +2 ans,0.051673,0.11736,0.44031
-pharmaciens,08,retraite +2 ans,0.051463,0.10684,0.48168
-pharmaciens,09,retraite +2 ans,0.048116,0.11854,0.40589
-pharmaciens,10,retraite +2 ans,0.052432,0.078306,0.66958
-pharmaciens,11,retraite +2 ans,0.0651,0.10738,0.60627
-pharmaciens,12,retraite +2 ans,0.053775,0.10714,0.50189
-pharmaciens,13,retraite +2 ans,0.041801,0.069459,0.60181
-pharmaciens,14,retraite +2 ans,0.039657,0.10962,0.36178
-pharmaciens,15,retraite +2 ans,0.052104,0.097955,0.53192
-pharmaciens,16,retraite +2 ans,0.049334,0.10792,0.45715
-pharmaciens,17,retraite +2 ans,0.056567,0.12027,0.47033
-pharmaciens,18,retraite +2 ans,0.053,0.075116,0.70557
-pharmaciens,19,retraite +2 ans,0.051735,0.094179,0.54933
-pharmaciens,21,retraite +2 ans,0.035249,0.081915,0.43032
-pharmaciens,22,retraite +2 ans,0.063318,0.11605,0.54562
-pharmaciens,23,retraite +2 ans,0.059147,0.11277,0.52448
-pharmaciens,24,retraite +2 ans,0.066144,0.14327,0.46166
-pharmaciens,25,retraite +2 ans,0.039372,0.091906,0.4284
-pharmaciens,26,retraite +2 ans,0.068183,0.1004,0.67914
-pharmaciens,27,retraite +2 ans,0.043144,0.15284,0.28228
-pharmaciens,28,retraite +2 ans,0.037466,0.11531,0.32491
-pharmaciens,29,retraite +2 ans,0.06949,0.1028,0.67595
-pharmaciens,2A,retraite +2 ans,0.045039,0.13568,0.33195
-pharmaciens,2B,retraite +2 ans,0.052202,0.11498,0.45402
-pharmaciens,30,retraite +2 ans,0.051998,0.10031,0.51836
-pharmaciens,31,retraite +2 ans,0.044363,0.096191,0.46119
-pharmaciens,32,retraite +2 ans,0.050957,0.11707,0.43529
-pharmaciens,33,retraite +2 ans,0.046994,0.093702,0.50153
-pharmaciens,34,retraite +2 ans,0.039669,0.077813,0.5098
-pharmaciens,35,retraite +2 ans,0.05093,0.10601,0.48045
-pharmaciens,36,retraite +2 ans,0.0642,0.071675,0.8957
-pharmaciens,37,retraite +2 ans,0.045303,0.079179,0.57215
-pharmaciens,38,retraite +2 ans,0.049906,0.096637,0.51643
-pharmaciens,39,retraite +2 ans,0.041913,0.11487,0.36487
-pharmaciens,40,retraite +2 ans,0.05384,0.13089,0.41135
-pharmaciens,41,retraite +2 ans,0.054631,0.084716,0.64487
-pharmaciens,42,retraite +2 ans,0.040842,0.06117,0.66767
-pharmaciens,43,retraite +2 ans,0.065826,0.096793,0.68007
-pharmaciens,44,retraite +2 ans,0.047136,0.090379,0.52154
-pharmaciens,45,retraite +2 ans,0.051626,0.086126,0.59942
-pharmaciens,46,retraite +2 ans,0.062159,0.11215,0.55427
-pharmaciens,47,retraite +2 ans,0.055608,0.12476,0.44573
-pharmaciens,48,retraite +2 ans,0.041972,0.099488,0.42188
-pharmaciens,49,retraite +2 ans,0.043344,0.10265,0.42224
-pharmaciens,50,retraite +2 ans,0.046306,0.13807,0.33539
-pharmaciens,51,retraite +2 ans,0.038616,0.085572,0.45127
-pharmaciens,52,retraite +2 ans,0.05741,0.088952,0.6454
-pharmaciens,53,retraite +2 ans,0.051421,0.11101,0.46323
-pharmaciens,54,retraite +2 ans,0.048169,0.09226,0.5221
-pharmaciens,55,retraite +2 ans,0.047503,0.10872,0.43692
-pharmaciens,56,retraite +2 ans,0.055484,0.1383,0.40119
-pharmaciens,57,retraite +2 ans,0.047813,0.12417,0.38505
-pharmaciens,58,retraite +2 ans,0.053328,0.082161,0.64906
-pharmaciens,59,retraite +2 ans,0.045291,0.086803,0.52176
-pharmaciens,60,retraite +2 ans,0.052721,0.10522,0.50103
-pharmaciens,61,retraite +2 ans,0.051008,0.1006,0.50702
-pharmaciens,62,retraite +2 ans,0.048994,0.11215,0.43688
-pharmaciens,63,retraite +2 ans,0.042971,0.054779,0.78444
-pharmaciens,64,retraite +2 ans,0.047442,0.10784,0.43994
-pharmaciens,65,retraite +2 ans,0.051468,0.088472,0.58174
-pharmaciens,66,retraite +2 ans,0.054398,0.11778,0.46186
-pharmaciens,67,retraite +2 ans,0.041868,0.10177,0.41139
-pharmaciens,68,retraite +2 ans,0.046731,0.15493,0.30163
-pharmaciens,69,retraite +2 ans,0.043982,0.06424,0.68466
-pharmaciens,70,retraite +2 ans,0.04448,0.1222,0.36398
-pharmaciens,71,retraite +2 ans,0.055884,0.10126,0.5519
-pharmaciens,72,retraite +2 ans,0.051071,0.093983,0.54341
-pharmaciens,73,retraite +2 ans,0.047459,0.13055,0.36354
-pharmaciens,74,retraite +2 ans,0.049655,0.14467,0.34324
-pharmaciens,75,retraite +2 ans,0.035402,0.055506,0.63781
-pharmaciens,76,retraite +2 ans,0.044777,0.082955,0.53978
-pharmaciens,77,retraite +2 ans,0.052921,0.10364,0.5106
-pharmaciens,78,retraite +2 ans,0.066854,0.091051,0.73425
-pharmaciens,79,retraite +2 ans,0.056074,0.096602,0.58046
-pharmaciens,80,retraite +2 ans,0.04862,0.098627,0.49297
-pharmaciens,81,retraite +2 ans,0.065411,0.08673,0.75419
-pharmaciens,82,retraite +2 ans,0.067581,0.11666,0.57931
-pharmaciens,83,retraite +2 ans,0.054749,0.092855,0.58963
-pharmaciens,84,retraite +2 ans,0.05413,0.088776,0.60974
-pharmaciens,85,retraite +2 ans,0.043981,0.13966,0.31492
-pharmaciens,86,retraite +2 ans,0.045488,0.069751,0.65215
-pharmaciens,87,retraite +2 ans,0.043153,0.087021,0.4959
-pharmaciens,88,retraite +2 ans,0.061458,0.13471,0.45622
-pharmaciens,89,retraite +2 ans,0.058488,0.10116,0.57816
-pharmaciens,90,retraite +2 ans,0.053025,0.12835,0.41312
-pharmaciens,91,retraite +2 ans,0.052326,0.086995,0.60149
-pharmaciens,92,retraite +2 ans,0.043091,0.083845,0.51394
-pharmaciens,93,retraite +2 ans,0.040471,0.10038,0.40316
-pharmaciens,94,retraite +2 ans,0.040429,0.091623,0.44126
-pharmaciens,95,retraite +2 ans,0.049569,0.087919,0.5638
-pharmaciens,971,retraite +2 ans,0.042397,0.27091,0.1565
-pharmaciens,972,retraite +2 ans,0.038908,0.26975,0.14423
-pharmaciens,973,retraite +2 ans,0.042184,0.13853,0.30451
-pharmaciens,974,retraite +2 ans,0.033567,0.15592,0.21529
-pharmaciens,976,retraite +2 ans,0.027947,0.10204,0.27388
-pharmaciens,FR,retraite +2 ans,0.046859,0.095538,0.49047
-pharmaciens,01,"cumul x0,5",0.00039045,0.137,0.00285
-pharmaciens,02,"cumul x0,5",0.00040612,0.10232,0.0039689
-pharmaciens,03,"cumul x0,5",0.00053465,0.064644,0.0082706
-pharmaciens,04,"cumul x0,5",0.00072259,0.10824,0.0066756
-pharmaciens,05,"cumul x0,5",0.00066056,0.15014,0.0043997
-pharmaciens,06,"cumul x0,5",0.00080071,0.073964,0.010826
-pharmaciens,07,"cumul x0,5",0.0004577,0.11736,0.0039001
-pharmaciens,08,"cumul x0,5",0.00056372,0.10684,0.0052763
-pharmaciens,09,"cumul x0,5",0.0005011,0.11854,0.0042271
-pharmaciens,10,"cumul x0,5",0.0005777,0.078306,0.0073775
-pharmaciens,11,"cumul x0,5",0.00068188,0.10738,0.0063503
-pharmaciens,12,"cumul x0,5",0.00055822,0.10714,0.00521
-pharmaciens,13,"cumul x0,5",0.00056996,0.069459,0.0082058
-pharmaciens,14,"cumul x0,5",0.00032479,0.10962,0.002963
-pharmaciens,15,"cumul x0,5",0.00045867,0.097955,0.0046825
-pharmaciens,16,"cumul x0,5",0.00048495,0.10792,0.0044937
-pharmaciens,17,"cumul x0,5",0.00055375,0.12027,0.0046042
-pharmaciens,18,"cumul x0,5",0.0005417,0.075116,0.0072116
-pharmaciens,19,"cumul x0,5",0.00050069,0.094179,0.0053164
-pharmaciens,21,"cumul x0,5",0.0003517,0.081915,0.0042934
-pharmaciens,22,"cumul x0,5",0.00049431,0.11605,0.0042595
-pharmaciens,23,"cumul x0,5",0.00058289,0.11277,0.0051688
-pharmaciens,24,"cumul x0,5",0.0006632,0.14327,0.0046289
-pharmaciens,25,"cumul x0,5",0.00039931,0.091906,0.0043447
-pharmaciens,26,"cumul x0,5",0.00060382,0.1004,0.0060144
-pharmaciens,27,"cumul x0,5",0.00035527,0.15284,0.0023244
-pharmaciens,28,"cumul x0,5",0.00038791,0.11531,0.0033641
-pharmaciens,29,"cumul x0,5",0.00055222,0.1028,0.0053715
-pharmaciens,2A,"cumul x0,5",0.00066186,0.13568,0.0048781
-pharmaciens,2B,"cumul x0,5",0.00076452,0.11498,0.0066493
-pharmaciens,30,"cumul x0,5",0.00054334,0.10031,0.0054165
-pharmaciens,31,"cumul x0,5",0.00046052,0.096191,0.0047876
-pharmaciens,32,"cumul x0,5",0.0005305,0.11707,0.0045316
-pharmaciens,33,"cumul x0,5",0.00045785,0.093702,0.0048862
-pharmaciens,34,"cumul x0,5",0.00041414,0.077813,0.0053222
-pharmaciens,35,"cumul x0,5",0.00040204,0.10601,0.0037926
-pharmaciens,36,"cumul x0,5",0.00066682,0.071675,0.0093033
-pharmaciens,37,"cumul x0,5",0.00047023,0.079179,0.0059388
-pharmaciens,38,"cumul x0,5",0.00043381,0.096637,0.0044891
-pharmaciens,39,"cumul x0,5",0.00042804,0.11487,0.0037263
-pharmaciens,40,"cumul x0,5",0.00053094,0.13089,0.0040565
-pharmaciens,41,"cumul x0,5",0.00057744,0.084716,0.0068162
-pharmaciens,42,"cumul x0,5",0.00035649,0.06117,0.0058278
-pharmaciens,43,"cumul x0,5",0.00058347,0.096793,0.006028
-pharmaciens,44,"cumul x0,5",0.00038895,0.090379,0.0043035
-pharmaciens,45,"cumul x0,5",0.00053706,0.086126,0.0062357
-pharmaciens,46,"cumul x0,5",0.00064204,0.11215,0.0057249
-pharmaciens,47,"cumul x0,5",0.00054628,0.12476,0.0043787
-pharmaciens,48,"cumul x0,5",0.000424,0.099488,0.0042618
-pharmaciens,49,"cumul x0,5",0.00036104,0.10265,0.003517
-pharmaciens,50,"cumul x0,5",0.00037513,0.13807,0.002717
-pharmaciens,51,"cumul x0,5",0.0004033,0.085572,0.004713
-pharmaciens,52,"cumul x0,5",0.00061646,0.088952,0.0069302
-pharmaciens,53,"cumul x0,5",0.0004208,0.11101,0.0037908
-pharmaciens,54,"cumul x0,5",0.00051645,0.09226,0.0055977
-pharmaciens,55,"cumul x0,5",0.00050939,0.10872,0.0046853
-pharmaciens,56,"cumul x0,5",0.00044417,0.1383,0.0032116
-pharmaciens,57,"cumul x0,5",0.00051883,0.12417,0.0041783
-pharmaciens,58,"cumul x0,5",0.00054657,0.082161,0.0066524
-pharmaciens,59,"cumul x0,5",0.00036447,0.086803,0.0041988
-pharmaciens,60,"cumul x0,5",0.00042978,0.10522,0.0040844
-pharmaciens,61,"cumul x0,5",0.00042754,0.1006,0.0042497
-pharmaciens,62,"cumul x0,5",0.00039625,0.11215,0.0035333
-pharmaciens,63,"cumul x0,5",0.00037097,0.054779,0.0067721
-pharmaciens,64,"cumul x0,5",0.00046303,0.10784,0.0042938
-pharmaciens,65,"cumul x0,5",0.00053237,0.088472,0.0060174
-pharmaciens,66,"cumul x0,5",0.00057282,0.11778,0.0048635
-pharmaciens,67,"cumul x0,5",0.00044693,0.10177,0.0043915
-pharmaciens,68,"cumul x0,5",0.00050577,0.15493,0.0032645
-pharmaciens,69,"cumul x0,5",0.0003852,0.06424,0.0059963
-pharmaciens,70,"cumul x0,5",0.0004505,0.1222,0.0036865
-pharmaciens,71,"cumul x0,5",0.00056641,0.10126,0.0055937
-pharmaciens,72,"cumul x0,5",0.00042726,0.093983,0.0045461
-pharmaciens,73,"cumul x0,5",0.00041218,0.13055,0.0031573
-pharmaciens,74,"cumul x0,5",0.00043262,0.14467,0.0029905
-pharmaciens,75,"cumul x0,5",0.00045972,0.055506,0.0082822
-pharmaciens,76,"cumul x0,5",0.00036626,0.082955,0.0044152
-pharmaciens,77,"cumul x0,5",0.00069967,0.10364,0.0067507
-pharmaciens,78,"cumul x0,5",0.00087802,0.091051,0.0096432
-pharmaciens,79,"cumul x0,5",0.0005372,0.096602,0.0055609
-pharmaciens,80,"cumul x0,5",0.00038865,0.098627,0.0039406
-pharmaciens,81,"cumul x0,5",0.00068814,0.08673,0.0079343
-pharmaciens,82,"cumul x0,5",0.00070812,0.11666,0.0060701
-pharmaciens,83,"cumul x0,5",0.00075703,0.092855,0.0081528
-pharmaciens,84,"cumul x0,5",0.00075149,0.088776,0.008465
-pharmaciens,85,"cumul x0,5",0.00036196,0.13966,0.0025918
-pharmaciens,86,"cumul x0,5",0.00043863,0.069751,0.0062885
-pharmaciens,87,"cumul x0,5",0.00041631,0.087021,0.0047841
-pharmaciens,88,"cumul x0,5",0.000676,0.13471,0.0050182
-pharmaciens,89,"cumul x0,5",0.00059422,0.10116,0.0058739
-pharmaciens,90,"cumul x0,5",0.00053825,0.12835,0.0041935
-pharmaciens,91,"cumul x0,5",0.00068346,0.086995,0.0078563
-pharmaciens,92,"cumul x0,5",0.00055265,0.083845,0.0065913
-pharmaciens,93,"cumul x0,5",0.00053944,0.10038,0.0053738
-pharmaciens,94,"cumul x0,5",0.00052409,0.091623,0.0057201
-pharmaciens,95,"cumul x0,5",0.00065834,0.087919,0.0074879
-pharmaciens,971,"cumul x0,5",0.00061068,0.27091,0.0022542
-pharmaciens,972,"cumul x0,5",0.00053632,0.26975,0.0019882
-pharmaciens,973,"cumul x0,5",0.00051267,0.13853,0.0037008
-pharmaciens,974,"cumul x0,5",0.00046899,0.15592,0.003008
-pharmaciens,976,"cumul x0,5",0.00030451,0.10204,0.0029842
-pharmaciens,FR,"cumul x0,5",0.00048864,0.095538,0.0051146
-pharmaciens,01,cumul x2,0.00080165,0.137,0.0058514
-pharmaciens,02,cumul x2,0.0008339,0.10232,0.0081496
-pharmaciens,03,cumul x2,0.001099,0.064644,0.017001
-pharmaciens,04,cumul x2,0.0014839,0.10824,0.013709
-pharmaciens,05,cumul x2,0.0013534,0.15014,0.0090145
-pharmaciens,06,cumul x2,0.0016453,0.073964,0.022244
-pharmaciens,07,cumul x2,0.00094054,0.11736,0.0080144
-pharmaciens,08,cumul x2,0.0011567,0.10684,0.010826
-pharmaciens,09,cumul x2,0.0010292,0.11854,0.0086816
-pharmaciens,10,cumul x2,0.0011868,0.078306,0.015155
-pharmaciens,11,cumul x2,0.0014023,0.10738,0.013059
-pharmaciens,12,cumul x2,0.001147,0.10714,0.010705
-pharmaciens,13,cumul x2,0.0011699,0.069459,0.016843
-pharmaciens,14,cumul x2,0.00066661,0.10962,0.0060813
-pharmaciens,15,cumul x2,0.00094189,0.097955,0.0096155
-pharmaciens,16,cumul x2,0.00099668,0.10792,0.0092355
-pharmaciens,17,cumul x2,0.0011389,0.12027,0.0094693
-pharmaciens,18,cumul x2,0.0011149,0.075116,0.014842
-pharmaciens,19,cumul x2,0.0010295,0.094179,0.010931
-pharmaciens,21,cumul x2,0.00072207,0.081915,0.0088149
-pharmaciens,22,cumul x2,0.0010165,0.11605,0.0087596
-pharmaciens,23,cumul x2,0.0011994,0.11277,0.010635
-pharmaciens,24,cumul x2,0.0013639,0.14327,0.0095199
-pharmaciens,25,cumul x2,0.00082042,0.091906,0.0089267
-pharmaciens,26,cumul x2,0.0012413,0.1004,0.012364
-pharmaciens,27,cumul x2,0.00072966,0.15284,0.004774
-pharmaciens,28,cumul x2,0.00079749,0.11531,0.006916
-pharmaciens,29,cumul x2,0.0011347,0.1028,0.011037
-pharmaciens,2A,cumul x2,0.0013577,0.13568,0.010006
-pharmaciens,2B,cumul x2,0.0015732,0.11498,0.013682
-pharmaciens,30,cumul x2,0.0011164,0.10031,0.01113
-pharmaciens,31,cumul x2,0.00094514,0.096191,0.0098256
-pharmaciens,32,cumul x2,0.0010912,0.11707,0.0093209
-pharmaciens,33,cumul x2,0.00094,0.093702,0.010032
-pharmaciens,34,cumul x2,0.00085014,0.077813,0.010925
-pharmaciens,35,cumul x2,0.00082551,0.10601,0.0077873
-pharmaciens,36,cumul x2,0.0013719,0.071675,0.01914
-pharmaciens,37,cumul x2,0.00096547,0.079179,0.012193
-pharmaciens,38,cumul x2,0.00089097,0.096637,0.0092198
-pharmaciens,39,cumul x2,0.00087885,0.11487,0.0076508
-pharmaciens,40,cumul x2,0.0010902,0.13089,0.0083293
-pharmaciens,41,cumul x2,0.0011862,0.084716,0.014002
-pharmaciens,42,cumul x2,0.00073244,0.06117,0.011974
-pharmaciens,43,cumul x2,0.0011979,0.096793,0.012376
-pharmaciens,44,cumul x2,0.00079834,0.090379,0.0088333
-pharmaciens,45,cumul x2,0.0011049,0.086126,0.012829
-pharmaciens,46,cumul x2,0.0013204,0.11215,0.011773
-pharmaciens,47,cumul x2,0.0011241,0.12476,0.0090101
-pharmaciens,48,cumul x2,0.00087261,0.099488,0.0087711
-pharmaciens,49,cumul x2,0.00074094,0.10265,0.0072179
-pharmaciens,50,cumul x2,0.00076979,0.13807,0.0055755
-pharmaciens,51,cumul x2,0.0008275,0.085572,0.0096703
-pharmaciens,52,cumul x2,0.001267,0.088952,0.014244
-pharmaciens,53,cumul x2,0.0008666,0.11101,0.0078068
-pharmaciens,54,cumul x2,0.0010608,0.09226,0.011498
-pharmaciens,55,cumul x2,0.0010475,0.10872,0.009635
-pharmaciens,56,cumul x2,0.00091181,0.1383,0.006593
-pharmaciens,57,cumul x2,0.0010666,0.12417,0.0085899
-pharmaciens,58,cumul x2,0.0011256,0.082161,0.0137
-pharmaciens,59,cumul x2,0.00074841,0.086803,0.0086219
-pharmaciens,60,cumul x2,0.00088368,0.10522,0.008398
-pharmaciens,61,cumul x2,0.0008783,0.1006,0.0087302
-pharmaciens,62,cumul x2,0.00081397,0.11215,0.0072581
-pharmaciens,63,cumul x2,0.00076191,0.054779,0.013909
-pharmaciens,64,cumul x2,0.00095045,0.10784,0.0088138
-pharmaciens,65,cumul x2,0.0010949,0.088472,0.012375
-pharmaciens,66,cumul x2,0.0011771,0.11778,0.0099941
-pharmaciens,67,cumul x2,0.00091722,0.10177,0.0090126
-pharmaciens,68,cumul x2,0.0010392,0.15493,0.0067075
-pharmaciens,69,cumul x2,0.00079089,0.06424,0.012312
-pharmaciens,70,cumul x2,0.00092566,0.1222,0.0075749
-pharmaciens,71,cumul x2,0.0011659,0.10126,0.011514
-pharmaciens,72,cumul x2,0.00087826,0.093983,0.0093449
-pharmaciens,73,cumul x2,0.00084622,0.13055,0.0064822
-pharmaciens,74,cumul x2,0.00088806,0.14467,0.0061387
-pharmaciens,75,cumul x2,0.00094381,0.055506,0.017004
-pharmaciens,76,cumul x2,0.00075204,0.082955,0.0090657
-pharmaciens,77,cumul x2,0.0014381,0.10364,0.013876
-pharmaciens,78,cumul x2,0.0018077,0.091051,0.019853
-pharmaciens,79,cumul x2,0.0011044,0.096602,0.011433
-pharmaciens,80,cumul x2,0.00079821,0.098627,0.0080932
-pharmaciens,81,cumul x2,0.0014149,0.08673,0.016314
-pharmaciens,82,cumul x2,0.0014555,0.11666,0.012476
-pharmaciens,83,cumul x2,0.0015548,0.092855,0.016745
-pharmaciens,84,cumul x2,0.0015437,0.088776,0.017388
-pharmaciens,85,cumul x2,0.00074341,0.13966,0.0053232
-pharmaciens,86,cumul x2,0.00090071,0.069751,0.012913
-pharmaciens,87,cumul x2,0.00085511,0.087021,0.0098266
-pharmaciens,88,cumul x2,0.0013898,0.13471,0.010317
-pharmaciens,89,cumul x2,0.0012224,0.10116,0.012083
-pharmaciens,90,cumul x2,0.0011071,0.12835,0.0086254
-pharmaciens,91,cumul x2,0.0014038,0.086995,0.016136
-pharmaciens,92,cumul x2,0.0011342,0.083845,0.013527
-pharmaciens,93,cumul x2,0.0011073,0.10038,0.01103
-pharmaciens,94,cumul x2,0.0010761,0.091623,0.011744
-pharmaciens,95,cumul x2,0.001353,0.087919,0.015389
-pharmaciens,971,cumul x2,0.0012518,0.27091,0.0046207
-pharmaciens,972,cumul x2,0.0011022,0.26975,0.0040859
-pharmaciens,973,cumul x2,0.0010527,0.13853,0.0075987
-pharmaciens,974,cumul x2,0.00096253,0.15592,0.0061734
-pharmaciens,976,cumul x2,0.00062187,0.10204,0.0060943
-pharmaciens,FR,cumul x2,0.0010037,0.095538,0.010505
-pharmaciens,01,"precoces x0,5",0.04803,0.137,0.35058
-pharmaciens,02,"precoces x0,5",0.059319,0.10232,0.57971
-pharmaciens,03,"precoces x0,5",0.053421,0.064644,0.82639
-pharmaciens,04,"precoces x0,5",0.038432,0.10824,0.35505
-pharmaciens,05,"precoces x0,5",0.044838,0.15014,0.29864
-pharmaciens,06,"precoces x0,5",0.046672,0.073964,0.63101
-pharmaciens,07,"precoces x0,5",0.05537,0.11736,0.47181
-pharmaciens,08,"precoces x0,5",0.071977,0.10684,0.67369
-pharmaciens,09,"precoces x0,5",0.054651,0.11854,0.46102
-pharmaciens,10,"precoces x0,5",0.072661,0.078306,0.92792
-pharmaciens,11,"precoces x0,5",0.053226,0.10738,0.49569
-pharmaciens,12,"precoces x0,5",0.045746,0.10714,0.42696
-pharmaciens,13,"precoces x0,5",0.04115,0.069459,0.59244
-pharmaciens,14,"precoces x0,5",0.066894,0.10962,0.61026
-pharmaciens,15,"precoces x0,5",0.054301,0.097955,0.55434
-pharmaciens,16,"precoces x0,5",0.053837,0.10792,0.49887
-pharmaciens,17,"precoces x0,5",0.053442,0.12027,0.44435
-pharmaciens,18,"precoces x0,5",0.089031,0.075116,1.1852
-pharmaciens,19,"precoces x0,5",0.05115,0.094179,0.54312
-pharmaciens,21,"precoces x0,5",0.059822,0.081915,0.7303
-pharmaciens,22,"precoces x0,5",0.034488,0.11605,0.29719
-pharmaciens,23,"precoces x0,5",0.053562,0.11277,0.47496
-pharmaciens,24,"precoces x0,5",0.062216,0.14327,0.43425
-pharmaciens,25,"precoces x0,5",0.057852,0.091906,0.62947
-pharmaciens,26,"precoces x0,5",0.055927,0.1004,0.55706
-pharmaciens,27,"precoces x0,5",0.072767,0.15284,0.4761
-pharmaciens,28,"precoces x0,5",0.086645,0.11531,0.7514
-pharmaciens,29,"precoces x0,5",0.039411,0.1028,0.38336
-pharmaciens,2A,"precoces x0,5",0.091056,0.13568,0.67111
-pharmaciens,2B,"precoces x0,5",0.094456,0.11498,0.82152
-pharmaciens,30,"precoces x0,5",0.055386,0.10031,0.55214
-pharmaciens,31,"precoces x0,5",0.049248,0.096191,0.51198
-pharmaciens,32,"precoces x0,5",0.049174,0.11707,0.42005
-pharmaciens,33,"precoces x0,5",0.050989,0.093702,0.54416
-pharmaciens,34,"precoces x0,5",0.049311,0.077813,0.6337
-pharmaciens,35,"precoces x0,5",0.031671,0.10601,0.29877
-pharmaciens,36,"precoces x0,5",0.093612,0.071675,1.3061
-pharmaciens,37,"precoces x0,5",0.086643,0.079179,1.0943
-pharmaciens,38,"precoces x0,5",0.050954,0.096637,0.52727
-pharmaciens,39,"precoces x0,5",0.060739,0.11487,0.52876
-pharmaciens,40,"precoces x0,5",0.055693,0.13089,0.42551
-pharmaciens,41,"precoces x0,5",0.097266,0.084716,1.1481
-pharmaciens,42,"precoces x0,5",0.047015,0.06117,0.76859
-pharmaciens,43,"precoces x0,5",0.064308,0.096793,0.66439
-pharmaciens,44,"precoces x0,5",0.046143,0.090379,0.51055
-pharmaciens,45,"precoces x0,5",0.092132,0.086126,1.0697
-pharmaciens,46,"precoces x0,5",0.050898,0.11215,0.45385
-pharmaciens,47,"precoces x0,5",0.049473,0.12476,0.39655
-pharmaciens,48,"precoces x0,5",0.032793,0.099488,0.32962
-pharmaciens,49,"precoces x0,5",0.047409,0.10265,0.46183
-pharmaciens,50,"precoces x0,5",0.071828,0.13807,0.52024
-pharmaciens,51,"precoces x0,5",0.06151,0.085572,0.71881
-pharmaciens,52,"precoces x0,5",0.072601,0.088952,0.81618
-pharmaciens,53,"precoces x0,5",0.040836,0.11101,0.36787
-pharmaciens,54,"precoces x0,5",0.076917,0.09226,0.83369
-pharmaciens,55,"precoces x0,5",0.059029,0.10872,0.54294
-pharmaciens,56,"precoces x0,5",0.032813,0.1383,0.23726
-pharmaciens,57,"precoces x0,5",0.065164,0.12417,0.52478
-pharmaciens,58,"precoces x0,5",0.078793,0.082161,0.959
-pharmaciens,59,"precoces x0,5",0.056574,0.086803,0.65175
-pharmaciens,60,"precoces x0,5",0.059328,0.10522,0.56382
-pharmaciens,61,"precoces x0,5",0.079938,0.1006,0.79458
-pharmaciens,62,"precoces x0,5",0.058113,0.11215,0.51818
-pharmaciens,63,"precoces x0,5",0.047554,0.054779,0.86811
-pharmaciens,64,"precoces x0,5",0.048191,0.10784,0.44689
-pharmaciens,65,"precoces x0,5",0.055749,0.088472,0.63014
-pharmaciens,66,"precoces x0,5",0.057074,0.11778,0.48458
-pharmaciens,67,"precoces x0,5",0.073673,0.10177,0.72391
-pharmaciens,68,"precoces x0,5",0.063913,0.15493,0.41253
-pharmaciens,69,"precoces x0,5",0.049743,0.06424,0.77434
-pharmaciens,70,"precoces x0,5",0.058427,0.1222,0.47812
-pharmaciens,71,"precoces x0,5",0.06622,0.10126,0.65397
-pharmaciens,72,"precoces x0,5",0.048841,0.093983,0.51968
-pharmaciens,73,"precoces x0,5",0.047782,0.13055,0.36602
-pharmaciens,74,"precoces x0,5",0.051908,0.14467,0.35881
-pharmaciens,75,"precoces x0,5",0.096909,0.055506,1.7459
-pharmaciens,76,"precoces x0,5",0.074937,0.082955,0.90334
-pharmaciens,77,"precoces x0,5",0.080402,0.10364,0.77575
-pharmaciens,78,"precoces x0,5",0.084675,0.091051,0.92997
-pharmaciens,79,"precoces x0,5",0.051066,0.096602,0.52863
-pharmaciens,80,"precoces x0,5",0.05751,0.098627,0.58311
-pharmaciens,81,"precoces x0,5",0.057604,0.08673,0.66417
-pharmaciens,82,"precoces x0,5",0.060614,0.11666,0.51959
-pharmaciens,83,"precoces x0,5",0.045248,0.092855,0.4873
-pharmaciens,84,"precoces x0,5",0.045828,0.088776,0.51622
-pharmaciens,85,"precoces x0,5",0.046137,0.13966,0.33036
-pharmaciens,86,"precoces x0,5",0.049672,0.069751,0.71214
-pharmaciens,87,"precoces x0,5",0.045639,0.087021,0.52446
-pharmaciens,88,"precoces x0,5",0.075711,0.13471,0.56203
-pharmaciens,89,"precoces x0,5",0.070045,0.10116,0.6924
-pharmaciens,90,"precoces x0,5",0.058353,0.12835,0.45463
-pharmaciens,91,"precoces x0,5",0.080713,0.086995,0.92779
-pharmaciens,92,"precoces x0,5",0.07346,0.083845,0.87614
-pharmaciens,93,"precoces x0,5",0.076813,0.10038,0.76519
-pharmaciens,94,"precoces x0,5",0.07421,0.091623,0.80995
-pharmaciens,95,"precoces x0,5",0.080321,0.087919,0.91357
-pharmaciens,971,"precoces x0,5",0.083234,0.27091,0.30724
-pharmaciens,972,"precoces x0,5",0.089725,0.26975,0.33262
-pharmaciens,973,"precoces x0,5",0.089652,0.13853,0.64716
-pharmaciens,974,"precoces x0,5",0.087328,0.15592,0.5601
-pharmaciens,976,"precoces x0,5",0.079809,0.10204,0.78213
-pharmaciens,FR,"precoces x0,5",0.061344,0.095538,0.64209
-pharmaciens,01,"precoces x1,5",0.044507,0.137,0.32487
-pharmaciens,02,"precoces x1,5",0.055169,0.10232,0.53915
-pharmaciens,03,"precoces x1,5",0.049361,0.064644,0.76358
-pharmaciens,04,"precoces x1,5",0.03653,0.10824,0.33748
-pharmaciens,05,"precoces x1,5",0.042569,0.15014,0.28353
-pharmaciens,06,"precoces x1,5",0.044182,0.073964,0.59735
-pharmaciens,07,"precoces x1,5",0.051146,0.11736,0.43582
-pharmaciens,08,"precoces x1,5",0.065397,0.10684,0.6121
-pharmaciens,09,"precoces x1,5",0.049494,0.11854,0.41751
-pharmaciens,10,"precoces x1,5",0.066071,0.078306,0.84376
-pharmaciens,11,"precoces x1,5",0.048685,0.10738,0.4534
-pharmaciens,12,"precoces x1,5",0.04197,0.10714,0.39172
-pharmaciens,13,"precoces x1,5",0.039046,0.069459,0.56214
-pharmaciens,14,"precoces x1,5",0.060023,0.10962,0.54757
-pharmaciens,15,"precoces x1,5",0.050341,0.097955,0.51392
-pharmaciens,16,"precoces x1,5",0.049975,0.10792,0.46308
-pharmaciens,17,"precoces x1,5",0.049485,0.12027,0.41145
-pharmaciens,18,"precoces x1,5",0.08042,0.075116,1.0706
-pharmaciens,19,"precoces x1,5",0.04786,0.094179,0.50819
-pharmaciens,21,"precoces x1,5",0.054651,0.081915,0.66717
-pharmaciens,22,"precoces x1,5",0.031066,0.11605,0.2677
-pharmaciens,23,"precoces x1,5",0.049597,0.11277,0.4398
-pharmaciens,24,"precoces x1,5",0.057436,0.14327,0.40088
-pharmaciens,25,"precoces x1,5",0.052461,0.091906,0.57081
-pharmaciens,26,"precoces x1,5",0.051783,0.1004,0.51579
-pharmaciens,27,"precoces x1,5",0.065183,0.15284,0.42648
-pharmaciens,28,"precoces x1,5",0.078397,0.11531,0.67988
-pharmaciens,29,"precoces x1,5",0.035549,0.1028,0.34579
-pharmaciens,2A,"precoces x1,5",0.082663,0.13568,0.60925
-pharmaciens,2B,"precoces x1,5",0.085139,0.11498,0.74048
-pharmaciens,30,"precoces x1,5",0.050165,0.10031,0.50009
-pharmaciens,31,"precoces x1,5",0.045061,0.096191,0.46846
-pharmaciens,32,"precoces x1,5",0.044847,0.11707,0.38309
-pharmaciens,33,"precoces x1,5",0.047368,0.093702,0.50552
-pharmaciens,34,"precoces x1,5",0.044577,0.077813,0.57287
-pharmaciens,35,"precoces x1,5",0.028614,0.10601,0.26992
-pharmaciens,36,"precoces x1,5",0.084167,0.071675,1.1743
-pharmaciens,37,"precoces x1,5",0.0786,0.079179,0.99268
-pharmaciens,38,"precoces x1,5",0.047344,0.096637,0.48992
-pharmaciens,39,"precoces x1,5",0.054866,0.11487,0.47763
-pharmaciens,40,"precoces x1,5",0.051627,0.13089,0.39444
-pharmaciens,41,"precoces x1,5",0.087997,0.084716,1.0387
-pharmaciens,42,"precoces x1,5",0.043337,0.06117,0.70846
-pharmaciens,43,"precoces x1,5",0.059946,0.096793,0.61933
-pharmaciens,44,"precoces x1,5",0.042577,0.090379,0.47109
-pharmaciens,45,"precoces x1,5",0.083304,0.086126,0.96724
-pharmaciens,46,"precoces x1,5",0.046501,0.11215,0.41464
-pharmaciens,47,"precoces x1,5",0.045768,0.12476,0.36685
-pharmaciens,48,"precoces x1,5",0.030497,0.099488,0.30654
-pharmaciens,49,"precoces x1,5",0.043673,0.10265,0.42544
-pharmaciens,50,"precoces x1,5",0.065046,0.13807,0.47112
-pharmaciens,51,"precoces x1,5",0.056124,0.085572,0.65587
-pharmaciens,52,"precoces x1,5",0.067605,0.088952,0.76002
-pharmaciens,53,"precoces x1,5",0.037449,0.11101,0.33736
-pharmaciens,54,"precoces x1,5",0.071095,0.09226,0.77059
-pharmaciens,55,"precoces x1,5",0.053473,0.10872,0.49184
-pharmaciens,56,"precoces x1,5",0.029527,0.1383,0.2135
-pharmaciens,57,"precoces x1,5",0.059324,0.12417,0.47775
-pharmaciens,58,"precoces x1,5",0.072479,0.082161,0.88215
-pharmaciens,59,"precoces x1,5",0.052548,0.086803,0.60537
-pharmaciens,60,"precoces x1,5",0.055063,0.10522,0.52329
-pharmaciens,61,"precoces x1,5",0.072052,0.1006,0.7162
-pharmaciens,62,"precoces x1,5",0.05394,0.11215,0.48098
-pharmaciens,63,"precoces x1,5",0.044052,0.054779,0.80418
-pharmaciens,64,"precoces x1,5",0.044819,0.10784,0.41562
-pharmaciens,65,"precoces x1,5",0.050513,0.088472,0.57094
-pharmaciens,66,"precoces x1,5",0.051547,0.11778,0.43766
-pharmaciens,67,"precoces x1,5",0.067773,0.10177,0.66594
-pharmaciens,68,"precoces x1,5",0.058233,0.15493,0.37587
-pharmaciens,69,"precoces x1,5",0.046092,0.06424,0.71751
-pharmaciens,70,"precoces x1,5",0.053091,0.1222,0.43445
-pharmaciens,71,"precoces x1,5",0.060024,0.10126,0.59279
-pharmaciens,72,"precoces x1,5",0.044973,0.093983,0.47852
-pharmaciens,73,"precoces x1,5",0.044511,0.13055,0.34096
-pharmaciens,74,"precoces x1,5",0.048233,0.14467,0.33341
-pharmaciens,75,"precoces x1,5",0.089028,0.055506,1.6039
-pharmaciens,76,"precoces x1,5",0.067881,0.082955,0.81829
-pharmaciens,77,"precoces x1,5",0.073722,0.10364,0.7113
-pharmaciens,78,"precoces x1,5",0.078055,0.091051,0.85726
-pharmaciens,79,"precoces x1,5",0.047795,0.096602,0.49477
-pharmaciens,80,"precoces x1,5",0.053631,0.098627,0.54378
-pharmaciens,81,"precoces x1,5",0.052539,0.08673,0.60578
-pharmaciens,82,"precoces x1,5",0.055478,0.11666,0.47557
-pharmaciens,83,"precoces x1,5",0.042897,0.092855,0.46198
-pharmaciens,84,"precoces x1,5",0.043398,0.088776,0.48885
-pharmaciens,85,"precoces x1,5",0.042413,0.13966,0.3037
-pharmaciens,86,"precoces x1,5",0.046144,0.069751,0.66156
-pharmaciens,87,"precoces x1,5",0.042332,0.087021,0.48646
-pharmaciens,88,"precoces x1,5",0.069174,0.13471,0.5135
-pharmaciens,89,"precoces x1,5",0.064438,0.10116,0.63698
-pharmaciens,90,"precoces x1,5",0.053501,0.12835,0.41682
-pharmaciens,91,"precoces x1,5",0.074173,0.086995,0.85262
-pharmaciens,92,"precoces x1,5",0.067619,0.083845,0.80648
-pharmaciens,93,"precoces x1,5",0.070289,0.10038,0.7002
-pharmaciens,94,"precoces x1,5",0.068177,0.091623,0.74411
-pharmaciens,95,"precoces x1,5",0.073548,0.087919,0.83654
-pharmaciens,971,"precoces x1,5",0.073832,0.27091,0.27253
-pharmaciens,972,"precoces x1,5",0.078472,0.26975,0.2909
-pharmaciens,973,"precoces x1,5",0.080151,0.13853,0.57858
-pharmaciens,974,"precoces x1,5",0.077463,0.15592,0.49683
-pharmaciens,976,"precoces x1,5",0.072156,0.10204,0.70712
-pharmaciens,FR,"precoces x1,5",0.056095,0.095538,0.58715
-pharmaciens,01,"etrangers x0,5",0.028862,0.137,0.21067
-pharmaciens,02,"etrangers x0,5",0.029658,0.10232,0.28984
-pharmaciens,03,"etrangers x0,5",0.032061,0.064644,0.49597
-pharmaciens,04,"etrangers x0,5",0.032976,0.10824,0.30464
-pharmaciens,05,"etrangers x0,5",0.028686,0.15014,0.19106
-pharmaciens,06,"etrangers x0,5",0.028743,0.073964,0.38861
-pharmaciens,07,"etrangers x0,5",0.029225,0.11736,0.24903
-pharmaciens,08,"etrangers x0,5",0.028701,0.10684,0.26863
-pharmaciens,09,"etrangers x0,5",0.028171,0.11854,0.23764
-pharmaciens,10,"etrangers x0,5",0.028119,0.078306,0.3591
-pharmaciens,11,"etrangers x0,5",0.030484,0.10738,0.28389
-pharmaciens,12,"etrangers x0,5",0.02991,0.10714,0.27916
-pharmaciens,13,"etrangers x0,5",0.028735,0.069459,0.4137
-pharmaciens,14,"etrangers x0,5",0.030292,0.10962,0.27634
-pharmaciens,15,"etrangers x0,5",0.029919,0.097955,0.30544
-pharmaciens,16,"etrangers x0,5",0.030254,0.10792,0.28034
-pharmaciens,17,"etrangers x0,5",0.029339,0.12027,0.24395
-pharmaciens,18,"etrangers x0,5",0.030059,0.075116,0.40017
-pharmaciens,19,"etrangers x0,5",0.030555,0.094179,0.32443
-pharmaciens,21,"etrangers x0,5",0.030225,0.081915,0.36897
-pharmaciens,22,"etrangers x0,5",0.028234,0.11605,0.2433
-pharmaciens,23,"etrangers x0,5",0.020318,0.11277,0.18017
-pharmaciens,24,"etrangers x0,5",0.029738,0.14327,0.20756
-pharmaciens,25,"etrangers x0,5",0.030022,0.091906,0.32666
-pharmaciens,26,"etrangers x0,5",0.031359,0.1004,0.31235
-pharmaciens,27,"etrangers x0,5",0.030135,0.15284,0.19717
-pharmaciens,28,"etrangers x0,5",0.030849,0.11531,0.26752
-pharmaciens,29,"etrangers x0,5",0.028872,0.1028,0.28084
-pharmaciens,2A,"etrangers x0,5",0.030384,0.13568,0.22394
-pharmaciens,2B,"etrangers x0,5",0.028648,0.11498,0.24916
-pharmaciens,30,"etrangers x0,5",0.029566,0.10031,0.29475
-pharmaciens,31,"etrangers x0,5",0.029014,0.096191,0.30162
-pharmaciens,32,"etrangers x0,5",0.028393,0.11707,0.24254
-pharmaciens,33,"etrangers x0,5",0.028958,0.093702,0.30904
-pharmaciens,34,"etrangers x0,5",0.029182,0.077813,0.37503
-pharmaciens,35,"etrangers x0,5",0.02955,0.10601,0.27876
-pharmaciens,36,"etrangers x0,5",0.029505,0.071675,0.41164
-pharmaciens,37,"etrangers x0,5",0.030682,0.079179,0.38751
-pharmaciens,38,"etrangers x0,5",0.028302,0.096637,0.29287
-pharmaciens,39,"etrangers x0,5",0.030725,0.11487,0.26747
-pharmaciens,40,"etrangers x0,5",0.028971,0.13089,0.22135
-pharmaciens,41,"etrangers x0,5",0.02823,0.084716,0.33323
-pharmaciens,42,"etrangers x0,5",0.029408,0.06117,0.48076
-pharmaciens,43,"etrangers x0,5",0.028721,0.096793,0.29673
-pharmaciens,44,"etrangers x0,5",0.029881,0.090379,0.33062
-pharmaciens,45,"etrangers x0,5",0.029506,0.086126,0.34259
-pharmaciens,46,"etrangers x0,5",0.028903,0.11215,0.25773
-pharmaciens,47,"etrangers x0,5",0.029963,0.12476,0.24017
-pharmaciens,48,"etrangers x0,5",0.031994,0.099488,0.32158
-pharmaciens,49,"etrangers x0,5",0.028882,0.10265,0.28136
-pharmaciens,50,"etrangers x0,5",0.030913,0.13807,0.2239
-pharmaciens,51,"etrangers x0,5",0.029698,0.085572,0.34706
-pharmaciens,52,"etrangers x0,5",0.02965,0.088952,0.33333
-pharmaciens,53,"etrangers x0,5",0.029549,0.11101,0.26619
-pharmaciens,54,"etrangers x0,5",0.029397,0.09226,0.31864
-pharmaciens,55,"etrangers x0,5",0.030582,0.10872,0.28129
-pharmaciens,56,"etrangers x0,5",0.029169,0.1383,0.21091
-pharmaciens,57,"etrangers x0,5",0.028773,0.12417,0.23172
-pharmaciens,58,"etrangers x0,5",0.03137,0.082161,0.38181
-pharmaciens,59,"etrangers x0,5",0.029082,0.086803,0.33503
-pharmaciens,60,"etrangers x0,5",0.02968,0.10522,0.28207
-pharmaciens,61,"etrangers x0,5",0.029575,0.1006,0.29398
-pharmaciens,62,"etrangers x0,5",0.029292,0.11215,0.2612
-pharmaciens,63,"etrangers x0,5",0.029383,0.054779,0.53639
-pharmaciens,64,"etrangers x0,5",0.029961,0.10784,0.27784
-pharmaciens,65,"etrangers x0,5",0.028602,0.088472,0.32329
-pharmaciens,66,"etrangers x0,5",0.031346,0.11778,0.26614
-pharmaciens,67,"etrangers x0,5",0.029468,0.10177,0.28955
-pharmaciens,68,"etrangers x0,5",0.028793,0.15493,0.18585
-pharmaciens,69,"etrangers x0,5",0.028725,0.06424,0.44716
-pharmaciens,70,"etrangers x0,5",0.029756,0.1222,0.2435
-pharmaciens,71,"etrangers x0,5",0.02833,0.10126,0.27978
-pharmaciens,72,"etrangers x0,5",0.029286,0.093983,0.31161
-pharmaciens,73,"etrangers x0,5",0.030505,0.13055,0.23367
-pharmaciens,74,"etrangers x0,5",0.028596,0.14467,0.19767
-pharmaciens,75,"etrangers x0,5",0.030524,0.055506,0.54992
-pharmaciens,76,"etrangers x0,5",0.030083,0.082955,0.36265
-pharmaciens,77,"etrangers x0,5",0.028889,0.10364,0.27874
-pharmaciens,78,"etrangers x0,5",0.027878,0.091051,0.30618
-pharmaciens,79,"etrangers x0,5",0.027881,0.096602,0.28862
-pharmaciens,80,"etrangers x0,5",0.030188,0.098627,0.30608
-pharmaciens,81,"etrangers x0,5",0.027513,0.08673,0.31722
-pharmaciens,82,"etrangers x0,5",0.031167,0.11666,0.26716
-pharmaciens,83,"etrangers x0,5",0.028539,0.092855,0.30735
-pharmaciens,84,"etrangers x0,5",0.026879,0.088776,0.30278
-pharmaciens,85,"etrangers x0,5",0.029642,0.13966,0.21225
-pharmaciens,86,"etrangers x0,5",0.028932,0.069751,0.41479
-pharmaciens,87,"etrangers x0,5",0.029452,0.087021,0.33845
-pharmaciens,88,"etrangers x0,5",0.029574,0.13471,0.21954
-pharmaciens,89,"etrangers x0,5",0.031301,0.10116,0.30942
-pharmaciens,90,"etrangers x0,5",0.030004,0.12835,0.23376
-pharmaciens,91,"etrangers x0,5",0.02809,0.086995,0.32289
-pharmaciens,92,"etrangers x0,5",0.029111,0.083845,0.3472
-pharmaciens,93,"etrangers x0,5",0.029264,0.10038,0.29152
-pharmaciens,94,"etrangers x0,5",0.029472,0.091623,0.32167
-pharmaciens,95,"etrangers x0,5",0.028412,0.087919,0.32316
-pharmaciens,971,"etrangers x0,5",0.028584,0.27091,0.10551
-pharmaciens,972,"etrangers x0,5",0.030131,0.26975,0.1117
-pharmaciens,973,"etrangers x0,5",0.032253,0.13853,0.23282
-pharmaciens,974,"etrangers x0,5",0.030322,0.15592,0.19448
-pharmaciens,976,"etrangers x0,5",0.030481,0.10204,0.29871
-pharmaciens,FR,"etrangers x0,5",0.029375,0.095538,0.30747
-pharmaciens,01,etrangers x2,0.05534,0.137,0.40394
-pharmaciens,02,etrangers x2,0.056801,0.10232,0.55511
-pharmaciens,03,etrangers x2,0.061195,0.064644,0.94663
-pharmaciens,04,etrangers x2,0.062858,0.10824,0.5807
-pharmaciens,05,etrangers x2,0.055016,0.15014,0.36643
-pharmaciens,06,etrangers x2,0.05512,0.073964,0.74523
-pharmaciens,07,etrangers x2,0.056006,0.11736,0.47723
-pharmaciens,08,etrangers x2,0.055043,0.10684,0.51519
-pharmaciens,09,etrangers x2,0.054068,0.11854,0.4561
-pharmaciens,10,etrangers x2,0.053972,0.078306,0.68925
-pharmaciens,11,etrangers x2,0.058314,0.10738,0.54307
-pharmaciens,12,etrangers x2,0.057263,0.10714,0.53445
-pharmaciens,13,etrangers x2,0.055106,0.069459,0.79336
-pharmaciens,14,etrangers x2,0.057962,0.10962,0.52877
-pharmaciens,15,etrangers x2,0.05728,0.097955,0.58476
-pharmaciens,16,etrangers x2,0.057894,0.10792,0.53646
-pharmaciens,17,etrangers x2,0.056216,0.12027,0.46741
-pharmaciens,18,etrangers x2,0.057536,0.075116,0.76596
-pharmaciens,19,etrangers x2,0.058444,0.094179,0.62056
-pharmaciens,21,etrangers x2,0.057839,0.081915,0.70609
-pharmaciens,22,etrangers x2,0.054184,0.11605,0.46691
-pharmaciens,23,etrangers x2,0.057703,0.11277,0.51168
-pharmaciens,24,etrangers x2,0.056947,0.14327,0.39747
-pharmaciens,25,etrangers x2,0.057469,0.091906,0.6253
-pharmaciens,26,etrangers x2,0.059913,0.1004,0.59677
-pharmaciens,27,etrangers x2,0.057676,0.15284,0.37736
-pharmaciens,28,etrangers x2,0.058981,0.11531,0.5115
-pharmaciens,29,etrangers x2,0.055357,0.1028,0.53847
-pharmaciens,2A,etrangers x2,0.058131,0.13568,0.42844
-pharmaciens,2B,etrangers x2,0.054945,0.11498,0.47788
-pharmaciens,30,etrangers x2,0.056633,0.10031,0.56457
-pharmaciens,31,etrangers x2,0.055618,0.096191,0.5782
-pharmaciens,32,etrangers x2,0.054476,0.11707,0.46534
-pharmaciens,33,etrangers x2,0.055516,0.093702,0.59247
-pharmaciens,34,etrangers x2,0.055927,0.077813,0.71874
-pharmaciens,35,etrangers x2,0.056603,0.10601,0.53396
-pharmaciens,36,etrangers x2,0.056519,0.071675,0.78855
-pharmaciens,37,etrangers x2,0.058677,0.079179,0.74107
-pharmaciens,38,etrangers x2,0.05431,0.096637,0.562
-pharmaciens,39,etrangers x2,0.058754,0.11487,0.51148
-pharmaciens,40,etrangers x2,0.05554,0.13089,0.42434
-pharmaciens,41,etrangers x2,0.054177,0.084716,0.63951
-pharmaciens,42,etrangers x2,0.056343,0.06117,0.92108
-pharmaciens,43,etrangers x2,0.05508,0.096793,0.56905
-pharmaciens,44,etrangers x2,0.057209,0.090379,0.63299
-pharmaciens,45,etrangers x2,0.056522,0.086126,0.65627
-pharmaciens,46,etrangers x2,0.055415,0.11215,0.49413
-pharmaciens,47,etrangers x2,0.057361,0.12476,0.45978
-pharmaciens,48,etrangers x2,0.061071,0.099488,0.61386
-pharmaciens,49,etrangers x2,0.055377,0.10265,0.53945
-pharmaciens,50,etrangers x2,0.059098,0.13807,0.42804
-pharmaciens,51,etrangers x2,0.056875,0.085572,0.66464
-pharmaciens,52,etrangers x2,0.056787,0.088952,0.6384
-pharmaciens,53,etrangers x2,0.056601,0.11101,0.50989
-pharmaciens,54,etrangers x2,0.056323,0.09226,0.61048
-pharmaciens,55,etrangers x2,0.058494,0.10872,0.53802
-pharmaciens,56,etrangers x2,0.055903,0.1383,0.40422
-pharmaciens,57,etrangers x2,0.055176,0.12417,0.44435
-pharmaciens,58,etrangers x2,0.059933,0.082161,0.72946
-pharmaciens,59,etrangers x2,0.055743,0.086803,0.64217
-pharmaciens,60,etrangers x2,0.056842,0.10522,0.54019
-pharmaciens,61,etrangers x2,0.056649,0.1006,0.56309
-pharmaciens,62,etrangers x2,0.05613,0.11215,0.5005
-pharmaciens,63,etrangers x2,0.056296,0.054779,1.0277
-pharmaciens,64,etrangers x2,0.057357,0.10784,0.53188
-pharmaciens,65,etrangers x2,0.054861,0.088472,0.62009
-pharmaciens,66,etrangers x2,0.05989,0.11778,0.50849
-pharmaciens,67,etrangers x2,0.056452,0.10177,0.55469
-pharmaciens,68,etrangers x2,0.055213,0.15493,0.35638
-pharmaciens,69,etrangers x2,0.055087,0.06424,0.85753
-pharmaciens,70,etrangers x2,0.056981,0.1222,0.46628
-pharmaciens,71,etrangers x2,0.05436,0.10126,0.53685
-pharmaciens,72,etrangers x2,0.056117,0.093983,0.5971
-pharmaciens,73,etrangers x2,0.058352,0.13055,0.44698
-pharmaciens,74,etrangers x2,0.05485,0.14467,0.37915
-pharmaciens,75,etrangers x2,0.058388,0.055506,1.0519
-pharmaciens,76,etrangers x2,0.057581,0.082955,0.69412
-pharmaciens,77,etrangers x2,0.055389,0.10364,0.53442
-pharmaciens,78,etrangers x2,0.053528,0.091051,0.58789
-pharmaciens,79,etrangers x2,0.053533,0.096602,0.55416
-pharmaciens,80,etrangers x2,0.057772,0.098627,0.58576
-pharmaciens,81,etrangers x2,0.052854,0.08673,0.6094
-pharmaciens,82,etrangers x2,0.059562,0.11666,0.51057
-pharmaciens,83,etrangers x2,0.054744,0.092855,0.58957
-pharmaciens,84,etrangers x2,0.051684,0.088776,0.58219
-pharmaciens,85,etrangers x2,0.056772,0.13966,0.40652
-pharmaciens,86,etrangers x2,0.055467,0.069751,0.79523
-pharmaciens,87,etrangers x2,0.056423,0.087021,0.64839
-pharmaciens,88,etrangers x2,0.056648,0.13471,0.42051
-pharmaciens,89,etrangers x2,0.059809,0.10116,0.59121
-pharmaciens,90,etrangers x2,0.057435,0.12835,0.44747
-pharmaciens,91,etrangers x2,0.053918,0.086995,0.61978
-pharmaciens,92,etrangers x2,0.055797,0.083845,0.66547
-pharmaciens,93,etrangers x2,0.056077,0.10038,0.55862
-pharmaciens,94,etrangers x2,0.05646,0.091623,0.61622
-pharmaciens,95,etrangers x2,0.054511,0.087919,0.62002
-pharmaciens,971,etrangers x2,0.054827,0.27091,0.20238
-pharmaciens,972,etrangers x2,0.057668,0.26975,0.21378
-pharmaciens,973,etrangers x2,0.061544,0.13853,0.44426
-pharmaciens,974,etrangers x2,0.058019,0.15592,0.37211
-pharmaciens,976,etrangers x2,0.058308,0.10204,0.57142
-pharmaciens,FR,etrangers x2,0.056306,0.095538,0.58936
-pharmaciens,01,L23 vaccination en officine,0.0043123,0.137,0.031477
-pharmaciens,02,L23 vaccination en officine,0.0042854,0.10232,0.041881
-pharmaciens,03,L23 vaccination en officine,0.0041587,0.064644,0.064332
-pharmaciens,04,L23 vaccination en officine,0.0040893,0.10824,0.037778
-pharmaciens,05,L23 vaccination en officine,0.0040391,0.15014,0.026902
-pharmaciens,06,L23 vaccination en officine,0.0042476,0.073964,0.057428
-pharmaciens,07,L23 vaccination en officine,0.0040996,0.11736,0.034933
-pharmaciens,08,L23 vaccination en officine,0.0042245,0.10684,0.03954
-pharmaciens,09,L23 vaccination en officine,0.0040656,0.11854,0.034296
-pharmaciens,10,L23 vaccination en officine,0.0043407,0.078306,0.055433
-pharmaciens,11,L23 vaccination en officine,0.0041044,0.10738,0.038224
-pharmaciens,12,L23 vaccination en officine,0.0040725,0.10714,0.03801
-pharmaciens,13,L23 vaccination en officine,0.0043882,0.069459,0.063178
-pharmaciens,14,L23 vaccination en officine,0.0042512,0.10962,0.038783
-pharmaciens,15,L23 vaccination en officine,0.0040576,0.097955,0.041423
-pharmaciens,16,L23 vaccination en officine,0.0041238,0.10792,0.038213
-pharmaciens,17,L23 vaccination en officine,0.0040429,0.12027,0.033615
-pharmaciens,18,L23 vaccination en officine,0.0041684,0.075116,0.055493
-pharmaciens,19,L23 vaccination en officine,0.0040984,0.094179,0.043517
-pharmaciens,21,L23 vaccination en officine,0.0043436,0.081915,0.053026
-pharmaciens,22,L23 vaccination en officine,0.0040855,0.11605,0.035205
-pharmaciens,23,L23 vaccination en officine,0.0039754,0.11277,0.035252
-pharmaciens,24,L23 vaccination en officine,0.0039496,0.14327,0.027567
-pharmaciens,25,L23 vaccination en officine,0.0043765,0.091906,0.047619
-pharmaciens,26,L23 vaccination en officine,0.0042573,0.1004,0.042405
-pharmaciens,27,L23 vaccination en officine,0.0041998,0.15284,0.027479
-pharmaciens,28,L23 vaccination en officine,0.0042585,0.11531,0.03693
-pharmaciens,29,L23 vaccination en officine,0.0041988,0.1028,0.040843
-pharmaciens,2A,L23 vaccination en officine,0.0040845,0.13568,0.030104
-pharmaciens,2B,L23 vaccination en officine,0.0041714,0.11498,0.03628
-pharmaciens,30,L23 vaccination en officine,0.0041968,0.10031,0.041837
-pharmaciens,31,L23 vaccination en officine,0.0045085,0.096191,0.046871
-pharmaciens,32,L23 vaccination en officine,0.004035,0.11707,0.034468
-pharmaciens,33,L23 vaccination en officine,0.0043929,0.093702,0.046881
-pharmaciens,34,L23 vaccination en officine,0.0043476,0.077813,0.055873
-pharmaciens,35,L23 vaccination en officine,0.0044182,0.10601,0.041678
-pharmaciens,36,L23 vaccination en officine,0.0041248,0.071675,0.057548
-pharmaciens,37,L23 vaccination en officine,0.0043337,0.079179,0.054733
-pharmaciens,38,L23 vaccination en officine,0.0043941,0.096637,0.04547
-pharmaciens,39,L23 vaccination en officine,0.004154,0.11487,0.036162
-pharmaciens,40,L23 vaccination en officine,0.0040655,0.13089,0.031061
-pharmaciens,41,L23 vaccination en officine,0.0041782,0.084716,0.04932
-pharmaciens,42,L23 vaccination en officine,0.0043527,0.06117,0.071157
-pharmaciens,43,L23 vaccination en officine,0.0041679,0.096793,0.04306
-pharmaciens,44,L23 vaccination en officine,0.0044427,0.090379,0.049157
-pharmaciens,45,L23 vaccination en officine,0.0043671,0.086126,0.050707
-pharmaciens,46,L23 vaccination en officine,0.0039915,0.11215,0.035592
-pharmaciens,47,L23 vaccination en officine,0.0040762,0.12476,0.032673
-pharmaciens,48,L23 vaccination en officine,0.0041307,0.099488,0.04152
-pharmaciens,49,L23 vaccination en officine,0.0043487,0.10265,0.042363
-pharmaciens,50,L23 vaccination en officine,0.0040767,0.13807,0.029527
-pharmaciens,51,L23 vaccination en officine,0.0043828,0.085572,0.051218
-pharmaciens,52,L23 vaccination en officine,0.0041702,0.088952,0.046881
-pharmaciens,53,L23 vaccination en officine,0.0042252,0.11101,0.038063
-pharmaciens,54,L23 vaccination en officine,0.0043807,0.09226,0.047482
-pharmaciens,55,L23 vaccination en officine,0.0041824,0.10872,0.038469
-pharmaciens,56,L23 vaccination en officine,0.0040802,0.1383,0.029503
-pharmaciens,57,L23 vaccination en officine,0.0042472,0.12417,0.034203
-pharmaciens,58,L23 vaccination en officine,0.0040668,0.082161,0.049498
-pharmaciens,59,L23 vaccination en officine,0.0044916,0.086803,0.051745
-pharmaciens,60,L23 vaccination en officine,0.0044052,0.10522,0.041865
-pharmaciens,61,L23 vaccination en officine,0.0041235,0.1006,0.040987
-pharmaciens,62,L23 vaccination en officine,0.004324,0.11215,0.038557
-pharmaciens,63,L23 vaccination en officine,0.0043816,0.054779,0.079987
-pharmaciens,64,L23 vaccination en officine,0.0041791,0.10784,0.038753
-pharmaciens,65,L23 vaccination en officine,0.0041212,0.088472,0.046581
-pharmaciens,66,L23 vaccination en officine,0.0040963,0.11778,0.03478
-pharmaciens,67,L23 vaccination en officine,0.0043721,0.10177,0.04296
-pharmaciens,68,L23 vaccination en officine,0.0041824,0.15493,0.026996
-pharmaciens,69,L23 vaccination en officine,0.0045936,0.06424,0.071507
-pharmaciens,70,L23 vaccination en officine,0.0041373,0.1222,0.033856
-pharmaciens,71,L23 vaccination en officine,0.0041215,0.10126,0.040703
-pharmaciens,72,L23 vaccination en officine,0.0042668,0.093983,0.0454
-pharmaciens,73,L23 vaccination en officine,0.0042128,0.13055,0.032271
-pharmaciens,74,L23 vaccination en officine,0.0043412,0.14467,0.030008
-pharmaciens,75,L23 vaccination en officine,0.0045551,0.055506,0.082065
-pharmaciens,76,L23 vaccination en officine,0.0043762,0.082955,0.052754
-pharmaciens,77,L23 vaccination en officine,0.0045195,0.10364,0.043606
-pharmaciens,78,L23 vaccination en officine,0.0044858,0.091051,0.049266
-pharmaciens,79,L23 vaccination en officine,0.0042064,0.096602,0.043544
-pharmaciens,80,L23 vaccination en officine,0.0043265,0.098627,0.043867
-pharmaciens,81,L23 vaccination en officine,0.0041849,0.08673,0.048253
-pharmaciens,82,L23 vaccination en officine,0.0041964,0.11666,0.035972
-pharmaciens,83,L23 vaccination en officine,0.0041406,0.092855,0.044593
-pharmaciens,84,L23 vaccination en officine,0.0042729,0.088776,0.048131
-pharmaciens,85,L23 vaccination en officine,0.0040765,0.13966,0.02919
-pharmaciens,86,L23 vaccination en officine,0.0043531,0.069751,0.062409
-pharmaciens,87,L23 vaccination en officine,0.0042036,0.087021,0.048306
-pharmaciens,88,L23 vaccination en officine,0.0040921,0.13471,0.030377
-pharmaciens,89,L23 vaccination en officine,0.004165,0.10116,0.041171
-pharmaciens,90,L23 vaccination en officine,0.0042635,0.12835,0.033217
-pharmaciens,91,L23 vaccination en officine,0.0045602,0.086995,0.05242
-pharmaciens,92,L23 vaccination en officine,0.0045953,0.083845,0.054807
-pharmaciens,93,L23 vaccination en officine,0.0046804,0.10038,0.046625
-pharmaciens,94,L23 vaccination en officine,0.004568,0.091623,0.049856
-pharmaciens,95,L23 vaccination en officine,0.0046239,0.087919,0.052593
-pharmaciens,971,L23 vaccination en officine,0.0039694,0.27091,0.014652
-pharmaciens,972,L23 vaccination en officine,0.003926,0.26975,0.014554
-pharmaciens,973,L23 vaccination en officine,0.0050926,0.13853,0.036761
-pharmaciens,974,L23 vaccination en officine,0.0044889,0.15592,0.028791
-pharmaciens,976,L23 vaccination en officine,0.0057542,0.10204,0.056391
-pharmaciens,FR,L23 vaccination en officine,0.0043387,0.095538,0.045414
 kines,01,"quotas x0,8",0.12739,0.18365,0.69365
 kines,02,"quotas x0,8",0.11581,0.15416,0.75119
 kines,03,"quotas x0,8",0.12895,0.11888,1.0847
@@ -5089,3 +4069,1023 @@ infirmiers,972,regulation (toutes zones),0,0.70508,0
 infirmiers,973,regulation (toutes zones),0,0.46902,0
 infirmiers,974,regulation (toutes zones),0,0.50378,0
 infirmiers,FR,regulation (toutes zones),0,0.32117,0
+pharmaciens,01,"quotas x0,8",0.12031,0.137,0.87816
+pharmaciens,02,"quotas x0,8",0.12169,0.10232,1.1892
+pharmaciens,03,"quotas x0,8",0.12469,0.064644,1.9288
+pharmaciens,04,"quotas x0,8",0.12794,0.10824,1.182
+pharmaciens,05,"quotas x0,8",0.11743,0.15014,0.78212
+pharmaciens,06,"quotas x0,8",0.11524,0.073964,1.5581
+pharmaciens,07,"quotas x0,8",0.12055,0.11736,1.0273
+pharmaciens,08,"quotas x0,8",0.11799,0.10684,1.1044
+pharmaciens,09,"quotas x0,8",0.11682,0.11854,0.98549
+pharmaciens,10,"quotas x0,8",0.11655,0.078306,1.4884
+pharmaciens,11,"quotas x0,8",0.11936,0.10738,1.1116
+pharmaciens,12,"quotas x0,8",0.11876,0.10714,1.1084
+pharmaciens,13,"quotas x0,8",0.1189,0.069459,1.7119
+pharmaciens,14,"quotas x0,8",0.12736,0.10962,1.1619
+pharmaciens,15,"quotas x0,8",0.12212,0.097955,1.2467
+pharmaciens,16,"quotas x0,8",0.1238,0.10792,1.1472
+pharmaciens,17,"quotas x0,8",0.11933,0.12027,0.99215
+pharmaciens,18,"quotas x0,8",0.12394,0.075116,1.65
+pharmaciens,19,"quotas x0,8",0.12425,0.094179,1.3193
+pharmaciens,21,"quotas x0,8",0.12752,0.081915,1.5567
+pharmaciens,22,"quotas x0,8",0.11441,0.11605,0.98587
+pharmaciens,23,"quotas x0,8",0.12108,0.11277,1.0737
+pharmaciens,24,"quotas x0,8",0.11772,0.14327,0.82165
+pharmaciens,25,"quotas x0,8",0.12614,0.091906,1.3725
+pharmaciens,26,"quotas x0,8",0.12091,0.1004,1.2043
+pharmaciens,27,"quotas x0,8",0.12635,0.15284,0.82667
+pharmaciens,28,"quotas x0,8",0.13092,0.11531,1.1354
+pharmaciens,29,"quotas x0,8",0.11477,0.1028,1.1164
+pharmaciens,2A,"quotas x0,8",0.12351,0.13568,0.91028
+pharmaciens,2B,"quotas x0,8",0.11846,0.11498,1.0303
+pharmaciens,30,"quotas x0,8",0.11997,0.10031,1.196
+pharmaciens,31,"quotas x0,8",0.1204,0.096191,1.2517
+pharmaciens,32,"quotas x0,8",0.11768,0.11707,1.0053
+pharmaciens,33,"quotas x0,8",0.11996,0.093702,1.2803
+pharmaciens,34,"quotas x0,8",0.12216,0.077813,1.5699
+pharmaciens,35,"quotas x0,8",0.12098,0.10601,1.1413
+pharmaciens,36,"quotas x0,8",0.1201,0.071675,1.6756
+pharmaciens,37,"quotas x0,8",0.12621,0.079179,1.594
+pharmaciens,38,"quotas x0,8",0.11746,0.096637,1.2155
+pharmaciens,39,"quotas x0,8",0.12611,0.11487,1.0979
+pharmaciens,40,"quotas x0,8",0.11788,0.13089,0.90061
+pharmaciens,41,"quotas x0,8",0.11734,0.084716,1.3851
+pharmaciens,42,"quotas x0,8",0.1233,0.06117,2.0157
+pharmaciens,43,"quotas x0,8",0.11424,0.096793,1.1802
+pharmaciens,44,"quotas x0,8",0.12277,0.090379,1.3584
+pharmaciens,45,"quotas x0,8",0.12316,0.086126,1.43
+pharmaciens,46,"quotas x0,8",0.11457,0.11215,1.0216
+pharmaciens,47,"quotas x0,8",0.12259,0.12476,0.98259
+pharmaciens,48,"quotas x0,8",0.13003,0.099488,1.307
+pharmaciens,49,"quotas x0,8",0.1204,0.10265,1.1729
+pharmaciens,50,"quotas x0,8",0.12685,0.13807,0.91876
+pharmaciens,51,"quotas x0,8",0.12449,0.085572,1.4548
+pharmaciens,52,"quotas x0,8",0.12083,0.088952,1.3583
+pharmaciens,53,"quotas x0,8",0.12246,0.11101,1.1032
+pharmaciens,54,"quotas x0,8",0.12169,0.09226,1.3189
+pharmaciens,55,"quotas x0,8",0.12741,0.10872,1.1719
+pharmaciens,56,"quotas x0,8",0.11763,0.1383,0.85053
+pharmaciens,57,"quotas x0,8",0.11976,0.12417,0.96442
+pharmaciens,58,"quotas x0,8",0.12916,0.082161,1.572
+pharmaciens,59,"quotas x0,8",0.12177,0.086803,1.4028
+pharmaciens,60,"quotas x0,8",0.12254,0.10522,1.1646
+pharmaciens,61,"quotas x0,8",0.12234,0.1006,1.216
+pharmaciens,62,"quotas x0,8",0.12184,0.11215,1.0864
+pharmaciens,63,"quotas x0,8",0.12237,0.054779,2.234
+pharmaciens,64,"quotas x0,8",0.12262,0.10784,1.1371
+pharmaciens,65,"quotas x0,8",0.11868,0.088472,1.3415
+pharmaciens,66,"quotas x0,8",0.12391,0.11778,1.052
+pharmaciens,67,"quotas x0,8",0.12398,0.10177,1.2182
+pharmaciens,68,"quotas x0,8",0.12024,0.15493,0.77611
+pharmaciens,69,"quotas x0,8",0.12003,0.06424,1.8685
+pharmaciens,70,"quotas x0,8",0.12401,0.1222,1.0148
+pharmaciens,71,"quotas x0,8",0.11778,0.10126,1.1632
+pharmaciens,72,"quotas x0,8",0.1204,0.093983,1.2811
+pharmaciens,73,"quotas x0,8",0.12355,0.13055,0.9464
+pharmaciens,74,"quotas x0,8",0.11822,0.14467,0.81718
+pharmaciens,75,"quotas x0,8",0.12942,0.055506,2.3316
+pharmaciens,76,"quotas x0,8",0.12539,0.082955,1.5115
+pharmaciens,77,"quotas x0,8",0.11968,0.10364,1.1547
+pharmaciens,78,"quotas x0,8",0.11415,0.091051,1.2537
+pharmaciens,79,"quotas x0,8",0.11548,0.096602,1.1954
+pharmaciens,80,"quotas x0,8",0.12433,0.098627,1.2606
+pharmaciens,81,"quotas x0,8",0.11156,0.08673,1.2863
+pharmaciens,82,"quotas x0,8",0.12247,0.11666,1.0498
+pharmaciens,83,"quotas x0,8",0.11561,0.092855,1.2451
+pharmaciens,84,"quotas x0,8",0.1111,0.088776,1.2515
+pharmaciens,85,"quotas x0,8",0.12348,0.13966,0.88416
+pharmaciens,86,"quotas x0,8",0.12039,0.069751,1.7261
+pharmaciens,87,"quotas x0,8",0.1221,0.087021,1.4031
+pharmaciens,88,"quotas x0,8",0.11905,0.13471,0.88375
+pharmaciens,89,"quotas x0,8",0.12496,0.10116,1.2353
+pharmaciens,90,"quotas x0,8",0.12326,0.12835,0.9603
+pharmaciens,91,"quotas x0,8",0.11674,0.086995,1.3419
+pharmaciens,92,"quotas x0,8",0.12135,0.083845,1.4473
+pharmaciens,93,"quotas x0,8",0.12214,0.10038,1.2167
+pharmaciens,94,"quotas x0,8",0.12333,0.091623,1.346
+pharmaciens,95,"quotas x0,8",0.11827,0.087919,1.3452
+pharmaciens,971,"quotas x0,8",0.11917,0.27091,0.4399
+pharmaciens,972,"quotas x0,8",0.12767,0.26975,0.47329
+pharmaciens,973,"quotas x0,8",0.13065,0.13853,0.94308
+pharmaciens,974,"quotas x0,8",0.12832,0.15592,0.82298
+pharmaciens,976,"quotas x0,8",0.12761,0.10204,1.2506
+pharmaciens,FR,"quotas x0,8",0.12166,0.095538,1.2734
+pharmaciens,01,"quotas x1,2",0.10738,0.137,0.78377
+pharmaciens,02,"quotas x1,2",0.10847,0.10232,1.0601
+pharmaciens,03,"quotas x1,2",0.11085,0.064644,1.7148
+pharmaciens,04,"quotas x1,2",0.11341,0.10824,1.0478
+pharmaciens,05,"quotas x1,2",0.10508,0.15014,0.69985
+pharmaciens,06,"quotas x1,2",0.10332,0.073964,1.3969
+pharmaciens,07,"quotas x1,2",0.10757,0.11736,0.91663
+pharmaciens,08,"quotas x1,2",0.10553,0.10684,0.98773
+pharmaciens,09,"quotas x1,2",0.10459,0.11854,0.88231
+pharmaciens,10,"quotas x1,2",0.10437,0.078306,1.3329
+pharmaciens,11,"quotas x1,2",0.10662,0.10738,0.99294
+pharmaciens,12,"quotas x1,2",0.10614,0.10714,0.99065
+pharmaciens,13,"quotas x1,2",0.10626,0.069459,1.5298
+pharmaciens,14,"quotas x1,2",0.11296,0.10962,1.0305
+pharmaciens,15,"quotas x1,2",0.10882,0.097955,1.1109
+pharmaciens,16,"quotas x1,2",0.11015,0.10792,1.0207
+pharmaciens,17,"quotas x1,2",0.10659,0.12027,0.88628
+pharmaciens,18,"quotas x1,2",0.11026,0.075116,1.4679
+pharmaciens,19,"quotas x1,2",0.11051,0.094179,1.1734
+pharmaciens,21,"quotas x1,2",0.11308,0.081915,1.3805
+pharmaciens,22,"quotas x1,2",0.10265,0.11605,0.88457
+pharmaciens,23,"quotas x1,2",0.10799,0.11277,0.95759
+pharmaciens,24,"quotas x1,2",0.10531,0.14327,0.73503
+pharmaciens,25,"quotas x1,2",0.112,0.091906,1.2186
+pharmaciens,26,"quotas x1,2",0.10786,0.1004,1.0743
+pharmaciens,27,"quotas x1,2",0.11216,0.15284,0.73384
+pharmaciens,28,"quotas x1,2",0.11575,0.11531,1.0038
+pharmaciens,29,"quotas x1,2",0.10295,0.1028,1.0014
+pharmaciens,2A,"quotas x1,2",0.10992,0.13568,0.81011
+pharmaciens,2B,"quotas x1,2",0.1059,0.11498,0.92107
+pharmaciens,30,"quotas x1,2",0.10711,0.10031,1.0678
+pharmaciens,31,"quotas x1,2",0.10745,0.096191,1.1171
+pharmaciens,32,"quotas x1,2",0.10528,0.11707,0.89932
+pharmaciens,33,"quotas x1,2",0.1071,0.093702,1.143
+pharmaciens,34,"quotas x1,2",0.10885,0.077813,1.3988
+pharmaciens,35,"quotas x1,2",0.10791,0.10601,1.018
+pharmaciens,36,"quotas x1,2",0.10721,0.071675,1.4957
+pharmaciens,37,"quotas x1,2",0.11205,0.079179,1.4152
+pharmaciens,38,"quotas x1,2",0.1051,0.096637,1.0876
+pharmaciens,39,"quotas x1,2",0.11198,0.11487,0.9748
+pharmaciens,40,"quotas x1,2",0.10544,0.13089,0.80555
+pharmaciens,41,"quotas x1,2",0.105,0.084716,1.2395
+pharmaciens,42,"quotas x1,2",0.10975,0.06117,1.7942
+pharmaciens,43,"quotas x1,2",0.10252,0.096793,1.0591
+pharmaciens,44,"quotas x1,2",0.10933,0.090379,1.2097
+pharmaciens,45,"quotas x1,2",0.10964,0.086126,1.273
+pharmaciens,46,"quotas x1,2",0.10278,0.11215,0.91651
+pharmaciens,47,"quotas x1,2",0.10919,0.12476,0.87519
+pharmaciens,48,"quotas x1,2",0.11505,0.099488,1.1564
+pharmaciens,49,"quotas x1,2",0.10745,0.10265,1.0467
+pharmaciens,50,"quotas x1,2",0.11256,0.13807,0.81522
+pharmaciens,51,"quotas x1,2",0.11069,0.085572,1.2935
+pharmaciens,52,"quotas x1,2",0.10779,0.088952,1.2118
+pharmaciens,53,"quotas x1,2",0.10908,0.11101,0.98268
+pharmaciens,54,"quotas x1,2",0.10847,0.09226,1.1757
+pharmaciens,55,"quotas x1,2",0.113,0.10872,1.0393
+pharmaciens,56,"quotas x1,2",0.10524,0.1383,0.76093
+pharmaciens,57,"quotas x1,2",0.10694,0.12417,0.86118
+pharmaciens,58,"quotas x1,2",0.11437,0.082161,1.392
+pharmaciens,59,"quotas x1,2",0.10854,0.086803,1.2504
+pharmaciens,60,"quotas x1,2",0.10915,0.10522,1.0373
+pharmaciens,61,"quotas x1,2",0.10899,0.1006,1.0833
+pharmaciens,62,"quotas x1,2",0.1086,0.11215,0.96833
+pharmaciens,63,"quotas x1,2",0.10902,0.054779,1.9902
+pharmaciens,64,"quotas x1,2",0.10921,0.10784,1.0127
+pharmaciens,65,"quotas x1,2",0.10608,0.088472,1.199
+pharmaciens,66,"quotas x1,2",0.11023,0.11778,0.93591
+pharmaciens,67,"quotas x1,2",0.11029,0.10177,1.0837
+pharmaciens,68,"quotas x1,2",0.10732,0.15493,0.69273
+pharmaciens,69,"quotas x1,2",0.10716,0.06424,1.6681
+pharmaciens,70,"quotas x1,2",0.11031,0.1222,0.90271
+pharmaciens,71,"quotas x1,2",0.10536,0.10126,1.0405
+pharmaciens,72,"quotas x1,2",0.10745,0.093983,1.1433
+pharmaciens,73,"quotas x1,2",0.10995,0.13055,0.84222
+pharmaciens,74,"quotas x1,2",0.10571,0.14467,0.73071
+pharmaciens,75,"quotas x1,2",0.11457,0.055506,2.0641
+pharmaciens,76,"quotas x1,2",0.1114,0.082955,1.3429
+pharmaciens,77,"quotas x1,2",0.10688,0.10364,1.0312
+pharmaciens,78,"quotas x1,2",0.10245,0.091051,1.1252
+pharmaciens,79,"quotas x1,2",0.10351,0.096602,1.0715
+pharmaciens,80,"quotas x1,2",0.11057,0.098627,1.121
+pharmaciens,81,"quotas x1,2",0.10036,0.08673,1.1571
+pharmaciens,82,"quotas x1,2",0.1091,0.11666,0.93519
+pharmaciens,83,"quotas x1,2",0.10362,0.092855,1.1159
+pharmaciens,84,"quotas x1,2",0.099984,0.088776,1.1263
+pharmaciens,85,"quotas x1,2",0.10989,0.13966,0.78689
+pharmaciens,86,"quotas x1,2",0.10744,0.069751,1.5404
+pharmaciens,87,"quotas x1,2",0.1088,0.087021,1.2503
+pharmaciens,88,"quotas x1,2",0.10637,0.13471,0.78965
+pharmaciens,89,"quotas x1,2",0.11107,0.10116,1.0979
+pharmaciens,90,"quotas x1,2",0.10972,0.12835,0.85481
+pharmaciens,91,"quotas x1,2",0.10453,0.086995,1.2015
+pharmaciens,92,"quotas x1,2",0.1082,0.083845,1.2905
+pharmaciens,93,"quotas x1,2",0.10883,0.10038,1.0841
+pharmaciens,94,"quotas x1,2",0.10977,0.091623,1.1981
+pharmaciens,95,"quotas x1,2",0.10575,0.087919,1.2028
+pharmaciens,971,"quotas x1,2",0.10647,0.27091,0.39302
+pharmaciens,972,"quotas x1,2",0.1132,0.26975,0.41965
+pharmaciens,973,"quotas x1,2",0.11553,0.13853,0.83399
+pharmaciens,974,"quotas x1,2",0.11371,0.15592,0.72929
+pharmaciens,976,"quotas x1,2",0.11315,0.10204,1.1089
+pharmaciens,FR,"quotas x1,2",0.10845,0.095538,1.1352
+pharmaciens,01,retraite +2 ans,0.044885,0.137,0.32762
+pharmaciens,02,retraite +2 ans,0.049712,0.10232,0.48583
+pharmaciens,03,retraite +2 ans,0.060033,0.064644,0.92866
+pharmaciens,04,retraite +2 ans,0.051848,0.10824,0.47899
+pharmaciens,05,retraite +2 ans,0.04804,0.15014,0.31997
+pharmaciens,06,retraite +2 ans,0.056885,0.073964,0.76909
+pharmaciens,07,retraite +2 ans,0.051673,0.11736,0.44031
+pharmaciens,08,retraite +2 ans,0.051463,0.10684,0.48168
+pharmaciens,09,retraite +2 ans,0.048116,0.11854,0.40589
+pharmaciens,10,retraite +2 ans,0.052432,0.078306,0.66958
+pharmaciens,11,retraite +2 ans,0.0651,0.10738,0.60627
+pharmaciens,12,retraite +2 ans,0.053775,0.10714,0.50189
+pharmaciens,13,retraite +2 ans,0.041801,0.069459,0.60181
+pharmaciens,14,retraite +2 ans,0.039657,0.10962,0.36178
+pharmaciens,15,retraite +2 ans,0.052104,0.097955,0.53192
+pharmaciens,16,retraite +2 ans,0.049334,0.10792,0.45715
+pharmaciens,17,retraite +2 ans,0.056567,0.12027,0.47033
+pharmaciens,18,retraite +2 ans,0.053,0.075116,0.70557
+pharmaciens,19,retraite +2 ans,0.051735,0.094179,0.54933
+pharmaciens,21,retraite +2 ans,0.035249,0.081915,0.43032
+pharmaciens,22,retraite +2 ans,0.063318,0.11605,0.54562
+pharmaciens,23,retraite +2 ans,0.059147,0.11277,0.52448
+pharmaciens,24,retraite +2 ans,0.066144,0.14327,0.46166
+pharmaciens,25,retraite +2 ans,0.039372,0.091906,0.4284
+pharmaciens,26,retraite +2 ans,0.068183,0.1004,0.67914
+pharmaciens,27,retraite +2 ans,0.043144,0.15284,0.28228
+pharmaciens,28,retraite +2 ans,0.037466,0.11531,0.32491
+pharmaciens,29,retraite +2 ans,0.06949,0.1028,0.67595
+pharmaciens,2A,retraite +2 ans,0.045039,0.13568,0.33195
+pharmaciens,2B,retraite +2 ans,0.052202,0.11498,0.45402
+pharmaciens,30,retraite +2 ans,0.051998,0.10031,0.51836
+pharmaciens,31,retraite +2 ans,0.044363,0.096191,0.46119
+pharmaciens,32,retraite +2 ans,0.050957,0.11707,0.43529
+pharmaciens,33,retraite +2 ans,0.046994,0.093702,0.50153
+pharmaciens,34,retraite +2 ans,0.039669,0.077813,0.5098
+pharmaciens,35,retraite +2 ans,0.05093,0.10601,0.48045
+pharmaciens,36,retraite +2 ans,0.0642,0.071675,0.8957
+pharmaciens,37,retraite +2 ans,0.045303,0.079179,0.57215
+pharmaciens,38,retraite +2 ans,0.049906,0.096637,0.51643
+pharmaciens,39,retraite +2 ans,0.041913,0.11487,0.36487
+pharmaciens,40,retraite +2 ans,0.05384,0.13089,0.41135
+pharmaciens,41,retraite +2 ans,0.054631,0.084716,0.64487
+pharmaciens,42,retraite +2 ans,0.040842,0.06117,0.66767
+pharmaciens,43,retraite +2 ans,0.065826,0.096793,0.68007
+pharmaciens,44,retraite +2 ans,0.047136,0.090379,0.52154
+pharmaciens,45,retraite +2 ans,0.051626,0.086126,0.59942
+pharmaciens,46,retraite +2 ans,0.062159,0.11215,0.55427
+pharmaciens,47,retraite +2 ans,0.055608,0.12476,0.44573
+pharmaciens,48,retraite +2 ans,0.041972,0.099488,0.42188
+pharmaciens,49,retraite +2 ans,0.043344,0.10265,0.42224
+pharmaciens,50,retraite +2 ans,0.046306,0.13807,0.33539
+pharmaciens,51,retraite +2 ans,0.038616,0.085572,0.45127
+pharmaciens,52,retraite +2 ans,0.05741,0.088952,0.6454
+pharmaciens,53,retraite +2 ans,0.051421,0.11101,0.46323
+pharmaciens,54,retraite +2 ans,0.048169,0.09226,0.5221
+pharmaciens,55,retraite +2 ans,0.047503,0.10872,0.43692
+pharmaciens,56,retraite +2 ans,0.055484,0.1383,0.40119
+pharmaciens,57,retraite +2 ans,0.047813,0.12417,0.38505
+pharmaciens,58,retraite +2 ans,0.053328,0.082161,0.64906
+pharmaciens,59,retraite +2 ans,0.045291,0.086803,0.52176
+pharmaciens,60,retraite +2 ans,0.052721,0.10522,0.50103
+pharmaciens,61,retraite +2 ans,0.051008,0.1006,0.50702
+pharmaciens,62,retraite +2 ans,0.048994,0.11215,0.43688
+pharmaciens,63,retraite +2 ans,0.042971,0.054779,0.78444
+pharmaciens,64,retraite +2 ans,0.047442,0.10784,0.43994
+pharmaciens,65,retraite +2 ans,0.051468,0.088472,0.58174
+pharmaciens,66,retraite +2 ans,0.054398,0.11778,0.46186
+pharmaciens,67,retraite +2 ans,0.041868,0.10177,0.41139
+pharmaciens,68,retraite +2 ans,0.046731,0.15493,0.30163
+pharmaciens,69,retraite +2 ans,0.043982,0.06424,0.68466
+pharmaciens,70,retraite +2 ans,0.04448,0.1222,0.36398
+pharmaciens,71,retraite +2 ans,0.055884,0.10126,0.5519
+pharmaciens,72,retraite +2 ans,0.051071,0.093983,0.54341
+pharmaciens,73,retraite +2 ans,0.047459,0.13055,0.36354
+pharmaciens,74,retraite +2 ans,0.049655,0.14467,0.34324
+pharmaciens,75,retraite +2 ans,0.035402,0.055506,0.63781
+pharmaciens,76,retraite +2 ans,0.044777,0.082955,0.53978
+pharmaciens,77,retraite +2 ans,0.052921,0.10364,0.5106
+pharmaciens,78,retraite +2 ans,0.066854,0.091051,0.73425
+pharmaciens,79,retraite +2 ans,0.056074,0.096602,0.58046
+pharmaciens,80,retraite +2 ans,0.04862,0.098627,0.49297
+pharmaciens,81,retraite +2 ans,0.065411,0.08673,0.75419
+pharmaciens,82,retraite +2 ans,0.067581,0.11666,0.57931
+pharmaciens,83,retraite +2 ans,0.054749,0.092855,0.58963
+pharmaciens,84,retraite +2 ans,0.05413,0.088776,0.60974
+pharmaciens,85,retraite +2 ans,0.043981,0.13966,0.31492
+pharmaciens,86,retraite +2 ans,0.045488,0.069751,0.65215
+pharmaciens,87,retraite +2 ans,0.043153,0.087021,0.4959
+pharmaciens,88,retraite +2 ans,0.061458,0.13471,0.45622
+pharmaciens,89,retraite +2 ans,0.058488,0.10116,0.57816
+pharmaciens,90,retraite +2 ans,0.053025,0.12835,0.41312
+pharmaciens,91,retraite +2 ans,0.052326,0.086995,0.60149
+pharmaciens,92,retraite +2 ans,0.043091,0.083845,0.51394
+pharmaciens,93,retraite +2 ans,0.040471,0.10038,0.40316
+pharmaciens,94,retraite +2 ans,0.040429,0.091623,0.44126
+pharmaciens,95,retraite +2 ans,0.049569,0.087919,0.5638
+pharmaciens,971,retraite +2 ans,0.042397,0.27091,0.1565
+pharmaciens,972,retraite +2 ans,0.038908,0.26975,0.14423
+pharmaciens,973,retraite +2 ans,0.042184,0.13853,0.30451
+pharmaciens,974,retraite +2 ans,0.033567,0.15592,0.21529
+pharmaciens,976,retraite +2 ans,0.027947,0.10204,0.27388
+pharmaciens,FR,retraite +2 ans,0.046859,0.095538,0.49047
+pharmaciens,01,"cumul x0,5",0.00039045,0.137,0.00285
+pharmaciens,02,"cumul x0,5",0.00040612,0.10232,0.0039689
+pharmaciens,03,"cumul x0,5",0.00053465,0.064644,0.0082706
+pharmaciens,04,"cumul x0,5",0.00072259,0.10824,0.0066756
+pharmaciens,05,"cumul x0,5",0.00066056,0.15014,0.0043997
+pharmaciens,06,"cumul x0,5",0.00080071,0.073964,0.010826
+pharmaciens,07,"cumul x0,5",0.0004577,0.11736,0.0039001
+pharmaciens,08,"cumul x0,5",0.00056372,0.10684,0.0052763
+pharmaciens,09,"cumul x0,5",0.0005011,0.11854,0.0042271
+pharmaciens,10,"cumul x0,5",0.0005777,0.078306,0.0073775
+pharmaciens,11,"cumul x0,5",0.00068188,0.10738,0.0063503
+pharmaciens,12,"cumul x0,5",0.00055822,0.10714,0.00521
+pharmaciens,13,"cumul x0,5",0.00056996,0.069459,0.0082058
+pharmaciens,14,"cumul x0,5",0.00032479,0.10962,0.002963
+pharmaciens,15,"cumul x0,5",0.00045867,0.097955,0.0046825
+pharmaciens,16,"cumul x0,5",0.00048495,0.10792,0.0044937
+pharmaciens,17,"cumul x0,5",0.00055375,0.12027,0.0046042
+pharmaciens,18,"cumul x0,5",0.0005417,0.075116,0.0072116
+pharmaciens,19,"cumul x0,5",0.00050069,0.094179,0.0053164
+pharmaciens,21,"cumul x0,5",0.0003517,0.081915,0.0042934
+pharmaciens,22,"cumul x0,5",0.00049431,0.11605,0.0042595
+pharmaciens,23,"cumul x0,5",0.00058289,0.11277,0.0051688
+pharmaciens,24,"cumul x0,5",0.0006632,0.14327,0.0046289
+pharmaciens,25,"cumul x0,5",0.00039931,0.091906,0.0043447
+pharmaciens,26,"cumul x0,5",0.00060382,0.1004,0.0060144
+pharmaciens,27,"cumul x0,5",0.00035527,0.15284,0.0023244
+pharmaciens,28,"cumul x0,5",0.00038791,0.11531,0.0033641
+pharmaciens,29,"cumul x0,5",0.00055222,0.1028,0.0053715
+pharmaciens,2A,"cumul x0,5",0.00066186,0.13568,0.0048781
+pharmaciens,2B,"cumul x0,5",0.00076452,0.11498,0.0066493
+pharmaciens,30,"cumul x0,5",0.00054334,0.10031,0.0054165
+pharmaciens,31,"cumul x0,5",0.00046052,0.096191,0.0047876
+pharmaciens,32,"cumul x0,5",0.0005305,0.11707,0.0045316
+pharmaciens,33,"cumul x0,5",0.00045785,0.093702,0.0048862
+pharmaciens,34,"cumul x0,5",0.00041414,0.077813,0.0053222
+pharmaciens,35,"cumul x0,5",0.00040204,0.10601,0.0037926
+pharmaciens,36,"cumul x0,5",0.00066682,0.071675,0.0093033
+pharmaciens,37,"cumul x0,5",0.00047023,0.079179,0.0059388
+pharmaciens,38,"cumul x0,5",0.00043381,0.096637,0.0044891
+pharmaciens,39,"cumul x0,5",0.00042804,0.11487,0.0037263
+pharmaciens,40,"cumul x0,5",0.00053094,0.13089,0.0040565
+pharmaciens,41,"cumul x0,5",0.00057744,0.084716,0.0068162
+pharmaciens,42,"cumul x0,5",0.00035649,0.06117,0.0058278
+pharmaciens,43,"cumul x0,5",0.00058347,0.096793,0.006028
+pharmaciens,44,"cumul x0,5",0.00038895,0.090379,0.0043035
+pharmaciens,45,"cumul x0,5",0.00053706,0.086126,0.0062357
+pharmaciens,46,"cumul x0,5",0.00064204,0.11215,0.0057249
+pharmaciens,47,"cumul x0,5",0.00054628,0.12476,0.0043787
+pharmaciens,48,"cumul x0,5",0.000424,0.099488,0.0042618
+pharmaciens,49,"cumul x0,5",0.00036104,0.10265,0.003517
+pharmaciens,50,"cumul x0,5",0.00037513,0.13807,0.002717
+pharmaciens,51,"cumul x0,5",0.0004033,0.085572,0.004713
+pharmaciens,52,"cumul x0,5",0.00061646,0.088952,0.0069302
+pharmaciens,53,"cumul x0,5",0.0004208,0.11101,0.0037908
+pharmaciens,54,"cumul x0,5",0.00051645,0.09226,0.0055977
+pharmaciens,55,"cumul x0,5",0.00050939,0.10872,0.0046853
+pharmaciens,56,"cumul x0,5",0.00044417,0.1383,0.0032116
+pharmaciens,57,"cumul x0,5",0.00051883,0.12417,0.0041783
+pharmaciens,58,"cumul x0,5",0.00054657,0.082161,0.0066524
+pharmaciens,59,"cumul x0,5",0.00036447,0.086803,0.0041988
+pharmaciens,60,"cumul x0,5",0.00042978,0.10522,0.0040844
+pharmaciens,61,"cumul x0,5",0.00042754,0.1006,0.0042497
+pharmaciens,62,"cumul x0,5",0.00039625,0.11215,0.0035333
+pharmaciens,63,"cumul x0,5",0.00037097,0.054779,0.0067721
+pharmaciens,64,"cumul x0,5",0.00046303,0.10784,0.0042938
+pharmaciens,65,"cumul x0,5",0.00053237,0.088472,0.0060174
+pharmaciens,66,"cumul x0,5",0.00057282,0.11778,0.0048635
+pharmaciens,67,"cumul x0,5",0.00044693,0.10177,0.0043915
+pharmaciens,68,"cumul x0,5",0.00050577,0.15493,0.0032645
+pharmaciens,69,"cumul x0,5",0.0003852,0.06424,0.0059963
+pharmaciens,70,"cumul x0,5",0.0004505,0.1222,0.0036865
+pharmaciens,71,"cumul x0,5",0.00056641,0.10126,0.0055937
+pharmaciens,72,"cumul x0,5",0.00042726,0.093983,0.0045461
+pharmaciens,73,"cumul x0,5",0.00041218,0.13055,0.0031573
+pharmaciens,74,"cumul x0,5",0.00043262,0.14467,0.0029905
+pharmaciens,75,"cumul x0,5",0.00045972,0.055506,0.0082822
+pharmaciens,76,"cumul x0,5",0.00036626,0.082955,0.0044152
+pharmaciens,77,"cumul x0,5",0.00069967,0.10364,0.0067507
+pharmaciens,78,"cumul x0,5",0.00087802,0.091051,0.0096432
+pharmaciens,79,"cumul x0,5",0.0005372,0.096602,0.0055609
+pharmaciens,80,"cumul x0,5",0.00038865,0.098627,0.0039406
+pharmaciens,81,"cumul x0,5",0.00068814,0.08673,0.0079343
+pharmaciens,82,"cumul x0,5",0.00070812,0.11666,0.0060701
+pharmaciens,83,"cumul x0,5",0.00075703,0.092855,0.0081528
+pharmaciens,84,"cumul x0,5",0.00075149,0.088776,0.008465
+pharmaciens,85,"cumul x0,5",0.00036196,0.13966,0.0025918
+pharmaciens,86,"cumul x0,5",0.00043863,0.069751,0.0062885
+pharmaciens,87,"cumul x0,5",0.00041631,0.087021,0.0047841
+pharmaciens,88,"cumul x0,5",0.000676,0.13471,0.0050182
+pharmaciens,89,"cumul x0,5",0.00059422,0.10116,0.0058739
+pharmaciens,90,"cumul x0,5",0.00053825,0.12835,0.0041935
+pharmaciens,91,"cumul x0,5",0.00068346,0.086995,0.0078563
+pharmaciens,92,"cumul x0,5",0.00055265,0.083845,0.0065913
+pharmaciens,93,"cumul x0,5",0.00053944,0.10038,0.0053738
+pharmaciens,94,"cumul x0,5",0.00052409,0.091623,0.0057201
+pharmaciens,95,"cumul x0,5",0.00065834,0.087919,0.0074879
+pharmaciens,971,"cumul x0,5",0.00061068,0.27091,0.0022542
+pharmaciens,972,"cumul x0,5",0.00053632,0.26975,0.0019882
+pharmaciens,973,"cumul x0,5",0.00051267,0.13853,0.0037008
+pharmaciens,974,"cumul x0,5",0.00046899,0.15592,0.003008
+pharmaciens,976,"cumul x0,5",0.00030451,0.10204,0.0029842
+pharmaciens,FR,"cumul x0,5",0.00048864,0.095538,0.0051146
+pharmaciens,01,cumul x2,0.00080165,0.137,0.0058514
+pharmaciens,02,cumul x2,0.0008339,0.10232,0.0081496
+pharmaciens,03,cumul x2,0.001099,0.064644,0.017001
+pharmaciens,04,cumul x2,0.0014839,0.10824,0.013709
+pharmaciens,05,cumul x2,0.0013534,0.15014,0.0090145
+pharmaciens,06,cumul x2,0.0016453,0.073964,0.022244
+pharmaciens,07,cumul x2,0.00094054,0.11736,0.0080144
+pharmaciens,08,cumul x2,0.0011567,0.10684,0.010826
+pharmaciens,09,cumul x2,0.0010292,0.11854,0.0086816
+pharmaciens,10,cumul x2,0.0011868,0.078306,0.015155
+pharmaciens,11,cumul x2,0.0014023,0.10738,0.013059
+pharmaciens,12,cumul x2,0.001147,0.10714,0.010705
+pharmaciens,13,cumul x2,0.0011699,0.069459,0.016843
+pharmaciens,14,cumul x2,0.00066661,0.10962,0.0060813
+pharmaciens,15,cumul x2,0.00094189,0.097955,0.0096155
+pharmaciens,16,cumul x2,0.00099668,0.10792,0.0092355
+pharmaciens,17,cumul x2,0.0011389,0.12027,0.0094693
+pharmaciens,18,cumul x2,0.0011149,0.075116,0.014842
+pharmaciens,19,cumul x2,0.0010295,0.094179,0.010931
+pharmaciens,21,cumul x2,0.00072207,0.081915,0.0088149
+pharmaciens,22,cumul x2,0.0010165,0.11605,0.0087596
+pharmaciens,23,cumul x2,0.0011994,0.11277,0.010635
+pharmaciens,24,cumul x2,0.0013639,0.14327,0.0095199
+pharmaciens,25,cumul x2,0.00082042,0.091906,0.0089267
+pharmaciens,26,cumul x2,0.0012413,0.1004,0.012364
+pharmaciens,27,cumul x2,0.00072966,0.15284,0.004774
+pharmaciens,28,cumul x2,0.00079749,0.11531,0.006916
+pharmaciens,29,cumul x2,0.0011347,0.1028,0.011037
+pharmaciens,2A,cumul x2,0.0013577,0.13568,0.010006
+pharmaciens,2B,cumul x2,0.0015732,0.11498,0.013682
+pharmaciens,30,cumul x2,0.0011164,0.10031,0.01113
+pharmaciens,31,cumul x2,0.00094514,0.096191,0.0098256
+pharmaciens,32,cumul x2,0.0010912,0.11707,0.0093209
+pharmaciens,33,cumul x2,0.00094,0.093702,0.010032
+pharmaciens,34,cumul x2,0.00085014,0.077813,0.010925
+pharmaciens,35,cumul x2,0.00082551,0.10601,0.0077873
+pharmaciens,36,cumul x2,0.0013719,0.071675,0.01914
+pharmaciens,37,cumul x2,0.00096547,0.079179,0.012193
+pharmaciens,38,cumul x2,0.00089097,0.096637,0.0092198
+pharmaciens,39,cumul x2,0.00087885,0.11487,0.0076508
+pharmaciens,40,cumul x2,0.0010902,0.13089,0.0083293
+pharmaciens,41,cumul x2,0.0011862,0.084716,0.014002
+pharmaciens,42,cumul x2,0.00073244,0.06117,0.011974
+pharmaciens,43,cumul x2,0.0011979,0.096793,0.012376
+pharmaciens,44,cumul x2,0.00079834,0.090379,0.0088333
+pharmaciens,45,cumul x2,0.0011049,0.086126,0.012829
+pharmaciens,46,cumul x2,0.0013204,0.11215,0.011773
+pharmaciens,47,cumul x2,0.0011241,0.12476,0.0090101
+pharmaciens,48,cumul x2,0.00087261,0.099488,0.0087711
+pharmaciens,49,cumul x2,0.00074094,0.10265,0.0072179
+pharmaciens,50,cumul x2,0.00076979,0.13807,0.0055755
+pharmaciens,51,cumul x2,0.0008275,0.085572,0.0096703
+pharmaciens,52,cumul x2,0.001267,0.088952,0.014244
+pharmaciens,53,cumul x2,0.0008666,0.11101,0.0078068
+pharmaciens,54,cumul x2,0.0010608,0.09226,0.011498
+pharmaciens,55,cumul x2,0.0010475,0.10872,0.009635
+pharmaciens,56,cumul x2,0.00091181,0.1383,0.006593
+pharmaciens,57,cumul x2,0.0010666,0.12417,0.0085899
+pharmaciens,58,cumul x2,0.0011256,0.082161,0.0137
+pharmaciens,59,cumul x2,0.00074841,0.086803,0.0086219
+pharmaciens,60,cumul x2,0.00088368,0.10522,0.008398
+pharmaciens,61,cumul x2,0.0008783,0.1006,0.0087302
+pharmaciens,62,cumul x2,0.00081397,0.11215,0.0072581
+pharmaciens,63,cumul x2,0.00076191,0.054779,0.013909
+pharmaciens,64,cumul x2,0.00095045,0.10784,0.0088138
+pharmaciens,65,cumul x2,0.0010949,0.088472,0.012375
+pharmaciens,66,cumul x2,0.0011771,0.11778,0.0099941
+pharmaciens,67,cumul x2,0.00091722,0.10177,0.0090126
+pharmaciens,68,cumul x2,0.0010392,0.15493,0.0067075
+pharmaciens,69,cumul x2,0.00079089,0.06424,0.012312
+pharmaciens,70,cumul x2,0.00092566,0.1222,0.0075749
+pharmaciens,71,cumul x2,0.0011659,0.10126,0.011514
+pharmaciens,72,cumul x2,0.00087826,0.093983,0.0093449
+pharmaciens,73,cumul x2,0.00084622,0.13055,0.0064822
+pharmaciens,74,cumul x2,0.00088806,0.14467,0.0061387
+pharmaciens,75,cumul x2,0.00094381,0.055506,0.017004
+pharmaciens,76,cumul x2,0.00075204,0.082955,0.0090657
+pharmaciens,77,cumul x2,0.0014381,0.10364,0.013876
+pharmaciens,78,cumul x2,0.0018077,0.091051,0.019853
+pharmaciens,79,cumul x2,0.0011044,0.096602,0.011433
+pharmaciens,80,cumul x2,0.00079821,0.098627,0.0080932
+pharmaciens,81,cumul x2,0.0014149,0.08673,0.016314
+pharmaciens,82,cumul x2,0.0014555,0.11666,0.012476
+pharmaciens,83,cumul x2,0.0015548,0.092855,0.016745
+pharmaciens,84,cumul x2,0.0015437,0.088776,0.017388
+pharmaciens,85,cumul x2,0.00074341,0.13966,0.0053232
+pharmaciens,86,cumul x2,0.00090071,0.069751,0.012913
+pharmaciens,87,cumul x2,0.00085511,0.087021,0.0098266
+pharmaciens,88,cumul x2,0.0013898,0.13471,0.010317
+pharmaciens,89,cumul x2,0.0012224,0.10116,0.012083
+pharmaciens,90,cumul x2,0.0011071,0.12835,0.0086254
+pharmaciens,91,cumul x2,0.0014038,0.086995,0.016136
+pharmaciens,92,cumul x2,0.0011342,0.083845,0.013527
+pharmaciens,93,cumul x2,0.0011073,0.10038,0.01103
+pharmaciens,94,cumul x2,0.0010761,0.091623,0.011744
+pharmaciens,95,cumul x2,0.001353,0.087919,0.015389
+pharmaciens,971,cumul x2,0.0012518,0.27091,0.0046207
+pharmaciens,972,cumul x2,0.0011022,0.26975,0.0040859
+pharmaciens,973,cumul x2,0.0010527,0.13853,0.0075987
+pharmaciens,974,cumul x2,0.00096253,0.15592,0.0061734
+pharmaciens,976,cumul x2,0.00062187,0.10204,0.0060943
+pharmaciens,FR,cumul x2,0.0010037,0.095538,0.010505
+pharmaciens,01,"precoces x0,5",0.04803,0.137,0.35058
+pharmaciens,02,"precoces x0,5",0.059319,0.10232,0.57971
+pharmaciens,03,"precoces x0,5",0.053421,0.064644,0.82639
+pharmaciens,04,"precoces x0,5",0.038432,0.10824,0.35505
+pharmaciens,05,"precoces x0,5",0.044838,0.15014,0.29864
+pharmaciens,06,"precoces x0,5",0.046672,0.073964,0.63101
+pharmaciens,07,"precoces x0,5",0.05537,0.11736,0.47181
+pharmaciens,08,"precoces x0,5",0.071977,0.10684,0.67369
+pharmaciens,09,"precoces x0,5",0.054651,0.11854,0.46102
+pharmaciens,10,"precoces x0,5",0.072661,0.078306,0.92792
+pharmaciens,11,"precoces x0,5",0.053226,0.10738,0.49569
+pharmaciens,12,"precoces x0,5",0.045746,0.10714,0.42696
+pharmaciens,13,"precoces x0,5",0.04115,0.069459,0.59244
+pharmaciens,14,"precoces x0,5",0.066894,0.10962,0.61026
+pharmaciens,15,"precoces x0,5",0.054301,0.097955,0.55434
+pharmaciens,16,"precoces x0,5",0.053837,0.10792,0.49887
+pharmaciens,17,"precoces x0,5",0.053442,0.12027,0.44435
+pharmaciens,18,"precoces x0,5",0.089031,0.075116,1.1852
+pharmaciens,19,"precoces x0,5",0.05115,0.094179,0.54312
+pharmaciens,21,"precoces x0,5",0.059822,0.081915,0.7303
+pharmaciens,22,"precoces x0,5",0.034488,0.11605,0.29719
+pharmaciens,23,"precoces x0,5",0.053562,0.11277,0.47496
+pharmaciens,24,"precoces x0,5",0.062216,0.14327,0.43425
+pharmaciens,25,"precoces x0,5",0.057852,0.091906,0.62947
+pharmaciens,26,"precoces x0,5",0.055927,0.1004,0.55706
+pharmaciens,27,"precoces x0,5",0.072767,0.15284,0.4761
+pharmaciens,28,"precoces x0,5",0.086645,0.11531,0.7514
+pharmaciens,29,"precoces x0,5",0.039411,0.1028,0.38336
+pharmaciens,2A,"precoces x0,5",0.091056,0.13568,0.67111
+pharmaciens,2B,"precoces x0,5",0.094456,0.11498,0.82152
+pharmaciens,30,"precoces x0,5",0.055386,0.10031,0.55214
+pharmaciens,31,"precoces x0,5",0.049248,0.096191,0.51198
+pharmaciens,32,"precoces x0,5",0.049174,0.11707,0.42005
+pharmaciens,33,"precoces x0,5",0.050989,0.093702,0.54416
+pharmaciens,34,"precoces x0,5",0.049311,0.077813,0.6337
+pharmaciens,35,"precoces x0,5",0.031671,0.10601,0.29877
+pharmaciens,36,"precoces x0,5",0.093612,0.071675,1.3061
+pharmaciens,37,"precoces x0,5",0.086643,0.079179,1.0943
+pharmaciens,38,"precoces x0,5",0.050954,0.096637,0.52727
+pharmaciens,39,"precoces x0,5",0.060739,0.11487,0.52876
+pharmaciens,40,"precoces x0,5",0.055693,0.13089,0.42551
+pharmaciens,41,"precoces x0,5",0.097266,0.084716,1.1481
+pharmaciens,42,"precoces x0,5",0.047015,0.06117,0.76859
+pharmaciens,43,"precoces x0,5",0.064308,0.096793,0.66439
+pharmaciens,44,"precoces x0,5",0.046143,0.090379,0.51055
+pharmaciens,45,"precoces x0,5",0.092132,0.086126,1.0697
+pharmaciens,46,"precoces x0,5",0.050898,0.11215,0.45385
+pharmaciens,47,"precoces x0,5",0.049473,0.12476,0.39655
+pharmaciens,48,"precoces x0,5",0.032793,0.099488,0.32962
+pharmaciens,49,"precoces x0,5",0.047409,0.10265,0.46183
+pharmaciens,50,"precoces x0,5",0.071828,0.13807,0.52024
+pharmaciens,51,"precoces x0,5",0.06151,0.085572,0.71881
+pharmaciens,52,"precoces x0,5",0.072601,0.088952,0.81618
+pharmaciens,53,"precoces x0,5",0.040836,0.11101,0.36787
+pharmaciens,54,"precoces x0,5",0.076917,0.09226,0.83369
+pharmaciens,55,"precoces x0,5",0.059029,0.10872,0.54294
+pharmaciens,56,"precoces x0,5",0.032813,0.1383,0.23726
+pharmaciens,57,"precoces x0,5",0.065164,0.12417,0.52478
+pharmaciens,58,"precoces x0,5",0.078793,0.082161,0.959
+pharmaciens,59,"precoces x0,5",0.056574,0.086803,0.65175
+pharmaciens,60,"precoces x0,5",0.059328,0.10522,0.56382
+pharmaciens,61,"precoces x0,5",0.079938,0.1006,0.79458
+pharmaciens,62,"precoces x0,5",0.058113,0.11215,0.51818
+pharmaciens,63,"precoces x0,5",0.047554,0.054779,0.86811
+pharmaciens,64,"precoces x0,5",0.048191,0.10784,0.44689
+pharmaciens,65,"precoces x0,5",0.055749,0.088472,0.63014
+pharmaciens,66,"precoces x0,5",0.057074,0.11778,0.48458
+pharmaciens,67,"precoces x0,5",0.073673,0.10177,0.72391
+pharmaciens,68,"precoces x0,5",0.063913,0.15493,0.41253
+pharmaciens,69,"precoces x0,5",0.049743,0.06424,0.77434
+pharmaciens,70,"precoces x0,5",0.058427,0.1222,0.47812
+pharmaciens,71,"precoces x0,5",0.06622,0.10126,0.65397
+pharmaciens,72,"precoces x0,5",0.048841,0.093983,0.51968
+pharmaciens,73,"precoces x0,5",0.047782,0.13055,0.36602
+pharmaciens,74,"precoces x0,5",0.051908,0.14467,0.35881
+pharmaciens,75,"precoces x0,5",0.096909,0.055506,1.7459
+pharmaciens,76,"precoces x0,5",0.074937,0.082955,0.90334
+pharmaciens,77,"precoces x0,5",0.080402,0.10364,0.77575
+pharmaciens,78,"precoces x0,5",0.084675,0.091051,0.92997
+pharmaciens,79,"precoces x0,5",0.051066,0.096602,0.52863
+pharmaciens,80,"precoces x0,5",0.05751,0.098627,0.58311
+pharmaciens,81,"precoces x0,5",0.057604,0.08673,0.66417
+pharmaciens,82,"precoces x0,5",0.060614,0.11666,0.51959
+pharmaciens,83,"precoces x0,5",0.045248,0.092855,0.4873
+pharmaciens,84,"precoces x0,5",0.045828,0.088776,0.51622
+pharmaciens,85,"precoces x0,5",0.046137,0.13966,0.33036
+pharmaciens,86,"precoces x0,5",0.049672,0.069751,0.71214
+pharmaciens,87,"precoces x0,5",0.045639,0.087021,0.52446
+pharmaciens,88,"precoces x0,5",0.075711,0.13471,0.56203
+pharmaciens,89,"precoces x0,5",0.070045,0.10116,0.6924
+pharmaciens,90,"precoces x0,5",0.058353,0.12835,0.45463
+pharmaciens,91,"precoces x0,5",0.080713,0.086995,0.92779
+pharmaciens,92,"precoces x0,5",0.07346,0.083845,0.87614
+pharmaciens,93,"precoces x0,5",0.076813,0.10038,0.76519
+pharmaciens,94,"precoces x0,5",0.07421,0.091623,0.80995
+pharmaciens,95,"precoces x0,5",0.080321,0.087919,0.91357
+pharmaciens,971,"precoces x0,5",0.083234,0.27091,0.30724
+pharmaciens,972,"precoces x0,5",0.089725,0.26975,0.33262
+pharmaciens,973,"precoces x0,5",0.089652,0.13853,0.64716
+pharmaciens,974,"precoces x0,5",0.087328,0.15592,0.5601
+pharmaciens,976,"precoces x0,5",0.079809,0.10204,0.78213
+pharmaciens,FR,"precoces x0,5",0.061344,0.095538,0.64209
+pharmaciens,01,"precoces x1,5",0.044507,0.137,0.32487
+pharmaciens,02,"precoces x1,5",0.055169,0.10232,0.53915
+pharmaciens,03,"precoces x1,5",0.049361,0.064644,0.76358
+pharmaciens,04,"precoces x1,5",0.03653,0.10824,0.33748
+pharmaciens,05,"precoces x1,5",0.042569,0.15014,0.28353
+pharmaciens,06,"precoces x1,5",0.044182,0.073964,0.59735
+pharmaciens,07,"precoces x1,5",0.051146,0.11736,0.43582
+pharmaciens,08,"precoces x1,5",0.065397,0.10684,0.6121
+pharmaciens,09,"precoces x1,5",0.049494,0.11854,0.41751
+pharmaciens,10,"precoces x1,5",0.066071,0.078306,0.84376
+pharmaciens,11,"precoces x1,5",0.048685,0.10738,0.4534
+pharmaciens,12,"precoces x1,5",0.04197,0.10714,0.39172
+pharmaciens,13,"precoces x1,5",0.039046,0.069459,0.56214
+pharmaciens,14,"precoces x1,5",0.060023,0.10962,0.54757
+pharmaciens,15,"precoces x1,5",0.050341,0.097955,0.51392
+pharmaciens,16,"precoces x1,5",0.049975,0.10792,0.46308
+pharmaciens,17,"precoces x1,5",0.049485,0.12027,0.41145
+pharmaciens,18,"precoces x1,5",0.08042,0.075116,1.0706
+pharmaciens,19,"precoces x1,5",0.04786,0.094179,0.50819
+pharmaciens,21,"precoces x1,5",0.054651,0.081915,0.66717
+pharmaciens,22,"precoces x1,5",0.031066,0.11605,0.2677
+pharmaciens,23,"precoces x1,5",0.049597,0.11277,0.4398
+pharmaciens,24,"precoces x1,5",0.057436,0.14327,0.40088
+pharmaciens,25,"precoces x1,5",0.052461,0.091906,0.57081
+pharmaciens,26,"precoces x1,5",0.051783,0.1004,0.51579
+pharmaciens,27,"precoces x1,5",0.065183,0.15284,0.42648
+pharmaciens,28,"precoces x1,5",0.078397,0.11531,0.67988
+pharmaciens,29,"precoces x1,5",0.035549,0.1028,0.34579
+pharmaciens,2A,"precoces x1,5",0.082663,0.13568,0.60925
+pharmaciens,2B,"precoces x1,5",0.085139,0.11498,0.74048
+pharmaciens,30,"precoces x1,5",0.050165,0.10031,0.50009
+pharmaciens,31,"precoces x1,5",0.045061,0.096191,0.46846
+pharmaciens,32,"precoces x1,5",0.044847,0.11707,0.38309
+pharmaciens,33,"precoces x1,5",0.047368,0.093702,0.50552
+pharmaciens,34,"precoces x1,5",0.044577,0.077813,0.57287
+pharmaciens,35,"precoces x1,5",0.028614,0.10601,0.26992
+pharmaciens,36,"precoces x1,5",0.084167,0.071675,1.1743
+pharmaciens,37,"precoces x1,5",0.0786,0.079179,0.99268
+pharmaciens,38,"precoces x1,5",0.047344,0.096637,0.48992
+pharmaciens,39,"precoces x1,5",0.054866,0.11487,0.47763
+pharmaciens,40,"precoces x1,5",0.051627,0.13089,0.39444
+pharmaciens,41,"precoces x1,5",0.087997,0.084716,1.0387
+pharmaciens,42,"precoces x1,5",0.043337,0.06117,0.70846
+pharmaciens,43,"precoces x1,5",0.059946,0.096793,0.61933
+pharmaciens,44,"precoces x1,5",0.042577,0.090379,0.47109
+pharmaciens,45,"precoces x1,5",0.083304,0.086126,0.96724
+pharmaciens,46,"precoces x1,5",0.046501,0.11215,0.41464
+pharmaciens,47,"precoces x1,5",0.045768,0.12476,0.36685
+pharmaciens,48,"precoces x1,5",0.030497,0.099488,0.30654
+pharmaciens,49,"precoces x1,5",0.043673,0.10265,0.42544
+pharmaciens,50,"precoces x1,5",0.065046,0.13807,0.47112
+pharmaciens,51,"precoces x1,5",0.056124,0.085572,0.65587
+pharmaciens,52,"precoces x1,5",0.067605,0.088952,0.76002
+pharmaciens,53,"precoces x1,5",0.037449,0.11101,0.33736
+pharmaciens,54,"precoces x1,5",0.071095,0.09226,0.77059
+pharmaciens,55,"precoces x1,5",0.053473,0.10872,0.49184
+pharmaciens,56,"precoces x1,5",0.029527,0.1383,0.2135
+pharmaciens,57,"precoces x1,5",0.059324,0.12417,0.47775
+pharmaciens,58,"precoces x1,5",0.072479,0.082161,0.88215
+pharmaciens,59,"precoces x1,5",0.052548,0.086803,0.60537
+pharmaciens,60,"precoces x1,5",0.055063,0.10522,0.52329
+pharmaciens,61,"precoces x1,5",0.072052,0.1006,0.7162
+pharmaciens,62,"precoces x1,5",0.05394,0.11215,0.48098
+pharmaciens,63,"precoces x1,5",0.044052,0.054779,0.80418
+pharmaciens,64,"precoces x1,5",0.044819,0.10784,0.41562
+pharmaciens,65,"precoces x1,5",0.050513,0.088472,0.57094
+pharmaciens,66,"precoces x1,5",0.051547,0.11778,0.43766
+pharmaciens,67,"precoces x1,5",0.067773,0.10177,0.66594
+pharmaciens,68,"precoces x1,5",0.058233,0.15493,0.37587
+pharmaciens,69,"precoces x1,5",0.046092,0.06424,0.71751
+pharmaciens,70,"precoces x1,5",0.053091,0.1222,0.43445
+pharmaciens,71,"precoces x1,5",0.060024,0.10126,0.59279
+pharmaciens,72,"precoces x1,5",0.044973,0.093983,0.47852
+pharmaciens,73,"precoces x1,5",0.044511,0.13055,0.34096
+pharmaciens,74,"precoces x1,5",0.048233,0.14467,0.33341
+pharmaciens,75,"precoces x1,5",0.089028,0.055506,1.6039
+pharmaciens,76,"precoces x1,5",0.067881,0.082955,0.81829
+pharmaciens,77,"precoces x1,5",0.073722,0.10364,0.7113
+pharmaciens,78,"precoces x1,5",0.078055,0.091051,0.85726
+pharmaciens,79,"precoces x1,5",0.047795,0.096602,0.49477
+pharmaciens,80,"precoces x1,5",0.053631,0.098627,0.54378
+pharmaciens,81,"precoces x1,5",0.052539,0.08673,0.60578
+pharmaciens,82,"precoces x1,5",0.055478,0.11666,0.47557
+pharmaciens,83,"precoces x1,5",0.042897,0.092855,0.46198
+pharmaciens,84,"precoces x1,5",0.043398,0.088776,0.48885
+pharmaciens,85,"precoces x1,5",0.042413,0.13966,0.3037
+pharmaciens,86,"precoces x1,5",0.046144,0.069751,0.66156
+pharmaciens,87,"precoces x1,5",0.042332,0.087021,0.48646
+pharmaciens,88,"precoces x1,5",0.069174,0.13471,0.5135
+pharmaciens,89,"precoces x1,5",0.064438,0.10116,0.63698
+pharmaciens,90,"precoces x1,5",0.053501,0.12835,0.41682
+pharmaciens,91,"precoces x1,5",0.074173,0.086995,0.85262
+pharmaciens,92,"precoces x1,5",0.067619,0.083845,0.80648
+pharmaciens,93,"precoces x1,5",0.070289,0.10038,0.7002
+pharmaciens,94,"precoces x1,5",0.068177,0.091623,0.74411
+pharmaciens,95,"precoces x1,5",0.073548,0.087919,0.83654
+pharmaciens,971,"precoces x1,5",0.073832,0.27091,0.27253
+pharmaciens,972,"precoces x1,5",0.078472,0.26975,0.2909
+pharmaciens,973,"precoces x1,5",0.080151,0.13853,0.57858
+pharmaciens,974,"precoces x1,5",0.077463,0.15592,0.49683
+pharmaciens,976,"precoces x1,5",0.072156,0.10204,0.70712
+pharmaciens,FR,"precoces x1,5",0.056095,0.095538,0.58715
+pharmaciens,01,"etrangers x0,5",0.028862,0.137,0.21067
+pharmaciens,02,"etrangers x0,5",0.029658,0.10232,0.28984
+pharmaciens,03,"etrangers x0,5",0.032061,0.064644,0.49597
+pharmaciens,04,"etrangers x0,5",0.032976,0.10824,0.30464
+pharmaciens,05,"etrangers x0,5",0.028686,0.15014,0.19106
+pharmaciens,06,"etrangers x0,5",0.028743,0.073964,0.38861
+pharmaciens,07,"etrangers x0,5",0.029225,0.11736,0.24903
+pharmaciens,08,"etrangers x0,5",0.028701,0.10684,0.26863
+pharmaciens,09,"etrangers x0,5",0.028171,0.11854,0.23764
+pharmaciens,10,"etrangers x0,5",0.028119,0.078306,0.3591
+pharmaciens,11,"etrangers x0,5",0.030484,0.10738,0.28389
+pharmaciens,12,"etrangers x0,5",0.02991,0.10714,0.27916
+pharmaciens,13,"etrangers x0,5",0.028735,0.069459,0.4137
+pharmaciens,14,"etrangers x0,5",0.030292,0.10962,0.27634
+pharmaciens,15,"etrangers x0,5",0.029919,0.097955,0.30544
+pharmaciens,16,"etrangers x0,5",0.030254,0.10792,0.28034
+pharmaciens,17,"etrangers x0,5",0.029339,0.12027,0.24395
+pharmaciens,18,"etrangers x0,5",0.030059,0.075116,0.40017
+pharmaciens,19,"etrangers x0,5",0.030555,0.094179,0.32443
+pharmaciens,21,"etrangers x0,5",0.030225,0.081915,0.36897
+pharmaciens,22,"etrangers x0,5",0.028234,0.11605,0.2433
+pharmaciens,23,"etrangers x0,5",0.020318,0.11277,0.18017
+pharmaciens,24,"etrangers x0,5",0.029738,0.14327,0.20756
+pharmaciens,25,"etrangers x0,5",0.030022,0.091906,0.32666
+pharmaciens,26,"etrangers x0,5",0.031359,0.1004,0.31235
+pharmaciens,27,"etrangers x0,5",0.030135,0.15284,0.19717
+pharmaciens,28,"etrangers x0,5",0.030849,0.11531,0.26752
+pharmaciens,29,"etrangers x0,5",0.028872,0.1028,0.28084
+pharmaciens,2A,"etrangers x0,5",0.030384,0.13568,0.22394
+pharmaciens,2B,"etrangers x0,5",0.028648,0.11498,0.24916
+pharmaciens,30,"etrangers x0,5",0.029566,0.10031,0.29475
+pharmaciens,31,"etrangers x0,5",0.029014,0.096191,0.30162
+pharmaciens,32,"etrangers x0,5",0.028393,0.11707,0.24254
+pharmaciens,33,"etrangers x0,5",0.028958,0.093702,0.30904
+pharmaciens,34,"etrangers x0,5",0.029182,0.077813,0.37503
+pharmaciens,35,"etrangers x0,5",0.02955,0.10601,0.27876
+pharmaciens,36,"etrangers x0,5",0.029505,0.071675,0.41164
+pharmaciens,37,"etrangers x0,5",0.030682,0.079179,0.38751
+pharmaciens,38,"etrangers x0,5",0.028302,0.096637,0.29287
+pharmaciens,39,"etrangers x0,5",0.030725,0.11487,0.26747
+pharmaciens,40,"etrangers x0,5",0.028971,0.13089,0.22135
+pharmaciens,41,"etrangers x0,5",0.02823,0.084716,0.33323
+pharmaciens,42,"etrangers x0,5",0.029408,0.06117,0.48076
+pharmaciens,43,"etrangers x0,5",0.028721,0.096793,0.29673
+pharmaciens,44,"etrangers x0,5",0.029881,0.090379,0.33062
+pharmaciens,45,"etrangers x0,5",0.029506,0.086126,0.34259
+pharmaciens,46,"etrangers x0,5",0.028903,0.11215,0.25773
+pharmaciens,47,"etrangers x0,5",0.029963,0.12476,0.24017
+pharmaciens,48,"etrangers x0,5",0.031994,0.099488,0.32158
+pharmaciens,49,"etrangers x0,5",0.028882,0.10265,0.28136
+pharmaciens,50,"etrangers x0,5",0.030913,0.13807,0.2239
+pharmaciens,51,"etrangers x0,5",0.029698,0.085572,0.34706
+pharmaciens,52,"etrangers x0,5",0.02965,0.088952,0.33333
+pharmaciens,53,"etrangers x0,5",0.029549,0.11101,0.26619
+pharmaciens,54,"etrangers x0,5",0.029397,0.09226,0.31864
+pharmaciens,55,"etrangers x0,5",0.030582,0.10872,0.28129
+pharmaciens,56,"etrangers x0,5",0.029169,0.1383,0.21091
+pharmaciens,57,"etrangers x0,5",0.028773,0.12417,0.23172
+pharmaciens,58,"etrangers x0,5",0.03137,0.082161,0.38181
+pharmaciens,59,"etrangers x0,5",0.029082,0.086803,0.33503
+pharmaciens,60,"etrangers x0,5",0.02968,0.10522,0.28207
+pharmaciens,61,"etrangers x0,5",0.029575,0.1006,0.29398
+pharmaciens,62,"etrangers x0,5",0.029292,0.11215,0.2612
+pharmaciens,63,"etrangers x0,5",0.029383,0.054779,0.53639
+pharmaciens,64,"etrangers x0,5",0.029961,0.10784,0.27784
+pharmaciens,65,"etrangers x0,5",0.028602,0.088472,0.32329
+pharmaciens,66,"etrangers x0,5",0.031346,0.11778,0.26614
+pharmaciens,67,"etrangers x0,5",0.029468,0.10177,0.28955
+pharmaciens,68,"etrangers x0,5",0.028793,0.15493,0.18585
+pharmaciens,69,"etrangers x0,5",0.028725,0.06424,0.44716
+pharmaciens,70,"etrangers x0,5",0.029756,0.1222,0.2435
+pharmaciens,71,"etrangers x0,5",0.02833,0.10126,0.27978
+pharmaciens,72,"etrangers x0,5",0.029286,0.093983,0.31161
+pharmaciens,73,"etrangers x0,5",0.030505,0.13055,0.23367
+pharmaciens,74,"etrangers x0,5",0.028596,0.14467,0.19767
+pharmaciens,75,"etrangers x0,5",0.030524,0.055506,0.54992
+pharmaciens,76,"etrangers x0,5",0.030083,0.082955,0.36265
+pharmaciens,77,"etrangers x0,5",0.028889,0.10364,0.27874
+pharmaciens,78,"etrangers x0,5",0.027878,0.091051,0.30618
+pharmaciens,79,"etrangers x0,5",0.027881,0.096602,0.28862
+pharmaciens,80,"etrangers x0,5",0.030188,0.098627,0.30608
+pharmaciens,81,"etrangers x0,5",0.027513,0.08673,0.31722
+pharmaciens,82,"etrangers x0,5",0.031167,0.11666,0.26716
+pharmaciens,83,"etrangers x0,5",0.028539,0.092855,0.30735
+pharmaciens,84,"etrangers x0,5",0.026879,0.088776,0.30278
+pharmaciens,85,"etrangers x0,5",0.029642,0.13966,0.21225
+pharmaciens,86,"etrangers x0,5",0.028932,0.069751,0.41479
+pharmaciens,87,"etrangers x0,5",0.029452,0.087021,0.33845
+pharmaciens,88,"etrangers x0,5",0.029574,0.13471,0.21954
+pharmaciens,89,"etrangers x0,5",0.031301,0.10116,0.30942
+pharmaciens,90,"etrangers x0,5",0.030004,0.12835,0.23376
+pharmaciens,91,"etrangers x0,5",0.02809,0.086995,0.32289
+pharmaciens,92,"etrangers x0,5",0.029111,0.083845,0.3472
+pharmaciens,93,"etrangers x0,5",0.029264,0.10038,0.29152
+pharmaciens,94,"etrangers x0,5",0.029472,0.091623,0.32167
+pharmaciens,95,"etrangers x0,5",0.028412,0.087919,0.32316
+pharmaciens,971,"etrangers x0,5",0.028584,0.27091,0.10551
+pharmaciens,972,"etrangers x0,5",0.030131,0.26975,0.1117
+pharmaciens,973,"etrangers x0,5",0.032253,0.13853,0.23282
+pharmaciens,974,"etrangers x0,5",0.030322,0.15592,0.19448
+pharmaciens,976,"etrangers x0,5",0.030481,0.10204,0.29871
+pharmaciens,FR,"etrangers x0,5",0.029375,0.095538,0.30747
+pharmaciens,01,etrangers x2,0.05534,0.137,0.40394
+pharmaciens,02,etrangers x2,0.056801,0.10232,0.55511
+pharmaciens,03,etrangers x2,0.061195,0.064644,0.94663
+pharmaciens,04,etrangers x2,0.062858,0.10824,0.5807
+pharmaciens,05,etrangers x2,0.055016,0.15014,0.36643
+pharmaciens,06,etrangers x2,0.05512,0.073964,0.74523
+pharmaciens,07,etrangers x2,0.056006,0.11736,0.47723
+pharmaciens,08,etrangers x2,0.055043,0.10684,0.51519
+pharmaciens,09,etrangers x2,0.054068,0.11854,0.4561
+pharmaciens,10,etrangers x2,0.053972,0.078306,0.68925
+pharmaciens,11,etrangers x2,0.058314,0.10738,0.54307
+pharmaciens,12,etrangers x2,0.057263,0.10714,0.53445
+pharmaciens,13,etrangers x2,0.055106,0.069459,0.79336
+pharmaciens,14,etrangers x2,0.057962,0.10962,0.52877
+pharmaciens,15,etrangers x2,0.05728,0.097955,0.58476
+pharmaciens,16,etrangers x2,0.057894,0.10792,0.53646
+pharmaciens,17,etrangers x2,0.056216,0.12027,0.46741
+pharmaciens,18,etrangers x2,0.057536,0.075116,0.76596
+pharmaciens,19,etrangers x2,0.058444,0.094179,0.62056
+pharmaciens,21,etrangers x2,0.057839,0.081915,0.70609
+pharmaciens,22,etrangers x2,0.054184,0.11605,0.46691
+pharmaciens,23,etrangers x2,0.057703,0.11277,0.51168
+pharmaciens,24,etrangers x2,0.056947,0.14327,0.39747
+pharmaciens,25,etrangers x2,0.057469,0.091906,0.6253
+pharmaciens,26,etrangers x2,0.059913,0.1004,0.59677
+pharmaciens,27,etrangers x2,0.057676,0.15284,0.37736
+pharmaciens,28,etrangers x2,0.058981,0.11531,0.5115
+pharmaciens,29,etrangers x2,0.055357,0.1028,0.53847
+pharmaciens,2A,etrangers x2,0.058131,0.13568,0.42844
+pharmaciens,2B,etrangers x2,0.054945,0.11498,0.47788
+pharmaciens,30,etrangers x2,0.056633,0.10031,0.56457
+pharmaciens,31,etrangers x2,0.055618,0.096191,0.5782
+pharmaciens,32,etrangers x2,0.054476,0.11707,0.46534
+pharmaciens,33,etrangers x2,0.055516,0.093702,0.59247
+pharmaciens,34,etrangers x2,0.055927,0.077813,0.71874
+pharmaciens,35,etrangers x2,0.056603,0.10601,0.53396
+pharmaciens,36,etrangers x2,0.056519,0.071675,0.78855
+pharmaciens,37,etrangers x2,0.058677,0.079179,0.74107
+pharmaciens,38,etrangers x2,0.05431,0.096637,0.562
+pharmaciens,39,etrangers x2,0.058754,0.11487,0.51148
+pharmaciens,40,etrangers x2,0.05554,0.13089,0.42434
+pharmaciens,41,etrangers x2,0.054177,0.084716,0.63951
+pharmaciens,42,etrangers x2,0.056343,0.06117,0.92108
+pharmaciens,43,etrangers x2,0.05508,0.096793,0.56905
+pharmaciens,44,etrangers x2,0.057209,0.090379,0.63299
+pharmaciens,45,etrangers x2,0.056522,0.086126,0.65627
+pharmaciens,46,etrangers x2,0.055415,0.11215,0.49413
+pharmaciens,47,etrangers x2,0.057361,0.12476,0.45978
+pharmaciens,48,etrangers x2,0.061071,0.099488,0.61386
+pharmaciens,49,etrangers x2,0.055377,0.10265,0.53945
+pharmaciens,50,etrangers x2,0.059098,0.13807,0.42804
+pharmaciens,51,etrangers x2,0.056875,0.085572,0.66464
+pharmaciens,52,etrangers x2,0.056787,0.088952,0.6384
+pharmaciens,53,etrangers x2,0.056601,0.11101,0.50989
+pharmaciens,54,etrangers x2,0.056323,0.09226,0.61048
+pharmaciens,55,etrangers x2,0.058494,0.10872,0.53802
+pharmaciens,56,etrangers x2,0.055903,0.1383,0.40422
+pharmaciens,57,etrangers x2,0.055176,0.12417,0.44435
+pharmaciens,58,etrangers x2,0.059933,0.082161,0.72946
+pharmaciens,59,etrangers x2,0.055743,0.086803,0.64217
+pharmaciens,60,etrangers x2,0.056842,0.10522,0.54019
+pharmaciens,61,etrangers x2,0.056649,0.1006,0.56309
+pharmaciens,62,etrangers x2,0.05613,0.11215,0.5005
+pharmaciens,63,etrangers x2,0.056296,0.054779,1.0277
+pharmaciens,64,etrangers x2,0.057357,0.10784,0.53188
+pharmaciens,65,etrangers x2,0.054861,0.088472,0.62009
+pharmaciens,66,etrangers x2,0.05989,0.11778,0.50849
+pharmaciens,67,etrangers x2,0.056452,0.10177,0.55469
+pharmaciens,68,etrangers x2,0.055213,0.15493,0.35638
+pharmaciens,69,etrangers x2,0.055087,0.06424,0.85753
+pharmaciens,70,etrangers x2,0.056981,0.1222,0.46628
+pharmaciens,71,etrangers x2,0.05436,0.10126,0.53685
+pharmaciens,72,etrangers x2,0.056117,0.093983,0.5971
+pharmaciens,73,etrangers x2,0.058352,0.13055,0.44698
+pharmaciens,74,etrangers x2,0.05485,0.14467,0.37915
+pharmaciens,75,etrangers x2,0.058388,0.055506,1.0519
+pharmaciens,76,etrangers x2,0.057581,0.082955,0.69412
+pharmaciens,77,etrangers x2,0.055389,0.10364,0.53442
+pharmaciens,78,etrangers x2,0.053528,0.091051,0.58789
+pharmaciens,79,etrangers x2,0.053533,0.096602,0.55416
+pharmaciens,80,etrangers x2,0.057772,0.098627,0.58576
+pharmaciens,81,etrangers x2,0.052854,0.08673,0.6094
+pharmaciens,82,etrangers x2,0.059562,0.11666,0.51057
+pharmaciens,83,etrangers x2,0.054744,0.092855,0.58957
+pharmaciens,84,etrangers x2,0.051684,0.088776,0.58219
+pharmaciens,85,etrangers x2,0.056772,0.13966,0.40652
+pharmaciens,86,etrangers x2,0.055467,0.069751,0.79523
+pharmaciens,87,etrangers x2,0.056423,0.087021,0.64839
+pharmaciens,88,etrangers x2,0.056648,0.13471,0.42051
+pharmaciens,89,etrangers x2,0.059809,0.10116,0.59121
+pharmaciens,90,etrangers x2,0.057435,0.12835,0.44747
+pharmaciens,91,etrangers x2,0.053918,0.086995,0.61978
+pharmaciens,92,etrangers x2,0.055797,0.083845,0.66547
+pharmaciens,93,etrangers x2,0.056077,0.10038,0.55862
+pharmaciens,94,etrangers x2,0.05646,0.091623,0.61622
+pharmaciens,95,etrangers x2,0.054511,0.087919,0.62002
+pharmaciens,971,etrangers x2,0.054827,0.27091,0.20238
+pharmaciens,972,etrangers x2,0.057668,0.26975,0.21378
+pharmaciens,973,etrangers x2,0.061544,0.13853,0.44426
+pharmaciens,974,etrangers x2,0.058019,0.15592,0.37211
+pharmaciens,976,etrangers x2,0.058308,0.10204,0.57142
+pharmaciens,FR,etrangers x2,0.056306,0.095538,0.58936
+pharmaciens,01,L23 vaccination en officine,0.00021305,0.137,0.0015551
+pharmaciens,02,L23 vaccination en officine,0.00021172,0.10232,0.0020691
+pharmaciens,03,L23 vaccination en officine,0.00020544,0.064644,0.0031781
+pharmaciens,04,L23 vaccination en officine,0.00020201,0.10824,0.0018662
+pharmaciens,05,L23 vaccination en officine,0.00019952,0.15014,0.0013289
+pharmaciens,06,L23 vaccination en officine,0.00020984,0.073964,0.0028371
+pharmaciens,07,L23 vaccination en officine,0.00020252,0.11736,0.0017256
+pharmaciens,08,L23 vaccination en officine,0.0002087,0.10684,0.0019534
+pharmaciens,09,L23 vaccination en officine,0.00020084,0.11854,0.0016942
+pharmaciens,10,L23 vaccination en officine,0.00021445,0.078306,0.0027386
+pharmaciens,11,L23 vaccination en officine,0.00020275,0.10738,0.0018882
+pharmaciens,12,L23 vaccination en officine,0.00020118,0.10714,0.0018777
+pharmaciens,13,L23 vaccination en officine,0.00021681,0.069459,0.0031214
+pharmaciens,14,L23 vaccination en officine,0.00021002,0.10962,0.001916
+pharmaciens,15,L23 vaccination en officine,0.00020044,0.097955,0.0020462
+pharmaciens,16,L23 vaccination en officine,0.00020372,0.10792,0.0018877
+pharmaciens,17,L23 vaccination en officine,0.00019971,0.12027,0.0016605
+pharmaciens,18,L23 vaccination en officine,0.00020592,0.075116,0.0027414
+pharmaciens,19,L23 vaccination en officine,0.00020246,0.094179,0.0021497
+pharmaciens,21,L23 vaccination en officine,0.0002146,0.081915,0.0026197
+pharmaciens,22,L23 vaccination en officine,0.00020182,0.11605,0.0017391
+pharmaciens,23,L23 vaccination en officine,0.00019637,0.11277,0.0017413
+pharmaciens,24,L23 vaccination en officine,0.00019509,0.14327,0.0013617
+pharmaciens,25,L23 vaccination en officine,0.00021623,0.091906,0.0023527
+pharmaciens,26,L23 vaccination en officine,0.00021032,0.1004,0.0020949
+pharmaciens,27,L23 vaccination en officine,0.00020748,0.15284,0.0013575
+pharmaciens,28,L23 vaccination en officine,0.00021038,0.11531,0.0018245
+pharmaciens,29,L23 vaccination en officine,0.00020743,0.1028,0.0020177
+pharmaciens,2A,L23 vaccination en officine,0.00020177,0.13568,0.0014871
+pharmaciens,2B,L23 vaccination en officine,0.00020607,0.11498,0.0017922
+pharmaciens,30,L23 vaccination en officine,0.00020733,0.10031,0.0020668
+pharmaciens,31,L23 vaccination en officine,0.00022276,0.096191,0.0023158
+pharmaciens,32,L23 vaccination en officine,0.00019932,0.11707,0.0017026
+pharmaciens,33,L23 vaccination en officine,0.00021704,0.093702,0.0023162
+pharmaciens,34,L23 vaccination en officine,0.0002148,0.077813,0.0027604
+pharmaciens,35,L23 vaccination en officine,0.00021829,0.10601,0.0020592
+pharmaciens,36,L23 vaccination en officine,0.00020376,0.071675,0.0028428
+pharmaciens,37,L23 vaccination en officine,0.00021411,0.079179,0.0027041
+pharmaciens,38,L23 vaccination en officine,0.00021709,0.096637,0.0022465
+pharmaciens,39,L23 vaccination en officine,0.00020521,0.11487,0.0017864
+pharmaciens,40,L23 vaccination en officine,0.00020083,0.13089,0.0015344
+pharmaciens,41,L23 vaccination en officine,0.00020641,0.084716,0.0024365
+pharmaciens,42,L23 vaccination en officine,0.00021505,0.06117,0.0035155
+pharmaciens,43,L23 vaccination en officine,0.0002059,0.096793,0.0021272
+pharmaciens,44,L23 vaccination en officine,0.0002195,0.090379,0.0024287
+pharmaciens,45,L23 vaccination en officine,0.00021576,0.086126,0.0025052
+pharmaciens,46,L23 vaccination en officine,0.00019717,0.11215,0.0017581
+pharmaciens,47,L23 vaccination en officine,0.00020136,0.12476,0.001614
+pharmaciens,48,L23 vaccination en officine,0.00020406,0.099488,0.0020511
+pharmaciens,49,L23 vaccination en officine,0.00021485,0.10265,0.002093
+pharmaciens,50,L23 vaccination en officine,0.00020138,0.13807,0.0014586
+pharmaciens,51,L23 vaccination en officine,0.00021654,0.085572,0.0025305
+pharmaciens,52,L23 vaccination en officine,0.00020601,0.088952,0.002316
+pharmaciens,53,L23 vaccination en officine,0.00020873,0.11101,0.0018804
+pharmaciens,54,L23 vaccination en officine,0.00021643,0.09226,0.0023459
+pharmaciens,55,L23 vaccination en officine,0.00020662,0.10872,0.0019004
+pharmaciens,56,L23 vaccination en officine,0.00020156,0.1383,0.0014574
+pharmaciens,57,L23 vaccination en officine,0.00020982,0.12417,0.0016897
+pharmaciens,58,L23 vaccination en officine,0.0002009,0.082161,0.0024451
+pharmaciens,59,L23 vaccination en officine,0.00022192,0.086803,0.0025566
+pharmaciens,60,L23 vaccination en officine,0.00021765,0.10522,0.0020684
+pharmaciens,61,L23 vaccination en officine,0.0002037,0.1006,0.0020247
+pharmaciens,62,L23 vaccination en officine,0.00021363,0.11215,0.0019049
+pharmaciens,63,L23 vaccination en officine,0.00021648,0.054779,0.0039518
+pharmaciens,64,L23 vaccination en officine,0.00020645,0.10784,0.0019145
+pharmaciens,65,L23 vaccination en officine,0.00020358,0.088472,0.0023011
+pharmaciens,66,L23 vaccination en officine,0.00020236,0.11778,0.0017181
+pharmaciens,67,L23 vaccination en officine,0.000216,0.10177,0.0021224
+pharmaciens,68,L23 vaccination en officine,0.00020661,0.15493,0.0013336
+pharmaciens,69,L23 vaccination en officine,0.00022697,0.06424,0.0035332
+pharmaciens,70,L23 vaccination en officine,0.00020438,0.1222,0.0016725
+pharmaciens,71,L23 vaccination en officine,0.0002036,0.10126,0.0020107
+pharmaciens,72,L23 vaccination en officine,0.00021079,0.093983,0.0022429
+pharmaciens,73,L23 vaccination en officine,0.00020812,0.13055,0.0015942
+pharmaciens,74,L23 vaccination en officine,0.00021448,0.14467,0.0014826
+pharmaciens,75,L23 vaccination en officine,0.00022507,0.055506,0.0040548
+pharmaciens,76,L23 vaccination en officine,0.00021621,0.082955,0.0026063
+pharmaciens,77,L23 vaccination en officine,0.0002233,0.10364,0.0021545
+pharmaciens,78,L23 vaccination en officine,0.00022163,0.091051,0.0024342
+pharmaciens,79,L23 vaccination en officine,0.00020781,0.096602,0.0021512
+pharmaciens,80,L23 vaccination en officine,0.00021375,0.098627,0.0021672
+pharmaciens,81,L23 vaccination en officine,0.00020674,0.08673,0.0023837
+pharmaciens,82,L23 vaccination en officine,0.00020731,0.11666,0.001777
+pharmaciens,83,L23 vaccination en officine,0.00020455,0.092855,0.0022029
+pharmaciens,84,L23 vaccination en officine,0.00021109,0.088776,0.0023778
+pharmaciens,85,L23 vaccination en officine,0.00020137,0.13966,0.0014419
+pharmaciens,86,L23 vaccination en officine,0.00021507,0.069751,0.0030834
+pharmaciens,87,L23 vaccination en officine,0.00020767,0.087021,0.0023864
+pharmaciens,88,L23 vaccination en officine,0.00020215,0.13471,0.0015006
+pharmaciens,89,L23 vaccination en officine,0.00020575,0.10116,0.0020339
+pharmaciens,90,L23 vaccination en officine,0.00021063,0.12835,0.001641
+pharmaciens,91,L23 vaccination en officine,0.00022532,0.086995,0.0025901
+pharmaciens,92,L23 vaccination en officine,0.00022706,0.083845,0.0027081
+pharmaciens,93,L23 vaccination en officine,0.00023127,0.10038,0.0023039
+pharmaciens,94,L23 vaccination en officine,0.00022571,0.091623,0.0024634
+pharmaciens,95,L23 vaccination en officine,0.00022848,0.087919,0.0025987
+pharmaciens,971,L23 vaccination en officine,0.00019607,0.27091,0.00072376
+pharmaciens,972,L23 vaccination en officine,0.00019393,0.26975,0.0007189
+pharmaciens,973,L23 vaccination en officine,0.00025169,0.13853,0.0018168
+pharmaciens,974,L23 vaccination en officine,0.00022179,0.15592,0.0014225
+pharmaciens,976,L23 vaccination en officine,0.00028448,0.10204,0.0027879
+pharmaciens,FR,L23 vaccination en officine,0.00021435,0.095538,0.0022437

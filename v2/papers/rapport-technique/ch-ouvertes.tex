@@ -5,12 +5,13 @@ Cet inventaire rassemble les questions ouvertes du ledger \texttt{v2/\allowbreak
 Les doublons sont fusionnés : une ligne du tableau peut regrouper plusieurs lignes du ledger. Mise à jour du 2026-11-15 : les lignes constatées faites ou dépassées par \texttt{2026-\allowbreak{}11-\allowbreak{}15-\allowbreak{}ledger-\allowbreak{}perime.md} sont retirées, ou marquées dans le texte quand une partie reste ouverte ; les lignes du module de besoin suivent le rapport d'étape du même jour.
 
 \paragraph{Lecture des colonnes.}
-\emph{Prix} : coût estimé par le ledger ou par le rapport source, en temps Claude sauf mention contraire ; \enquote{humain} désigne le temps d'une personne de l'équipe ou d'un tiers (DPO, juriste, ARS), \enquote{monde} un délai qui ne dépend pas de l'équipe (publication d'un millésime, réponse d'un producteur). Tous les prix sont des estimations\suppose{}.
+\emph{Prix} : coût estimé par le ledger ou par le rapport source, en temps Claude sauf mention contraire ; \enquote{humain} désigne le temps d'une personne de l'équipe ou d'un tiers (DPO, juriste, ARS), \enquote{monde} un délai qui ne dépend pas de l'équipe (publication d'un millésime, réponse d'un producteur). Tous les prix sont des estimations\suppose{} ; \enquote{non chiffrable} est suivi de la raison.
+Une ligne qui cite un code interne (banc, critère, ansatz) commence par une phrase qui dit la question en clair.
 \emph{Priorité} : jugement du présent rapport. \textbf{H} : bloque la reprise, une affirmation publique ou un chiffre cité ; \textbf{M} : améliore la précision ou le produit ; \textbf{B} : confort ou nettoyage.
 \emph{Source} : fichier où la question est posée.
 
 \paragraph{Questions fermées.}
-Les questions tranchées ne figurent pas dans le tableau\footnote{Sur environ 135\derive{} lignes d'inventaire (après une première fusion des doublons), 32\derive{} ont été écartées comme fermées, et 2\derive{} autres comme fermées en partie (seule la partie ouverte est reprise). Une ligne est fermée quand \texttt{open.md} le dit, ou quand une entrée datée de \texttt{decisions.md} la tranche. Environ une douzaine\derive{} de ces dernières sont encore marquées \enquote{open} dans \texttt{open.md} : c'est une incohérence du ledger (annexe~\ref{pro:inc-e}). Le classement a été fait à la main, à la lecture du registre ; un auteur d'axe peut juger une question encore ouverte.}.
+Les questions tranchées ne figurent pas dans le tableau\footnote{Sur environ 135\derive{} lignes d'inventaire (après une première fusion des doublons), 34\derive{} ont été écartées comme fermées (dont, le 2026-11-15, le classement de la \enquote{Prévention} en public pour les sages-femmes et le branchement de \texttt{secteur\_\allowbreak{}stock} dans le jumeau), et 2\derive{} autres comme fermées en partie (seule la partie ouverte est reprise). Une ligne est fermée quand \texttt{open.md} le dit, ou quand une entrée datée de \texttt{decisions.md} la tranche. Environ une dizaine\derive{} de ces dernières sont encore marquées \enquote{open} dans \texttt{open.md} (les deux citées ont été marquées fermées le 2026-11-15) : c'est une incohérence du ledger (annexe~\ref{pro:inc-e}). Le classement a été fait à la main, à la lecture du registre ; un auteur d'axe peut juger une question encore ouverte.}.
 
 \begin{small}
 \setlength{\LTleft}{0pt}
@@ -21,91 +22,90 @@ Les questions tranchées ne figurent pas dans le tableau\footnote{Sur environ 13
 \bottomrule\endfoot
 % ------------------------------------------------------------------
 \multicolumn{4}{@{}l}{\textbf{Données}}\\
-Part privée des pharmaciens hospitaliers : RPPS 16,6--17,4\mesure{}\,\%, SAE 29,4\mesure{}\,\%, Ordre 28,6\mesure{}\,\% ; premier facteur d'incertitude des pharmaciens à l'axe 5 ($S_T=0{,}48$\mesure{}) & 30\suppose{}~min à 1\suppose{}~h & H & \texttt{open.md} (3 lignes), \texttt{decisions.md} § Open \\
+Part privée des pharmaciens hospitaliers : RPPS 16,6--19,8\mesure{}\,\% (centrale 18,2\derive{}\,\%, 2026), SAE 29,4\mesure{}\,\%, Ordre 28,6\derive{}\,\% ; premier facteur d'incertitude des pharmaciens à l'axe 5 ($S_T=0{,}48$\mesure{}) & 30\suppose{}~min à 1\suppose{}~h & H & \texttt{open.md} (3 lignes), \texttt{decisions.md} § Open \\
 Ventiler \enquote{autre secteur} : pharmaciens salariés (5\,805\mesure{}, part 0,5\suppose{}) et sages-femmes (796\mesure{}, part 0,5\suppose{}) & 1\suppose{}~h chacun & M & \texttt{open.md} \\
 Parts privées FINESS pondérées par effectifs (centres de santé, médico-social) & 1\suppose{}~h~30 & M & \texttt{open.md} \\
-Double compte des infirmiers libéraux (SNDS) et salariés (BTS) ; hypothèse $H_\mathrm{ind}$ non testable sur l'âge & 30\suppose{} + 45\suppose{}~min & M & \texttt{open.md} \\
+Un infirmier peut être compté deux fois, comme libéral (SNDS) et comme salarié (BTS) ; et la ventilation par âge suppose que le secteur ne dépend pas de l'âge ($H_\mathrm{ind}$), ce qui n'est pas testable & 30\suppose{} + 45\suppose{}~min & M & \texttt{open.md} \\
 Dater les zonages : Atlasanté \texttt{c987d0e2} (2012 ou 2014), CartoSanté actuel par ARS (17\mesure{}), zonages intermédiaires 2018--2023 et de 1\textsuperscript{re} génération & 30\suppose{}~min à 1\suppose{}~h chacun, issue incertaine & M & \texttt{open.md} \\
-Textes primaires des dates d'effet (avenants IDE, rezonage, dentaire, avenant~7 des kinés par ARS) et des 12\mesure{} événements à source secondaire & 30\suppose{}~min à 1\suppose{}~h chacun & M & \texttt{open.md} \\
+Textes primaires des dates d'effet (avenants IDE, rezonage, dentaire, avenant~7 des kinés par ARS) et des 9\mesure{} événements à source secondaire (annexe~\ref{don:ann}, D9) & 30\suppose{}~min à 1\suppose{}~h chacun & M & \texttt{open.md} \\
 Bornes des objectifs \emph{numerus apertus} 2021--2025, bilan ONDPS & 30\suppose{}~min & M & \texttt{open.md} \\
 Inscrits en formation : artefact Paris Cité 2025-26 (683\mesure{} au lieu d'environ 190\suppose{}) ; série par université avant 2020 & 15\suppose{}~min + monde (DREES) ; 1\suppose{}~h & M & \texttt{open.md} \\
 Écart CartoSanté contre RPPS 2025 (kinés $-5{,}4$\mesure{}\,\%, Marseille absente) & 30\suppose{}~min & M & \texttt{open.md} \\
-Archiver l'Annuaire Santé (au moins 3\suppose{} instantanés ; le premier date du 2026-11-13) & 10 à 30\suppose{}~min + monde ; décision & H & \texttt{open.md} (3 lignes) \\
-Historique communal (proxy des installations nettes des moins de 40 ans et officines FINESS : faits) : proxy d'installations nettes des moins de 40 ans, flux d'installation et de cessation, pharmacies 2004--2025 (FINESS historique), sages-femmes (aucune histoire communale ouverte) & 45\suppose{}~min à 1\suppose{}~h chacun ; SF : monde & M & \texttt{open.md} \\
+\textbf{Archive de l'Annuaire Santé et flux communaux.} Garder des instantanés datés de l'Annuaire pour mesurer les installations et les cessations commune par commune (au moins 3\suppose{} instantanés ; le premier date du 2026-11-13, 752\,993\mesure{} personnes au niveau individuel). Avant toute tâche planifiée, une évaluation propre au RGPD (2\derive{} critères G29, §\ref{conf:aipd}). En découlent : le proxy d'installations nettes des moins de 40 ans, les flux d'installation et de cessation, les pharmacies 2004--2025 (FINESS historique), les sages-femmes (aucune histoire communale ouverte), et la version du banc N9 (effet de la densité sur les installations) avec flux bruts & archivage 10 à 30\suppose{}~min + monde ; évaluation 1\suppose{}~h + DPO ; historiques 45\suppose{}~min à 1\suppose{}~h chacun (SF : monde) ; N9 1\suppose{}~h ; décision & H & \texttt{open.md} (5 lignes) \\
 Table de voisinage communale (destination \enquote{zone voisine}) ; la table de passage RPPS privé $\leftrightarrow$ CartoSanté est dépassée (fin des variantes K) & 30\suppose{}~min & M & \texttt{open.md} \\
-Diplômés hors de France : flux annuel par profession depuis une source primaire (défauts proposés, non mesurés : 1\,300 contre 665\suppose{} pour les dentistes) & 45\suppose{}~min à 1\suppose{}~h~30 & H & \texttt{open.md} (4 lignes), \texttt{decisions.md} \\
+Diplômés hors de France : le flux est déjà branché (levier \texttt{etrangers}) ; reste à le mesurer par profession sur une source primaire unique. Pour les dentistes, le défaut de 1\,300\derive{} par an (Ordre 2022) s'oppose à 665\mesure{} par an, sourcé (DD76, tab.~13) & 45\suppose{}~min à 1\suppose{}~h~30 & H & \texttt{open.md} (4 lignes), \texttt{decisions.md} \\
 Vérifier le grain le plus fin d'Omphale et d'Hippocrate & 20\suppose{}~min & B & \texttt{open.md} \\
 Taux d'installation au-dessus de 100\,\% (kinés 107\mesure{}\,\%) : renommer, ne compter que les premières entrées, ou masquer & 10\suppose{}~min à 2\suppose{}~h & M & \texttt{decisions.md} § Open \\
 % ------------------------------------------------------------------
 \multicolumn{4}{@{}l}{\textbf{Modèle}}\\
-Tester la règle \enquote{entrées $\leq$ sorties} contre une référence indépendante (C13 ne la teste qu'en interne) & 30\suppose{}~min & H & \texttt{open.md} \\
+La règle de régulation \enquote{entrées $\leq$ sorties} n'est vérifiée que par le code lui-même : la tester contre une référence indépendante (le critère C13 ne la teste qu'en interne) & 30\suppose{}~min & H & \texttt{open.md} \\
 Vérifier 3\mesure{} constats non réfutés de la revue (conservation, vieillissement d'une tranche sur 5, état des modules) & 10\suppose{}~min & M & \texttt{open.md} \\
-Séparer entrées et rétention (abandonner \enquote{excédent de $r>1$ = entrée}) ; cause commune de M3, M4 et de l'échec SBC & 2\suppose{}~h & H & \texttt{open.md} \\
+Le modèle confond les entrées et le maintien en activité : un taux de rétention supérieur à 1 est compté comme des entrées. Séparer les deux (cause commune des défauts M3 et M4 de la revue et de l'échec du test SBC) & 2\suppose{}~h & H & \texttt{open.md} \\
 Sensibilité de $N(2050)$ à l'ordre des modules ; plancher à 0 hérité de la v1 (0,02 à 0,43\mesure{}\,\% de $N(2050)$) ; réaligner \texttt{decalage\_\allowbreak{}retraite} & 10 à 20\suppose{}~min chacun & B & \texttt{open.md}, \texttt{decisions.md} § Open \\
-État communal projetable (tranches CartoSanté variables, \texttt{fit\_\allowbreak{}rates} en 1/5) ; recalcul communal 5 professions $\times$ 2 secteurs (1,1\mesure{}~s mesurée, 3,0\derive{}~s extrapolée) & 20\suppose{}~min à 1\suppose{}~h & M & \texttt{open.md} \\
-Injecter les diplômés du vivier (vivier réel DREES fait) dans $N$ à la place du flux ajusté ; variante \texttt{vivier} au banc N1 ; abandon en formation IDE projeté ($\rho$ de 0,84 à 0,72\mesure{}) & 30\suppose{}~min à 1\suppose{}~h ; 45\suppose{}~min & M & \texttt{open.md} \\
+Projeter à la commune : l'état communal n'est pas encore projetable (tranches CartoSanté variables, \texttt{fit\_\allowbreak{}rates} en 1/5) ; le recalcul communal 5 professions $\times$ 2 secteurs prend 1,1 à 1,31\mesure{}~s pour une profession et 2,1 à 3,6\derive{}~s extrapolées pour cinq (2,1 au run de \texttt{jumeau.check} du 2026-11-15 à 02:03 ; 3,0 dans \texttt{open.md} ; 3,6 relevé par le jury) & 20\suppose{}~min à 1\suppose{}~h & M & \texttt{open.md} \\
+Faire entrer dans l'effectif les diplômés calculés par le vivier de formation, à la place du flux ajusté ; variante \texttt{vivier} au banc N1 (rétroprévision) ; abandon en formation IDE projeté ($\rho$ de 0,84 à 0,72\mesure{}) & 30\suppose{}~min à 1\suppose{}~h ; 45\suppose{}~min & M & \texttt{open.md} \\
 Âge d'entrée des diplômés à l'étranger : 28\suppose{} ans unique, ou un âge par profession (effet $\times2$ : dentistes $-1{,}3$\mesure{}\,\%, pharmaciens $-0{,}2$\mesure{}\,\%) & 30\suppose{}~min & B & \texttt{decisions.md} § Open \\
-Contrat du jumeau : \texttt{Shift} sans fraction par cellule, \texttt{stock\_\allowbreak{}flow\_\allowbreak{}rates} non injectable, point d'injection officiel des taux de C1 & 20 à 30\suppose{}~min chacun & M & \texttt{open.md} \\
-Reprise de l'observatoire vers l'axe 0 (B1, B2, B6, A6) & 1\suppose{}~h~30 & B & \texttt{open.md} \\
-Axe 1 : paramètres à sourcer (arrêtés de zonage, avenant~11 IDE, taux de dérogation, $\varepsilon_\mathrm{PH}$, postes de DES d'odontologie, cessation par âge, option \enquote{2 ans} des kinés non mesurable avant 2028) ; relecture (\texttt{param-\allowbreak{}regul-\allowbreak{}report-\allowbreak{}entrants}, DREES Écoles 1E, ONCD 1\,333 ou 1\,321\mesure{}) & 10\suppose{}~min à 1\suppose{}~h chacun & M & \texttt{open.md} \\
+Interface interne du jumeau, trois manques : \texttt{Shift} sans fraction par cellule, \texttt{stock\_\allowbreak{}flow\_\allowbreak{}rates} non injectable, point d'injection officiel des taux de C1 & 20 à 30\suppose{}~min chacun & M & \texttt{open.md} \\
+Reprendre dans le jumeau quatre éléments de l'observatoire de l'équipe (B1, B2, B6, A6) & 1\suppose{}~h~30 & B & \texttt{open.md} \\
+Paramètres encore sans source primaire (axe 1) (arrêtés de zonage, avenant~11 IDE, taux de dérogation, $\varepsilon_\mathrm{PH}$, postes de DES d'odontologie, cessation par âge, option \enquote{2 ans} des kinés non mesurable avant 2028) ; relecture (\texttt{param-\allowbreak{}regul-\allowbreak{}report-\allowbreak{}entrants}, DREES Écoles 1E, ONCD 1\,333 ou 1\,321\mesure{}) & 10\suppose{}~min à 1\suppose{}~h chacun & M & \texttt{open.md} \\
 Effet chiffré de la régulation pour SF, MK et CD ; destination des entrants bloqués ; régulation SF dérogatoire ; part des dentistes spécialistes exemptés & 20\suppose{}~min à 4\suppose{}~h & H & \texttt{open.md} \\
-Rétention dépendante de la densité pour les IDE (N9 : $+0{,}11$\mesure{} [$+0{,}05$\,;\,$+0{,}18$], corrélationnel) & non chiffré & M & \texttt{decisions.md} § Open \\
-Unité de l'offre : effectif ou ETP ; groupes de communes (TDS, zonage ARS, bassins de vie, EPCI) & non chiffré ; décision & M & \texttt{decisions.md} § Open (hérité v1) \\
-Axe 2, bancs : A2 + A1b au banc N1 ; IC de $\Delta(\mathrm{A2}-\mathrm{A0})$ par blocs ; parts privées min et max ; relancer N1 et N6 sur la table privée actuelle (SF : A2 8,60 au lieu de 8,57\mesure{}) & 5 à 20\suppose{}~min chacun & M & \texttt{open.md} \\
-Axe 2, C1 : entrées probabilistes ; bayésien complet de $\sigma_u,\sigma_v,\tau_r$ ; gain décroissant sur les origines récentes ; rétention variable avec l'horizon ; C1 sur la table privée IDE & 20\suppose{}~min à 1\suppose{}~j & M & \texttt{open.md}, \texttt{decisions.md} \\
-Axe 2, autres familles : logit d'installation A4, espace-état A5 à la commune, multi-états privé $\leftrightarrow$ public ; GBM direct à $h=5$ ou sur les résidus de A2 (le GBM global est rejeté) & 30\suppose{}~min à 3\suppose{}~h & B & \texttt{open.md}, \texttt{2026-\allowbreak{}11-\allowbreak{}15-\allowbreak{}c1-\allowbreak{}gbm-\allowbreak{}global.md} \\
-Budget d'erreur : covariables de l'écart local ($R^2\geq0{,}2$\suppose{} exigé), variance sur-dispersée (MSE $\approx6\times$\mesure{} poissonien), plancher de bruit sur flux bruts, persistance sur plus de paires & 10\suppose{}~min à 1\suppose{}~h~30 & M & \texttt{2026-\allowbreak{}11-\allowbreak{}15-\allowbreak{}budget-\allowbreak{}erreur-\allowbreak{}c1-\allowbreak{}a2.md} \\
+Les infirmiers restent-ils plus en activité là où la densité est forte ? Le banc N9 donne $+0{,}11$\mesure{} [$+0{,}05$\,;\,$+0{,}18$], corrélationnel ; en faire un module & 1\suppose{}~h, puis un banc & M & \texttt{decisions.md} § Open \\
+Unité de l'offre : effectif ou ETP ; groupes de communes (TDS, zonage ARS, bassins de vie, EPCI) & 15\suppose{}~min humain ; décision. ETP : non chiffrable, aucune série ouverte d'activité par professionnel n'est vérifiée & M & \texttt{decisions.md} § Open (hérité v1) \\
+Bancs de comparaison des méthodes (axe 2) : combiner A2 et A1b au banc N1 ; IC de $\Delta(\mathrm{A2}-\mathrm{A0})$ par blocs ; parts privées min et max ; relancer N1 et N6 sur la table privée actuelle (SF : A2 8,60 au lieu de 8,57\mesure{}) & 5 à 20\suppose{}~min chacun & M & \texttt{open.md} \\
+Méthode retenue C1 (modèle hiérarchique) : entrées probabilistes ; bayésien complet de $\sigma_u,\sigma_v,\tau_r$ ; gain décroissant sur les origines récentes ; rétention variable avec l'horizon ; C1 sur la table privée IDE & 20\suppose{}~min à 1\suppose{}~j & M & \texttt{open.md}, \texttt{decisions.md} \\
+Autres familles de méthodes (axe 2) : logit d'installation A4, espace-état A5 à la commune, multi-états privé $\leftrightarrow$ public ; GBM direct à $h=5$ ou sur les résidus de A2 (le GBM global est rejeté) & 30\suppose{}~min à 3\suppose{}~h & B & \texttt{open.md}, \texttt{2026-\allowbreak{}11-\allowbreak{}15-\allowbreak{}c1-\allowbreak{}gbm-\allowbreak{}global.md} \\
+Expliquer l'erreur locale des méthodes C1 et A2 (budget d'erreur) : covariables de l'écart local ($R^2\geq0{,}2$\suppose{} exigé), variance sur-dispersée (MSE $\approx6\times$\mesure{} poissonien), plancher de bruit sur flux bruts, persistance sur plus de paires & 10\suppose{}~min à 1\suppose{}~h~30 & M & \texttt{2026-\allowbreak{}11-\allowbreak{}15-\allowbreak{}budget-\allowbreak{}erreur-\allowbreak{}c1-\allowbreak{}a2.md} \\
+Pharmaciens communaux : erreur médiane de 10,7\mesure{}\,\% à l'EPCI pour un seuil de 10\suppose{}\,\% & 1\suppose{}~h & B & \texttt{open.md} \\
 Vectoriser le vivier (60\mesure{}\,\% du temps d'un run) & 1\suppose{}~h & B & \texttt{open.md} \\
 Écarts aux références DREES : IFSI, perte divisée par 2 ($+15{,}6$\mesure{}\,\% contre $\approx+7{,}9$\,\% DREES) ; retraite $+1$ an à relancer sur le champ DREES & 45\suppose{}~min ; 30\suppose{}~min & M & \texttt{open.md} \\
 % ------------------------------------------------------------------
 \multicolumn{4}{@{}l}{\textbf{Validation}}\\
-N2-A fidèle : quotas 2016--2020 ouverts ; tolérance de $\pm3$\suppose{}\,\% à 2050, bien plus étroite que les fourchettes de l'axe 5 & 45\suppose{}~min ; 15\suppose{}~min + décision & H & \texttt{open.md} \\
-A0 et B4 divergent de $+23$\mesure{}\,\% pour les dentistes à N2 & 30\suppose{}~min & M & \texttt{open.md} \\
-Relancer le banc K1 + filière sur le périmètre \enquote{libéral} (privé) & 20\suppose{}~min & B & \texttt{open.md} \\
-N3 : 3\textsuperscript{e} test de la régulation IDE par contrôle synthétique ; pré-enregistrer $\theta$ pour E2 kinés & 1\suppose{}~h ; 15\suppose{}~min & H & \texttt{open.md}, \texttt{decisions.md} (\enquote{Axe 3, nuit}) \\
-N4 : borne $r\leq1{,}2$\suppose{} des mondes simulés (la projection réelle à l'échelle fine est faite, N10) & non chiffré & M & \texttt{open.md} \\
-Axe 5 : composante (b) trop large à $h=5$ ; doubler $N$ (512 $\rightarrow$ 1\,024\suppose{} ; indice PH 0,085\mesure{} $>0{,}05$) ; Sobol par département ; $H_\mathrm{ind}$ comme facteur ; relance à chaque changement du jumeau & 20\suppose{}~min à 2\suppose{}~h machine & M & \texttt{open.md} \\
-C1 : choc commun national ; intervalles sur une 2\textsuperscript{e} origine (2027) ; conforme par taille (l'emballage en \texttt{Estimator} est dépassé) & 10\suppose{}~min à 2\suppose{}~h & M & \texttt{open.md}, \texttt{2026-\allowbreak{}11-\allowbreak{}15-\allowbreak{}c1-\allowbreak{}intervalles.md} \\
+Reproduire fidèlement la projection DREES DD76 (banc N2-A) : quotas 2016--2020 ouverts ; tolérance de $\pm3$\suppose{}\,\% à 2050, bien plus étroite que les fourchettes de l'axe 5 & 45\suppose{}~min ; 15\suppose{}~min + décision & H & \texttt{open.md} \\
+Deux méthodes de référence (A0 et B4) divergent de $+23$\mesure{}\,\% pour les dentistes au banc N2 (reproduction DD76) : expliquer l'écart & 30\suppose{}~min & M & \texttt{open.md} \\
+Relancer le banc de rétroprévision K1 + filière sur le périmètre \enquote{libéral} (privé) & 20\suppose{}~min & B & \texttt{open.md} \\
+Valider l'effet de la régulation (banc N3) : 3\textsuperscript{e} test de la régulation IDE par contrôle synthétique ; pré-enregistrer $\theta$ pour E2 kinés & 1\suppose{}~h ; 15\suppose{}~min & H & \texttt{open.md}, \texttt{decisions.md} (\enquote{Axe 3, nuit}) \\
+Tester les méthodes sur des mondes simulés (banc N4) : borne $r\leq1{,}2$\suppose{} des mondes simulés (la projection réelle à l'échelle fine est faite, N10) & 10\suppose{}~min & M & \texttt{open.md} \\
+Analyse de sensibilité (axe 5) : composante (b) trop large à $h=5$ ; doubler $N$ (512 $\rightarrow$ 1\,024\suppose{} ; indice PH 0,085\mesure{} $>0{,}05$) ; Sobol par département ; $H_\mathrm{ind}$ comme facteur ; relance à chaque changement du jumeau & 20\suppose{}~min à 2\suppose{}~h machine & M & \texttt{open.md} \\
+Intervalles de la méthode C1 : choc commun national ; intervalles sur une 2\textsuperscript{e} origine (2027) ; conforme par taille (l'emballage en \texttt{Estimator} est dépassé) & 10\suppose{}~min à 2\suppose{}~h & M & \texttt{open.md}, \texttt{2026-\allowbreak{}11-\allowbreak{}15-\allowbreak{}c1-\allowbreak{}intervalles.md} \\
 Scorer les prévisions déposées 2027--2030 (empreinte \texttt{ca036374d216}) & monde (juillet 2027) & H & \texttt{decisions.md} \\
 Vérifier Gneiting et Ranjan (2011) en texte intégral & 15\suppose{}~min & B & \texttt{open.md} \\
-N9 B2 avec flux bruts d'installation & 1\suppose{}~h & B & \texttt{open.md} \\
 Réconcilier le \enquote{libéral} avec le RPPS (la comparaison des IDE 2050 à ER1319, 821\,000\mesure{}~\citep{e-er1319}, est faite, N7-D) (condition n\textsuperscript{o}~4 du rapport produit) & 20\suppose{}~min à 1\suppose{}~h & H & \texttt{open.md} \\
 % ------------------------------------------------------------------
 \multicolumn{4}{@{}l}{\textbf{Produit}}\\
-\textbf{LLM ou déterministe} : utilité comparée sur les 22\mesure{} questions, règle d'ancrage stricte (le mode IA est déjà par défaut, §\ref{pro:llm-det}) & 30\suppose{}~min + 10\suppose{}~min machine + 3\suppose{}~\$ & H & \texttt{open.md}, \texttt{decisions.md} \\
-Assistant : interdire une absence d'effet non calculée (cas \texttt{q06} et \texttt{h06}, §\ref{pro:cas-ecart}) & non chiffré & H & présent rapport ; \texttt{v2/\allowbreak{}agent/\allowbreak{}reponses\_\allowbreak{}*.jsonl} \\
-Mesurer le mode IA sur les jeux 5 et 6 (compréhension, 60\mesure{} appels) et sur le périmètre (27\mesure{} cas) & 60 + 27\mesure{} appels & H & \texttt{chatbot/\allowbreak{}DECISIONS.md}, \texttt{open.md} \\
+\textbf{LLM ou déterministe} : utilité comparée sur les 22\mesure{} questions, règle d'ancrage stricte (le mode IA est déjà par défaut, §\ref{pro:llm-det}) ; mesurer aussi le mode IA sur les jeux 5 et 6 (compréhension, 60\mesure{} appels) et sur le périmètre (27\mesure{} cas) & 30\suppose{}~min + 10\suppose{}~min machine + 3\suppose{}~\$ ; 60 + 27\mesure{} appels & H & \texttt{open.md}, \texttt{decisions.md}, \texttt{chatbot/\allowbreak{}DECISIONS.md} \\
+Assistant : interdire une absence d'effet non calculée (cas \texttt{q06} et \texttt{h06}, §\ref{pro:cas-ecart}) ; correction proposée par le présent rapport, non décidée & 30\suppose{}~min & H & présent rapport ; \texttt{v2/\allowbreak{}agent/\allowbreak{}reponses\_\allowbreak{}*.jsonl} \\
 Resserrer la tolérance de $\pm6$\mesure{}\,\% du chatbot & 20\suppose{}~min & M & \texttt{open.md} \\
 Jeux de test écrits par un humain : compilateur (et jeu 7 à l'aveugle), chatbot (avec relecture qualitative) & 30\suppose{}~min humain chacun ; 30\suppose{}~min & H & \texttt{open.md} \\
 Glossaire : références juridiques à relire par un·e juriste & 30\suppose{}~min humain & M & \texttt{open.md} \\
-Mistral imposé par le hackathon ? & décision & M & \texttt{decisions.md} § Open, \texttt{chatbot/\allowbreak{}DECISIONS.md} \\
+Fournisseur du modèle de langage pour un portage ministériel (Anthropic aux États-Unis, Mistral, hébergement dans l'UE ou SecNumCloud), lié au transfert du texte libre hors UE (§\ref{conf:rgpd}) & décision & M & \texttt{decisions.md} § Open, \texttt{chatbot/\allowbreak{}DECISIONS.md} \\
 Rejouer la recette par personas sur la carte finale (DSFR, option 1), avec re-recette ciblée des P0 et P1 corrigés et captures sur disque & 30 à 40\suppose{}~min & H & \texttt{open.md} \\
-Recette avec des utilisateurs réels (ARS, administration, élu·e) & humain, non chiffré & H & présent rapport (aucune recette humaine, §\ref{pro:recettes}) \\
+Recette avec des utilisateurs réels (ARS, administration, élu·e) & non chiffrable : dépend de l'accès à ces utilisateurs, que l'équipe ne contrôle pas ; environ 2\suppose{}~h humain par séance & H & présent rapport (aucune recette humaine, §\ref{pro:recettes}) \\
 Accueil : entrée territoriale ou nationale, modes Simple et Expert & 30 à 45\suppose{}~min & M & \texttt{decisions.md} § Open \\
 Latence perçue au premier plan, seuil \enquote{geste continu ou changement isolé} ; délai d'effet affiché 2032 ou 2033 ; exigence \enquote{très fluide} ($<100$\suppose{}~ms en rafale non établi) & 5 à 10\suppose{}~min + décision & B & \texttt{open.md} \\
-Retour utilisateur sur la carte (zoom, DROM et palette : faits ; cases, limites ARS) ; refonte du panneau Leviers ; direction artistique modifiable dans Figma & non chiffré & B & \texttt{open.md}, \texttt{decisions.md} § Open \\
+Retour utilisateur sur la carte (zoom, DROM et palette : faits ; cases, limites ARS) ; refonte du panneau Leviers ; direction artistique modifiable dans Figma & 1 à 2\suppose{}~h, après un retour utilisateur (monde) & B & \texttt{open.md}, \texttt{decisions.md} § Open \\
 Articulation avec l'observatoire de l'équipe (échange JSON), choix d'une direction artistique & 10\suppose{}~min humain & B & \texttt{open.md} \\
-Corriger le deck ($\Delta$ MAPE, statut des leviers, diapo \enquote{Decisions needed}) et le \texttt{README.md} (annexe~\ref{pro:inc-e}) & 0,05 à 0,3\suppose{}~h & H & \texttt{2026-\allowbreak{}11-\allowbreak{}15-\allowbreak{}jury-\allowbreak{}grille.md} \\
+Corriger le deck ($\Delta$ MAPE, statut des leviers, diapo \enquote{Decisions needed}) et le \texttt{README.md} (annexe~\ref{pro:inc-e}) ; mettre à jour le rapport du prototype pour les kinés à quotas $+20$\,\% en 2050 ($+19\,110$\mesure{} aujourd'hui contre $+8\,645$\mesure{}), en rappelant qu'aucun chiffre 2050 n'est citable (\enquote{Axe 3, nuit}) & 0,05 à 0,3\suppose{}~h ; 20\suppose{}~min & H & \texttt{2026-\allowbreak{}11-\allowbreak{}15-\allowbreak{}jury-\allowbreak{}grille.md}, \texttt{open.md} \\
+API : refuser un territoire inconnu (D999 donne 500, ZZ donne la France) et les leviers non numériques & 0,3\suppose{}~h & M & \texttt{2026-\allowbreak{}11-\allowbreak{}15-\allowbreak{}jury-\allowbreak{}grille.md}, rang 12 \\
 Modèle économique (EUPL + prestations $<60$\suppose{}~k\texteuro{}~HT) ; porteur institutionnel et ARS pilote & 10\suppose{}~min humain ; semaines, humain & H & \texttt{2026-\allowbreak{}11-\allowbreak{}14-\allowbreak{}produit.md}, \texttt{open.md} \\
 Relire en entier les 6\mesure{} pages sources du rapport produit & 20\suppose{}~min & B & \texttt{open.md} \\
 Gabarit des prétirages : guillemets sous tectonic & 10\suppose{}~min & B & \texttt{open.md} \\
 % ------------------------------------------------------------------
 \multicolumn{4}{@{}l}{\textbf{Conformité}}\\
-Seuil de secret statistique sur les sorties et les tables communales (2\mesure{} copies) : masquage, ou retrait du dépôt public & 30\suppose{}~min ou 20\suppose{}~min ; décision & H & \texttt{open.md}, audit \\
+Seuil de secret statistique sur les sorties et les tables communales (2\mesure{} copies) : masquage, ou retrait du dépôt public ; l'historique git garde les versions publiées (réécriture par \texttt{git filter-repo}, sans effet sur les clones existants) & 30\suppose{}~min ou 20\suppose{}~min ; réécriture : non chiffrable, dépend des clones existants ; décision & H & \texttt{open.md}, audit \\
 Note de non-applicabilité de l'AIPD & 1\suppose{}~h + DPO, humain & H & \texttt{open.md}, audit \\
 Licence du code (EUPL~1.2 proposée) et \texttt{NOTICE} des licences tierces & 10\suppose{}~min humain + 15\suppose{}~min & H & \texttt{open.md}, audit \\
-DSFR : nommer la structure porteuse (question levée le 2026-11-15 : projet porté par le Ministère chargé de la santé, selon l'utilisateur·rice) & 10\suppose{}~min humain & M & \texttt{decisions.md} § Open \\
+DSFR : écrire dans le \texttt{README.md} le nom de la structure porteuse (question levée le 2026-11-15 : projet porté par le Ministère chargé de la santé, selon l'utilisateur·rice) & 5\suppose{}~min humain & M & \texttt{decisions.md} § Open \\
+Copie commitée \texttt{chatbot/\allowbreak{}vendor/\allowbreak{}hackathon\_\allowbreak{}acces\_\allowbreak{}soins/\allowbreak{}} (687\mesure{} fichiers, dont 34\mesure{} tables traitées) : l'inclure dans le manifeste et le seuil de diffusion, ou la retirer (§\ref{conf:inventaire}) & 20\suppose{}~min & H & présent rapport \\
 Page \enquote{Conformité} du \texttt{README.md} (finalité, base légale, art.~14, destination non clinique, mention IA) & 20\suppose{}~min & H & audit (absent de \texttt{open.md}) \\
 Avertissement IA (art.~50) et \enquote{pas de données personnelles} à l'ouverture de l'assistant & 10\suppose{}~min & H & audit (absent de \texttt{open.md}) \\
-Conditions de réutilisation de CartoSanté ; licences des autres sources, fichier par fichier & 15\suppose{}~min ; non chiffré & M & audit (absent de \texttt{open.md}) \\
-Relecture par un DPO ou un juriste & humain & H & audit \\
+Conditions de réutilisation de CartoSanté ; licences des autres sources, fichier par fichier & 15\suppose{}~min ; 1\suppose{}~h & M & audit (absent de \texttt{open.md}) \\
+Relecture par le DPO du ministère porteur & humain & H & audit \\
 % ------------------------------------------------------------------
 \multicolumn{4}{@{}l}{\textbf{Module de besoin} (détail en §\ref{ouv:besoin})}\\
-Passage OSRM de P-B4 (M4 contre l'APL DREES 2024, amendement A1 écrit avant calcul) & en cours, machine & H & \texttt{2026-\allowbreak{}11-\allowbreak{}15-\allowbreak{}besoin-\allowbreak{}etape.md} \\
-Passage de P-B4-PH (M4 pharmaciens contre l'APL V0 2013, gelé) & 1\suppose{}~h & M & idem \\
+P-B4 avec les temps routiers OSRM (M4 contre l'APL DREES 2024, amendement A1 écrit avant calcul) : échec pour IDE, MK, SF et CD (Spearman 0,71 à 0,76\mesure{}, seuil 0,90) ; M4 reste un indice maison & fait & H & \texttt{2026-\allowbreak{}11-\allowbreak{}15-\allowbreak{}besoin-\allowbreak{}etape.md} \\
+P-B4-PH (M4 pharmaciens contre l'APL V0 2013, gelé) : échec (Spearman 0,72\mesure{}, erreur médiane 33\mesure{}\,\%) & fait & M & \texttt{2026-\allowbreak{}11-\allowbreak{}15-\allowbreak{}besoin-\allowbreak{}p-\allowbreak{}b4-\allowbreak{}ph-\allowbreak{}apl-\allowbreak{}v0.md} \\
 Mesurer $k$ pour la vaccination en officine (aujourd'hui supposé, plage $[0{,}25\,;\,1]$) ; $m$ reste supposé à 0 (P-B6 non attribuable) & non chiffré ; aucune source ouverte & H & idem, \texttt{decisions.md} \\
-Fusionner les branches de passage dans la branche du module, puis brancher l'indice dans la carte & 15\suppose{}~min + non chiffré & H & idem \\
-Médecine générale comme \enquote{source} d'un transfert : dans ou hors du périmètre ? & 10\suppose{}~min humain ; décision & M & présent rapport \\
+Indice de couverture branché dans la carte et l'assistant (vue \enquote{couverture}, L23 de bout en bout, transferts hypothétiques, effectivité O3 dans l'assistant) ; correctif P1-4 : seule la part au-delà de 2026 agit (effet 2050 des pharmaciens $-0{,}03$\mesure{}\,\% au lieu de $-0{,}7$\,\%) & fait & H & \texttt{2026-\allowbreak{}11-\allowbreak{}15-\allowbreak{}l23-\allowbreak{}p1-\allowbreak{}4-\allowbreak{}marge.md} \\
 % ------------------------------------------------------------------
 \multicolumn{4}{@{}l}{\textbf{Spécialités : amélioration possible (ex-phase~2, hors plan depuis le 2026-11-15)}}\\
 Cardiologie, dermatologie, ophtalmologie : postes d'internat par DES, secteur 1 ou 2, dépassements. Condition de démarrage (axes 0 à 3 terminés pour au moins une profession, dont un levier validé) non remplie & non chiffré & M & \texttt{v2/\allowbreak{}ROADMAP.md}, \texttt{open.md} \\
@@ -118,7 +118,7 @@ Spécialistes comme \enquote{source} d'un transfert de tâches (contexte du modu
 
 \paragraph{Statut (2026-11-15).}
 Le module est construit dans \texttt{v2/\allowbreak{}besoin/\allowbreak{}} ; sa dérivation et son plan sont dans \texttt{v2/\allowbreak{}docs/\allowbreak{}lab/\allowbreak{}derivations/\allowbreak{}} (2026-11-15).
-Six protocoles gelés sur sept sont passés ; le détail est dans le rapport d'étape \texttt{v2/\allowbreak{}docs/\allowbreak{}lab/\allowbreak{}reports/\allowbreak{}2026-\allowbreak{}11-\allowbreak{}15-\allowbreak{}besoin-\allowbreak{}etape.md}. Les passages sont sur des branches non fusionnées.
+Les sept protocoles gelés sont passés ; le détail est dans le rapport d'étape \texttt{v2/\allowbreak{}docs/\allowbreak{}lab/\allowbreak{}reports/\allowbreak{}2026-\allowbreak{}11-\allowbreak{}15-\allowbreak{}besoin-\allowbreak{}etape.md}. Les passages sont sur des branches non fusionnées.
 \begin{itemize}
 \item \textbf{P-B1, âge.} M1 retenu pour les cinq professions : $S_1=0$\mesure{}\,\% pour les infirmiers ($\rho=0{,}835$\mesure{}) et les kinés ; dentistes de justesse (abandon sous P1, $S_1=93{,}1$\mesure{}\,\% ; maintien sous P2, $S_1=87{,}1$\mesure{}\,\% pour un seuil de 90\suppose{}\,\%).
 \item \textbf{P-B2, saturation.} M2b tombe pour IDE, MK, CD et SF : l'IC à 98,75\,\% de $\delta$ contient 0 partout. Le besoin non satisfait n'est pas identifié au département ; M2a (offre à la moyenne nationale) est construit comme repli.
@@ -126,18 +126,18 @@ Six protocoles gelés sur sept sont passés ; le détail est dans le rapport d'�
 \item \textbf{P-B4, APL.} En repli vol d'oiseau, M4 ne reproduit pas l'APL 2024 ($\rho$ de 0,66 à 0,77\mesure{} pour 0,90\suppose{} ; erreur médiane de 21 à 29\mesure{}\,\%) : c'est un indice maison, jamais appelé \enquote{APL}. Le passage OSRM est en attente.
 \item \textbf{P-B5, backtest.} H-B1 retenue : l'âge bat la persistance du recours 2016\,$\to$\,2025 pour IDE ($-8{,}1$\mesure{} points de MAPE), MK et CD, pas pour les SF. Le GBM, qui suit la croissance de l'offre, n'est servi que comme prédicteur du recours.
 \item \textbf{P-B6, vaccination en officine.} ATT $+0{,}73$\mesure{}\,\% [$-0{,}12$\,;\,$+1{,}58$], mais placebo en échec : $m$ reste supposé à 0. $s_\infty=0{,}74$\derive{}, $\tau=2{,}4$\derive{}~ans.
-\item \textbf{P-B4-PH.} Gelé et horodaté, non passé.
+\item \textbf{P-B4-PH.} Gelé, horodaté et passé : échec (Spearman 0,72\mesure{} pour 0,90\suppose{}, erreur médiane 33\mesure{}\,\%). Avec les temps routiers OSRM, P-B4 échoue aussi pour les quatre autres professions ($\rho$ de 0,71 à 0,76\mesure{}) : M4 reste un indice maison.
 \end{itemize}
 Les paragraphes suivants reprennent le plan initial (2026-11-14) ; ils ne sont pas mis à jour.
 
 \paragraph{But.}
 Rendre répondable la question du sujet, \enquote{combien de spécialistes à Clermont-Ferrand en 2035 si les pharmaciens peuvent vacciner ?}, \emph{sans changer la projection des effectifs}.
-Aujourd'hui, les transferts de tâches produisent un effet nul par construction : ils sont classés \enquote{pas dans le modèle} (§\ref{pro:leviers}).
+Aujourd'hui, les transferts de tâches n'ont aucun effet calculé, par construction : ils sont classés \enquote{pas dans le modèle} (§\ref{pro:leviers}).
 
 \paragraph{La difficulté de fond : besoin non observé, recours observé.}
 Le besoin de soins n'est pas observé. Ce qu'on observe en données ouvertes, c'est le \emph{recours} : des actes remboursés par spécialité d'exécutant et par tranche d'âge du bénéficiaire (Open DAMIR, Assurance maladie, cité par la dérivation).
-Or le recours est contraint par l'offre : là où les professionnels sont rares, on consomme moins, faute d'accès, et pas forcément faute de besoin.
-Prendre le recours observé pour le besoin rend l'indice de couverture en partie circulaire : il sous-estime le besoin là où l'offre est faible, précisément là où la question se pose.
+Or le recours est contraint par l'offre : là où la densité de professionnels est inférieure à la moyenne, on consomme moins, faute d'accès, et pas forcément faute de besoin.
+Prendre le recours observé pour le besoin rend l'indice de couverture en partie circulaire : il sous-estime le besoin dans ces mêmes territoires, précisément là où la question se pose.
 La dérivation mesure $r$ en 2026 et le suppose constant ensuite ; elle ne traite pas ce biais. Les ansätze ci-dessous l'ordonnent du moins cher au plus fidèle.
 
 \paragraph{Ansätze.}
@@ -157,7 +157,7 @@ Dans tous les ansätze, un transfert $\tau$ déplace une part du besoin d'une pr
 B'(A)=B(A)\,(1-s\,a),\qquad B'(B)=B(B)+s\,a\,B(A)\,k ,
 \]
 où $a$ est la part du besoin de A concernée par l'acte transféré, $k$ convertit le temps de l'acte de A vers B, et $s$ est le levier. $a$ et $k$ doivent être sourcés ou étiquetés \enquote{supposé}.
-Les effectifs projetés ne changent pas : le jumeau ne modélise pas d'installation qui répondrait au besoin, et N9 a mesuré un effet nul de la densité sur les installations (\texttt{decisions.md}, axe 3).
+Les effectifs projetés ne changent pas : le jumeau ne modélise pas d'installation qui répondrait au besoin, et N9 n'établit aucun effet de la densité sur les installations : ses intervalles de confiance contiennent 0 (\texttt{decisions.md}, axe 3).
 Trois leviers sont visés : vaccination en officine (L23), infirmiers en pratique avancée (L25), accès direct au kiné (L27).
 
 \paragraph{Critères d'acceptation et test d'abandon (dérivation).}

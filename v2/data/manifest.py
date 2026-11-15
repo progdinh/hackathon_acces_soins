@@ -12,15 +12,21 @@ accord de confidentialité) ne doivent jamais entrer dans un fichier traité : l
 from __future__ import annotations
 
 import hashlib
+import re
 import subprocess
 import sys
 from pathlib import Path
 
 ROOT = Path(__file__).resolve().parents[2]
 DIRS = [ROOT / "data" / "processed", ROOT / "v2" / "data" / "processed"]
-# noms des fichiers des organisateurs (data/raw/, non commités) : aucun script de construction ne doit les lire
+# noms des fichiers des organisateurs (data/raw/, non commités) : aucun script de construction ni aucun code
+# exécuté par le jumeau, la carte, l'assistant ou l'analyse de sensibilité ne doit les lire (contrôle étendu le
+# 2026-11-15, après le passage du vivier CD/PH du fichier 990 à SISE)
 INTERDITS = ["990_drees_mmop2", "Base inscrits", "Données médecine", "Données odontologie", "Données pharma",
              "Medicale Junior", "pipeline"]
+# code du dépôt (outil, bancs, validation, construction) : contrôlé ligne à ligne
+EXECUTE = ["v2/jumeau", "v2/sante", "v2/prototype", "v2/prototype-carte", "v2/sensibilite", "v2/agent", "v2/langage",
+           "v2/methodes", "v2/validation", "v2/data", "chatbot/passerelle", "chatbot/chat"]
 # fichier -> (script qui l'écrit, commande, source et millésime)
 V1 = ("v2/sante/load.py", "PYTHONPATH=v2 uv run python -m sante.load",
       "DREES RPPS 2012–2026 par profession (dép × âge × sexe × mode) ; Insee Omphale 2022, 3 scénarios")
@@ -45,6 +51,7 @@ for f, s in {
     "build_passage.py": ["passage_commune.parquet", "petits_effectifs.parquet", "petits_effectifs_classes.csv"],
     "build_pharmaciens.py": ["pharmaciens_checks.csv", "pharmaciens_checks_dep.csv", "pharmaciens_commune_annee.parquet"],
     "build_zonage.py": ["zonage_commune.parquet"],
+    "build_sise.py": ["sise_sante.parquet", "sise_sante_region.parquet"],
 }.items():
     for x in s:
         B[x] = (f"v2/data/{f}", f"uv run python v2/data/{f}", "voir l'en-tête du script (sources et millésimes)")
@@ -92,6 +99,12 @@ def verifier() -> int:
     for s in {v[0] for v in B.values()}:
         t = (ROOT / s).read_text(encoding="utf-8")
         err += [f"{s} lit un fichier des organisateurs ({x})" for x in INTERDITS if x in t]
+    lecture = re.compile(r"(read_\w+|open|Path)\([^)\n]*(" + "|".join(map(re.escape, INTERDITS)) + ")")
+    for d in EXECUTE:
+        for p in sorted((ROOT / d).rglob("*.py")):
+            for i, ligne in enumerate(p.read_text(encoding="utf-8").splitlines(), 1):
+                if lecture.search(ligne):
+                    err.append(f"{p.relative_to(ROOT)}:{i} lit un fichier des organisateurs à l'exécution")
     print("\n".join(err) or "OK : manifestes à jour, aucun fichier des organisateurs dans la construction")
     return 1 if err else 0
 

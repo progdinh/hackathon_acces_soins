@@ -10,8 +10,10 @@
 Le jumeau numérique est le moteur de projection commun à tous les axes. Il porte un état démographique
 explicite, des modules qui rendent des flux typés et des scénarios faits d'événements datés. Le code est dans
 \texttt{v2/jumeau/} ; les critères d'acceptation sont dans \texttt{v2/jumeau/check.py}, et leur dernier run est
-consigné dans \texttt{v2/artifacts/a0\_jumeau/results.json} (2026-11-15, 02:03). Sauf mention contraire, toutes
-les valeurs mesurées de ce chapitre viennent de ce fichier. Le contrat a été décidé le 2026-11-14 et corrigé
+consigné dans \texttt{v2/artifacts/a0\_jumeau/results.json} (2026-11-15, 02:03). Ce fichier n'est pas versionné
+(\texttt{.gitignore} exclut \texttt{v2/artifacts/}) : il se régénère par \texttt{jumeau.check}
+(section~\ref{jum:criteres}). Sauf mention contraire, toutes les valeurs mesurées de ce chapitre viennent de ce
+fichier, donc de la composition de référence A0. Le contrat a été décidé le 2026-11-14 et corrigé
 après chaque revue (\texttt{v2/docs/lab/decisions.md}, entrées « Contrat du jumeau (axe 0) » et suivantes).
 
 Le jumeau n'est pas un modèle nouveau. Sa composition de référence réécrit le stock-flux de la v1 et le
@@ -19,14 +21,18 @@ reproduit à l'écart nul (critère C1). Cet écart nul est \emph{construit} : i
 rien, pas que le modèle est exact. La précision de la projection relève du banc de validation, pas de ce
 chapitre.
 
+Dans ce chapitre, C1 à C18 désignent les critères d'acceptation de \texttt{check.py}, et T son relevé de temps ; l'estimateur de
+cohortes de l'axe~2, aussi appelé C1, n'y intervient pas.
+
 % ---------------------------------------------------------------------------------------------------
 \subsection{Formalisation de l'état}\label{jum:etat}
 
 \paragraph{Ensembles d'indices.} On note :
 \begin{itemize}
-  \item $\mathcal{P}$ les professions. Le run de référence en compte 7\mesure{} : sages-femmes,
+  \item $\mathcal{P}$ les séries de profession. Le run de référence en compte 7\mesure{} : sages-femmes,
         chirurgiens-dentistes, pharmaciens, masseurs-kinésithérapeutes, infirmiers libéraux, infirmiers
-        salariés et spécialistes (\texttt{PROFS}, \texttt{v2/jumeau/check.py}) ;
+        salariés, et une série « spécialistes » de test héritée de la v1, sans validation (\texttt{PROFS},
+        \texttt{v2/jumeau/check.py}) ;
   \item $\Sigma$ les secteurs : privé, public, et un secteur \texttt{bloques} créé vide par la régulation
         (section~\ref{jum:leviers}). La sortie « libérale » du projet est le secteur privé, tout employeur
         public exclu (décision du 2026-11-14, « Recadrage en recherche ») ;
@@ -57,7 +63,7 @@ section « L'état »). La sortie étudiée par les autres chapitres est
   N_{(p,\,\text{privé},\,\tau,\,s),\,a}(t).
 \end{equation}
 Le critère C8 vérifie que l'agrégation commune $\to$ département $\to$ région $\to$ national est exacte (écart
-interne $0$\mesure{} aux trois niveaux, sur \num{13147}\mesure{} communes CartoSanté 2025).
+interne $0$\mesure{} aux trois niveaux, sur les \num{13147}\mesure{} communes présentes dans CartoSanté 2025, sur \num{34917}).
 
 \paragraph{Taille.} Au département, l'état des 7 professions compte \num{1410}\mesure{} cellules. À la taille
 communale, l'état de 5 professions sur 2 secteurs compte \num{698212}\mesure{} cellules (critère C15). Ce
@@ -235,15 +241,17 @@ résultats de politique publique.
           \text{ajout} = \varphi_p\, I^{+}\, (m - 1),
         \end{equation}
         où $F_p$ est le flux annuel de diplômés à l'étranger : dentistes \num{1300}\derive{}, kinésithérapeutes
-        \num{2200}\derive{}, pharmaciens 240\derive{}, sages-femmes 80\derive{}, infirmiers 400\suppose{}
+        \num{2200}\derive{}, pharmaciens 240\derive{}, sages-femmes 80\derive{}, infirmiers 400, sourcé
+        avec une confiance faible (DREES, ER 1319), dont seule la borne haute de \num{1100}\suppose{} est supposée
         (\texttt{FLUX} ; étiquettes de la décision du 2026-11-15). L'ajout entre dans la tranche d'âge qui contient
-        28~ans\suppose{} (C17). Étrangers $\times 2$ : part dentaire $\varphi = 0{,}47$\mesure{}, dentistes
+        28~ans, âge d'entrée des diplômés à l'étranger donné par DD76 (tableaux 12 et 13) ; pour les
+        kinésithérapeutes, l'ER 1075 donne 26~ans, dans la même tranche (C17). Étrangers $\times 2$ : part dentaire $\varphi = 0{,}47$\mesure{}, dentistes
         $+37{,}2$\mesure{}\,\%, pharmaciens $+6{,}1$\mesure{}\,\% en 2050 ; un flux nul ne produit aucun effet
         (0\mesure{}).
 \end{itemize}
 
 \paragraph{Installer.} Le module \texttt{regulation} représente la règle conventionnelle « une installation
-pour un départ » dans les zones les mieux dotées (\texttt{v2/jumeau/modules/regulation.py}). Pour chaque cellule
+pour un départ » dans les zones que le zonage conventionnel classe en densité la plus élevée (\texttt{v2/jumeau/modules/regulation.py}). Pour chaque cellule
 privée d'une zone régulée et chaque année :
 \begin{equation}\label{jum:eq:regulation}
   x = \max\bigl(E - D,\, 0\bigr)\,\bigl(1 - \epsilon_p\bigr), \qquad B = \theta\, x,
@@ -255,8 +263,9 @@ salariat (secteur \texttt{bloques}) et la sortie. Cinq leviers agissent sur ce m
   \item \texttt{regulation.zones} : la liste des géocodes régulés, par profession ;
   \item \texttt{regulation.part\_zones} : la part des zones listées qui est retenue, dans l'ordre de la liste. Pour
         les kinésithérapeutes, $0 / 0{,}6 / 1$ déplacent $0 / 227 / 356$\mesure{} personnes la première année ;
-  \item \texttt{regulation.theta} : $\theta = 0{,}80$\suppose{}, d'après l'expérience naturelle de l'axe~3 sur le
-        zonage infirmier (exploratoire) ; C12 vérifie que $0{,}800$\mesure{} de l'excédent est bloqué ;
+  \item \texttt{regulation.theta} : $\theta = 0{,}80$\suppose{} [0,74 ; 0,87], estimé par la DiD N3 sur le zonage
+        infirmier, dont le test de tendances parallèles échoue ($p = 0{,}043$) : valeur exploratoire, non
+        validée ; C12 vérifie que $0{,}800$\mesure{} de l'excédent est bloqué ;
   \item \texttt{regulation.repartition} : par défaut 100\suppose{}\,\% vers un voisin, ce qui rend la régulation
         sans effet au département, par construction (C12 : écart $0{,}0$\mesure{}) ;
   \item \texttt{regulation.part\_exemptee} : la part $\epsilon_p$. Pour les dentistes spécialistes, la convention
@@ -297,7 +306,7 @@ partent vers le secteur public existant, qui a sa propre démographie, le total 
   \item \textbf{Cumul emploi-retraite} (\texttt{sorties.cumul\_multiplicateur}, $k$) :
         $e'_{65+} = e_{65+}\, \max\bigl(0,\, 1 - \kappa_p (k - 1)\bigr)$, où $\kappa_p$ est la part des libéraux en
         cumul : infirmiers et kinésithérapeutes 0,015, sages-femmes 0,008, dentistes 0,047, pharmaciens
-        0,018\mesure{} au 30/06/2015 (COR 2016, doc.~11, annexe~2). Appliquer la part de la CARPIMKO aux
+        0,018 au 30/06/2015, sourcés (COR 2016, doc.~11, annexe~2). Appliquer la part de la CARPIMKO aux
         kinésithérapeutes et aux infirmiers est supposé\suppose{}.
   \item \textbf{Départs précoces} (\texttt{sorties.multiplicateur\_precoces}, $m$) : $e'_{a < 60} = m\, e_{a<60}$.
         Aucune source ne chiffre l'effet d'une politique sur ce taux ; le mécanisme est supposé\suppose{}.
@@ -314,7 +323,17 @@ test sait échouer. Commande, depuis la racine du dépôt :
 PYTHONPATH=v2 uv run python -m jumeau.check
 \end{verbatim}
 Le code de sortie vaut 1 si un critère échoue. Le run du 2026-11-15 (02:03) passe les 18\mesure{} critères sur
-18, plus le critère de temps T (tableau~\ref{jum:tab:criteres}).
+18 (tableau~\ref{jum:tab:criteres}). La ligne T est un relevé de temps, pas un test : son verdict est codé
+\texttt{True} (\texttt{check.py}, l.~808--810) et elle ne peut pas échouer. Son extrapolation à 5 professions,
+$\approx 2{,}1$~s\derive, dépasse d'ailleurs la cible de 2~s ; seul C15 vérifie la cible, sur le chemin rapide.
+Plusieurs critères lisent à l'exécution des fichiers bruts non commités : C16 lit le jeu DREES 491
+(\texttt{data/raw/drees/}, ouvert, à télécharger). C5, C9 et la variante filière (C1, C11) lisent les inscrits
+en odontologie et en pharmacie de SISE (données ouvertes, \texttt{v2/data/processed/sise\_sante.parquet}, commité),
+qui remplacent depuis le 15 novembre 2026 un fichier fourni sous accord de confidentialité ; SISE le reproduit à
+l'identique pour les années d'études 2 à 5\mesure, mais s'arrête à la rentrée 2024 (chapitre~\ref{sec:repro-ref}).
+Les valeurs de C5, C9 et C11 du tableau sont celles du run avec SISE : vivier de 5\,064 diplômés\mesure (C5),
+4\,473\mesure (C9), dentistes 2050 en variante filière 85\,252\mesure au lieu de 102\,987 avec l'ancien fichier
+(C11, $-17$\,\%\derive, effet de la rentrée 2025 manquante, que la variante prolonge jusqu'en 2050).
 
 {\small
 \begin{longtable}{@{}lp{5.2cm}p{8.0cm}@{}}
@@ -331,7 +350,7 @@ mesurées\mesure{}, sauf mention.}\label{jum:tab:criteres}\\
 \endhead
 \bottomrule
 \endfoot
-C1 & Reproduction du stock-flux v1 (5 variantes, banc K1 et origine récente $\to$ 2050) &
+C1 & Reproduction du stock-flux v1 (5 variantes, banc K1 (backtest départemental de la v1, ancien périmètre libéral + mixte) et origine récente $\to$ 2050) &
   écart max $0{,}0$ sur 140 comparaisons de \texttt{predict} ; $0{,}0$ sur \num{355248} valeurs
   cellule $\times$ âge $\times$ année, 7 professions \\
 C2 & Régulation exécutée par \texttt{twin\_of}, état réel à 2 secteurs, sans créer ni supprimer &
@@ -364,7 +383,7 @@ C13 & Défauts de la troisième revue & bornes composées et ajustées, NaN, ré
 C14 & 12 leviers branchés (identité, effet, délai, région) & identité $0{,}0$ ; capacité CD $\times 1{,}2$ : 0 en
   2032, $+0{,}51$\,\% en 2033, $+6{,}3$\,\% en 2050 ; IFSI : $+14{,}1$\,\% ; étrangers $\times 2$ : $+37{,}2$\,\%
   CD ; précoces $\times 0{,}5$ : $+5{,}6$\,\% ; quotas région 84 : 0 hors région \\
-C15 & Vitesse : 5 professions à la commune $\le 2$~s\suppose{} & \SI{1.33}{\second} réel, \SI{1.28}{\second}
+C15 & Vitesse : 5 professions à la commune $< 2$~s, cible supposée du profil\suppose{} & \SI{1.33}{\second} réel, \SI{1.28}{\second}
   CPU (médianes de 3 runs ; \num{698212} cellules ; 24 ans ; charge 4,5) ; chemin rapide = complet \\
 C16 & Vivier réel (DREES 491) branché & identité en mode levier $0{,}0$ ; diplômés IDE \num{25385} contre
   \num{25249} (2024), \num{26005} contre \num{26020} (2025) ; MAPE vivier / persistance 2019--2025 : IDE 8,4 /
@@ -373,9 +392,9 @@ C17 & Diplômés à l'étranger entrés à 28~ans & ajout dans la seule tranche 
   25+) ; hors tranche $0{,}0$ ; ajout année 1 = \num{1300} \\
 C18 & Infirmiers par secteur (axe~4) & \num{1100} dép. $\times$ années, écart max $7{,}3\cdot10^{-12}$ à SNDS +
   BTS ; 2023 : privé \num{277788}, public \num{329856} ; privé 2050 (tendanciel) \num{336422} \\
-T & Temps de recalcul jusqu'en 2050 & \SI{16}{\milli\second} (dép., 7 professions) ; \SI{0.42}{\second}
-  (taille commune, 1 profession $\times$ 2 secteurs) ; $\approx$ \SI{2.1}{\second}\derive{} extrapolé à 5
-  professions \\
+T & Relevé de temps jusqu'en 2050 (verdict codé \texttt{True}, ne peut pas échouer) & \SI{16}{\milli\second}
+  (\texttt{run()} direct d'A0, dép., 7 séries) ; \SI{0.42}{\second} (taille commune, 1 profession $\times$ 2
+  secteurs) ; $\approx$ \SI{2.1}{\second}\derive{} extrapolé à 5 professions, au-dessus de la cible de 2~s \\
 \end{longtable}
 }
 
@@ -467,9 +486,11 @@ ouvertes).
 Le profil du projet fixe une cible de recalcul inférieure à 2~s\suppose{} (\texttt{docs/lab/profile.md} ; seuil
 de C15). Mesures du run de référence (\texttt{results.json}, bloc \texttt{temps} et critère C15) :
 \begin{itemize}
-  \item \textbf{Département}, 7 professions (\num{1410} cellules), jusqu'en 2050 : \SI{16}{\milli\second}\mesure{}
-        par scénario, médiane de plusieurs répétitions de \texttt{run()} direct (sans le cache de
-        \texttt{trajectory}) ;
+  \item \textbf{Département}, 7 séries de profession (\num{1410} cellules), jusqu'en 2050 :
+        \SI{16}{\milli\second}\mesure{} par scénario, médiane de plusieurs répétitions de \texttt{run()} direct
+        d'A0 (sans le cache de \texttt{trajectory}). Ce n'est pas le temps servi : un scénario à tous leviers
+        servi avec C1 prend 280 à 330\,ms\mesure{} (\texttt{decisions.md}, « C1 servi par la carte et
+        l'assistant ») ;
   \item \textbf{Taille communale répliquée}, stock-flux en 3 modules : \SI{0.22}{\second}\mesure{} pour 1
         profession $\times$ 1 secteur (\num{70094} cellules) ; \SI{0.42}{\second}\mesure{} pour 1 profession
         $\times$ 2 secteurs (\num{140188} cellules) ; $\approx$ \SI{2.1}{\second}\derive{} extrapolé

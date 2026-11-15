@@ -505,7 +505,8 @@ TR_API = {"source": "tr_src", "cible": "tr_cible", "a": "tr_a", "s_inf": "tr_sin
 
 
 def couverture(profession_: str, territoire_: str = "FR", leviers_: dict | None = None, l23: bool = False,
-               l23_t0: int = 2026, annees: list[int] | None = None, transfert: dict | None = None) -> dict:
+               l23_t0: int = 2026, annees: list[int] | None = None, transfert: dict | None = None,
+               effectivite: bool = False, offre_mg: str = "constante") -> dict:
     """Indice de couverture C (base 2026 = 1) d'une des cinq professions, tendanciel et scénario, écart relatif, fourchette.
     transfert : transfert de tâches hypothétique (paramètres de l'utilisateur·rice), forme de L23 ; la MG et les
     spécialistes n'y sont admis qu'en source (O2)."""
@@ -589,6 +590,10 @@ def couverture(profession_: str, territoire_: str = "FR", leviers_: dict | None 
         out["effectif"] = "inchangé dans le modèle (transfert de tâches hypothétique)"
         out["lecture_transfert"] = ("transfert hypothétique, paramètres de l'utilisateur·rice : citer les trois valeurs de "
                                     "balayage_a, jamais un seul chiffre ; ce n'est pas un levier de la carte")
+    if effectivite:                                     # O3 : seulement pour le transfert sourcé (L23), cible pharmaciens
+        if not l23 or p != "pharmaciens":
+            raise ErreurOutil("l'effectivité ne se calcule que pour la vaccination en officine (l23 vrai, profession pharmaciens)")
+        out["effectivite"] = _effectivite_bloc(_TRANSFERTS["vaccination_officine"], t, annees[-1], offre_mg)
     return out
 
 
@@ -839,6 +844,36 @@ def traduire_politique(politique: str, profession_: str, territoire_: str = "FR"
 _METHODE_PLAN = ("effet de chaque levier seul calculé par le jumeau sur sa grille, dans les bornes du modèle ; mélanges "
                  "cherchés sur la somme des effets (additivité vérifiée : écart médian 0,2 % sur 20 mélanges), chaque mélange "
                  "montré recalculé par le jumeau ; décision en 2026 dans le modèle")
+
+
+_TRANSFERTS = {"vaccination_officine": "L23"}
+
+
+@lru_cache(maxsize=4)
+def _effectivite(code: str, offre_mg: str):
+    S()                                                   # chdir vers la racine du dépôt (chemins de données relatifs)
+    if str(V2) not in sys.path:
+        sys.path.insert(0, str(V2))
+    from besoin.effectivite import evaluer
+    return evaluer(code, offre_mg=offre_mg)
+
+
+def _effectivite_bloc(code: str, t: str, annee: int, offre_mg: str) -> dict:
+    """Effectivité d'un transfert sourcé (O3) : couverture de la source et de la cible, avec et sans transfert."""
+    if t[:1] == "R":
+        raise ErreurOutil("l'effectivité se lit au département ou pour la France : donner un département de la région")
+    try:
+        res = _effectivite(code, offre_mg)
+    except FileNotFoundError as e:
+        raise ErreurOutil(f"offre de médecine générale « {offre_mg} » indisponible : {e}") from None
+    from besoin.effectivite import resume
+    if annee not in set(int(y) for y in res["years"]):
+        raise ErreurOutil(f"année {annee} hors de la trajectoire ({int(res['years'].min())}–{int(res['years'].max())})")
+    out = resume(res, None if t == "FR" else t[1:], annee)
+    out["lecture"] = ("couverture = offre / demande, indexée sur 2026 (1 = niveau de 2026) ; le transfert déplace une part de "
+                      "la demande de la source vers la cible, sans changer les effectifs ; la couverture de la source n'existe "
+                      "que dans ce bloc (O3), avec une offre de médecine générale lue en entrée")
+    return out
 
 
 def perimetre() -> dict:

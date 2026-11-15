@@ -13,6 +13,9 @@ git clone --recurse-submodules <ce dépôt> && cd jumeau-chat
 uv sync
 scripts/lancer.sh                       # passerelle (8770) puis chatbot : http://localhost:8768
 ```
+Dans le dépôt du jumeau, inutile de lancer ces deux processus à la main : `uv run python v2/prototype-carte/server.py`
+les démarre en interne et tout passe par http://localhost:8767 (bouton « Assistant de simulation »).
+
 Avec `ANTHROPIC_API_KEY` dans l'environnement, Claude interprète les questions et rédige (mode IA) ; sans clé, le
 compilateur à glossaire de l'équipe prend le relais (mode déterministe, sans IA). À la main :
 `uv run python -m passerelle.server` puis `uv run python -m chat.server`.

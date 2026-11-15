@@ -9,13 +9,15 @@ scénarios.
 
 Le projet construit un outil de recherche qui répond à la question suivante : \emph{quel effectif d'une profession,
 dans un territoire donné, à une date donnée, sous une politique donnée ?} La réponse prend la forme d'une
-distribution et non d'un chiffre unique. Elle est comparée à la tendance, et l'écart est décomposé par flux.
+fourchette, publiée avec sa couverture mesurée (aucune bande n'est calibrée à son niveau nominal), et non d'un
+chiffre unique. Elle est comparée à la tendance, et l'écart est décomposé par flux.
 
 \subsection{Périmètre et définitions}\label{int:perimetre}
 \begin{itemize}
 \item \textbf{Professions.} Sages-femmes (SF), chirurgiens-dentistes (CD), pharmaciens (PH),
   masseurs-kinésithérapeutes (MK) et infirmiers (IDE). La médecine générale est exclue par le sujet. Les médecins
-  spécialistes (cardiologie, dermatologie, ophtalmologie) sont prévus en phase~2 et ne sont pas modélisés.
+  spécialistes (cardiologie, dermatologie, ophtalmologie) sont prévus en phase~2 et ne sont pas modélisés ; le
+  jumeau contient seulement une série « spécialistes » de test héritée de la v1, sans validation.
 \item \textbf{« Libéral ».} Dans tout ce document, le mot désigne le \emph{secteur privé}, lucratif ou non. Sont
   inclus :
   \begin{itemize}
@@ -27,10 +29,15 @@ distribution et non d'un chiffre unique. Elle est comparée à la tendance, et l
   traité au chapitre~\ref{sec:donnees-ref}.
 \item \textbf{Échelles.} Commune, EPCI, bassin de vie, département, région et France. Le calcul descend à la
   commune, mais l'affichage et la validation s'arrêtent au département (chapitre~\ref{sec:validation-ref}).
-\item \textbf{Horizon.} 2050 est l'horizon de référence des scénarios. L'horizon testable par backtest est
-  d'environ dix ans. Au-delà, les sorties sont des \emph{scénarios conditionnels}, pas des prévisions.
-\item \textbf{Données.} Uniquement des données ouvertes. Chaque fichier traité porte sa source, son millésime et le
-  script qui le produit (manifeste contrôlé par \texttt{v2/data/manifest.py --check}).
+\item \textbf{Horizon.} 2050 est l'horizon de référence des scénarios. L'horizon jugé par backtest est de
+  5~ans ; à 8 et 10~ans, la persistance fait mieux qu'A2\mesure{} (chapitre~\ref{sec:menaces-ref}). Au-delà, les
+  sorties sont des \emph{scénarios conditionnels}, pas des prévisions.
+\item \textbf{Données.} Uniquement des données ouvertes pour les tables traitées. Chaque fichier traité porte sa
+  source, son millésime et le script qui le produit (manifeste contrôlé par \texttt{v2/data/manifest.py --check}).
+  Le code exécuté (jumeau, carte, assistant, sensibilité) ne lit lui aussi que des données ouvertes : depuis le
+  15 novembre 2026, le vivier des dentistes et des pharmaciens vient de SISE (MESR) et non plus d'un fichier
+  d'inscrits fourni à l'équipe sous accord de confidentialité ; le contrôle du manifeste couvre ce code
+  (chapitre~\ref{sec:repro-ref}).
 \end{itemize}
 
 \subsection{L'état en un coup d'œil}\label{int:etat}
@@ -39,16 +46,22 @@ distribution et non d'un chiffre unique. Elle est comparée à la tendance, et l
 \toprule
 Composant & État au 15 novembre 2026 \\
 \midrule
-Jumeau (chap.~\ref{sec:jumeau-ref}) & 18 critères d'acceptation sur 18\mesure, après trois revues adversariales ;
-  recalcul d'un scénario en 16\,ms\mesure au département (7 professions). \\
-Méthodes (chap.~\ref{sec:methodes-ref}) & C1 (cohortes) servi par le jumeau : MAPE départementale à $h=5$ de
-  7,76\,\%\mesure. Budget d'erreur : 3,11 points\mesure de bruit de comptage. Intervalles recalibrés, GBM et MLP
-  rejetés. \\
+Jumeau (chap.~\ref{sec:jumeau-ref}) & 18 critères d'acceptation sur 18\mesure{} (composition A0 ; C5, C9 et la
+  variante filière exigent un fichier non commité) ; trois revues adversariales, qui n'ont couvert que C1 à C13 :
+  C14 à C18 n'ont été soumis à aucune revue. Un \texttt{run()} direct d'A0 au département prend
+  16\,ms\mesure{} (7 séries : les 5 professions, les infirmiers scindés en libéraux et salariés, et une série
+  « spécialistes » de test héritée de la v1) ; un scénario à tous leviers servi avec C1 prend 280 à
+  330\,ms\mesure. \\
+Méthodes (chap.~\ref{sec:methodes-ref}) & C1 (cohortes) servi par la carte et l'assistant, par injection de ses
+  taux dans le jumeau : MAPE départementale à $h=5$ de 7,76\,\%\mesure{} [7,12 ; 8,40]. Budget d'erreur : plancher
+  de bruit de comptage de 3,11 points\derive{}, borne basse de la part irréductible. Intervalles recalibrés,
+  GBM et MLP rejetés. \\
 Validation (chap.~\ref{sec:validation-ref}) & 12 protocoles pré-enregistrés. Le grain sous le département, les
   leviers et 2050 ne sont pas validés. Dépôt de prévisions 2027 à juger en 2027. \\
 Données et paramètres & 34 fichiers traités commités sous manifeste. Hyperparamètres : 29 fiches relues sur le
   texte intégral des sources le 15 novembre (chap.~\ref{sec:parametres-ref}). \\
-Interface & Carte (9 leviers de politique, 2 hypothèses de contexte), phrase en langage naturel compilée de façon
+Interface & Carte (9 leviers de politique et 2 hypothèses de contexte, pris parmi les 12 paramètres-leviers du
+  jumeau), phrase en langage naturel compilée de façon
   déterministe, assistant LLM ancré sur les sorties. \\
 Conformité & Pas un dispositif médical ; AIPD probablement non requise ; un point réel sur les petits effectifs
   publiés (chap.~\ref{sec:conformite-ref}). \\
@@ -61,14 +74,15 @@ Module de besoin & Programme défini, non construit (chap.~\ref{sec:ouvertes-ref
 \begin{itemize}
 \item \textbf{Peut être cité.}
   \begin{itemize}
-  \item Les erreurs de backtest au département, horizon 1 à 5 ans, avec leur intervalle.
+  \item Les erreurs de backtest au département, horizon 1 à 5 ans, avec leur intervalle. Ces intervalles sont
+    probablement trop étroits : les origines ne sont pas rééchantillonnées (chapitre~\ref{sec:menaces-ref}).
   \item Les écarts entre scénarios, présentés comme des effets \emph{conditionnels au modèle}.
   \item Les comptages et séparations public/privé de l'année de base, avec leur fourchette.
   \end{itemize}
 \item \textbf{Ne doit pas être cité comme prévision.}
   \begin{itemize}
   \item Un effectif en 2050, y compris dans les supports de présentation du projet. La reproduction des
-    projections DREES à long terme échoue (chapitre~\ref{sec:sensibilite-ref}).
+    projections DREES à long terme échoue (protocole N2, chapitre~\ref{sec:validation-ref}).
   \item Un effectif communal.
   \item L'effet d'un levier présenté comme causal et mesuré.
   \end{itemize}
@@ -78,7 +92,7 @@ Module de besoin & Programme défini, non construit (chap.~\ref{sec:ouvertes-ref
 \begin{itemize}
 \item \textbf{Statisticien.} Méthodes (\ref{sec:methodes-ref}), puis validation (\ref{sec:validation-ref}),
   menaces à la validité (\ref{sec:menaces-ref}) et annexe~\ref{ann:incoherences}.
-\item \textbf{Chercheur en modélisation, programme Apollo.} Jumeau (\ref{sec:jumeau-ref}), sensibilité
+\item \textbf{Chercheur en modélisation} (équipes Inria du programme Apollo, destinataires de la reprise). Jumeau (\ref{sec:jumeau-ref}), sensibilité
   (\ref{sec:sensibilite-ref}), questions ouvertes et module de besoin (\ref{sec:ouvertes-ref}), reproductibilité
   (\ref{sec:repro-ref}).
 \item \textbf{Professionnel de la planification.} Ce chapitre, puis données (\ref{sec:donnees-ref}), interface
@@ -90,9 +104,51 @@ Chaque nombre porte un exposant de provenance :
 \begin{itemize}
 \item \mesure{} : mesuré sur les données ou par un script du dépôt ;
 \item \derive{} : dérivé par calcul de nombres mesurés ou sourcés ;
-\item \suppose{} : supposé, c'est-à-dire posé sans mesure.
+\item \suppose{} : supposé, c'est-à-dire posé sans mesure ;
+\item sourcé : sans exposant, le nombre est suivi d'une citation de la source qui le donne.
 \end{itemize}
 Les chemins cités sont relatifs à la racine du dépôt. Quand deux fichiers du dépôt donnent des valeurs différentes
 pour une même grandeur, le texte retient la mesure la plus récente, et l'annexe~\ref{ann:incoherences} liste les
 deux valeurs et la raison du choix. Le rapport décrit et compare ; il ne qualifie pas les territoires (lexique de
 \texttt{v2/docs/lab/lexicon.md}).
+
+\subsection{Sigles et codes}\label{int:sigles}
+{\small
+\begin{description}\setlength{\itemsep}{0pt}
+\item[Axe~0] Le jumeau numérique, moteur commun (chapitre~\ref{sec:jumeau-ref}).
+\item[Axe~1] Les hyperparamètres sourcés et mesurables (chapitre~\ref{sec:parametres-ref}).
+\item[Axe~2] Les méthodes de modélisation et leur banc (chapitre~\ref{sec:methodes-ref}).
+\item[Axe~3] La méthodologie de validation et les protocoles pré-enregistrés (chapitre~\ref{sec:validation-ref}).
+\item[Axe~4] L'enrichissement des jeux de données (chapitre~\ref{sec:donnees-ref}).
+\item[Axe~5] La sensibilité et l'incertitude à 2050 (chapitre~\ref{sec:sensibilite-ref}).
+\item[A0] Stock-flux à taux locaux, composition de référence du jumeau (réécriture du modèle de la v1).
+\item[A2] Estimateur à rétrécissement hiérarchique de l'axe~2.
+\item[A3] À l'axe~2, estimateur à rétention des 60~ans et plus en tendance. À l'axe~5, « méthode A3 de
+  l'observatoire » : fourchette $\pm 1{,}6\,a\,h$ reprise d'un outil antérieur de l'équipe.
+\item[C1] Estimateur de cohortes bayésiennes de l'axe~2, servi par la carte et l'assistant. Au
+  chapitre~\ref{sec:jumeau-ref}, C1 à C18 désignent aussi les critères d'acceptation de \texttt{check.py}.
+\item[C2] Variante de C1 qui propage l'incertitude de ses paramètres par approximation de Laplace ; rejetée.
+\item[K1] Banc de backtest départemental de la v1 (ancien périmètre libéral + mixte).
+\item[N1--N12] Protocoles de validation pré-enregistrés de l'axe~3 (chapitre~\ref{sec:validation-ref}).
+\item[DD76] DREES, \emph{Les Dossiers} n\textsuperscript{o}~76 (2021), projections de démographie des
+  professions de santé.
+\item[ER] \emph{Études et résultats}, publication de la DREES, suivie de son numéro.
+\item[RPPS] Répertoire partagé des professionnels de santé.
+\item[ADELI] Répertoire antérieur au RPPS ; source des kinésithérapeutes jusqu'en 2016.
+\item[SNDS] Système national des données de santé.
+\item[BTS] Base Tous Salariés (Insee).
+\item[IFSI] Institut de formation en soins infirmiers.
+\item[CARPIMKO] Caisse de retraite des infirmiers, kinésithérapeutes, pédicures-podologues, orthophonistes et
+  orthoptistes.
+\item[COR] Conseil d'orientation des retraites.
+\item[MinT] Réconciliation de prévisions hiérarchiques par minimisation de la trace.
+\item[CRPS] Score de probabilité classé continu (\emph{continuous ranked probability score}).
+\item[SBC] Calibration par simulation (\emph{simulation-based calibration}).
+\item[PIT] Transformée intégrale de probabilité (\emph{probability integral transform}).
+\item[AIPD] Analyse d'impact relative à la protection des données (RGPD).
+\item[PMI] Protection maternelle et infantile.
+\item[APL] Accessibilité potentielle localisée (indicateur DREES et IRDES).
+\item[2SFCA] Méthode d'accessibilité à deux étapes à aire flottante (\emph{two-step floating catchment area}).
+\item[MAPE] Erreur absolue moyenne en pourcentage (\emph{mean absolute percentage error}).
+\end{description}
+}

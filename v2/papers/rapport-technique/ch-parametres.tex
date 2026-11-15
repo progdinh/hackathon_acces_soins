@@ -40,7 +40,7 @@ Fiche & Valeur & Unité & Source & Statut & Relecture du 15/11 \\
 \midrule\endhead
 \bottomrule\endfoot
 \multicolumn{6}{@{}l}{\emph{Régulation de l'installation}}\\
-ide-regul-regle & zone sur-dotée : 1\mesure{} entrée pour 1\mesure{} cessation ; en périphérie, au moins
+ide-regul-regle & zone « sur-dotée » (terme de l'avenant), dite ici zone remplacement seul : 1\mesure{} entrée pour 1\mesure{} cessation ; en périphérie, au moins
 2/3\mesure{} de l'activité dans la zone ; 27,4~\%\derive{} de la population, 13,7~\%\derive{} des communes &
 règle par commune & avenant 6 IDE, art. 3.4 \citep{d-avenant6ide} ; zonage au 20/10/2026
 \citep{d-zonagesdatagouv} & So & confirmé \\
@@ -49,7 +49,7 @@ ide-regul-effet-densite & $-25{,}57$\mesure{} IDEL pour \num{100000} hab. ($-18{
 So & confirmé ; appariement p.~3 ; repères 2012 sourcés par la presse \\
 regul-theta-fuite & $\theta = \num{0.80}$ $[\num{0.74} ; \num{0.87}]$\suppose & sans dimension & rapport interne
 axe~3, N3 (tendances parallèles : $p = \num{0.043}$\mesure) & Su & confirmé (rapport interne) \\
-sf-regul-regle & 1 pour 1\mesure{} en zone sur-dotée ; 12,2~\%\derive{} de la population, 4,2~\%\derive{} des
+sf-regul-regle & 1 pour 1\mesure{} en zone remplacement seul ; 12,2~\%\derive{} de la population, 4,2~\%\derive{} des
 communes & règle & avenant 4 SF, art. 3.3 \citep{d-avenant4sf} & So & corrigé (mécanisme omis) : les entrées
 dérogatoires (art. 3.3.3 a-b) ne rendent pas de place \\
 sf-regul-effet & direction seulement (disparités en baisse, 2016--2019) & --- & IGAS 2022-027R, p.~67
@@ -59,7 +59,7 @@ mk-regul-regle & 1 pour 1\mesure{} en zone non prioritaire ; cédant $\ge \num{1
 sous 2\mesure{} ans ; 26,5~\%\derive{} de la population, 8,1~\%\derive{} des communes & règle & avenant 7 MK,
 art. 1.2.1 \citep{d-avenant7mk} ; CE n\textsuperscript{o}~488665 \citep{d-ce488665} & So & confirmé ;
 « avenant 5 » non sourcé comme texte de régulation \\
-mk-obligation-exercice & 2\mesure{} ans (au moins \num{6000}\mesure{} actes) en zone sous-dotée, ou 2\mesure{}
+mk-obligation-exercice & 2\mesure{} ans (au moins \num{6000}\mesure{} actes) en zone « sous-dotée » (terme de l'avenant), ou 2\mesure{}
 ans en établissement ; premiers diplômés concernés vers 2027--2028\derive & années & avenant 7 MK, art. 4.1.1
 \citep{d-avenant7mk} & So & confirmé \\
 mk-regul-effet & non chiffré & --- & IRDES DRIMK (juillet 2026, p.~4) ; Cour des comptes 2024
@@ -158,7 +158,7 @@ l'introuvable est regul-report-entrants. Aucune source n'était entièrement ina
 partie (base RegProf, communiqué DREES du 07/11/2023, Légifrance lu via des reproductions du JO).
 
 \paragraph{Effet sur le code.} Aucune valeur numérique du code ne change. Les valeurs FLUX (\num{1300},
-\num{2200}, 400, 240, 80), PART\_CUMUL, ABANDON (IDE \num{0.718}\mesure ; SF \num{0.0331} et $L = 4$) et
+\num{2200}, 400, 240, 80), PART\_CUMUL, ABANDON (IDE : rendement $\rho = \num{0.718}$\mesure{}, soit $1-\rho^{1/3} \approx 10{,}5$~\%\derive{} d'abandon par an, \donfic{v2/jumeau/modules/formation.py} l.~22 ; SF \num{0.0331} et $L = 4$) et
 $\theta = \num{0.80}$\suppose{} sont confirmées ou défendables. Seuls des libellés changent, dans
 \donfic{regulation.py}, \donfic{etrangers.py} et \donfic{sorties.py}. \donfic{jumeau.check} passe
 18\mesure{} critères sur 18, avec des sorties identiques à la référence.

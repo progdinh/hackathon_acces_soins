@@ -39,7 +39,7 @@ class Entrees(Module):
     params = (
         Param("flux", None, "personnes/an", SOURCE_RPPS, "fenêtre d'ajustement", "mesuré",
               "Entrées nettes annuelles par cellule × âge (moyenne de la fenêtre, ou des dernières années)."),
-        Param("filiere", False, "booléen", "DREES, inscrits par année d'étude (990_drees_mmop2)", "2020–2025", "mesuré",
+        Param("filiere", False, "booléen", "MESR SISE, inscrits par année d'étude (données ouvertes)", "rentrées 2017–2024", "mesuré",
               "Entrées proportionnelles à la cohorte en formation (CD, PH, spécialistes)."),
         Param("multiplicateur", 1.0, "× niveau actuel", "Loi OTSS 2019 ; arrêtés d'objectifs 2021 et 2026", "2026",
               "supposé", "Quotas : multiplie les entrées après le délai de formation. Par profession et par région "

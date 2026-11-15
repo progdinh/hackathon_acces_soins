@@ -54,7 +54,7 @@ def test_deterministe_l23_effectif_inchange_et_couverture(passerelle):
     t = out["texte"]
     assert "effectif inchangé dans le modèle" in t and "Couverture des pharmaciens" in t
     assert "Hors du périmètre du modèle : Vaccination" not in t and "vaccinations en moins pour eux" in t
-    assert "libérés" not in t and "ETP" not in t
+    assert not re.search(r"libérés|ETP|L23|estimateur", t)
     assert "besoin couvert" not in t.replace("part du besoin couverte", "")
     autres = [x for x in t.split("\n\n") if not x.startswith("Si les pharmaciens vaccinent davantage")]
     assert not MG.search("\n".join(autres))                       # la MG n'apparaît que comme source du transfert

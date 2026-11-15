@@ -46,7 +46,7 @@ prévisions probabilistes (N6, N7-C, N8), la statistique est l'écart de CRPS su
 \citep{gneiting2007jrssb}. La SBC \citep{talts2018sbc} contrôle l'inférence dans des mondes
 simulés.
 
-\paragraph{Niveaux.} Les douze protocoles couvrent la prévision à 10\suppose{}~ans au plus (N1),
+\paragraph{Niveaux.} Les douze protocoles couvrent la prévision à 5\suppose{}~ans (N1 ; $h = 1$ à 10 en secondaire),
 la cohérence à 2050 (N2), l'effet d'un levier (N3, N7-A), l'échelle communale (N4, N10 à N12),
 des mondes simulés à vérité connue (N5), la prévision probabiliste (N6, N7-C, N8) et le signe des
 boucles de rétroaction (N9). Les tableaux~\ref{val:tab-protocoles-a} et~\ref{val:tab-protocoles-b}
@@ -113,9 +113,10 @@ N6 & Bandes calibrées ; le candidat bat la naïve en CRPS &
 CRPS sur $\log N$, critère de N1 ; couverture à 80~\% dans $[75 ; 85]$\suppose{}~\% ; SBC,
 $p \ge \num{0.01}$\suppose{} (Bonferroni) &
 03:53 décl. ; 03:55:53\mesure, avant les résultats &
-279\derive{} cellules (origine 2021) ; $\Delta$CRPS $= \num{+0.0098}$
-$[\num{+0.0037} ; \num{+0.0161}]$\mesure{} ; couverture « 80~\% » de \num{55.6} à
-\num{70.3}\mesure{}~\% ; SBC entrées $p = 3\cdot10^{-46}$\mesure &
+279\derive{} couples (origine 2021) ; variante par défaut : $\Delta$CRPS $= \num{+0.0098}$
+$[\num{+0.0037} ; \num{+0.0161}]$\mesure{} (\texttt{R/n6}), \num{+0.0109} $[\num{+0.0054} ;
+\num{+0.0159}]$\mesure{} (\texttt{coh\_verdicts.json}) ; couverture « 80~\% » \num{56.6}\mesure{}~\% (de
+\num{55.6} à \num{70.3}\mesure{}~\% pour les autres estimateurs) ; SBC entrées $p = 3\cdot10^{-46}$\mesure &
 \textbf{échoué} ; SBC de la rétention passée \\
 \bottomrule
 \end{tabular}
@@ -149,7 +150,7 @@ N8 & Bande $\log N \sim \mathcal N(\log \hat N, s^2 h)$ calibrée (forme suggér
 $h = 5$\suppose, origines 2017--2021, $N \ge 30$\suppose{} ; couverture à 80~\% dans
 $[75 ; 85]$\suppose{}~\% et à 50~\% dans $[44 ; 56]$\suppose{}~\% &
 08:06 décl. ; copie et résultats \textbf{dans le même commit} 03a67d8 &
-\num{1581}\mesure{} cellules (SF, CD, PH, IDE) ; couverture \num{49.2}\mesure{}~\% et
+\num{1581}\mesure{} couples (SF, CD, PH, IDE) ; couverture \num{49.2}\mesure{}~\% et
 \num{75.9}\mesure{}~\% ; $\Delta$CRPS $= \num{-0.0045}$\mesure &
 \textbf{passé} dans l'échantillon, à \num{0.9}\derive{}~point de la borne ; \textbf{en attente des
 données 2027} \\
@@ -189,11 +190,11 @@ l.19--83 ; heures de commit lues dans git.}
 \end{table}
 
 \paragraph{Bilan.} Aucun protocole ne passe sans réserve. Les seules affirmations admises sont
-étroites : la variante par défaut est meilleure que la tendance à l'origine 2021 et égale
-ailleurs (\texttt{D} l.1828--1830) ; le moteur respecte ses cas limites analytiques
+étroites : pour la variante par défaut, critère N1 passé au poolé, victoire portée par l'origine
+2021 seule (\texttt{D} l.1828--1830) ; le moteur respecte ses cas limites analytiques
 (\texttt{R/n2} l.165--188) ; la prédiction marche/arrêt des kinés tient au département
 (\texttt{R/n3} l.138--146) ; la bande en $\sqrt h$ est calibrée dans l'échantillon pour SF, CD, PH
-et IDE (\texttt{R/n8} l.45--70). Ces verdicts sont rapportés tels que les protocoles les donnent.
+et IDE (\texttt{R/n8} l.45--70), mais le code servi ne l'affiche pas (section~\ref{val:perimetre}). Ces verdicts sont rapportés tels que les protocoles les donnent.
 L'un d'eux n'est pas qualifié ainsi dans les rapports : l'échec du critère de bande de N4, qui
 est rapporté (14\mesure{} classes sur 21\mesure) sans le mot « échoue » (annexe~\ref{val:ann}).
 
@@ -239,7 +240,8 @@ des copies gelées ont été recalculées (\texttt{shasum -a 256 v2/validation/p
 Les 12\suppose{} premiers caractères égalent ceux qui sont inscrits, pour le plan
 (\texttt{0108455d34aa}) et pour N1 à N12. Les empreintes des dépôts de prévision concordent aussi :
 \texttt{ca036374d216} (variante par défaut), \texttt{039d21878b7a} (K4), \texttt{0169b97d4fac} (K5),
-\texttt{4f7400845340} (A0 de l'axe~2). Ce contrôle prouve que les copies n'ont pas changé depuis
+\texttt{4f7400845340} (A0 de l'axe~2), \texttt{689b230b5b50} (C1 de l'axe~2, recalculée le
+2026-11-15). Ce contrôle prouve que les copies n'ont pas changé depuis
 l'inscription de l'empreinte. Il ne prouve pas que l'empreinte a été inscrite avant le calcul :
 elle l'est dans des fichiers du même dépôt.
 
@@ -266,11 +268,26 @@ supposés\suppose.
 
 \subsection{Ce qui est validé, ce qui ne l'est pas}\label{val:perimetre}
 
-\paragraph{Prévision départementale à 10~ans au plus.} Validée au poolé : $\Delta = \num{-0.63}$
-$[\num{-0.97} ; \num{-0.27}]$\mesure{} au périmètre privé (\texttt{R/n1} l.160--166). La victoire
-repose sur la seule origine 2021 ; en 2016 et 2018, l'IC contient 0\mesure, et le $\tau$ de Kendall
-entre classements d'origines vaut au plus \num{0.29}\mesure{} (\texttt{R/n7} l.118--220). Le
-garde-fou à $h = 1$ du protocole n'est rapporté dans aucun fichier lu.
+\paragraph{Prévision départementale à 5~ans (N1 ; $h = 1$ à 10 en secondaire).} Critère N1 passé au
+poolé : $\Delta = \num{-0.63}$ $[\num{-0.97} ; \num{-0.27}]$\mesure{} au périmètre privé (\texttt{R/n1}
+l.160--166) ; victoire portée par l'origine 2021 seule. En 2016 et 2018, l'IC contient 0\mesure, et le
+$\tau$ de Kendall entre classements d'origines vaut au plus \num{0.29}\mesure{} (\texttt{R/n7}
+l.118--220). Seul $h = 5$ est jugé ; aux horizons secondaires, la persistance fait mieux qu'A2 à $h = 8$
+et 10 (\num{13.56} et \num{16.06}\mesure{}~\% contre \num{14.33} et \num{17.59}\mesure{}~\%,
+\texttt{v2/methodes/out/c1\_gbm\_verdicts.json}, sans IC). Le garde-fou à $h = 1$ est rapporté :
+\texttt{limite\_h1\_ok} vaut \texttt{true} dans \texttt{v2/methodes/out/verdicts\_prive.json} et
+\texttt{coh\_verdicts.json}.
+
+\paragraph{Le modèle servi n'est pas celui que l'axe~3 a jugé.} Les protocoles N1 à N8 jugent A0, la
+variante par défaut. Le jumeau sert C1, l'estimateur de cohortes de l'axe~2 (section~\ref{met:bayes}).
+C1 passe le critère de N1 au banc du 2026-11-14 : $\Delta = \num{-1.57}$ $[\num{-2.17} ;
+\num{-0.99}]$\mesure{} contre la tendance (\texttt{v2/methodes/out/coh\_verdicts.json}). Deux de ses
+cellules (CD et SF, origine 2021) ont été vues par son pilote avant la correction de la forme des
+variances. Il échoue au critère de couverture de N6 : sa bande à 80~\% couvre \num{73.5}\mesure{}~\%
+pour une cible de $[75 ; 85]$\suppose{}~\% (\texttt{calibre80} = \texttt{false}), et ce score n'est pas
+hors échantillon (deux des trois cellules jugées sont celles du pilote). Son dépôt 2027 est
+\texttt{v2/\allowbreak validation/\allowbreak depot/\allowbreak axe2\_cohortes\_c1\_2026-11-14.parquet}, empreinte
+\texttt{689b230b5b50} (section~\ref{val:depot}).
 
 \paragraph{Le grain sous le département n'est pas validé.} Aucune variante communale n'a de bande
 calibrée à la commune, au bassin de vie ou à l'EPCI : ni les estimateurs de référence ni K3
@@ -312,13 +329,17 @@ exploratoire, se place \num{+14} à \num{+15}\mesure{}~\% au-dessus de DD76. Sel
 un échec bloque tout chiffre 2050 pour la profession : aucun chiffre 2050 n'est citable
 (\texttt{D} l.1841--1846).
 
-\paragraph{La bande des kinés n'est pas calibrée.} N8 calibre la bande en $\sqrt h$ pour SF, CD, PH
-et IDE seulement : les kinés ne figurent pas dans sa liste de professions (\texttt{R/n8} l.8
+\paragraph{La bande affichée n'est pas celle que N8 calibre.} Le code servi n'affiche pas la bande en
+$\sqrt h$ de N8 : il affiche $v\,(1 \pm k_p h)$, où $k_p$ est la pente de l'erreur du total national de
+C1 (section~\ref{met:servi} ; \texttt{v2/prototype/server.py} l.158--180,
+\texttt{v2/prototype/index.html} l.225). La bande calibrée par N8 n'est donc affichée pour aucune
+profession. De plus, N8 calibre la bande en $\sqrt h$ pour SF, CD, PH et IDE seulement : les kinés ne figurent pas dans sa liste de professions (\texttt{R/n8} l.8
 et l.48). Le rapport ne donne pas la raison ; une raison plausible est qu'à $h = 5$ les kinés n'ont
 qu'une\derive{} origine jugeable, leur série RPPS commençant en 2017 (\texttt{A} l.127). Les bandes de N6 (trop étroites) et de N7-C (trop
 larges, $\approx 96$\mesure{}~\% pour « 80~\% ») échouent. Le rapport N10 (l.92) et l'article
 (\texttt{A} l.599--600) disent pourtant que l'affichage départemental porte « la bande $\sqrt h$
-calibrée de N8 » sans exclure les kinés. Pour eux, aucune bande départementale n'est calibrée.
+calibrée de N8 » : c'est inexact pour toutes les professions, et pour les kinés aucune bande
+départementale n'est calibrée.
 
 \paragraph{Le moteur sous bruit.} Le moteur est exact sans bruit (M1, écart maximal
 $4\cdot10^{-14}$\mesure{}~\%). Sous bruit de Poisson, il est biaisé : M3 a une MAPE départementale
@@ -339,7 +360,12 @@ les quantiles 10 et 90~\% de la bande en $\sqrt h$ :
 \texttt{v2/\allowbreak validation/\allowbreak depot/\allowbreak jumeau\_taux\_locaux\_2026-11-14.parquet}, empreinte
 \texttt{ca036374d216} (\texttt{D} l.1964--1978). Totaux nationaux 2027 : CD
 \num{47835}\mesure, MK \num{104755}\mesure, PH \num{63311}\mesure, SF \num{13301}\mesure{} (sorties
-du modèle). Les infirmiers libéraux en sont exclus, leur série RPPS s'arrêtant en 2023. Les
+du modèle). Les infirmiers libéraux en sont exclus, leur série RPPS s'arrêtant en 2023.
+Le même jour, C1, le modèle servi, a déposé
+\texttt{v2/\allowbreak validation/\allowbreak depot/\allowbreak axe2\_cohortes\_c1\_2026-11-14.parquet} (empreinte
+\texttt{689b230b5b50}, commit 470acf1) : les cinq professions, avec les quantiles 10, 50 et 90~\%.
+Les IDE y partent de l'origine 2023 (cibles 2027, 2028 et 2030, soit $h = 4$, 5 et 7\derive) ; leur
+score suppose une publication RPPS des IDE libéraux après 2023, qui n'est pas garantie. Les
 dépôts K4 (\texttt{039d21878b7a}) et K5 (\texttt{0169b97d4fac}) portent sur la commune. Le score
 sera calculé à la publication du RPPS 2027, attendue vers juillet 2027 \citep{drees2026demo}, sans
 toucher aux fichiers. C'est le seul test qui ne soit contaminé ni par K1 ni par le choix de la
@@ -393,8 +419,9 @@ données communales, pour des origines qui se recouvrent (2014--2020) : l'échec
 grandes classes était connu. N7-A a été écrit après le résultat de N3. La variante \texttt{vivier}
 a été évaluée sur une seule origine, hors pré-enregistrement (\texttt{D} l.1707--1711).
 
-\paragraph{Multiplicité.} 12\mesure{} protocoles et plusieurs dizaines de critères, sans
-correction de famille, sauf Bonferroni dans la SBC. Le registre N1 compte au moins 8\mesure{}
+\paragraph{Multiplicité.} 12\mesure{} protocoles et plusieurs dizaines de critères. Bonferroni est
+appliqué à l'intérieur de certains bancs : la SBC, les cinq variantes stock-flux (IC à 99~\%) et le
+GBM et le MLP (IC à \num{97.5}~\%). Il ne l'est pas entre protocoles. Le registre N1 compte au moins 8\mesure{}
 estimateurs. Le levier IDE a été testé 2\mesure{} fois, les kinés 2\mesure{} fois, et cinq
 variantes communales (K à K5) ont été soumises. N9 fait 8\mesure{} tests de signe à 95~\%, soit
 $\approx \num{0.4}$\derive{} faux positif attendu sous $H_0$ ($8 \times \num{0.05}$) : le seul
@@ -402,16 +429,19 @@ $\approx \num{0.4}$\derive{} faux positif attendu sous $H_0$ ($8 \times \num{0.0
 
 \paragraph{Petits échantillons.} E1 repose sur $G = 59$\mesure{} départements, E2 sur 26 à
 29\mesure, B1 des sages-femmes sur 15\mesure. N6 n'est jugeable que sur une origine, trois
-professions et 279\derive{} cellules. À $h = 5$, N1 dispose de 6\derive{} origines pour SF, CD et
+professions et 279\derive{} couples. À $h = 5$, N1 dispose de 6\derive{} origines pour SF, CD et
 PH, 3\derive{} pour les IDE et 1\derive{} pour les kinés. N5 utilise 20\suppose{} réplications.
 
-\paragraph{Intervalles probablement trop étroits.} Le bootstrap par département de N1 et N6
-ignore la corrélation entre origines et entre départements voisins (\texttt{R/n1} l.141--142). Un
-bootstrap par blocs est inscrit au registre (\texttt{O} l.67, $\sim 20$\suppose{}~min).
+\paragraph{Intervalles probablement trop étroits.} Le bootstrap de N1 et N6 tire les mêmes
+départements pour toutes les cellules (\texttt{v2/validation/forecast.py} l.58--65), ce qui conserve
+la corrélation entre origines d'un même département. Il ne rééchantillonne pas les origines (6\mesure{}
+au plus), ignore le choc commun à tous les départements d'une origine et la corrélation entre
+départements (\texttt{R/n1} l.141--142). Le remède est de rééchantillonner aussi les origines, ou un
+bootstrap à deux grappes (départements et origines), et non des blocs département $\times$ origine.
+Une correction du bootstrap est inscrite au registre (\texttt{O} l.67, $\sim 20$\suppose{}~min).
 
 \paragraph{Critères au bord du seuil.} N8 passe à \num{75.9}\mesure{}~\% pour une borne de
-75\suppose{}~\%. E1 échoue à $p = \num{0.043}$\mesure{} pour un seuil de \num{0.10}\suppose. Le
-test T4 au bassin de vie passe « de justesse » (\texttt{R/n7}).
+75\suppose{}~\%. Le test T4 au bassin de vie passe « de justesse » (\texttt{R/n7}).
 
 \paragraph{Écarts d'exécution déclarés.} N2-A en forme affaiblie ; N6 avec 100\mesure{} tirages
 au lieu de 200\suppose{} pour l'APC ; dépôts K4 et K5 à l'origine 2025 ; K5 avec un $\sigma_D$

@@ -114,6 +114,8 @@ OUTILS: dict[str, tuple[str, dict]] = {
                    _obj({"profession": PROF, "territoire": TERR, "leviers": LEVIERS, "transfert": TRANSFERT,
                          "l23": {"type": "boolean", "description": "Vaccination en officine (transfert L23) active ; défaut : non. Seulement si la question parle de vaccination."},
                          "l23_t0": {"type": "integer", "minimum": 2019, "maximum": 2050, "description": "Année d'autorisation (défaut 2026)."},
+                         "effectivite": {"type": "boolean", "description": "Avec l23 et les pharmaciens : le transfert soulage-t-il la médecine générale sans trop peser sur les pharmaciens ? Couverture de la source et de la cible avec et sans transfert, plage de k, verdict (décision O3). Seulement si la question le demande."},
+                         "offre_mg": {"type": "string", "enum": ["constante", "nationale", "externe"], "description": "Offre de médecine générale lue en entrée pour l'effectivité ; défaut constante (RPPS 2026, supposé)."},
                          "annees": {"type": "array", "items": ANNEE, "maxItems": MAX_LISTE}}, ["profession"])),
     "decrire_leviers": ("Leviers du modèle : bornes, délai d'effet, statut (sourcé / supposé), source.", _obj({}, [])),
     "incertitude": ("Indices de Sobol (axe 5) : quels paramètres et choix d'estimation pèsent le plus sur la projection.",

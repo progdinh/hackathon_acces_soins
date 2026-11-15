@@ -1,3 +1,7 @@
+# ERRATUM 2026-11-15 (P1-4) : les effets de L23 ci-dessous sont dépassés (double compte ×19). Nouveaux chiffres :
+# pharmaciens France 2050 −0,03 % ; 104 110 vaccinations en moins pour les généralistes en 2050 ; ≈ 24 ETP.
+# Voir v2/docs/lab/reports/2026-11-15-l23-p1-4-marge.md. Mesure d'origine conservée telle quelle.
+
 # Transfert hypothétique en mode IA (claude-haiku-5-5, CHAT_FALLBACKS=0), 2026-11-15, carte 8795 / passerelle 8796 / chatbot 8797
 # ia0 : AVANT le balayage dans la passerelle ; ia1-ia3 : après. Sortie de $SP/ia.py (question, appels, valeurs de a, proposition carte, réponse).
 
@@ -194,3 +198,219 @@ carte: {'prof': 'pharmaciens', 'terr': 'D63', 'leviers': {}, 'annee': 2035, 'vue
 
 → Et si la vaccination en officine démarre en 2028 plutôt qu'en 2026 ?
 → Quelle est la couverture des pharmaciens en Puy-de-Dôme sans vaccination en officine ?
+
+######## Après la correction L23 (P1-4, b35a380) : carte 8800, passerelle 8798, chatbot 8799 (sans IA) et 8801 (IA, claude-haiku-5-5)
+######## r1 : sans IA, par la carte (/api/agent)
+================================================================================ 
+Q: Si les infirmiers prennent 10 % des renouvellements d'ordonnance des généralistes, quelle couverture des infirmiers dans le Puy-de-Dôme en 2035 ? 
+mode deterministe verif ok s 0.98
+appels: [('projeter', None), ('couverture', {'source': 'medecine-generale', 'cible': 'infirmiers', 's_inf': 0.1})]
+valeurs de a: [None]
+carte: {'prof': 'infirmiers', 'terr': 'D63', 'leviers': {}, 'annee': 2035, 'vue': 'couverture', 'l23': 0, 'tr': {'p': {'tr_src': 'medecine-generale', 'tr_cible': 'infirmiers', 'tr_sinf': 0.1}, 'libelle': 'une part de la demande des médecins généralistes passe aux infirmiers', 'resume': "part de la demande concernée 10 % (point médian du balayage, supposée), part de l'acte transférée 10 %"}}
+**Ce que j'ai compris :** aucun levier : scénario tendanciel ; Infirmiers ; Puy-de-Dôme
+
+En 2035, environ 3 690 infirmiers libéraux (Puy-de-Dôme), probablement entre 3 440 et 3 940 (tendanciel : 3 690).
+
+Projection sous hypothèses : la fourchette reprend l'erreur passée du modèle, extrapolée au-delà de l'horizon testé.
+
+**Transfert hypothétique (paramètres de l'utilisateur·rice) : Les infirmiers prennent en charge 10 % des renouvellements d'ordonnance des médecins généralistes, à partir de 2026. Effectif inchangé dans le modèle.**
+
+**Ce que j'ai compris :** source : médecins généralistes ; cible : infirmiers ; acte : renouvellements d'ordonnance ; part de l'acte transférée à terme (s∞) : 10 % (donnée par vous) ; poids de l'acte dans la demande des médecins généralistes (a) : non donné, balayé. k, temps de la cible par unité de temps de la source = 1,0 ; τ, montée en charge (années) = 2,4 ; t₀, année d'autorisation = 2026 : supposés (hypothèse de l'utilisateur·rice).
+
+Couverture des infirmiers en 2035 (Puy-de-Dôme, indice base 2026 = 1), tendanciel 0,949 :
+- a = 5 % : 0,949 (-0,08 %, couverture proche du tendanciel) ; selon l'estimateur : de 0,949 à 0,950
+- a = 10 % : 0,948 (-0,17 %, couverture proche du tendanciel) ; selon l'estimateur : de 0,948 à 0,950
+- a = 20 % : 0,946 (-0,34 %, couverture proche du tendanciel) ; selon l'estimateur : de 0,946 à 0,950
+
+Pour a = 10 %, les médecins généralistes transfèrent en 2035 le temps de travail d'environ 574 médecins à temps plein (France entière) ; les infirmiers le reprennent.
+
+Aucun chiffre unique : l'effet dépend d'abord de a, que les données ouvertes ne mesurent pas.
+
+Pourquoi ce n'est pas un levier de la carte : ni le volume de cet acte ni la part du temps des médecins généralistes qu'il occupe ne sont publiés en données ouvertes ; seul le transfert de la vaccination en officine a des paramètres sourcés. Demande de soins de ville des médecins généralistes : niveau mesuré : 56 005 médecins généralistes libéraux en France au 1er janvier 2025 (ameli) ; répartition par âge mesurée (Open DAMIR 2025).
+
+Limite du modèle : l'indice rapporte l'offre à la demande de soins de ville, par rapport à 2026 ; ce n'est pas une part de la demande satisfaite. Résultat sous l'hypothèse de l'utilisateur·rice, pas une projection sourcée.
+================================================================================ 
+Q: Si les infirmiers prennent 10 % des renouvellements d'ordonnance des généralistes, quelle couverture des généralistes en 2035 ? 
+mode deterministe verif ok s 0.13
+appels: []
+valeurs de a: []
+carte: None
+**Hors du périmètre du modèle :** Couverture, besoin ou indice pour la médecine générale ou les spécialistes. Règle O2 : la médecine générale et les spécialistes n'entrent que comme source d'un transfert de tâches ; aucun indice de couverture n'est calculé pour eux.
+================================================================================ 
+Q: Les infirmiers reprennent 5 % de la demande des généralistes : quelle couverture des infirmiers en France en 2050 ? 
+mode deterministe verif ok s 0.16
+appels: [('projeter', None), ('couverture', {'source': 'medecine-generale', 'cible': 'infirmiers', 'a': 0.05})]
+valeurs de a: [0.05]
+carte: {'prof': 'infirmiers', 'terr': 'FR', 'leviers': {}, 'annee': 2050, 'vue': 'couverture', 'l23': 0, 'tr': {'p': {'tr_src': 'medecine-generale', 'tr_cible': 'infirmiers', 'tr_a': 0.05}, 'libelle': 'une part de la demande des médecins généralistes passe aux infirmiers', 'resume': 'part de la demande concernée 5 % (point médian du balayage)'}}
+**Ce que j'ai compris :** aucun levier : scénario tendanciel ; Infirmiers ; France
+
+En 2050, environ 336 000 infirmiers libéraux en France, probablement entre 285 000 et 387 000 (tendanciel : 336 000).
+
+Projection sous hypothèses : la fourchette reprend l'erreur passée du modèle, extrapolée au-delà de l'horizon testé.
+
+**Transfert hypothétique (paramètres de l'utilisateur·rice) : Les infirmiers prennent en charge 5 % de la demande des médecins généralistes, à partir de 2026. Effectif inchangé dans le modèle.**
+
+**Ce que j'ai compris :** source : médecins généralistes ; cible : infirmiers ; acte : demande ; part de la demande des médecins généralistes transférée : 5 % (donnée par vous) ; a balayé autour de cette valeur. k, temps de la cible par unité de temps de la source = 1,0 ; τ, montée en charge (années) = 2,4 ; t₀, année d'autorisation = 2026 : supposés (hypothèse de l'utilisateur·rice).
+
+Couverture des infirmiers en 2050 (France, indice base 2026 = 1), tendanciel 0,829 :
+- a = 2,5 % : 0,826 (-0,37 %, couverture proche du tendanciel) ; selon l'estimateur : de 0,826 à 0,830
+- a = 5 % : 0,823 (-0,75 %, couverture proche du tendanciel) ; selon l'estimateur : de 0,823 à 0,830
+- a = 10 % : 0,817 (-1,48 %, couverture légèrement moindre qu'au tendanciel) ; selon l'estimateur : de 0,817 à 0,830
+
+Pour a = 5 %, les médecins généralistes transfèrent en 2050 le temps de travail d'environ 3027 médecins à temps plein (France entière) ; les infirmiers le reprennent.
+
+Aucun chiffre unique : l'effet dépend d'abord de a, que les données ouvertes ne mesurent pas.
+
+Pourquoi ce n'est pas un levier de la carte : ni le volume de cet acte ni la part du temps des médecins généralistes qu'il occupe ne sont publiés en données ouvertes ; seul le transfert de la vaccination en officine a des paramètres sourcés. Demande de soins de ville des médecins généralistes : niveau mesuré : 56 005 médecins généralistes libéraux en France au 1er janvier 2025 (ameli) ; répartition par âge mesurée (Open DAMIR 2025).
+
+Limite du modèle : l'indice rapporte l'offre à la demande de soins de ville, par rapport à 2026 ; ce n'est pas une part de la demande satisfaite. Résultat sous l'hypothèse de l'utilisateur·rice, pas une projection sourcée.
+================================================================================ 
+Q: Si les pharmaciens vaccinent, quelle couverture dans le Puy-de-Dôme en 2035 ? 
+mode deterministe verif ok s 0.45
+appels: [('projeter', None), ('couverture', None)]
+valeurs de a: []
+carte: {'prof': 'pharmaciens', 'terr': 'D63', 'leviers': {}, 'annee': 2035, 'vue': 'couverture', 'l23': 1}
+**Ce que j'ai compris :** aucun levier : scénario tendanciel ; Pharmaciens ; Puy-de-Dôme
+
+En 2035, environ 771 pharmaciens libéraux (Puy-de-Dôme), probablement entre 755 et 788 (tendanciel : 771).
+
+Projection sous hypothèses : la fourchette reprend l'erreur passée du modèle, extrapolée au-delà de l'horizon testé.
+
+**Les pharmaciens vaccinent davantage contre la grippe (L23), à partir de 2026 : effectif inchangé dans le modèle.** Couverture des pharmaciens en 2035 (Puy-de-Dôme, indice base 2026 = 1) : 0,99 si les pharmaciens vaccinent davantage contre la grippe, 0,99 au tendanciel, soit couverture proche du tendanciel (-0,0 %).
+
+Si les pharmaciens vaccinent davantage contre la grippe, les médecins généralistes ont moins de vaccins à faire : en 2035, environ 101 666 vaccinations en moins pour eux, soit le temps de travail d'environ 23 médecins à temps plein (France entière). Les pharmaciens reprennent ce travail. Ordre de grandeur : la part de temps que la vaccination prend aux médecins n'est pas mesurée, elle est supposée.
+
+Un seul estimateur de la demande de soins de ville est servi pour les pharmaciens (M1, choix du modèle distinguable de l'effet des leviers) : pas de fourchette entre estimateurs ; la fourchette de l'effectif ci-dessus reste celle de l'offre.
+
+Limite du modèle : l'indice rapporte l'offre à la demande de soins de ville, par rapport à 2026 ; ce n'est pas une part de la demande satisfaite ; paramètres de L23 : a supposé, k supposé, s_inf mesuré, tau mesuré, mu supposé.
+
+######## r2 : IA, /api/chat direct
+====================================================================== 
+Q: Si les infirmiers prennent 10 % des renouvellements d'ordonnance des généralistes, quelle couverture des infirmiers dans le Puy-de-Dôme en 2035 ? 
+mode llm verif bloquee
+appels: [('couverture', {'source': 'medecine-generale', 'cible': 'infirmiers', 's_inf': 0.1}, None)]
+**Réponse retenue par la vérification automatique** : elle contenait des nombres ou des mots de grandeur qui ne viennent d'aucun résultat du modèle (« moyen terme »). Les calculs réellement lancés sur le modèle sont listés ci-dessous. Reformuler la question, ou la restreindre au périmètre du modèle.
+====================================================================== 
+Q: Si les infirmiers prennent 10 % des renouvellements d'ordonnance des généralistes, quelle couverture des généralistes en 2035 ? 
+mode llm verif ok
+appels: [('couverture', {'source': 'medecine-generale', 'cible': 'infirmiers', 's_inf': 0.1}, None)]
+**Couverture des infirmiers en 2035 : écart très faible au tendanciel si 10 % des renouvellements sont transférés (indice 0,929 contre 0,93).**
+
+Hors du périmètre du modèle : aucun indice de couverture n'est calculé pour la médecine générale. Le modèle ne l'utilise que comme source du transfert. La question est donc traitée côté infirmiers.
+
+### Ce que ça change
+- Indice de couverture des infirmiers en 2035 : 0,929 (tendanciel : 0,93, soit base 2026 = 1), soit un écart de -0,17 % : couverture proche du tendanciel.
+- Le transfert ne change pas l'effectif infirmier : il s'agit d'un poids de demande, pas de professionnels en plus.
+- Sur la base de 10 % de la demande, le transfert représente environ 574 équivalents temps plein de médecins généralistes.
+- Balayage de la part de la demande concernée par l'acte : 5 % donne un écart de -0,09 % (287 ETP) ; 20 % donne -0,34 % (1 147 ETP).
+
+### Pourquoi
+- Le transfert agit sur la demande : une part de la demande de médecine générale passe vers les infirmiers.
+- Montée en charge de 2,4 ans à partir de 2026 (valeur par défaut, supposée).
+- Effet sur la couverture des infirmiers modéré dans le temps : l'écart reste faible à 2035.
+
+### Fiabilité
+- Fourchette entre estimateurs : 0,929 à 0,931.
+- Transfert hypothétique, réglé par vous : la part de la demande concernée (a) est inconnue et balayée ; le ratio de temps (k = 1) et la montée en charge (2,4 ans) sont supposés.
+- Ce n'est pas un levier de la carte.
+
+Limite du modèle : le volume de l'acte « renouvellement d'ordonnance » n'est pas publié en données ouvertes ; l'effet affiché est illustratif.
+
+→ Et si la part de la demande transférée atteint 20 % ?
+→ Quel effet de ce transfert sur la couverture des infirmiers en 2040 ?
+====================================================================== 
+Q: Si les pharmaciens vaccinent, quelle couverture dans le Puy-de-Dôme en 2035 ? 
+mode llm verif ok
+appels: [('couverture', None, True)]
+**Avec la vaccination en officine, la couverture des pharmaciens dans le Puy-de-Dôme en 2035 reste proche du tendanciel : indice 0,989 (base 2026 = 1), soit un écart de 0,0 %.**
+
+### Ce que ça change
+- Le scénario « les pharmaciens vaccinent » (autorisation en 2026) ne modifie pas l'indice à ce stade : 0,989 avec ou sans le transfert.
+- L'effectif ne change pas : le transfert de tâches n'ajoute ni ne retire de pharmaciens.
+- Pour la France entière, le modèle estime qu'il y aurait environ 101 700 vaccinations de moins à faire pour les médecins généralistes, soit le temps d'environ 23 médecins à temps plein. Ce chiffre ne porte pas sur le Puy-de-Dôme.
+
+### Pourquoi
+- Le transfert agit sur la demande de soins de ville. Seule la part de vaccination au-delà de celle déjà atteinte en 2026 (environ 0,70) entre dans le calcul.
+- Au Puy-de-Dôme, l'effet n'apparaît pas à l'horizon 2035 dans le résultat.
+
+### Fiabilité
+- Un seul estimateur (M1) est disponible, donc aucune fourchette entre estimateurs n'est fournie.
+- Les paramètres d'intensité (part de l'acte et durée de montée en charge) sont supposés. Le calendrier de montée est mesuré, à partir de données nationales de 2019 à 2025.
+- Ce résultat ne vaut que sous ces hypothèses.
+
+→ Et si l'autorisation datait de 2030 ?
+→ Quel est l'effet national de la vaccination en officine en 2040 ?
+
+######## r3 : IA, question d'exemple × 3
+====================================================================== 
+Q: Si les infirmiers prennent 10 % des renouvellements d'ordonnance des généralistes, quelle couverture des infirmiers dans le Puy-de-Dôme en 2035 ? 
+mode llm verif corrigee
+appels: [('couverture', {'source': 'medecine-generale', 'cible': 'infirmiers', 's_inf': 0.1}, None)]
+**Indice de couverture des infirmiers en Puy-de-Dôme en 2035 : 0,948 avec le transfert, contre 0,949 au tendanciel (écart de -0,17 %, couverture proche du tendanciel).**
+
+### Ce que ça change
+- Transfert hypothétique de 10 % des renouvellements d'ordonnance des médecins généralistes vers les infirmiers. Le modèle ne change pas l'effectif infirmier : seule la couverture bouge.
+- Balayage de la part de la demande de médecins généralistes concernée (a) : à 5 %, l'écart est de -0,08 % (indice 0,949) ; à 20 %, de -0,34 % (indice 0,946). Dans les trois cas, la couverture reste proche du tendanciel.
+- Côté médecins généralistes, ce transfert représente le temps de travail d'environ 574 médecins à temps plein (France entière) pour 10 %, contre environ 287 pour 5 % et 1 147 pour 20 %.
+
+### Pourquoi
+- Le transfert agit comme une part de demande déplacée vers les infirmiers, avec une montée en charge supposée de 2,4 ans à partir de 2026.
+- L'écart reste proche du tendanciel parce que la part transférée est limitée au regard de la demande totale.
+
+### Part de chaque levier
+Une seule hypothèse est réglée ici (le transfert), donc pas de décomposition.
+
+### Fiabilité
+- Fourchette entre estimateurs : 0,948 à 0,95.
+- Statut : le transfert est une **hypothèse supposée** (paramètres de l'utilisateur·rice). Le volume de cet acte et sa part dans le temps des médecins ne sont pas publiés en données ouvertes. La durée de montée en charge (2,4 ans) et le temps de la cible (k = 1) sont des valeurs par défaut supposées.
+- Limite du modèle : aucune couverture n'est calculée pour la médecine générale ; elle n'intervient ici que comme source du transfert.
+
+→ Et si la part transférée atteignait 20 % ?
+→ Quelle couverture des infirmiers en Puy-de-Dôme en 2035 sans transfert ?
+====================================================================== 
+Q: Si les infirmiers prennent 10 % des renouvellements d'ordonnance des généralistes, quelle couverture des infirmiers dans le Puy-de-Dôme en 2035 ? 
+mode llm verif ok
+appels: [('couverture', {'source': 'medecine-generale', 'cible': 'infirmiers', 's_inf': 0.1}, None)]
+**Avec 10 % des renouvellements d'ordonnance transférés, l'indice de couverture des infirmiers dans le Puy-de-Dôme en 2035 est de 0,948 (base 2026 = 1), contre 0,949 au tendanciel : couverture proche du tendanciel (−0,17 %).**
+
+### Ce que ça change
+- Effectif inchangé : le transfert ne change pas le nombre d'infirmiers projeté, seulement l'indice de couverture.
+- Les trois parts testées pour la part de la demande de médecine générale concernée par l'acte (a) donnent : 5 % → 0,949 (−0,08 %) ; 10 % → 0,948 (−0,17 %) ; 20 % → 0,946 (−0,34 %), tous « proche du tendanciel ».
+- Côté médecine générale, le transfert libérerait environ 574 médecins généralistes à temps plein en France (10 %), soit environ 287 (5 %) ou 1 147 (20 %).
+
+### Pourquoi
+- Le transfert agit sur la demande : une part des renouvellements passe vers les infirmiers, avec un délai de montée en charge d'environ 2,4 ans (supposé).
+- Le volume de l'acte n'est pas publié : le poids de a est donc balayé, non mesuré.
+
+### Fiabilité
+- Fourchette entre estimateurs : 0,948 à 0,95 pour le cas à 10 %.
+- Statut : transfert hypothétique, paramètres de l'utilisateur·rice. Source : médecine générale (niveau mesuré de 56 005 médecins libéraux en 2025) ; k = 1 et t0 = 2026 sont des valeurs par défaut supposées.
+- Ce n'est pas un levier de la carte.
+- Limite du modèle : aucune couverture n'est calculée pour la médecine générale ; elle n'intervient ici que comme source du transfert.
+
+→ Et si 20 % des renouvellements étaient transférés, avec un démarrage en 2030 ?
+→ Quel effet aurait une hausse de 20 % des places en formation d'infirmiers dans le Puy-de-Dôme ?
+====================================================================== 
+Q: Si les infirmiers prennent 10 % des renouvellements d'ordonnance des généralistes, quelle couverture des infirmiers dans le Puy-de-Dôme en 2035 ? 
+mode llm verif corrigee
+appels: [('couverture', {'source': 'medecine-generale', 'cible': 'infirmiers', 's_inf': 0.1}, None)]
+**Un transfert de 10 % des renouvellements d'ordonnance des médecins généralistes vers les infirmiers laisse la couverture des infirmiers dans le Puy-de-Dôme proche du tendanciel en 2035 (indice 0,948 contre 0,949 ; écart de -0,2 %).**
+
+Transfert hypothétique (paramètres de l'utilisateur·rice). Source : médecine générale ; cible : infirmiers. Ce transfert n'est pas un levier de la carte.
+
+### Ce que ça change
+- L'effectif reste inchangé : le transfert modifie l'indice de couverture, pas le nombre d'infirmiers.
+- Balayage de la part de la demande des médecins généralistes concernée (a) : à 5 %, écart de -0,08 % (indice 0,949) ; à 10 %, écart de -0,17 % (indice 0,948) ; à 20 %, écart de -0,34 % (indice 0,946). Dans les trois cas, la couverture est proche du tendanciel.
+- Pour 10 %, cela représente le temps de travail d'environ 574 médecins généralistes à temps plein (France entière).
+
+### Pourquoi
+- Le transfert se traduit par une part de la demande des médecins généralistes qui passe vers les infirmiers, avec une montée en charge de 2,4 ans après une autorisation en 2026.
+- En 2035, la montée en charge est déjà passée, et l'écart reste proche du tendanciel pour les trois valeurs de a.
+
+### Fiabilité
+- Fourchette entre estimateurs pour a = 10 % : 0,948 à 0,95.
+- La part de l'acte transférée (10 %) vient de votre hypothèse. La part a de la demande des médecins généralistes concernée est inconnue, d'où le balayage à 5, 10 et 20 %. La vitesse (k = 1) et la montée en charge (2,4 ans) sont des valeurs par défaut supposées.
+- Les médecins généralistes ne sont utilisés que comme source du transfert ; aucun indice de couverture n'est calculé pour eux.
+
+→ Et si la part transférée est plus élevée ?
+→ Quel effet aurait la vaccination en officine sur la couverture des pharmaciens dans le Puy-de-Dôme ?

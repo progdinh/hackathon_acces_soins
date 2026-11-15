@@ -2,17 +2,6 @@
   "version": "0.0.1",
   "configurations": [
     {
-      "name": "decision",
-      "runtimeExecutable": "uv",
-      "runtimeArgs": [
-        "run",
-        "python",
-        "v2/prototype/server.py",
-        "8766"
-      ],
-      "port": 8766
-    },
-    {
       "name": "decision-carte",
       "runtimeExecutable": "uv",
       "runtimeArgs": [
@@ -21,46 +10,7 @@
         "v2/prototype-carte/server.py",
         "8767"
       ],
-      "port": 8767
-    },
-    {
-      "name": "decision-carte-dev",
-      "runtimeExecutable": "uv",
-      "runtimeArgs": [
-        "run",
-        "python",
-        "v2/prototype-carte/server.py",
-        "8769"
-      ],
-      "port": 8769,
-      "autoPort": false
-    },
-    {
-      "name": "chatbot-passerelle",
-      "runtimeExecutable": "env",
-      "runtimeArgs": [
-        "JUMEAU_REPO=..",
-        "PYTHONDONTWRITEBYTECODE=1",
-        "uv",
-        "run",
-        "--directory",
-        "chatbot",
-        "python",
-        "-m",
-        "passerelle.server",
-        "8770"
-      ],
-      "port": 8770,
-      "autoPort": false
-    },
-    {
-      "name": "chatbot",
-      "runtimeExecutable": "sh",
-      "runtimeArgs": [
-        "-c",
-        "set -a; [ -f .env ] && . ./.env; set +a; CHAT_MODEL=${CHAT_MODEL:-claude-haiku-5-5} CHAT_FALLBACKS=0 exec uv run --directory chatbot python -m chat.server 8768"
-      ],
-      "port": 8768,
+      "port": 8767,
       "autoPort": false
     }
   ]

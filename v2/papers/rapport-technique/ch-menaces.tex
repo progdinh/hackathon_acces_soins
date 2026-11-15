@@ -12,9 +12,10 @@ projet affirme. Chacune renvoie à sa section détaillée.
 \item \textbf{Dépendance au millésime.} Une révision de la table privée des sages-femmes a déplacé la MAPE de C1
   de 7,73 à 7,76\,\%\mesure, et celle d'A2 de 8,57 à 8,60\,\%\mesure. Toute comparaison entre deux runs doit être
   faite sur le même millésime (section~\ref{sec:methodes-ref}).
-\item \textbf{Bruit incompressible.} Le budget d'erreur attribue 3,11 points\mesure de MAPE au bruit de comptage.
-  Un modèle plus riche ne peut pas réduire cette part. Des gains annoncés au-delà de cette borne signaleraient un
-  surapprentissage.
+\item \textbf{Bruit de comptage.} Le budget d'erreur attribue au bruit de comptage un plancher de 3,11
+  points\derive{} [2,89 ; 3,36] de MAPE, soit environ 40\,\%\derive{} de la MAPE de C1. C'est une borne basse de la
+  part irréductible : un modèle plus riche ne peut pas descendre sous ce plancher, et des gains annoncés au-delà
+  signaleraient un surapprentissage.
 \item \textbf{Horizon.} La persistance bat A2 aux horizons 8 et 10 ans\mesure. Les sorties au-delà de dix ans ne
   sont pas des prévisions.
 \end{itemize}
@@ -35,10 +36,13 @@ projet affirme. Chacune renvoie à sa section détaillée.
   échoué deux fois. Les effets de levier affichés sont des conséquences du modèle, pas des effets mesurés.
 \item \textbf{Paramètres supposés.} Une partie des hyperparamètres reste supposée ou introuvable après la relecture
   intégrale des sources (section~\ref{sec:parametres-ref}). Le paramètre $\theta = 0{,}80$ est utilisé par défaut,
-  alors que son protocole le déclare non interprétable.
-\item \textbf{Pas de rétroaction.} L'effectif ne réagit ni au besoin ni à la densité : l'effet de la densité sur les
-  installations mesuré par le protocole N9 est nul. Un transfert de tâches ou une politique d'attractivité ne
-  modifie donc pas l'effectif projeté.
+  alors que le test qui l'estime (N3) échoue au critère de tendances parallèles ($p = 0{,}043$).
+\item \textbf{Pas de rétroaction.} L'effectif ne réagit ni au besoin ni à la densité. L'effet de la densité sur
+  les installations nettes estimé par le protocole N9 n'est pas distinct de zéro : IDE $-1{,}52$ [$-4{,}05$ ;
+  $+1{,}01$]\mesure, MK $-1{,}66$ [$-3{,}43$ ; $+0{,}11$]\mesure, CD $+0{,}17$ [$-0{,}05$ ; $+0{,}39$]\mesure. Le
+  seul lien confirmé, densité $\to$ rétention des IDE ($+0{,}11$ [$+0{,}05$ ; $+0{,}18$]\mesure), est
+  corrélationnel et n'est pas branché dans le tendanciel. Un transfert de tâches ou une politique d'attractivité
+  ne modifie donc pas l'effectif projeté.
 \end{itemize}
 
 \subsection{Sur les données}
@@ -48,7 +52,8 @@ projet affirme. Chacune renvoie à sa section détaillée.
 \item \textbf{Petits effectifs.} Au grain communal, la plupart des cellules comptent moins de cinq personnes : le
   signal y est dominé par le bruit, et ces cellules posent un problème de confidentialité
   (section~\ref{sec:conformite-ref}).
-\item \textbf{Ruptures de série.} Les ruptures dans les sources (par exemple la série BTS des infirmiers en 2022)
+\item \textbf{Ruptures de série.} Les ruptures dans les sources (par exemple le passage d'ADELI au RPPS pour les kinésithérapeutes en 2017, ou le changement de définition de
+  l'abandon en IFSI en 2022 ; section~\ref{sec:donnees-ref})
   et les changements de millésime peuvent créer des sauts que le modèle prend pour des tendances.
 \end{itemize}
 

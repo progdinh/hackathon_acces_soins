@@ -28,8 +28,9 @@ Grandeur & Fichier 1 (valeur) & Fichier 2 (valeur) & Valeur retenue et raison \\
 \bottomrule
 \endfoot
 Nombre de critères & J:6,17 et P0:31,74 : 17 sur 17 ; S:79 : C1--C14 (instantané \texttt{c2dc7601}) & S:253 et
-  P5:311 : « 19 critères au vert » ; CK, CL, RJ : C1--C18 et T & 18 sur 18, plus T (RJ). Les « 19 » de S et P5
-  comptent T ; J et P0 datent d'avant C18. \\
+  P5:311 : « 19 critères au vert » ; CK, CL, RJ : C1--C18 et T & 18 sur 18 (RJ). Les « 19 » de S et P5
+  comptent T, qui n'est pas un test : son verdict est codé \texttt{True} (CK:808-810) ; J et P0 datent d'avant
+  C18. \\
 Temps T au département, 7 professions & J:72 et P0:31,333 : 21~ms ; J:90 : 22--36~ms ; J:113,150 : 17~ms ; R1:23 :
   18~ms & fiche d'extraction (run de 01:05) : 40~ms ; RJ (02:03) et CL : 16~ms & 16~ms (RJ, dernier run). Mesure
   sur machine partagée : la dispersion entre runs vient de la charge. \\
@@ -94,8 +95,9 @@ SF tendanciel 2050, axe 5 & D (2026-11-14, « relance ») : 19\,124 $\to$ 21\,17
   et MK corrigé ») : \num{18991} & \num{18991} : 21\,176 venait d'un statu quo qui forçait l'abandon à 0
   (défaut corrigé, D). \\
 Biais SF du backtest & S:180 (tableau) : $+7{,}9$\,\% à $h = 5$ ; S:196 : $+7{,}8$\,\% ($h = 5$), $+18{,}8$\,\%
-  ($h = 10$) & P5:178-179 : $+7{,}9$ et $+18{,}9$\,\% & S:196, valeurs du texte ($+7{,}8$ ; $+18{,}8$) ; le tableau de
-  S donne $+7{,}9$. Écart d'arrondi non résolu. \\
+  ($h = 10$) & P5:178-179 : $+7{,}9$ et $+18{,}9$\,\% & $+7{,}9$ et $+18{,}9$\,\% (tableau de S et P5). Recalcul sur
+  \texttt{v2/sensibilite/out/backtest\_erreurs.csv} : moyenne $+7{,}92$\,\% à $h = 5$ (6 origines), $+18{,}91$\,\% à
+  $h = 10$ (1 origine) ; le texte de S (l.~196) tronque au lieu d'arrondir. \\
 Retraite avant correctif, axe 5 & S:212 : « 0,7 à 1,85 fois » B1 & S:212-213 : 1,10 / 1,39 / 1,85 ; S:214 cite « +12
   \% et +41 \% » de R2, R2:32 ne donne que +41 \% & Non repris dans le texte ; la borne 0,7 n'a pas de valeur listée.
   \\

@@ -4,17 +4,26 @@ Ce rapport rassemble, en un seul document, l'état du projet « jumeau numériqu
 planification sanitaire.
 
 \paragraph{Le modèle.} On projette jusqu'en 2050 l'effectif du secteur privé (« libéral » au sens large) de cinq
-professions : sages-femmes, chirurgiens-dentistes, pharmaciens, masseurs-kinésithérapeutes et infirmiers. La
-projection porte sur chaque territoire, de la commune à la France. Elle simule des politiques publiques nationales
-exprimées comme des réglages datés d'hyperparamètres sourcés. Le modèle est un jumeau à état explicite
-(profession × territoire × âge × sexe × secteur), composé de modules de flux à contrat vérifiable. L'estimateur
-servi est un modèle de cohortes (C1).
+professions : sages-femmes, chirurgiens-dentistes, pharmaciens, masseurs-kinésithérapeutes et infirmiers. Le
+calcul descend à la commune, mais l'affichage et la validation s'arrêtent au département. Le modèle simule des
+politiques publiques nationales exprimées comme des réglages datés d'hyperparamètres dont la source et le statut
+(mesuré, sourcé ou supposé) sont déclarés. C'est un jumeau à état explicite (profession × territoire × âge × sexe ×
+secteur), composé de modules de flux à contrat vérifiable. Les critères d'acceptation du jumeau et l'analyse de
+sensibilité (axe~5) portent sur sa composition de référence, le stock-flux A0. L'estimateur servi par la carte et
+l'assistant est un modèle de cohortes (C1), branché dans le jumeau par injection de ses taux de rétention et
+d'entrée.
 
-\paragraph{Le principal résultat de précision.} Au banc départemental à cinq ans, l'erreur absolue moyenne en
-pourcentage de C1 est de 7,76\,\%\mesure, contre 9,94\,\%\mesure pour la persistance et 9,32\,\%\mesure pour la
-tendance linéaire. Le budget d'erreur attribue 3,11 points\mesure au seul bruit de comptage, qui est
-incompressible. Trois familles de pistes n'ont pas battu C1 : des intervalles de prévision recalibrés (prévision
-conforme, réconciliation MinT), un gradient boosting global et un perceptron multicouche.
+\paragraph{Le principal résultat de précision.} Au banc départemental à cinq ans (protocole N1, secteur privé,
+\num{2056} couples département × cellule), l'erreur absolue moyenne en pourcentage de C1 est de
+7,76\,\%\mesure{} [7,12 ; 8,40], contre 9,94\,\%\mesure{} pour la persistance et 9,32\,\%\mesure{} pour la
+tendance linéaire. Ce banc est rétrospectif, et une partie de ses cibles a été vue à la conception (le pilote de
+C1 a vu deux cellules de 2021) : le seul test propre est le dépôt de prévisions jugé en 2027. Aucune bande de C1
+n'est calibrée (couverture de 73,5\,\%\mesure{} pour une cible de 75 à 85\,\%, protocole N6). Le budget d'erreur
+attribue au bruit de comptage un plancher de 3,11 points\derive{} [2,89 ; 3,36], soit environ 40\,\%\derive{} de
+la MAPE ; c'est une borne basse de la part irréductible. Trois familles de pistes n'ont pas battu C1 : des
+intervalles de prévision recalibrés (prévision conforme, réconciliation MinT), un gradient boosting global et un
+perceptron multicouche ; ces deux derniers sont rejetés contre A2 selon le test inscrit, et contre C1 à titre
+exploratoire.
 
 \paragraph{Ce qui n'est pas acquis.} Plusieurs résultats sont négatifs et sont exposés comme tels :
 \begin{itemize}
